@@ -1,9 +1,8 @@
 
-
 const CoursedetailsHero = () => {
   return (
     <div>
-      <h2>helo world</h2>
+      <h2>helo</h2>
     </div>
   )
 }
