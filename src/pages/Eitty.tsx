@@ -1,8 +1,12 @@
+import CoursedetailsHero from "../section/home/course-details/CoursedetailsHero"
 
 
 const Eitty = () => {
     return (
-        <div>Eitty</div>
+        <div>
+            <CoursedetailsHero/>
+
+        </div>
     )
 }
 
