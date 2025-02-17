@@ -25,18 +25,37 @@ const Header = () => {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Features
+            <Link color="foreground" href="/">
+              Home
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" href="#">
-              Customers
+            <Link aria-current="page" href="/products">
+              Products
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
+            <Link color="foreground" href="/about">
+              About
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="/success">
+              Success
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="/mehedi">
+              mehedi            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="/eitty">
+              eitty
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="/himel">
+              himel
             </Link>
           </NavbarItem>
         </NavbarContent>
