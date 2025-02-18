@@ -1,5 +1,7 @@
-import CoursedetailsHero from "../section/home/course-details/CoursedetailsHero"
-import NextBatch from "../section/home/course-details/NextBatch"
+import CoursedetailsHero from "../section/course-details/CoursedetailsHero"
+import NextBatch from "../section/course-details/NextBatch"
+import Project from "../section/course-details/Project"
+
 
 
 const Eitty = () => {
@@ -7,6 +9,7 @@ const Eitty = () => {
         <div>
             <CoursedetailsHero/>
             <NextBatch/>
+            <Project/>
 
         </div>
     )
