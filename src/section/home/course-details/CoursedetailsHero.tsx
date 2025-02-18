@@ -16,7 +16,7 @@ const CoursedetailsHero = () => {
                             
                             <img src={reactImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[250px] left-[250px] animate-custom-spin"/> 
                             <img src={reactImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[160px] right-[160px] animate-custom-spin"/>
-                            <img src={tailwindImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[250px] right-[250px] animate-rotated-bounce1"/> 
+                            <img src={tailwindImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[250px] right-[250px] animate-swing-rotate"/> 
 
                         <div className=" w-[60%] mx-auto text-center">
                             <h2 className="text-white text-4xl font-semibold text-center leading-[60px] px-3 md:px-8">Breakthroughs Begin with learning, reach for the future you deserve</h2>
