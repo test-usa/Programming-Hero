@@ -15,7 +15,8 @@ module.exports = {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(136.85deg,#ff37f2 -15.82%,#405aff 99.57%)',
 		'text-gradient':'linear-gradient(90deg, rgba(242, 54, 255, 0.00) 0%, rgba(241, 32, 255, 0.08) 23.73%, rgba(239, 11, 255, 0.56) 49.67%, rgba(241, 34, 255, 0.04) 74.41%, rgba(242, 54, 255, 0.00) 100%)',
-		'header-image':'url("../assets/images/home.png")'
+		'header-image':'url("../assets/images/home.png")',
+		'custom-pattern': "url('./src/assets/images/layer.png')",
       },
       fontFamily:{
         "Grotesk":["Space Grotesk","serif"],
