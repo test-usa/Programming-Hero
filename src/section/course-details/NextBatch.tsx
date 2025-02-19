@@ -29,7 +29,7 @@ const NextBatch = () => {
       <div className="px-11">
       <h2 className="text-center text-white text-4xl font-semibold">Next Batch Schedule</h2>
 
-<div className="p-8 m-8 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px]"> 
+<div className="p-8 m-8 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] w-[85%] mx-auto"> 
 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <div className="flex items-center gap-3 sm:justify-center">
         <div>

@@ -3,6 +3,7 @@ import videoImg from "../../assets/course details/video-player.svg";
 import bulbImg from "../../assets/course details/bulb.svg";
 import codeImg from "../../assets/course details/code.svg";
 import { useState } from "react";
+import Step from "./Step";
 
 const Project = () => {
   const [isExpandedV, setIsExpandedV] = useState(false);
@@ -24,7 +25,7 @@ const Project = () => {
             }`}
           >
             <img src={videoImg} alt="" />
-            <h2 className="text-[#D149D9] text-4xl font-semibold mt-3">950+ Videos</h2>
+            <h2 className="text-[#D149D9] text-3xl font-semibold mt-3">950+ Videos</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedV
                 ? "The Programming Hero web development course includes 950 videos, providing extensive coverage of MERN stack technologies. These videos are designed to cater to learners at all levels, from beginners to advanced developers. Each video is structured to explain concepts clearly and concisely, ensuring that students grasp both fundamental and complex topics effectively."
@@ -42,7 +43,7 @@ const Project = () => {
             }`}
           >
             <img src={bulbImg} alt="" />
-            <h2 className="text-[#FAA157] text-4xl font-semibold mt-3">45+ Projects</h2>
+            <h2 className="text-[#FAA157] text-3xl font-semibold mt-3">45+ Projects</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedB
                 ? "The course includes 45 projects that give students many chances to practice what they learn. These projects start with simple tasks and gradually become more complex, helping students build their skills step by step. This approach ensures that as students learn more, they are able to handle more difficult challenges, making their learning experience smooth and effective."
@@ -60,7 +61,7 @@ const Project = () => {
             }`}
           >
             <img src={codeImg} alt="" />
-            <h2 className="text-[#35AC6D] text-4xl font-semibold mt-3">10+ Assignments</h2>
+            <h2 className="text-[#35AC6D] text-3xl font-semibold mt-3">10+ Assignments</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedP
                 ? "The course includes 45 projects that give students many chances to practice what they learn. These projects start with simple tasks and gradually become more complex, helping students build their skills step by step. This approach ensures that as students learn more, they are able to handle more difficult challenges, making their learning experience smooth and effective."
@@ -72,7 +73,8 @@ const Project = () => {
           </div>
          
         </div>
-        <hr className="mt-5 border-white/40 mx-11"/>
+        <hr className="mt-5 border-white/40  w-[85%] mx-auto"/>
+        <Step/>
       </CommonContainer>
     </div>
   );
