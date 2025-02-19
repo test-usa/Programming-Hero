@@ -22,23 +22,23 @@ const VideoOutline = () => {
                 className="max-w-[36px] min-w-[28px]"
               />
             </button>
-            <h1 className="font-semibold text-2xl">
+            <h1 className="font-semibold text-2xl text-[#EAAAFF]">
               {count} Starting of a new Journey with special message
             </h1>
           </div>
           <div className="flex items-center gap-x-3 ml-auto">
             <button>
-              <MdOutlineFavoriteBorder className="text-2xl " />
+              <MdOutlineFavoriteBorder className="text-2xl text-white" />
             </button>
             <button>
               {" "}
-              <TbNotes className="text-2xl " />
+              <TbNotes className="text-2xl text-white" />
             </button>
             <button>
               <img src={reward} alt="back-button w-[1rem] h-[2rem]" />
             </button>
             <button>
-              <BsBookmark className="text-2xl " />
+              <BsBookmark className="text-2xl text-white" />
             </button>
           </div>
         </section>
