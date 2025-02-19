@@ -1,4 +1,8 @@
- export interface TChildrenProps{
+export interface TChildrenProps {
   children: React.ReactNode,
-  Class:string
+  Class?: string
+}
+
+export type TName ={
+  name: string
 }

@@ -1,77 +1,42 @@
-
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
-
-
-const AcmeLogo = () => {
-  return (
-    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-      <path
-        clipRule="evenodd"
-        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-        fill="currentColor"
-        fillRule="evenodd"
-      />
-    </svg>
-  );
-};
+import logo from "../assets/images/logo.svg";
+import CommonContainer from "../common/CommonContainer";
+import { NavLink } from "react-router-dom";
+import { RiMenu2Fill } from "react-icons/ri";
+import { useState } from "react";
+import { MobileMenu } from "../section/home/MobileMenu";
 const Header = () => {
+  const [menu, setMenu] = useState(false);
   return (
+    <CommonContainer>
+      <div className=" font-Grotesk">
+        <div className="flex items-center justify-between w-full text-white">
+          <div className="flex items-center">
+            <img className="" src={logo} alt="logo" />
+            <p className="hidden -ml-4 text-lg font-bold text-white md:block">
+              Programming Hero
+            </p>
+          </div>
+          <div className="items-center hidden gap-8 text-xl lg:flex">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/products">Products</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/success">Success</NavLink>
+            <NavLink to="/mehedi">mehedi</NavLink>
+            <NavLink to="/eitty">eitty</NavLink>
+            <NavLink to="/himel">himel</NavLink>
+            <NavLink to="/login">login</NavLink>
+          </div>
 
-    <div>
-      <Navbar>
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link color="foreground" href="/">
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" href="/products">
-              Products
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/about">
-              About
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/success">
-              Success
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/mehedi">
-              mehedi            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/eitty">
-              eitty
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/himel">
-              himel
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Sign Up
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
-    </div>
-
+          <span
+            onClick={() => setMenu(true)}
+            className="text-3xl cursor-pointer lg:hidden "
+          >
+            <RiMenu2Fill />
+          </span>
+        </div>
+      </div>
+      {menu && <MobileMenu />}
+    </CommonContainer>
   );
 };
 

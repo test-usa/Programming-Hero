@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
@@ -8,7 +7,7 @@ import Success from "../pages/Success";
 import Eitty from "../pages/Eitty";
 import Mehedi from "../pages/Mehedi";
 import Himel from "../pages/Himel";
-
+import Login from "../pages/Login";
 
 const routes = createBrowserRouter([
   {
@@ -44,8 +43,10 @@ const routes = createBrowserRouter([
         path: "/himel",
         element: <Himel />,
       },
-
-
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);
