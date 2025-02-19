@@ -42,10 +42,7 @@ const routes = createBrowserRouter([
         path: "/himel",
         element: <Himel />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
+  
     ],
   },
 ]);

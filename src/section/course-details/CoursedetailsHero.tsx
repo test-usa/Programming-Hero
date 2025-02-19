@@ -1,8 +1,8 @@
-import CommonContainer from "../../../common/CommonContainer"
-import CommonSpace from "../../../common/CommonSpace"
-import htmlImg from "../../../assets/course details/Html.svg"
-import reactImg from "../../../assets/course details/React.svg"
-import tailwindImg from "../../../assets/course details/Tailwind.svg"
+import CommonContainer from "../../common/CommonContainer"
+import CommonSpace from "../../common/CommonSpace"
+import htmlImg from "../../assets/course details/Html.svg"
+import reactImg from "../../assets/course details/React.svg"
+import tailwindImg from "../../assets/course details/Tailwind.svg"
 
 const CoursedetailsHero = () => {
     return (
