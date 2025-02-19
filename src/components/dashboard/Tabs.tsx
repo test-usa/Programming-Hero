@@ -6,7 +6,7 @@ const tabs = () => {
   return (
     <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden flex-nowrap dark:bg-gray-100 dark:text-gray-800 mt-6">
       <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-center flex-nowrap dark:bg-gray-100 dark:text-gray-800">
-        <button className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b dark:border-gray-600 dark:text-gray-600">
+        <button className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b dark:border-gray-600 dark:text-gray-600 text-[#9553F9]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -21,7 +21,7 @@ const tabs = () => {
           </svg>
           <span>Level 1 Course</span>
         </button>
-        <button className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg dark:border-gray-600 dark:text-gray-900">
+        <button className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg text-[#9553F9] dark:border-gray-600 dark:text-gray-900">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

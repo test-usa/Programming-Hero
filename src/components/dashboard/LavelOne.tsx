@@ -12,11 +12,12 @@ const LavelOne = () => {
   return (
     <CommonContainer>
       <div>
-        <h1 className="text-2xl font-semibold">
-          Welcome back {name}, ready for your next lesson?
+        <h1 className="text-2xl font-semibold text-[#EAAAFF]">
+          Welcome back <span className="text-[#9553F9]">{name}</span>, ready for
+          your next lesson?
         </h1>
         <Tabs />
-        {/* START COURSE SECTION  START*/}
+        {/* START COURSE SECTION  START */}
         <div className="bg-[#181024] w-full rounded-lg mt-10">
           {/* FIRST CARD START */}
           <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
@@ -35,7 +36,7 @@ const LavelOne = () => {
                 ঝংকার মাহবুব
               </p>
               <div className="w-full py-3">
-                <Progress value={value} className="w-[100%] h-2" />
+                <Progress value={value} className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300" />
               </div>
               <section className="flex items-center gap-x-4 pt-4">
                 <Button className="rounded-3xl w-36 bg-[#6F0FEB] hover:bg-[#823cdf]">
@@ -69,7 +70,7 @@ const LavelOne = () => {
                 Programming Hero
               </p>
               <div className="w-full py-3">
-                <Progress value={value} className="w-[100%] h-2" />
+                <Progress value={value} className="w-[100%] h-2 bg-gradient-to-r from-green-500 to-green-300" />
               </div>
 
               <Button className="rounded-3xl w-36 bg-[#6F0FEB] hover:bg-[#823cdf]">

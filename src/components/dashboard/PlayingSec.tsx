@@ -11,6 +11,7 @@ import { LuBookmark } from "react-icons/lu";
 import { SlDislike, SlLike } from "react-icons/sl";
 import Reward from "./Rewad";
 import Notes from "./Notes";
+import CopyRight from "./CopyRight";
 
 const PlayingSec = () => {
   const [Tabs, setTabs] = useState<number>(1);
@@ -18,8 +19,11 @@ const PlayingSec = () => {
     setTabs(numbers);
   };
 
+
+  
   return (
     <div className="w-full">
+      {/* VIDEO PLAYING SECTION START */}
       <section className="">
         <ReactPlayer
           url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
@@ -28,6 +32,7 @@ const PlayingSec = () => {
           height="500px"
         />
       </section>
+      {/* VIDEO PLAYING SECTION END */}
       {/* BUTTON START */}
       <div className="flex items-center justify-end py-2 gap-x-4">
         <Button
@@ -56,9 +61,9 @@ const PlayingSec = () => {
             {Tabs === 1 ? (
               <img src={unBoxGift} className="w-6 h-6" />
             ) : (
-              <CiGift className="text-2xl" />
+              <CiGift className="text-2xl text-white" />
             )}
-            <h1>Reward</h1>
+            <h1 className="text-white"> Reward</h1>
           </button>
           <button
             onClick={() => handleChangeTabs(2)}
@@ -67,9 +72,9 @@ const PlayingSec = () => {
             {Tabs === 2 ? (
               <img src={writeNotes} className="w-6 h-6" />
             ) : (
-              <TbNotes className="text-2xl" />
+              <TbNotes className="text-2xl text-white" />
             )}
-            <h1>Notes</h1>
+            <h1 className="text-white">Notes</h1>
           </button>
           <button
             onClick={() => handleChangeTabs(3)}
@@ -78,31 +83,36 @@ const PlayingSec = () => {
             <AiOutlineExclamationCircle
               className={`${
                 Tabs === 3 && "bg-red-500 rounded-full text-white text-2xl"
-              } text-2xl`}
+              } text-2xl text-white`}
             />
-            <h1 className={`${Tabs === 3 && "text-red-700 font-semibold"}`}>
+            <h1
+              className={`${
+                Tabs === 3 && "text-red-900 font-semibold "
+              } text-white`}
+            >
               Copyright Warning
             </h1>
           </button>
         </div>
         <div className="flex items-center gap-x-3">
           <button>
-            <LuBookmark className="text-2xl" />
+            <LuBookmark className="text-2xl text-white" />
           </button>
-          <Separator orientation="vertical" />
-          <Separator orientation="vertical" />
+          <Separator orientation="vertical" className="text-white" />
+          <Separator orientation="vertical" className="   F text-white" />
           <button>
-            <SlLike className="text-2xl" />
+            <SlLike className="text-2xl text-white" />
           </button>
           <button>
-            <SlDislike className="text-2xl" />
+            <SlDislike className="text-2xl text-white" />
           </button>
         </div>
       </section>
-      <Separator orientation="horizontal" />
+      <Separator orientation="horizontal" className="text-white" />
 
       <div className="mt-3">{Tabs === 1 && <Reward />}</div>
       <div className="mt-3">{Tabs === 2 && <Notes />}</div>
+      <div className="mt-3">{Tabs === 3 && <CopyRight />}</div>
       {/* TABS SECTION END */}
     </div>
   );
