@@ -1,9 +1,11 @@
-
+import LavelOne from "../components/dashboard/LavelOne";
 
 const Mehedi = () => {
-    return (
-        <div>Mehedi</div>
-    )
-}
+  return (
+    <div className="mt-10">
+      <LavelOne />
+    </div>
+  );
+};
 
-export default Mehedi
+export default Mehedi;

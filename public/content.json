@@ -1,0 +1,104 @@
+[
+  {
+    "milestone_number": 1,
+    "milestone_name": "Introduction to Programming",
+    "timeline": "5h 30m",
+    "total_modules": 3,
+    "modules": [
+      {
+        "module_number": 1,
+        "module_name": "Getting Started with Coding",
+        "videos": [
+          { "video_name": "What is Programming?", "duration": "10:15" },
+          {
+            "video_name": "Setting Up Development Environment",
+            "duration": "12:30"
+          }
+        ]
+      },
+      {
+        "module_number": 2,
+        "module_name": "Basic Syntax and Variables",
+        "videos": [
+          { "video_name": "Understanding Syntax", "duration": "08:45" },
+          { "video_name": "Variables and Data Types", "duration": "15:20" }
+        ]
+      },
+      {
+        "module_number": 3,
+        "module_name": "Control Flow and Loops",
+        "videos": [
+          { "video_name": "If-Else Conditions", "duration": "14:05" },
+          { "video_name": "Loops in Programming", "duration": "16:10" }
+        ]
+      }
+    ]
+  },
+  {
+    "milestone_number": 2,
+    "milestone_name": "Intermediate Programming",
+    "timeline": "6h 15m",
+    "total_modules": 3,
+    "modules": [
+      {
+        "module_number": 4,
+        "module_name": "Functions and Methods",
+        "videos": [
+          { "video_name": "Defining Functions", "duration": "11:50" },
+          {
+            "video_name": "Function Arguments and Return Values",
+            "duration": "13:35"
+          }
+        ]
+      },
+      {
+        "module_number": 5,
+        "module_name": "Object-Oriented Programming",
+        "videos": [
+          { "video_name": "Introduction to OOP", "duration": "14:25" },
+          { "video_name": "Classes and Objects", "duration": "18:15" }
+        ]
+      },
+      {
+        "module_number": 6,
+        "module_name": "Exception Handling",
+        "videos": [
+          { "video_name": "Error Handling Basics", "duration": "09:40" },
+          { "video_name": "Try, Catch, Finally Blocks", "duration": "10:55" }
+        ]
+      }
+    ]
+  },
+  {
+    "milestone_number": 3,
+    "milestone_name": "Advanced Programming Concepts",
+    "timeline": "7h 45m",
+    "total_modules": 3,
+    "modules": [
+      {
+        "module_number": 7,
+        "module_name": "Data Structures",
+        "videos": [
+          { "video_name": "Arrays and Lists", "duration": "13:20" },
+          { "video_name": "Stacks and Queues", "duration": "14:55" }
+        ]
+      },
+      {
+        "module_number": 8,
+        "module_name": "Algorithms",
+        "videos": [
+          { "video_name": "Sorting Algorithms", "duration": "15:30" },
+          { "video_name": "Searching Algorithms", "duration": "12:40" }
+        ]
+      },
+      {
+        "module_number": 9,
+        "module_name": "Design Patterns",
+        "videos": [
+          { "video_name": "Singleton Pattern", "duration": "11:05" },
+          { "video_name": "Factory Pattern", "duration": "10:35" }
+        ]
+      }
+    ]
+  }
+]
