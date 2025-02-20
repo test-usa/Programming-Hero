@@ -8,6 +8,7 @@ import Eitty from "../pages/Eitty";
 import Mehedi from "../pages/Mehedi";
 import Himel from "../pages/Himel";
 import Login from "../pages/Login";
+import ClassDetails from "../pages/ClassDetails";
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
         element: <Mehedi />,
       },
       {
+        path: "/mehedi/:id",
+        element: <ClassDetails />,
+      },
+      {
         path: "/himel",
         element: <Himel />,
       },
@@ -47,6 +52,7 @@ const routes = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+  
     ],
   },
 ]);

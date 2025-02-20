@@ -3,7 +3,7 @@ import CommonContainer from "../common/CommonContainer";
 import { NavLink } from "react-router-dom";
 import { RiMenu2Fill } from "react-icons/ri";
 import { useState } from "react";
-import { MobileMenu } from "../section/home/MobileMenu";
+import MobileMenu  from "../section/home/MobileMenu";
 const Header = () => {
   const [menu, setMenu] = useState(false);
   return (
