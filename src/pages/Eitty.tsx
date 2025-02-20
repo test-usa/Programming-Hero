@@ -1,15 +1,13 @@
-import CoursedetailsHero from "../section/home/course-details/CoursedetailsHero"
-import NextBatch from "../section/home/course-details/NextBatch"
-
+import CoursedetailsHero from "";
+import NextBatch from "";
 
 const Eitty = () => {
-    return (
-        <div>
-            <CoursedetailsHero/>
-            <NextBatch/>
+  return (
+    <div>
+      <CoursedetailsHerr />
+      <NextBatch />
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Eitty
+export default Eitty;
