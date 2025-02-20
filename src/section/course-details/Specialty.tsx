@@ -12,7 +12,7 @@ import remort from "../../assets/course details/remote-working.svg"
 
 const Specialty = () => {
   return (
-    <div className="bg-gradient-to-b from-[#04021C] via-[#210168] to-[#5400EE] p-4 ">
+    <div className="bg-gradient-to-b from-[#04021C] via-[#210168] to-[#5400EE] p-4 pb-[100px] ">
       <CommonContainer>
         <div className="w-[85%] mx-auto">
             <h2 className=" text-4xl font-semibold text-white text-center capitalize">What Is The Specialty_ Of This Course?</h2>
@@ -60,7 +60,7 @@ const Specialty = () => {
       imgSrc={steeming}
       title="Option to watch offline videos"
       description="You do not have broadband! Mobile data or buy MB to watch videos? Like int to watch the same video over and over again."
-   
+    
     />
     <SpecialityCard
       imgSrc={remort}
@@ -71,14 +71,6 @@ const Specialty = () => {
           
             </div>            
            
-
-    
- 
-    
-    
-
-
-
             
         </div>
       </CommonContainer>
