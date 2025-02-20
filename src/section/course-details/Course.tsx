@@ -38,7 +38,7 @@ const Course = () => {
         {products.length > 0 ? (
           products.map((product) => (
             <div
-            key={product.id} className="hover:bg-gradient-to-l hover:from-[#11043C] hover:to-[#291139] hover:border-[1px]  border-[1px] border-[rgb(255,125,255,0.05)] bg-[rgb(255,255,255,0.05)] p-4 rounded-lg mb-3 overflow-hidden  hover:brightness-100 "
+            key={product.id} className="hover:bg-gradient-to-l  border hover:border-[#a855f7] hover:from-[#11043C] hover:to-[#291139]  border-[rgb(255,125,255,0.05)] bg-[rgb(255,255,255,0.05)] p-4 rounded-lg mb-3 overflow-hidden  hover:brightness-100 "
             >
           
            

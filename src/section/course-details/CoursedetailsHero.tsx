@@ -6,7 +6,7 @@ import tailwindImg from "../../assets/course details/Tailwind.svg"
 
 const CoursedetailsHero = () => {
     return (
-        <div className="bg-gradient-to-b from-[#10031A] to-[#2E0746]  text-center">
+        <div className="bg-gradient-to-b from-[#10031A] to-[#2E0746]   text-center">
             <CommonContainer>
 
                 <CommonSpace>
