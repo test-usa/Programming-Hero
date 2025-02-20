@@ -7,6 +7,7 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { Input } from "@heroui/react";
 
 const CourseOutline = () => {
   const [opemMilestone, setOpemMilestone] = useState<boolean>(false);
@@ -28,50 +29,86 @@ const CourseOutline = () => {
 
   console.log(data, "jsonnnnnnnnnnn");
 
+  const SearchIcon = (props) => {
+    return (
+      <svg
+        aria-hidden="true"
+        fill="none"
+        focusable="false"
+        height="1em"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="1em"
+        {...props}
+      >
+        <path
+          d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          d="M22 22L20 20"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    );
+  };
+
   return (
     <div className="text-white">
       <div className="w-full flex items-center justify-between py-3">
-        <h1 className="text-black">Running Module : 58</h1>
+        <h1 className="text-[#EAAAFF] ">Running Module : 58</h1>
         <div className="w-[60%] flex items-center gap-x-3">
-          <Progress value={100} className="w-[100%] h-2" />
-          <p className="text-black">11/11</p>
+          <div
+            className="w-[100%] h-2 rounded-lg bg-gradient-to-r from-green-500 to-green-300"
+            style={{ width: `${100}%` }} // You can dynamically change this width
+          ></div>
+          <p className="text-[#EAAAFF]">11/11</p>
         </div>
       </div>
 
       {/* SEARCHBAR START */}
-      <fieldset className="w-full space-y-1 border rounded-lg my-3">
-        <label htmlFor="Search" className="hidden">
-          Search
-        </label>
-        <div className="relative">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-            <button
-              type="button"
-              title="search"
-              className="p-1 focus:outline-none focus:ring"
-            >
-              <svg
-                fill="currentColor"
-                viewBox="0 0 512 512"
-                className="w-4 h-4"
-              >
-                <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
-              </svg>
-            </button>
-          </span>
-          <input
-            type="search"
-            name="Search"
-            placeholder="Search..."
-            className="w-full py-2 pl-10 text-sm rounded-md px-10  focus:outline-none text-black"
-          />
-        </div>
-      </fieldset>
+      <Input
+        isClearable
+        classNames={{
+          label: "text-black/50 dark:text-white/90",
+          input: [
+            "text-black/90 dark:text-white/90",
+            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+          ],
+
+          inputWrapper: [
+            "bg-default-200/50",
+            "dark:bg-default/60",
+
+            "backdrop-saturate-200",
+            "hover:bg-default-200/70",
+            "dark:hover:bg-default/70",
+            "group-data-[focus=true]:bg-default-200/50",
+            "dark:group-data-[focus=true]:bg-default/60",
+            "!cursor-text",
+          ],
+        }}
+        label="Search"
+        startContent={
+          <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
+        }
+      />
       {/* SEARCHBAR END */}
       <section>
-        <ScrollArea className="h-full w-full rounded-md border p-4">
+        <ScrollArea
+          className="h-full w-full rounded-md py-4 overflow-y-auto"
+          style={{
+            scrollbarColor: "#ff37f2 #0a0329",
+          }}
+        >
           {/* DROPDOWN MENU START */}
-          <section className="bg-[#160929] w-full rounded-xl p-4">
+          <section className="bg-[#160929] w-full rounded-xl p-4 ">
             <button
               onClick={() => setOpemMilestone(!opemMilestone)}
               className="flex justify-between items-center gap-x-10 bg-[#271641] p-5 w-full"
