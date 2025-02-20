@@ -1,17 +1,13 @@
 import { ScrollArea } from "../ui/scroll-area";
-import { Progress } from "../../components/ui/progress";
-import { CiSquareMinus } from "react-icons/ci";
-import { CiSquarePlus } from "react-icons/ci";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { AiOutlineYoutube } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "@heroui/react";
+import Outline from "./Outline";
 
+type props = {
+  props: object;
+};
 const CourseOutline = () => {
-  const [opemMilestone, setOpemMilestone] = useState<boolean>(false);
-  const [openModule, setOpenModule] = useState<boolean>(false);
   const [data, setData] = useState<[]>([]);
 
   useEffect(() => {
@@ -27,9 +23,7 @@ const CourseOutline = () => {
     resFunc();
   });
 
-  console.log(data, "jsonnnnnnnnnnn");
-
-  const SearchIcon = (props) => {
+  const SearchIcon = (props: props) => {
     return (
       <svg
         aria-hidden="true"
@@ -102,63 +96,17 @@ const CourseOutline = () => {
       {/* SEARCHBAR END */}
       <section>
         <ScrollArea
-          className="h-full w-full rounded-md py-4 overflow-y-auto"
+          className={`h-56 w-full rounded-md py-4`}
           style={{
             scrollbarColor: "#ff37f2 #0a0329",
           }}
         >
           {/* DROPDOWN MENU START */}
-          <section className="bg-[#160929] w-full rounded-xl p-4 ">
-            <button
-              onClick={() => setOpemMilestone(!opemMilestone)}
-              className="flex justify-between items-center gap-x-10 bg-[#271641] p-5 w-full"
-            >
-              <div className="flex flex-col justify-start ">
-                <h1 className="font-semibold text-xl text-start">
-                  Milestone-01: Welcome To The Web Course{" "}
-                  <span className="text-sm font-normal">0h 10m - 1/1</span>
-                </h1>
-              </div>
-              {opemMilestone ? (
-                <CiSquareMinus className="text-4xl " />
-              ) : (
-                <CiSquarePlus className="text-4xl" />
-              )}
-            </button>
-            {opemMilestone && (
-              <div className="mt-3 px-2 bg-[#291547] w-full">
-                <button
-                  onClick={() => setOpenModule(!openModule)}
-                  className="flex items-center justify-between w-full gap-x-6 p-3"
-                >
-                  <p className="text-start">
-                    Module-01:Introduction to Javascript{" "}
-                    <span>2 h 3m . 12/12</span>
-                  </p>
-
-                  <MdKeyboardArrowDown
-                    className={`text-2xl ${openModule && "rotate-180"}`}
-                  />
-                </button>
-                <div className="h-[1px] w-full bg-gray-700 my-2"></div>
-
-                {/* SHOW ALL MODULE */}
-                {openModule && (
-                  <section className="sm:flex w-full space-y-2 sm:space-y-0 items-center gap-x-4 p-3 mx-4">
-                    <IoIosCheckmarkCircleOutline className="text-2xl" />
-                    <button>
-                      <h1>16-0 Roadmap of Milteston 01</h1>
-                      <div className="flex items-center gap-x-2">
-                        <AiOutlineYoutube className="text-2xl" />
-                        <p>13m</p>
-                      </div>
-                    </button>
-                  </section>
-                )}
-              </div>
-            )}
-          </section>
-
+          <div className="flex flex-col gap-5">
+            {data?.map((milestone) => {
+              return <Outline totalMilestone={milestone} />;
+            })}
+          </div>
           {/* DROPDOWN MENU END */}
         </ScrollArea>
         <Button
