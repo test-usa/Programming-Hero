@@ -65,9 +65,9 @@ const CourseNav = () => {
 
             <div className="flex items-center gap-x-5">
               <VscBell className="text-2xl" />
-              <section className="bg-green-200 rounded-3xl px-4 py-1.5 flex items-center gap-x-2">
+              <section className="bg-green-200 rounded-3xl md:px-4 px-4 py-2 md:py-2 flex items-center justify-center gap-x-2">
                 <img src={gemIcon} className="w-6 h-6" />
-                <p className="font-semibold text-black text-xl">115</p>
+                <p className="font-semibold text-black md:text-xl text-lg">115</p>
               </section>
 
               {/* Mobile Menu Button */}
@@ -98,8 +98,8 @@ const CourseNav = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-[rgba(249,247,243,0.5)] text-white shadow-lg transform ${
-          menu ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-white text-[#010313] h-full shadow-lg transform ${
+          menu ? "translate-x-0 border " : "translate-x-full"
         } transition-transform duration-300 z-30`}
       >
         <button

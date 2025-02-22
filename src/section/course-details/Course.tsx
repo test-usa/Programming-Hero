@@ -18,7 +18,7 @@ const Course = () => {
     <div className="bg-[#010313] p-4">
         <CommonSpace>
         <CommonContainer>
-         <div className=" w-[85%] mx-auto">
+         <div className=" md:w-[85%] w-full mx-auto">
             <div className="md:w-[70%] w-full mx-auto">
             <h1 className="text-white font-semibold md:text-4xl text-2xl text-center mb-6">Course Curriculum</h1>
             <p className="text-lg text-white/50 text-center ">Programming Hero's dynamic course guides students from MERN stack basics to complete mastery, ensuring a strong foundation. This comprehensive approach makes the learning journey smooth and engaging.</p>
@@ -44,7 +44,7 @@ const Course = () => {
            
               
               {/* Product ID and Title */}
-              <h2 className="relative text-white font-bold">
+              <h2 className="relative text-white text-base md:text-lg">
                 ID: {product.id} - {product.title}
               </h2>
             </div>

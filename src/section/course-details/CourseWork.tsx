@@ -15,19 +15,19 @@ const CourseWork = () => {
   
        
     
-<div className="relative bg-[#010312] md:h-[2200px] h-[3100px]">
+<div className="relative bg-[#010312] md:h-[2300px] h-[3000px]">
   {/* SVG Curve at the Top */}
-  <svg className="absolute top-0 left-0 w-full" viewBox="0 0 1440 320">
+  <svg className="absolute top-0 left-0 w-full md:block hidden" viewBox="0 0 1440 320">
     <path fill="#5400EE" fillOpacity="1" d="M0,96 C360,0 1080,0 1440,96 L1440,0 L0,0 Z"></path>
   </svg>
 
   {/* Div inside the SVG area */}
-  <div className="absolute top-[150px] w-full">
+  <div className="absolute md:top-[150px] w-full">
     <CommonContainer>
-      <div className="w-[85%] mx-auto grid md:grid-cols-2 grid-cols-1 gap-6"> 
+      <div className="md:w-[85%] w-full mx-auto grid md:grid-cols-2 grid-cols-1 gap-6"> 
         <div className="p-11 ">
-          <h1 className="text-white md:text-5xl text-3xl font-semibold">How Will This Course Work_?</h1>
-          <p className="text-white text-lg text-white/50 pt-5 ">
+          <h1 className="text-white md:text-5xl text-2xl font-semibold">How Will This Course Work_?</h1>
+          <p className="text-white text-lg text-white/50 md:pt-5 pt-3 ">
             This course guides you from basics to mastering the MERN stack with step-by-step lessons, hands-on projects, and assessments.
           </p>
           <button className="px-3 py-2 mt-5 text-lg rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125">Enroll Now</button>

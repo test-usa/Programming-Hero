@@ -18,8 +18,8 @@ const CoursedetailsHero = () => {
                             <img src={reactImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[160px] right-[160px] animate-custom-spin"/>
                             <img src={tailwindImg} alt=""  className="lg:block md:hidden hidden w-16 absolute top-[250px] right-[250px] animate-swing-rotate"/> 
 
-                        <div className=" w-[60%] mx-auto text-center">
-                            <h2 className="text-white text-4xl font-semibold text-center leading-[60px] px-3 md:px-8">Breakthroughs Begin with learning, reach for the future you deserve</h2>
+                        <div className=" md:w-[60%] w-full mx-auto text-center">
+                            <h2 className="text-white md:text-4xl text-2xl font-semibold text-center md:leading-[60px] px-3 md:px-8">Breakthroughs Begin with learning, reach for the future you deserve</h2>
                             <p className="text-white/50 text-lg  text-center leading-7 pt-5">Master MongoDB, Express, React, and Node.js to build efficient, full-stack web applications from scratch. Connect front-end and back-end seamlessly for a smooth user experience.</p>
 
                         </div>
