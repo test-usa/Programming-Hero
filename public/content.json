@@ -433,5 +433,134 @@
         ]
       }
     ]
+  },
+  {
+    "No": 3,
+    "name": "CSS Advanced Topics",
+    "time": {
+      "hour": 4,
+      "mins": 0
+    },
+    "TotalModules": 5,
+    "modules": [
+      {
+        "No": 1,
+        "name": "Intro to JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 0
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "JavaScript Introduction",
+            "duration": "9:00",
+            "file": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+          },
+          {
+            "No": 2,
+            "name": "Variables in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=5vW7yeylJZ4"
+          },
+          {
+            "No": 3,
+            "name": "Operators in JavaScript",
+            "duration": "10:30",
+            "file": "https://www.youtube.com/watch?v=n5k48vxq0Zc"
+          },
+          {
+            "No": 4,
+            "name": "Data Types in JavaScript",
+            "duration": "13:30",
+            "file": "https://www.youtube.com/watch?v=Zh9-jewhw4M"
+          },
+          {
+            "No": 5,
+            "name": "Functions in JavaScript",
+            "duration": "16:15",
+            "file": "https://www.youtube.com/watch?v=ox9QFw8X9RU"
+          },
+          {
+            "No": 6,
+            "name": "Objects in JavaScript",
+            "duration": "11:45",
+            "file": "https://www.youtube.com/watch?v=6Fhgt0G70wY"
+          },
+          {
+            "No": 7,
+            "name": "Loops in JavaScript",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=dQsdVS_Ja_g"
+          },
+          {
+            "No": 8,
+            "name": "Arrays in JavaScript",
+            "duration": "14:30",
+            "file": "https://www.youtube.com/watch?v=1p63a5QYZek"
+          }
+        ]
+      },
+      {
+        "No": 2,
+        "name": "Advanced JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Understanding Closures",
+            "duration": "13:00",
+            "file": "https://www.youtube.com/watch?v=-wFygwUwHSo"
+          },
+          {
+            "No": 2,
+            "name": "Promises in JavaScript",
+            "duration": "15:00",
+            "file": "https://www.youtube.com/watch?v=1tlWLsWR2rI"
+          },
+          {
+            "No": 3,
+            "name": "Async/Await in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=G3tZ9y97j4w"
+          },
+          {
+            "No": 4,
+            "name": "ES6 Features",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=w6kTh3uH72M"
+          },
+          {
+            "No": 5,
+            "name": "JavaScript Design Patterns",
+            "duration": "18:15",
+            "file": "https://www.youtube.com/watch?v=40wbNlA1uyk"
+          },
+          {
+            "No": 6,
+            "name": "Event Loop and Call Stack",
+            "duration": "16:00",
+            "file": "https://www.youtube.com/watch?v=8aGhZqP9M1Y"
+          },
+          {
+            "No": 7,
+            "name": "Functional Programming in JavaScript",
+            "duration": "17:30",
+            "file": "https://www.youtube.com/watch?v=YyvnaofJ6eY"
+          },
+          {
+            "No": 8,
+            "name": "Error Handling in JavaScript",
+            "duration": "11:30",
+            "file": "https://www.youtube.com/watch?v=x3bKhNh8-0Q"
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -6,6 +6,7 @@ import { TbNotes } from "react-icons/tb";
 import { BsBookmark } from "react-icons/bs";
 import PlayingSec from "../components/dashboard/PlayingSec";
 import CourseOutline from "../components/dashboard/CourseOutline";
+import DashFoote from "../components/dashboard/DashFoote";
 
 const VideoOutline = () => {
   const count = "82-8";
@@ -18,7 +19,7 @@ const VideoOutline = () => {
             <button>
               <img
                 src={backIcons}
-                alt="back-button "
+                alt="back-button"
                 className="max-w-[36px] min-w-[28px]"
               />
             </button>
@@ -49,6 +50,9 @@ const VideoOutline = () => {
         <section className="lg:flex w-full gap-x-5">
           <PlayingSec />
           <CourseOutline />
+          <CommonContainer>
+            <DashFoote />
+          </CommonContainer>
         </section>
         {/* VIDEO PLAYNING SECTION END */}
       </div>

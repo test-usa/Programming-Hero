@@ -4,26 +4,24 @@ import { Button } from "../ui/button";
 import { Input } from "@heroui/react";
 import Outline from "./Outline";
 
-type props = {
-  props: object;
-};
 const CourseOutline = () => {
   const [data, setData] = useState<[]>([]);
 
   useEffect(() => {
     const resFunc = async () => {
       try {
-        const res = await fetch("content.json");
-        const toData = await res.json();
-        setData(toData);
+        const res = await fetch("/content.json");
+        const jsonData = await res.json();
+        setData(jsonData);
       } catch (error) {
-        console.log("not fetch data", error);
+        console.log("Fetch Error:", error);
       }
     };
     resFunc();
-  });
+  }, []);
 
-  const SearchIcon = (props: props) => {
+
+  const SearchIcon = (props) => {
     return (
       <svg
         aria-hidden="true"
@@ -96,7 +94,7 @@ const CourseOutline = () => {
       {/* SEARCHBAR END */}
       <section>
         <ScrollArea
-          className={`h-56 w-full rounded-md py-4`}
+          className={`h-80 overflow-y-auto w-full rounded-md py-4`}
           style={{
             scrollbarColor: "#ff37f2 #0a0329",
           }}
