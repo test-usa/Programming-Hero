@@ -15,8 +15,8 @@ const HelpDeskHeader = () => {
   return (
     <CommonContainer>
       <div className="flex items-center justify-between">
-        <div className="flex flex-col">
-          <h1 className="font-bold font-rubik text-2xl uppercase text-colorBase text-transparent bg-clip-text bg-gradient-to-r from-[#cb43c2] to-[#0f16f1]">
+        <div className="flex flex-col pt-3">
+          <h1 className=" font-bold font-rubik text-2xl uppercase text-colorBase text-transparent bg-clip-text bg-gradient-to-r from-[#cb43c2] to-[#0f16f1]">
             <span className="whitespace-nowrap">help desk</span>
           </h1>
           <p className="text-xs font-light capitalize text-colorBase text-transparent bg-clip-text bg-gradient-to-r from-[#cb43c2] to-[#0f16f1]">

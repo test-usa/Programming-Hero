@@ -50,10 +50,10 @@ const PostType = () => {
     <CommonContainer>
       <div className="flex flex-col-reverse lg:flex-row gap-6 w-full py-4">
         {/* Left Side: Post Input */}
-        <div className="w-full lg:w-2/3 bg-white p-5 rounded-xl shadow-md">
+        <div className="w-full lg:w-2/3 bg-white p-5 rounded-xl shadow-md items-start h-full">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
-            <FaUserCircle className="text-gray-500 text-4xl" />
+            <FaUserCircle className="text-gray-500 text-6xl" />
             {/* Input Field */}
             <div className="w-full bg-gray-100 text-gray-500 px-4 py-2 rounded-full">
               Share or Ask Something to Everyone?
@@ -90,7 +90,7 @@ const PostType = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center lg:w-2/3">
         <div className="flex gap-2 py-2 ">
           <div>
             <CustomButton1
