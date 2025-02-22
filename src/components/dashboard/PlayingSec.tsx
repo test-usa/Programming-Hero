@@ -13,24 +13,19 @@ import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
 
-const PlayingSec = () => {
+const PlayingSec = ({ url, name }: { url: string; name: string }) => {
   const [Tabs, setTabs] = useState<number>(1);
   const handleChangeTabs = (numbers: number) => {
     setTabs(numbers);
   };
 
+ 
 
-  
   return (
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
-      <section className="">
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-          controls
-          width="100%"
-          height="500px"
-        />
+      <section>
+        <ReactPlayer url={url} controls width="100%" height="500px" />
       </section>
       {/* VIDEO PLAYING SECTION END */}
       {/* BUTTON START */}

@@ -7,8 +7,9 @@ import Success from "../pages/Success";
 import Eitty from "../pages/Eitty";
 import Mehedi from "../pages/Mehedi";
 import Himel from "../pages/Himel";
-import Login from "../pages/Login";
 import ClassDetails from "../pages/ClassDetails";
+import LoginPage from "../pages/LoginPage";
+import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
 
 const routes = createBrowserRouter([
@@ -55,9 +56,12 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginPage />,
       },
-  
+      {
+        path: "/signup",
+        element: <SignUpPage />,
+      },
     ],
   },
 ]);

@@ -5,10 +5,11 @@ import secondImage from "/photo/recomended.png";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<number>(0);
   return (
     <CommonContainer>
       <div>
@@ -36,12 +37,18 @@ const LavelOne = () => {
                 ঝংকার মাহবুব
               </p>
               <div className="w-full py-3">
-                <Progress value={value} className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300" />
+                <Progress
+                  value={value}
+                  className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300"
+                />
               </div>
               <section className="flex items-center gap-x-4 pt-4">
-                <Button className="rounded-3xl w-36 bg-[#6F0FEB] hover:bg-[#823cdf]">
+                <Link
+                  to={`/mehedi/:${85}`}
+                  className="rounded-3xl w-36 py-2 text-center text-white bg-[#6F0FEB] hover:bg-[#823cdf]"
+                >
                   Course Start
-                </Button>
+                </Link>
                 <Button
                   variant="secondary"
                   className="rounded-3xl w-36 bg-gray-700 hover:bg-gray-700 text-gray-300"
@@ -70,7 +77,10 @@ const LavelOne = () => {
                 Programming Hero
               </p>
               <div className="w-full py-3">
-                <Progress value={value} className="w-[100%] h-2 bg-gradient-to-r from-green-500 to-green-300" />
+                <Progress
+                  value={value}
+                  className="w-[100%] h-2 bg-gradient-to-r from-green-500 to-green-300"
+                />
               </div>
 
               <Button className="rounded-3xl w-36 bg-[#6F0FEB] hover:bg-[#823cdf]">

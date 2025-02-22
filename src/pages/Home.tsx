@@ -6,13 +6,15 @@ import HomeImage from "../section/home/HomeImage";
 import Footer from "../layout/Footer";
 const Home = () => {
   return (
-    <div className="relative min-h-screen sm:bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff]">
-      <Header />
-      <HomeTitle />
-      <HomeAnimation />
-      <HomeImage />
-      <Footer/>
-    </div>
+    <>
+      <div className="relative min-h-screen sm:bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff]">
+        <Header />
+        <HomeTitle />
+        <HomeAnimation />
+        <HomeImage />
+      </div>
+      <Footer />
+    </>
   );
 };
 

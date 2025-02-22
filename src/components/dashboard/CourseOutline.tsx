@@ -1,57 +1,27 @@
 import { ScrollArea } from "../ui/scroll-area";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { Input } from "@heroui/react";
 import Outline from "./Outline";
 
-type props = {
-  props: object;
-};
-const CourseOutline = () => {
+const CourseOutline = ({
+  urlFunc,
+}: {
+  urlFunc: (url: string, name: string, No: number) => void;
+}) => {
   const [data, setData] = useState<[]>([]);
 
   useEffect(() => {
     const resFunc = async () => {
       try {
-        const res = await fetch("content.json");
-        const toData = await res.json();
-        setData(toData);
+        const res = await fetch("/content.json");
+        const jsonData = await res.json();
+        setData(jsonData);
       } catch (error) {
-        console.log("not fetch data", error);
+        console.log(error, "error course-outline");
       }
     };
     resFunc();
-  });
-
-  const SearchIcon = (props: props) => {
-    return (
-      <svg
-        aria-hidden="true"
-        fill="none"
-        focusable="false"
-        height="1em"
-        role="presentation"
-        viewBox="0 0 24 24"
-        width="1em"
-        {...props}
-      >
-        <path
-          d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        />
-        <path
-          d="M22 22L20 20"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        />
-      </svg>
-    );
-  };
+  }, []);
 
   return (
     <div className="text-white">
@@ -67,36 +37,38 @@ const CourseOutline = () => {
       </div>
 
       {/* SEARCHBAR START */}
-      <Input
-        isClearable
-        classNames={{
-          label: "text-black/50 dark:text-white/90",
-          input: [
-            "text-black/90 dark:text-white/90",
-            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
-          ],
-
-          inputWrapper: [
-            "bg-default-200/50",
-            "dark:bg-default/60",
-
-            "backdrop-saturate-200",
-            "hover:bg-default-200/70",
-            "dark:hover:bg-default/70",
-            "group-data-[focus=true]:bg-default-200/50",
-            "dark:group-data-[focus=true]:bg-default/60",
-            "!cursor-text",
-          ],
-        }}
-        label="Search"
-        startContent={
-          <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-        }
-      />
+      <fieldset className="w-full space-y-1 dark:text-gray-800">
+        <label htmlFor="Search" className="hidden">
+          Search
+        </label>
+        <div className="relative">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+            <button
+              type="button"
+              title="search"
+              className="p-1 outline-none text-white"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 512 512"
+                className="w-full h-4 text-white"
+              >
+                <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
+              </svg>
+            </button>
+          </span>
+          <input
+            type="search"
+            name="Search"
+            placeholder="Search..."
+            className="w-full py-3 pl-10 text-sm rounded-md focus:outline-none bg-gray-600 text-white "
+          />
+        </div>
+      </fieldset>
       {/* SEARCHBAR END */}
       <section>
         <ScrollArea
-          className={`h-56 w-full rounded-md py-4`}
+          className={`h-80 overflow-y-auto w-full rounded-md py-4`}
           style={{
             scrollbarColor: "#ff37f2 #0a0329",
           }}
@@ -104,7 +76,7 @@ const CourseOutline = () => {
           {/* DROPDOWN MENU START */}
           <div className="flex flex-col gap-5">
             {data?.map((milestone) => {
-              return <Outline totalMilestone={milestone} />;
+              return <Outline urlFunc={urlFunc} totalMilestone={milestone} />;
             })}
           </div>
           {/* DROPDOWN MENU END */}
