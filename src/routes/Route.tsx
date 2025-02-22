@@ -9,6 +9,7 @@ import Mehedi from "../pages/Mehedi";
 import Himel from "../pages/Himel";
 import Login from "../pages/Login";
 import ClassDetails from "../pages/ClassDetails";
+import Blog from "../pages/Blog";
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/success",
