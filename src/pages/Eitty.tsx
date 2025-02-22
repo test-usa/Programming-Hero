@@ -1,5 +1,6 @@
 import Course from "../section/course-details/Course"
 import CoursedetailsHero from "../section/course-details/CoursedetailsHero"
+import CourseFooter from "../section/course-details/CourseFooter"
 import CourseNav from "../section/course-details/CourseNav"
 import CourseWork from "../section/course-details/CourseWork"
 import NextBatch from "../section/course-details/NextBatch"
@@ -18,6 +19,7 @@ const Eitty = () => {
             <Course/>
             <Specialty/>
             <CourseWork/>
+            <CourseFooter/>
 
         </div>
     )
