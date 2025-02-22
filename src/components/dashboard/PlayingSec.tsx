@@ -19,14 +19,12 @@ const PlayingSec = () => {
     setTabs(numbers);
   };
 
-
-  
   return (
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
-      <section className="">
+      <section>
         <ReactPlayer
-          url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+          url="https://www.youtube.com/watch?v=9Os0o3wzS_I"
           controls
           width="100%"
           height="500px"
