@@ -14,6 +14,7 @@ import { FaUser } from "react-icons/fa6";
 import { FaUserGroup } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
 import { IoReload } from "react-icons/io5";
+import CardComponent from "./CardComponent";
 
 const categories = [
   {
@@ -43,14 +44,14 @@ const categories = [
   },
 ];
 
-const PostType = () => {
+const AllPost = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All Posts");
 
   return (
     <CommonContainer>
       <div className="flex flex-col-reverse lg:flex-row gap-6 w-full py-4">
         {/* Left Side: Post Input */}
-        <div className="w-full lg:w-2/3 bg-white p-5 rounded-xl shadow-md items-start h-full">
+        <div className="w-full lg:w-2/3 lg:h-full bg-white p-5 rounded-xl shadow-md items-start h-full">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <FaUserCircle className="text-gray-500 text-6xl" />
@@ -127,8 +128,15 @@ const PostType = () => {
           </div>
         </div>
       </div>
+      <div>
+        <CardComponent></CardComponent>
+        <CardComponent></CardComponent>
+        <CardComponent></CardComponent>
+        <CardComponent></CardComponent>
+        <CardComponent></CardComponent>
+      </div>
     </CommonContainer>
   );
 };
 
-export default PostType;
+export default AllPost;
