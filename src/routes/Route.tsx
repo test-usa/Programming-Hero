@@ -10,6 +10,9 @@ import Himel from "../pages/Himel";
 import ClassDetails from "../pages/ClassDetails";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
+import Samir from "../pages/Samir";
+import path from "path";
+import Profile from "../section/dashboard/profile";
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +59,16 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUpPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <Samir />,
+        children: [
+          {
+            path: "/dashboard/profile",
+            element: <Profile />,
+          },
+        ],
       },
     ],
   },
