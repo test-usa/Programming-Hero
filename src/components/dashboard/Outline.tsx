@@ -31,8 +31,13 @@ interface Module {
 
 // DEFINE TYPES OF DATA END ---->>
 
-
-const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
+const Outline = ({
+  urlFunc,
+  totalMilestone,
+}: {
+  urlFunc: (url: string, name: string, No: number) => void;
+  totalMilestone: Milestone;
+}) => {
   const [opemMilestone, setOpemMilestone] = useState<boolean>(false);
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(null);
 
@@ -42,12 +47,13 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
   };
 
   // HANDLE-PLAY VIDEO --
-  const handlePlayVideo = (file: string, names: string) => {
-    console.log("videossss", file, names);
+  const handlePlayVideo = (url: string, name: string, No: number) => {
+    if (url && name) {
+      urlFunc(url, name, No);
+    }
   };
 
   return (
-    
     <section
       className="bg-[#160929] w-full rounded-xl p-4 overflow-y-auto "
       style={{
@@ -108,7 +114,9 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
                     >
                       <IoIosCheckmarkCircleOutline className="text-2xl" />
                       <button
-                        onClick={() => handlePlayVideo(video.file, video.name)}
+                        onClick={() =>
+                          handlePlayVideo(video?.file, video?.name, video?.No)
+                        }
                       >
                         <h1>
                           {video?.No} {video?.name} {totalMilestone?.No}
@@ -127,7 +135,6 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
         </div>
       )}
     </section>
-    
   );
 };
 
