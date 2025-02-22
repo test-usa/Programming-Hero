@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const tabs = () => {
   const [firstActive, setFirstActive] = useState<boolean>(true);
-  console.log(firstActive);
+  firstActive;
   return (
     <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden flex-nowrap dark:bg-gray-100 dark:text-gray-800 mt-6">
       <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-center flex-nowrap dark:bg-gray-100 dark:text-gray-800">

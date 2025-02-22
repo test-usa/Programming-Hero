@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<number>(0);
   return (
     <CommonContainer>
       <div>
