@@ -52,7 +52,7 @@ const Footer = () => {
               <div>
                 <p>@Programming Hero 2025</p>
               </div>
-            </div>{" "}
+            </div>
           </div>
         </CommonSpace>
       </CommonContainer>
