@@ -1,9 +1,65 @@
-
+import CommonContainer from "../common/CommonContainer";
+import backIcons from "/photo/backicons.png";
+import reward from "/photo/gift.png";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { TbNotes } from "react-icons/tb";
+import { BsBookmark } from "react-icons/bs";
+import PlayingSec from "../components/dashboard/PlayingSec";
+import CourseOutline from "../components/dashboard/CourseOutline";
+import DashFoote from "../components/dashboard/DashFoote";
+import DashNavbar from "../components/dashboard/DashNavbar";
 
 const ClassDetails = () => {
+  const count = "82-8";
   return (
-    <div>ClassDetails</div>
-  )
-}
+    <div className=" bg-[#010314]">
+      <CommonContainer>
+        <DashNavbar />
+        <div className="pt-10">
+          {/* HEARDER SECTION START */}
+          <section className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-center gap-x-3">
+              <button>
+                <img
+                  src={backIcons}
+                  alt="back-button"
+                  className="max-w-[36px] min-w-[28px]"
+                />
+              </button>
+              <h1 className="font-semibold text-2xl text-[#EAAAFF]">
+                {count} Starting of a new Journey with special message
+              </h1>
+            </div>
+            <div className="flex items-center gap-x-3 ml-auto">
+              <button>
+                <MdOutlineFavoriteBorder className="text-2xl text-white" />
+              </button>
+              <button>
+                {" "}
+                <TbNotes className="text-2xl text-white" />
+              </button>
+              <button>
+                <img src={reward} alt="back-button w-[1rem] h-[2rem]" />
+              </button>
+              <button>
+                <BsBookmark className="text-2xl text-white" />
+              </button>
+            </div>
+          </section>
+          {/* HEARDER SECTION END */}
+          <div className="w-full h-[1px] my-6 bg-gradient-to-b from-purple-400 to-blue-950 via-blue-300"></div>
 
-export default ClassDetails
+          {/* VIDEO PLAYNING SECTION START */}
+          <section className="lg:flex w-full gap-x-5">
+            <PlayingSec />
+            <CourseOutline />
+          </section>
+          {/* VIDEO PLAYNING SECTION END */}
+        </div>
+        <DashFoote />
+      </CommonContainer>
+    </div>
+  );
+};
+
+export default ClassDetails;

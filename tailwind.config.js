@@ -18,10 +18,13 @@ module.exports = {
 		'header-image':'url("../assets/images/home.png")',
 		'custom-pattern': "url('./src/assets/images/layer.png')",
 		'custom-footer': "url('./src/assets/images/footer.jpg')",
-		'footer-gradient':'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)'
+		'footer-gradient':'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)',
+		'login-signin':"url('./src/assets/images/sign.svg')",
+
       },
       fontFamily:{
         "Grotesk":["Space Grotesk","serif"],
+        "Hind":["Hind Siliguri","serif"]
 
       },
   

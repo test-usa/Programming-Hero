@@ -5,7 +5,8 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useState } from "react";
 
-// DEFINE TYPES OF DATA ---
+// DEFINE TYPES OF DATA START ---->>
+
 type Milestone = {
   No: number;
   name: string;
@@ -28,6 +29,9 @@ interface Module {
   videos: Video[];
 }
 
+// DEFINE TYPES OF DATA END ---->>
+
+
 const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
   const [opemMilestone, setOpemMilestone] = useState<boolean>(false);
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(null);
@@ -37,7 +41,13 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
     setOpenModuleIndex(openModuleIndex === index ? null : index);
   };
 
+  // HANDLE-PLAY VIDEO --
+  const handlePlayVideo = (file: string, names: string) => {
+    console.log("videossss", file, names);
+  };
+
   return (
+    
     <section
       className="bg-[#160929] w-full rounded-xl p-4 overflow-y-auto "
       style={{
@@ -46,9 +56,9 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
     >
       <button
         onClick={() => setOpemMilestone(!opemMilestone)}
-        className="flex justify-between items-center gap-x-10"
+        className="flex justify-between items-center gap-x-10 w-full"
       >
-        <div className="flex flex-col justify-start ">
+        <div className="flex justify-between w-full">
           <h1 className="font-semibold text-xl text-start">
             Milestone-{totalMilestone?.No}: {totalMilestone?.name}
             <span className="text-sm font-normal pl-2">
@@ -63,14 +73,16 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
           <CiSquarePlus className="text-4xl" />
         )}
       </button>
+
       {/* Show Modules when Milestone is Open */}
       {opemMilestone && (
-        <div className="mt-3 px-2  w-full flex flex-col gap-5">
-          {totalMilestone?.modules.map((module, index) => {
-            return (
+        <div className="mt-3 px-2 w-full flex flex-col gap-5">
+          {totalMilestone?.modules.map((module, index) => (
+            <div key={index} className="w-full">
+              {/* Module Button */}
               <button
                 onClick={() => handleModuleToggle(index)}
-                className="flex items-center justify-between gap-y-5 w-full gap-x-6 p-3 bg-[#291547] rounded-lg "
+                className="flex items-center justify-between gap-y-5 w-full gap-x-6 p-3 bg-[#291547] rounded-lg"
               >
                 <p className="text-start flex flex-col">
                   Module-{module.No}: {module.name}
@@ -81,38 +93,41 @@ const Outline = ({ totalMilestone }: { totalMilestone: Milestone }) => {
                 </p>
                 <MdKeyboardArrowDown
                   className={`text-2xl ${
-                    openModuleIndex === index && "rotate-180"
+                    openModuleIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </button>
-            );
-          })}
-          <div className="h-[1px] w-full bg-gray-700 my-2"></div>
 
-          {/* Conditional rendering of module videos */}
-          {openModuleIndex !== null &&
-            totalMilestone?.modules[openModuleIndex]?.videos?.map(
-              (video, videoIndex) => (
-                <section
-                  key={videoIndex}
-                  className="sm:flex w-full space-y-2 sm:space-y-0 items-center gap-x-4 p-3 mx-4"
-                >
-                  <IoIosCheckmarkCircleOutline className="text-2xl" />
-                  <button>
-                    <h1>
-                      {video?.No} {video?.name} {totalMilestone?.No}
-                    </h1>
-                    <div className="flex items-center gap-x-2">
-                      <AiOutlineYoutube className="text-2xl" />
-                      <p>{video?.duration}</p>
-                    </div>
-                  </button>
-                </section>
-              )
-            )}
+              {/* Show videos only for the opened module */}
+              {openModuleIndex === index && (
+                <div className="mt-2">
+                  {module?.videos?.map((video, videoIndex) => (
+                    <section
+                      key={videoIndex}
+                      className="sm:flex w-full space-y-2 sm:space-y-0 items-center gap-x-4 p-3 mx-4"
+                    >
+                      <IoIosCheckmarkCircleOutline className="text-2xl" />
+                      <button
+                        onClick={() => handlePlayVideo(video.file, video.name)}
+                      >
+                        <h1>
+                          {video?.No} {video?.name} {totalMilestone?.No}
+                        </h1>
+                        <div className="flex items-center gap-x-2">
+                          <AiOutlineYoutube className="text-2xl" />
+                          <p>{video?.duration}</p>
+                        </div>
+                      </button>
+                    </section>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </section>
+    
   );
 };
 
