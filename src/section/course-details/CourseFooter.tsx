@@ -54,13 +54,14 @@ const CourseFooter = () => {
                 </Link>
               </div>
               <p className=" pt-5 text-lg ">Download Apps</p>
-              <div className="pt-5">
+              <div className="pt-5   ">
               <div className="flex gap-4 w-[50%]">
               <img src={google} alt=""  className=" h-[50px] w-[150px]"/>
               <img src={apps} alt="" className=" h-[50px] w-[150px]"/>
+            
               </div>
                <div className="mt-3 border rounded-xl flex flex-col w-[50%] gap-4">
-               <img src={mic} alt="" className=" h-[50px] w-[150px] p-1"/>
+               <img src={mic} alt="" className=" h-[45px] w-[150px] p-1"/>
              
                </div>
               </div>
