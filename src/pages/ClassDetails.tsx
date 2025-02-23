@@ -8,9 +8,22 @@ import PlayingSec from "../components/dashboard/PlayingSec";
 import CourseOutline from "../components/dashboard/CourseOutline";
 import DashFoote from "../components/dashboard/DashFoote";
 import DashNavbar from "../components/dashboard/DashNavbar";
+import { useState } from "react";
 
 const ClassDetails = () => {
-  const count = "82-8";
+  const [url, setUrl] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [no, setNo] = useState<number>(0);
+  const urlFunc = (url: string, name: string, No: number): void => {
+    if (url && name) {
+      setUrl(url);
+      setName(name);
+      setNo(No);
+    } else {
+      setUrl("");
+      setName("");
+    }
+  };
   return (
     <div className=" bg-[#010314]">
       <CommonContainer>
@@ -27,7 +40,7 @@ const ClassDetails = () => {
                 />
               </button>
               <h1 className="font-semibold text-2xl text-[#EAAAFF]">
-                {count} Starting of a new Journey with special message
+                {no} {name}
               </h1>
             </div>
             <div className="flex items-center gap-x-3 ml-auto">
@@ -51,8 +64,8 @@ const ClassDetails = () => {
 
           {/* VIDEO PLAYNING SECTION START */}
           <section className="lg:flex w-full gap-x-5">
-            <PlayingSec />
-            <CourseOutline />
+            <PlayingSec url={url} name={name} />
+            <CourseOutline urlFunc={urlFunc} />
           </section>
           {/* VIDEO PLAYNING SECTION END */}
         </div>
