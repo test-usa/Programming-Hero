@@ -8,7 +8,7 @@ const SignUp = () => {
   const [conshowText, setConShowText] = useState(false);
   return (
     <div className="w-full flex flex-col md:block items-center justify-center py-16">
-      <h2 className=" self-start py-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent text-7xl">
+      <h2 className=" self-start py-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent text-7xl ">
         Sign Up
       </h2>
       <div className="bg-[rgba(10,10,43,.75)] backdrop-blur text-white max-w-xl w-full rounded-3xl px-6 py-10">
@@ -90,7 +90,7 @@ const SignUp = () => {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <input type="checkbox" />
-              <label htmlFor="">I agree to theterms and conditions</label>
+              <label htmlFor=" ">I agree to theterms and conditions</label>
             </div>
             {/* <button className=" border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
                 Forgot Password
