@@ -1,4 +1,6 @@
+
 import CommonContainer from "../../common/CommonContainer";
+import { FaBackward, FaForward } from "react-icons/fa6";
 
 export const blogs = [
     {
@@ -20,7 +22,7 @@ export const blogs = [
         "ওয়েব ডেভেলপমেন্ট শেখার পীচটা সেটিংয়ে আছে, শুরু করুন freeCodeCamp...",
       author: "Jhankar Mahbub",
       date: "Nov 29, 2022",
-      image: "/images/blog2.png",
+      image: "https://phero-web.nyc3.cdn.digitaloceanspaces.com/blog-images-prod/public/files/1669676678947.png",
       tagColor: "bg-purple-600",
     },
     {
@@ -31,7 +33,7 @@ export const blogs = [
         "ওয়েব ডেভেলপমেন্ট কি? আমাদের প্রথমে জানতে হবে যে এটি আসলে কি...",
       author: "Rebeka Putul",
       date: "Nov 29, 2022",
-      image: "/images/blog3.png",
+      image: "https://phero-web.nyc3.cdn.digitaloceanspaces.com/blog-images-prod/public/files/1669700493261.png",
       tagColor: "bg-yellow-500",
     },
   ];
@@ -39,52 +41,55 @@ export const blogs = [
 
 const RecentBlogs = () => {
   return (
-    <CommonContainer>
-        <div className="bg-[#0b0b13] px-4 py-20">
-    <div className="max-w-6xl mx-auto">
+
+   <CommonContainer>
+         <div className="bg-[#0b0b13] py-20 px-5 md:px-10 lg:px-20">
+             <h2 className="text-white text-lg md:text-xl font-semibold mb-6">
+      Recent Blogs
+    </h2>
+    <div className=" mx-auto">
       {/* Blog Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
-          <div
-            key={blog.id}
-            className="relative bg-[#13131A] rounded-lg shadow-lg overflow-hidden cursor-pointer group transition-all duration-300"
-          >
-            {/* Blog Image */}
+          <div className="bg-[#2B1B42] rounded-xl shadow-lg overflow-hidden mx-auto cursor-pointer">
+          {/* Image Section */}
+          <div className="relative">
             <img
-              src={blog.image}
-              alt={blog.title}
-              className="w-full h-[200px] md:h-[220px] object-cover"
+              src={blog.image} // Replace with actual image URL
+              alt="Your Dream Developer Job"
+              className="w-full h-56 object-cover"
             />
-
-            {/* Category Tag */}
-            <div
-              className={`absolute top-4 left-4 ${blog.tagColor} text-white text-xs md:text-sm px-3 py-1 rounded-full`}
-            >
+            {/* Tag */}
+            <div className="absolute top-3 left-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full">
               {blog.category}
             </div>
-
-            {/* Gradient Overlay on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500"></div>
-
-            {/* Blog Details */}
-            <div className="p-5">
-              <h3 className="text-white text-lg font-semibold group-hover:text-purple-400 transition-colors duration-300">
-                {blog.title}
-              </h3>
-              <p className="text-gray-400 text-sm mt-2 line-clamp-2">
-                {blog.description}
-              </p>
-              <div className="flex justify-between items-center text-gray-500 text-xs mt-4">
-                <span>{blog.author}</span>
-                <span>{blog.date}</span>
-              </div>
+           
+          </div>
+    
+          {/* Content Section */}
+          <div className="p-5 py-7">
+            <h3 className="text-white text-2xl font-semibold pb-4">
+             {blog.title}
+            </h3>
+            <p className="text-gray-400 text-lg pb-5">
+             {blog.description}
+            </p>
+    
+            {/* Author & Date */}
+            <div className="flex justify-between items-center text-gray-500 text-md mt-4 border-t border-gray-700 pt-3">
+              <span>Ahmad Tarique Hasan</span>
+              <span className="text-gray-400">Aug 29, 2023</span>
             </div>
           </div>
+        </div>
         ))}
       </div>
 
       {/* Pagination */}
       <div className="flex justify-center mt-8">
+        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+            <FaBackward/>
+        </button>
         <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
           1
         </button>
@@ -94,10 +99,14 @@ const RecentBlogs = () => {
         <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
           3
         </button>
+        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+            <FaForward/>
+        </button>
       </div>
     </div>
   </div>
-    </CommonContainer>
+   </CommonContainer>
+
   )
 }
 
