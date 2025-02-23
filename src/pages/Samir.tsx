@@ -104,9 +104,9 @@ const Samir = () => {
     <main className="bg-[#010313] w-full">
       <DashNavbar />
       <CommonContainer>
-        <section className="mx-auto grid grid-cols-4 gap-7 mt-5">
+        <section className="mx-auto grid  lg:grid-cols-4 gap-7 mt-5">
           {/* Sidebar */}
-          <div className="col-span-1 bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
+          <div className="lg:col-span-1 bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
             {/* Profile Section */}
             <div className="flex flex-col items-center w-full mb-4">
               <div className="relative w-[80px] h-[80px] rounded-full border-2 border-purple-500 overflow-hidden">
@@ -163,7 +163,7 @@ const Samir = () => {
           </div>
 
           {/* Content Section */}
-          <div className="col-span-3 bg-[#170f21] rounded-xl p-4 h-fit">
+          <div className="lg:col-span-3 bg-[#170f21] rounded-xl p-4 h-fit">
             <Outlet />
           </div>
         </section>
