@@ -4,6 +4,7 @@ import HomeTitle from "../section/home/HomeTitle";
 import HomeAnimation from "../section/home/HomeAnimation";
 import HomeImage from "../section/home/HomeImage";
 import Footer from "../layout/Footer";
+import OurCourse from "../section/home/course/OurCourse";
 const Home = () => {
   return (
     <>
@@ -12,6 +13,9 @@ const Home = () => {
         <HomeTitle />
         <HomeAnimation />
         <HomeImage />
+      </div>
+      <div>
+        <OurCourse />
       </div>
       <Footer />
     </>
