@@ -51,37 +51,34 @@ const RecentBlogs = () => {
       {/* Blog Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
-          <div className="bg-[#2B1B42] rounded-xl shadow-lg overflow-hidden mx-auto cursor-pointer">
-          {/* Image Section */}
-          <div className="relative">
-            <img
-              src={blog.image} // Replace with actual image URL
-              alt="Your Dream Developer Job"
-              className="w-full h-56 object-cover"
-            />
-            {/* Tag */}
-            <div className="absolute top-3 left-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full">
-              {blog.category}
-            </div>
-           
-          </div>
-    
-          {/* Content Section */}
-          <div className="p-5 py-7">
-            <h3 className="text-white text-2xl font-semibold pb-4">
-             {blog.title}
-            </h3>
-            <p className="text-gray-400 text-lg pb-5">
-             {blog.description}
-            </p>
-    
-            {/* Author & Date */}
-            <div className="flex justify-between items-center text-gray-500 text-md mt-4 border-t border-gray-700 pt-3">
-              <span>Ahmad Tarique Hasan</span>
-              <span className="text-gray-400">Aug 29, 2023</span>
-            </div>
-          </div>
-        </div>
+           <div className="bg-[#2B1B42] rounded-xl shadow-lg overflow-hidden mx-auto cursor-pointer transition-transform duration-300 transform group hover:scale-105">
+           {/* Image Section */}
+           <div className="relative overflow-hidden">
+             <img
+               src={blog.image} // Replace with actual image URL
+               alt="Your Dream Developer Job"
+               className="w-full h-56 object-cover transition-transform duration-300 transform group-hover:scale-110"
+             />
+             {/* Tag */}
+             <div className="absolute top-3 left-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full">
+               {blog.category}
+             </div>
+           </div>
+         
+           {/* Content Section */}
+           <div className="p-5 py-7">
+             <h3 className="text-white text-2xl font-semibold pb-4">{blog.title}</h3>
+             <p className="text-gray-400 text-lg pb-5">{blog.description}</p>
+         
+             {/* Author & Date */}
+             <div className="flex justify-between items-center text-gray-500 text-md mt-4 border-t border-gray-700 pt-3">
+               <span>Ahmad Tarique Hasan</span>
+               <span className="text-gray-400">Aug 29, 2023</span>
+             </div>
+           </div>
+         </div>
+         
+
         ))}
       </div>
 

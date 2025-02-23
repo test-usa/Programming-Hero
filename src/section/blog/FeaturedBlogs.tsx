@@ -34,11 +34,11 @@ const FeaturedBlogs = () => {
     </h2>
 
     <div className="grid grid-cols-[60%_40%] gap-x-4 relative">
-    <div className="relative rounded-md cursor-pointer row-span-2 md:h-[320px] group">
+    <div className="relative rounded-xl cursor-pointer row-span-2 md:h-[320px] group hover:rounded-xl">
   <img
     src={blogs[0].image}
     alt={blogs[0].title}
-    className="object-cover w-full h-full"
+    className="object-cover w-full h-full rounded-lg hover:"
   />
   <div className="absolute top-4 left-4 bg-[rgba(96,71,236,0.6)] text-white text-xs md:text-sm px-4 py-2 rounded-full">
     {blogs[0].category}
@@ -65,7 +65,7 @@ const FeaturedBlogs = () => {
       <img
         src={blog.image}
         alt={blog.title}
-        className="object-cover w-full h-full"
+        className="object-cover w-full h-full rounded-xl"
       />
       <div className="absolute top-4 left-4 bg-[rgba(96,71,236,0.6)] text-white text-xs md:text-sm px-4 py-2 rounded-full">
         {blog.category}
