@@ -10,8 +10,7 @@ import Himel from "../pages/Himel";
 import ClassDetails from "../pages/ClassDetails";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
-import Samir from "../pages/Samir";
-import path from "path";
+import Blog from "../pages/Blog";
 import Profile from "../section/dashboard/profile";
 import AdditionalInfo from "../section/dashboard/AddtionalInfo";
 import Address from "../section/dashboard/Address";
@@ -19,12 +18,13 @@ import Education from "../section/dashboard/Education";
 import ImportantLinks from "../section/dashboard/ImportantLinks";
 import SkillSet from "../section/dashboard/SkillSet";
 import Level2Goal from "../section/dashboard/Level2Goal";
-import JobProfile from "../section/dashboard/JobProfile";
-import JobExperience from "../section/dashboard/JobExperience";
-import GotHired from "../section/dashboard/GotHired";
-import CourseRequest from "../section/dashboard/CourseRequest";
-import OrderHistory from "../section/dashboard/OrderHistory";
 import Certification from "../section/dashboard/Certification";
+import OrderHistory from "../section/dashboard/OrderHistory";
+import CourseRequest from "../section/dashboard/CourseRequest";
+import JobExperience from "../section/dashboard/JobExperience";
+import JobProfile from "../section/dashboard/JobProfile";
+import GotHired from "../section/dashboard/GotHired";
+import Samir from "../pages/Samir";
 
 const routes = createBrowserRouter([
   {
@@ -43,6 +43,10 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/success",
