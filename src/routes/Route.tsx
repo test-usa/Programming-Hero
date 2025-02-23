@@ -25,6 +25,7 @@ import JobExperience from "../section/dashboard/JobExperience";
 import JobProfile from "../section/dashboard/JobProfile";
 import GotHired from "../section/dashboard/GotHired";
 import Samir from "../pages/Samir";
+import BlogDetails from "../pages/BlogDetails";
 
 const routes = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/blog-details",
+        element: <BlogDetails />,
       },
       {
         path: "/success",
