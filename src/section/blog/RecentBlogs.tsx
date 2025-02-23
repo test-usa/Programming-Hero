@@ -60,7 +60,7 @@ const RecentBlogs = () => {
                className="w-full h-56 object-cover transition-transform duration-300 transform group-hover:scale-110"
              />
              {/* Tag */}
-             <div className="absolute top-3 left-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full">
+             <div className="absolute top-3 left-3 bg-[rgba(96,71,236,0.6)] text-white text-xs md:text-sm px-4 py-2 rounded-full">
                {blog.category}
              </div>
            </div>
@@ -84,19 +84,19 @@ const RecentBlogs = () => {
 
       {/* Pagination */}
       <div className="flex justify-center mt-8">
-        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+        <button className="px-4 py-2 mx-1 bg-[#2B1B42] text-white rounded-md hover:bg-purple-600 transition">
             <FaBackward/>
         </button>
-        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+        <button className="px-4 py-2 mx-1 bg-[#2B1B42] text-white rounded-md hover:bg-purple-600 transition">
           1
         </button>
-        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+        <button className="px-4 py-2 mx-1 bg-[#2B1B42] text-white rounded-md hover:bg-purple-600 transition">
           2
         </button>
-        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+        <button className="px-4 py-2 mx-1 bg-[#2B1B42] text-white rounded-md hover:bg-purple-600 transition">
           3
         </button>
-        <button className="px-4 py-2 mx-1 bg-gray-700 text-white rounded-md hover:bg-purple-600 transition">
+        <button className="px-4 py-2 mx-1 bg-[#2B1B42] text-white rounded-md hover:bg-purple-600 transition">
             <FaForward/>
         </button>
       </div>

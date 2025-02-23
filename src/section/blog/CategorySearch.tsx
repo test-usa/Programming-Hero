@@ -5,7 +5,7 @@ import CommonContainer from "../../common/CommonContainer"
 const CategorySearch = () => {
   return (
    <CommonContainer>
-     <div className=" p-5 rounded-lg py-20 px-5 md:px-10 lg:px-20">
+     <div className=" p-5 rounded-lg pt-20 px-5 md:px-10 lg:px-20">
     {/* Search Bar */}
     <div className="max-w-[725px] mb-4 mx-auto ">
       <input
@@ -17,7 +17,7 @@ const CategorySearch = () => {
     </div>
   
     {/* Category Filters */}
-    <div className="flex flex-wrap gap-3 justify-start sm:justify-center">
+    <div className="flex flex-wrap gap-3 justify-center sm:justify-center">
       {/* All Category */}
       <button className="px-4 py-2 bg-[(rgba(96, 71, 236, .8))] bg-[rgba(96,71,236,.8)] text-white rounded-full font-medium">
         All <span className="ml-1 px-2 py-1 bg-[rgba(96,71,236,0.63)] rounded-full text-xs">52</span>
@@ -50,4 +50,4 @@ const CategorySearch = () => {
   )
 }
 
-export default CategorySearch
+export default CategorySearch;
