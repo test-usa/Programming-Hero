@@ -25,6 +25,11 @@ import GotHired from "../section/dashboard/GotHired";
 import CourseRequest from "../section/dashboard/CourseRequest";
 import OrderHistory from "../section/dashboard/OrderHistory";
 import Certification from "../section/dashboard/Certification";
+import CreateUser from "../section/dashboard/superAdmin/CreateUser";
+import Courses from "../section/dashboard/superAdmin/Courses";
+import Admins from "../section/dashboard/superAdmin/Admins";
+import Students from "../section/dashboard/superAdmin/Students";
+import CreateInstructor from "../section/dashboard/admin/createInstructor";
 
 const routes = createBrowserRouter([
   {
@@ -89,6 +94,12 @@ const routes = createBrowserRouter([
           { path: "course-request", element: <CourseRequest /> },
           { path: "order-history", element: <OrderHistory /> },
           { path: "certification", element: <Certification /> },
+          { path: "create-user", element: <CreateUser /> },
+          { path: "courses", element: <Courses /> },
+          { path: "admins", element: <Admins /> },
+          { path: "instructors", element: <Admins /> },
+          { path: "students", element: <Students /> },
+          { path: "create-instructor", element: <CreateInstructor /> },
         ],
       },
     ],
