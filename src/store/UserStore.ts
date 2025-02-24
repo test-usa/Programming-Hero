@@ -25,11 +25,10 @@ export const userStore = create<TuserStore>()((set) => ({
   loginUser: async (data: TsigninSchema) => {
     try {
       const response = await axiosSecure.post("/auth/login", data);
-
-      if (!response.status) {
-        return response;
+      if (response.data) {
+        toast.success(response.data.message);
       }
-      return Cookies.set("user", response.data);
+      return Cookies.set("user", response.data.data.accessToken);
     } catch (error) {
       console.log("Problem during login", error);
       throw error;
