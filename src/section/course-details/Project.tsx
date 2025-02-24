@@ -20,11 +20,10 @@ const Project = () => {
         <div className="md:mt-[250px] md:flex gap-4 md:px-[100px] p-7">
           {/* 950+ Videos Section */}
           <div
-            className={`md:w-[32%] w-full bg-[#2D123C] p-5 pr-10 rounded-lg border-[1px] border-t-[#8B348E] border-x-[#8B348E] border-b-0 transition-all duration-300 mt-3 md:mt-0 ${
-              isExpandedV ? "h-auto" : " md:h-[250px] h-[400px] overflow-hidden"
-            }`}
+            className={`md:w-[32%] w-full bg-[#2D123C] p-5 pr-10 rounded-lg border-[1px] border-t-[#8B348E] border-x-[#8B348E] border-b-0 transition-all duration-300 mt-3 md:mt-0 ${isExpandedV ? "h-auto" : " md:h-[250px] h-[400px] overflow-hidden"
+              }`}
           >
-            <img src={videoImg} alt="" />
+            <img src={videoImg} alt="Video " />
             <h2 className="text-[#D149D9] md:text-3xl text-xl font-semibold mt-3">950+ Videos</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedV
@@ -38,11 +37,10 @@ const Project = () => {
 
           {/* 45+ Projects Section */}
           <div
-            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#31172A] p-5 pr-10 rounded-lg border-[1px] border-t-[#FAA157] border-x-[#FAA157] border-b-0 transition-all duration-300 ${
-              isExpandedB ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
-            }`}
+            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#31172A] p-5 pr-10 rounded-lg border-[1px] border-t-[#FAA157] border-x-[#FAA157] border-b-0 transition-all duration-300 ${isExpandedB ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
+              }`}
           >
-            <img src={bulbImg} alt="" />
+            <img src={bulbImg} alt=" bulb" />
             <h2 className="text-[#FAA157] md:text-3xl text-xl font-semibold mt-3">45+ Projects</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedB
@@ -56,11 +54,10 @@ const Project = () => {
 
           {/* 10+ Assignments Section */}
           <div
-            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#211D30] p-5 pr-10 rounded-lg border-[1px] border-t-[#35AC6D] border-x-[#35AC6D] border-b-0 transition-all duration-300 ${
-              isExpandedP ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
-            }`}
+            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#211D30] p-5 pr-10 rounded-lg border-[1px] border-t-[#35AC6D] border-x-[#35AC6D] border-b-0 transition-all duration-300 ${isExpandedP ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
+              }`}
           >
-            <img src={codeImg} alt="" />
+            <img src={codeImg} alt="code" />
             <h2 className="text-[#35AC6D] md:text-3xl text-xl font-semibold mt-3">10+ Assignments</h2>
             <p className="text-white/50 text-base mt-3 leading-6">
               {isExpandedP
@@ -71,10 +68,10 @@ const Project = () => {
               {isExpandedP ? "Read Less" : "Read More"}
             </button>
           </div>
-         
+
         </div>
-        <hr className="mt-5 border-white/40  w-[85%] mx-auto"/>
-        <Step/>
+        <hr className="mt-5 border-white/40  w-[85%] mx-auto" />
+        <Step />
       </CommonContainer>
     </div>
   );
