@@ -69,8 +69,8 @@ const ClassDetails = () => {
           </section>
           {/* VIDEO PLAYNING SECTION END */}
         </div>
-        <DashFoote />
       </CommonContainer>
+      <DashFoote />
     </div>
   );
 };

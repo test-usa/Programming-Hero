@@ -22,15 +22,15 @@ const LavelOne = () => {
         <div className="bg-[#181024] w-full rounded-lg mt-10">
           {/* FIRST CARD START */}
           <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
-            <div>
+            <div className="w-full xl:w-[30%]">
               <img
                 src={startCourse}
                 alt="course-starting-image"
-                className="w-full h-60 rounded-2xl md:object-cover object-contain  "
+                className="w-full max-h-72 rounded-2xl object-cover"
               />
             </div>
             <div>
-              <h1 className="text-[#AE34E4] text-3xl font-semibold">
+              <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
                 Complete Web Development Course With Jhankar Mahbub
               </h1>
               <p className="text-sm font-semibold text-white py-2">
@@ -62,15 +62,15 @@ const LavelOne = () => {
 
           {/* SECOND CARD START  */}
           <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
-            <div>
+            <div className="w-full xl:w-[30%]">
               <img
                 src={secondImage}
                 alt="course-starting-image"
-                className="w-full h-60 rounded-2xl md:object-cover object-contain "
+                className="w-full max-h-72 rounded-2xl object-cover "
               />
             </div>
             <div>
-              <h1 className="text-[#AE34E4] text-3xl font-semibold">
+              <h1 className="text-[#AE34E4] ext-xl md:text-2xl lg:text-3xl font-semibold">
                 Recommended for Complete Web Development Course
               </h1>
               <p className="text-sm font-semibold text-white py-2">
@@ -92,7 +92,7 @@ const LavelOne = () => {
 
           {/* THIRD CARD START */}
           <div className=" py-10 w-[70%] px-8">
-            <h1 className="text-2xl font-semibold text-white pb-8">
+            <h1 className="text-xl md:text-2xl font-semibold text-white pb-8">
               Available For You
             </h1>
             <section className="md:flex w-full gap-8">
@@ -100,12 +100,12 @@ const LavelOne = () => {
                 <img
                   src={startCourse}
                   alt="course-starting-image"
-                  className="w-full h-44 rounded-2xl"
+                  className="w-full max-h-60 rounded-2xl"
                 />
               </div>
               <div>
                 <section>
-                  <h1 className="text-[#AE34E4] text-xl md:text-3xl font-semibold">
+                  <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
                     Next Level Developmet
                   </h1>
                   <p className="text-sm font-semibold text-white py-2">
@@ -113,7 +113,7 @@ const LavelOne = () => {
                   </p>
                   <div className="flex items-center justify-between">
                     <p className="text-bold font-semibold text-white">$6500</p>
-                    <p className=" text-white px-8">
+                    <p className=" text-white text-sm md:text-xl px-8">
                       <span className="text-orange-500">Closed</span> 9th
                       Oct-24th Oct,2024
                     </p>
@@ -122,7 +122,7 @@ const LavelOne = () => {
               </div>
             </section>
             <section className="lg:flex md:items-center w-full  space-y-2 md:space-y-0 md:space-x-7 space-x-0 py-4">
-              <p className="text-[#AE34E4]  text-[1rem] font-semibold">
+              <p className="text-[#AE34E4]  ext-xl md:text-2xl lg:text-3xl font-semibold">
                 This course is only for existing students only
               </p>
               <Button
