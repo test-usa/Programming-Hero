@@ -30,7 +30,6 @@ interface Module {
 }
 
 // DEFINE TYPES OF DATA END ---->>
-
 const Outline = ({
   urlFunc,
   totalMilestone,
@@ -65,7 +64,7 @@ const Outline = ({
         className="flex justify-between items-center gap-x-10 w-full"
       >
         <div className="flex justify-between w-full">
-          <h1 className="font-semibold text-xl text-start">
+          <h1 className="font-semibold text-sm md:text-xl text-start">
             Milestone-{totalMilestone?.No}: {totalMilestone?.name}
             <span className="text-sm font-normal pl-2">
               h{totalMilestone?.time?.hour} mins{totalMilestone?.time?.mins}-{" "}
