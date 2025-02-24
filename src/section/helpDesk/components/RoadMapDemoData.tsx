@@ -1,17 +1,16 @@
-import Roadmap from "./Roadmap"; // Adjust the path as needed
+import Roadmap, { RoadmapProps } from "./Roadmap";
 
-// Import or declare the RoadmapProps type if needed
-export interface RoadmapProps {
-  name: string;
-  profileImage?: string;
-  issueTitle: string;
-  issueDescription?: string;
-  tags: string[];
-  status: "investigating" | "in-progress" | "resolved";
-}
+// export interface RoadmapProps {
+//   name: string;
+//   profileImage?: string;
+//   issueTitle: string;
+//   issueDescription?: string;
+//   tags: string[];
+//   status: "investigating" | "in-progress" | "resolved";
+// }
 
 // Declare and type your demo data
-const roadmapData: RoadmapProps[] = [
+const roadmapItems: RoadmapProps[] = [
   {
     name: "Nahid Sarkar",
     profileImage: "https://randomuser.me/api/portraits/men/1.jpg",
@@ -40,13 +39,10 @@ const roadmapData: RoadmapProps[] = [
   },
 ];
 
-console.log("roadmapData", roadmapData);
 const RoadmapDemoData = () => {
   return (
     <div className="flex flex-wrap gap-5 p-5">
-      {roadmapData.map((item: RoadmapProps, index) => (
-        <Roadmap key={index} item={item} />
-      ))}
+      <Roadmap roadmapItems={roadmapItems} />
     </div>
   );
 };

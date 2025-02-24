@@ -48,11 +48,7 @@ const HelpDeskCategory = () => {
             <AllPost />
           </div>
         )}
-        {activeTab === "roadmap" && (
-          <div>
-            <Roadmap />
-          </div>
-        )}
+        {activeTab === "roadmap" && <div></div>}
         {activeTab === "release-log" && (
           <div>
             <ReleaseLog />
