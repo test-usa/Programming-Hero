@@ -1,48 +1,16 @@
 import React, { useState } from "react";
 import CommonContainer from "../../../common/CommonContainer";
-import { IoMdFootball } from "react-icons/io";
-import { IoBugSharp } from "react-icons/io5";
-import { BiBarChartSquare } from "react-icons/bi";
-import { BsBoundingBox, BsFillFileEarmarkPostFill } from "react-icons/bs";
-import { TfiAnnouncement } from "react-icons/tfi";
+import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { MdOndemandVideo } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import CustomButton from "./CustomButton";
-import { GoRocket } from "react-icons/go";
 import CustomButton1 from "./CustomButton1";
 import { FaUser } from "react-icons/fa6";
 import { FaUserGroup } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
 import { IoReload } from "react-icons/io5";
 import CardComponent from "./CardComponent";
-
-const categories = [
-  {
-    name: "courses-topics",
-    label: "Courses Topics",
-    icon: <IoMdFootball />,
-    quantity: 12,
-  },
-  { name: "bugs", label: "Bugs", icon: <IoBugSharp />, quantity: 20 },
-  {
-    name: "features-requests",
-    label: "Features Requests",
-    icon: <BiBarChartSquare />,
-    quantity: 25,
-  },
-  {
-    name: "others",
-    label: "Others",
-    icon: <BsBoundingBox />,
-    quantity: 15,
-  },
-  {
-    name: "announcements",
-    label: "Announcements",
-    icon: <TfiAnnouncement />,
-    quantity: 18,
-  },
-];
+import Categories from "./Categories";
 
 const AllPost = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All Posts");
@@ -78,18 +46,7 @@ const AllPost = () => {
         </div>
 
         {/* Right Side: Categories */}
-
-        <div className="w-full lg:w-1/3 bg-white p-5 rounded-xl shadow-md">
-          {categories.map((category) => (
-            <div className="flex items-center justify-between w-full gap-2 p-2 rounded md:flex-row hover:bg-slate-200 cursor-pointer">
-              <div className="flex gap-2 items-center">
-                <div className="text-xl">{category.icon}</div>
-                <div className="text-lg font-medium">{category.label}</div>
-              </div>
-              <div className="text-lg font-semibold">{category.quantity}</div>
-            </div>
-          ))}
-        </div>
+        <Categories />
       </div>
       <div className="flex justify-between items-center lg:w-2/3">
         <div className="flex gap-2 py-2 ">
@@ -128,7 +85,7 @@ const AllPost = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="py-3">
         <CardComponent></CardComponent>
         <CardComponent></CardComponent>
         <CardComponent></CardComponent>

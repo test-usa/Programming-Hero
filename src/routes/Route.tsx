@@ -25,6 +25,10 @@ import JobExperience from "../section/dashboard/JobExperience";
 import JobProfile from "../section/dashboard/JobProfile";
 import GotHired from "../section/dashboard/GotHired";
 import Samir from "../pages/Samir";
+import AllPost from "../section/helpDesk/components/AllPost";
+import Roadmap from "../section/helpDesk/components/Roadmap";
+import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
+import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +71,24 @@ const routes = createBrowserRouter([
       {
         path: "/himel",
         element: <Himel />,
+        children: [
+          {
+            path: "all-post",
+            element: <AllPost />,
+          },
+          {
+            path: "roadmap",
+            element: <Roadmap />,
+          },
+          {
+            path: "release-log",
+            element: <ReleaseLog />,
+          },
+          {
+            path: "feature-request",
+            element: <FeatureRequest />,
+          },
+        ],
       },
       {
         path: "/login",
