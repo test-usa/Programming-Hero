@@ -17,3 +17,12 @@ export type UserLogin = {
   email: string;
   password: string;
 };
+
+export interface RoadmapProps {
+  name: string;
+  profileImage?: string;
+  issueTitle: string;
+  issueDescription?: string;
+  tags: string[];
+  status: "investigating" | "in-progress" | "resolved";
+}
