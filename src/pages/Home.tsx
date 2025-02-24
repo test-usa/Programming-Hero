@@ -5,6 +5,9 @@ import HomeAnimation from "../section/home/HomeAnimation";
 import HomeImage from "../section/home/HomeImage";
 import Footer from "../layout/Footer";
 import OurCourse from "../section/home/course/OurCourse";
+import AbsoluteBeginner from "../section/home/AbsoluteBeginner";
+import SuccesStory from "../section/home/SuccesStory";
+import OurMission from "../section/home/OurMission";
 const Home = () => {
   return (
     <>
@@ -15,7 +18,10 @@ const Home = () => {
         <HomeImage />
       </div>
       <div>
-        <OurCourse />
+         <OurCourse /> 
+        <AbsoluteBeginner/>
+        <SuccesStory/>
+        <OurMission/> 
       </div>
       <Footer />
     </>

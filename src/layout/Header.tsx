@@ -3,7 +3,7 @@ import CommonContainer from "../common/CommonContainer";
 import { NavLink } from "react-router-dom";
 import { RiMenu2Fill } from "react-icons/ri";
 import { useState } from "react";
-import MobileMenu  from "../section/home/MobileMenu";
+import MobileMenu from "../section/home/MobileMenu";
 const Header = () => {
   const [menu, setMenu] = useState(false);
   return (
@@ -24,7 +24,7 @@ const Header = () => {
             <NavLink to="/success">Success</NavLink>
             <NavLink to="/mehedi">mehedi</NavLink>
             <NavLink to="/eitty">eitty</NavLink>
-            <NavLink to="/himel">himel</NavLink>
+            <NavLink to="/himel/all-post">himel</NavLink>
             <NavLink to="/login">login</NavLink>
           </div>
 
