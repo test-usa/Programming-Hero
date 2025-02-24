@@ -17,8 +17,6 @@ const Login = () => {
 
   const submitFormToSever = async (data: TsigninSchema) => {
     loginUser(data);
-
-    console.log("login", data);
   };
   return (
     <div className="w-full flex flex-col md:block items-center justify-center py-16">
