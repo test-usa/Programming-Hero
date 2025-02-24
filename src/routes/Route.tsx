@@ -10,6 +10,21 @@ import Himel from "../pages/Himel";
 import ClassDetails from "../pages/ClassDetails";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
+import Blog from "../pages/Blog";
+import Profile from "../section/dashboard/profile";
+import AdditionalInfo from "../section/dashboard/AddtionalInfo";
+import Address from "../section/dashboard/Address";
+import Education from "../section/dashboard/Education";
+import ImportantLinks from "../section/dashboard/ImportantLinks";
+import SkillSet from "../section/dashboard/SkillSet";
+import Level2Goal from "../section/dashboard/Level2Goal";
+import Certification from "../section/dashboard/Certification";
+import OrderHistory from "../section/dashboard/OrderHistory";
+import CourseRequest from "../section/dashboard/CourseRequest";
+import JobExperience from "../section/dashboard/JobExperience";
+import JobProfile from "../section/dashboard/JobProfile";
+import GotHired from "../section/dashboard/GotHired";
+import Samir from "../pages/Samir";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +43,10 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/success",
@@ -56,6 +75,25 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUpPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <Samir />,
+        children: [
+          { path: "profile", element: <Profile /> },
+          { path: "additional-info", element: <AdditionalInfo /> },
+          { path: "address", element: <Address /> },
+          { path: "education", element: <Education /> },
+          { path: "important-links", element: <ImportantLinks /> },
+          { path: "skill-set", element: <SkillSet /> },
+          { path: "level-2-goal", element: <Level2Goal /> },
+          { path: "job-profile", element: <JobProfile /> },
+          { path: "job-experience", element: <JobExperience /> },
+          { path: "got-hired", element: <GotHired /> },
+          { path: "course-request", element: <CourseRequest /> },
+          { path: "order-history", element: <OrderHistory /> },
+          { path: "certification", element: <Certification /> },
+        ],
       },
     ],
   },

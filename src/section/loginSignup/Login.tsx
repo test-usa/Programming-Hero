@@ -46,9 +46,9 @@ const Login = () => {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <input type="checkbox" />
-              <label htmlFor="">Remember Me</label>
+              <label className=" text-xs md:text-lg">Remember Me</label>
             </div>
-            <button className=" border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
+            <button className="text-xs md:text-lg border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
               Forgot Password
             </button>
           </div>
