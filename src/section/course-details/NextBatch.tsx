@@ -107,18 +107,14 @@ const NextBatch = () => {
               </div>
 
               <div
-                className=" h-[450px] bg-no-repeat rounded-2xl w-full md:w-1/2 flex items-center justify-center  bg-cover md:absolute top-[1010px] left-[500px] md:mt-0 mt-3"
-                style={{ backgroundImage: `url(${vedioImg})` }}
-              >
+                className=" h-[450px] bg-no-repeat rounded-2xl w-full md:w-1/2 flex items-center justify-center   bg-cover md:absolute top-[1010px] left-[500px] md:mt-0 mt-3"
+                style={{ backgroundImage: `url(${vedioImg})` }} >
                 <div>
-
                   {!showVideo && (
                     <div
                       onClick={handlePlayClick}
-                      className="bg-[#F69470] border-[10px] w-[60px] h-[60px] rounded-full border-white/50 flex items-center justify-center animate-pulse duration-[2s] cursor-pointer"
-                    >
-                      <FaPlay className="text-white" />
-                    </div>
+                      className="bg-[#F69470] border-[10px] w-[60px] h-[60px] rounded-full border-white/50 flex items-center justify-center animate-pulse duration-[2s] cursor-pointer" >
+                      <FaPlay className="text-white" /> </div>
                   )}
 
                   {showVideo && (
