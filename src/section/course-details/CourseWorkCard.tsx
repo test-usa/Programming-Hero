@@ -16,10 +16,10 @@ const CourseWorkCard = ({imgSrc, title, description,className}: SpecialityCard) 
         alt="Course Image"
         
       />
-      <h2 className="text-2xl font-semibold pt-4 group-hover:text-[#E050DF] text-white">
+      <h2 className="md:text-2xl text-lg font-semibold pt-4 group-hover:text-[#E050DF] text-white">
         {title}
       </h2>
-      <p className="text-lg pt-4 text-white/50 group-hover:text-white">
+      <p className="md:text-lg text-base pt-4 text-white/50 group-hover:text-white">
         {description}
       </p>
         </div>
