@@ -106,8 +106,9 @@ const NextBatch = () => {
                 </div>
               </div>
 
+              <div className=" flex flex-col justify-center items-center mt-10">
               <div
-                className=" h-[450px] bg-no-repeat rounded-2xl w-full md:w-1/2 flex items-center justify-center   bg-cover md:absolute top-[1010px] left-[500px] md:mt-0 mt-3"
+                className=" h-[450px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover left-[500px] md:mt-0 mt-3"
                 style={{ backgroundImage: `url(${vedioImg})` }} >
                 <div>
                   {!showVideo && (
@@ -143,6 +144,7 @@ const NextBatch = () => {
                     </div>
                   )}
                 </div>
+              </div>
               </div>
             </div>
           </div>
