@@ -33,7 +33,9 @@ export type TuserStore = {
   user: object | null;
   signup_user: (TuserSignUp: any) => Promise<void>;
   loginUser: (TuserLogin: any) => Promise<any>;
+  updateUser: (TuserLogin: any) => Promise<any>;
   logOutUser: () => void;
+  token: string | undefined;
 };
 
 export interface RoadmapProps {
