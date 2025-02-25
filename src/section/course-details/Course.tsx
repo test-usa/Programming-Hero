@@ -8,9 +8,12 @@ const Course = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://ph-lms.onrender.com/modules")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        console.log("Fetched Data:", data); 
+        setProducts(data.data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -35,23 +38,24 @@ const Course = () => {
                 scrollbarColor: "#ff37f2 #0a0329",
 
               }}>
-                {products.length > 0 ? (
-                  products.map((product) => (
-                    <div
-                      key={product.id} className="hover:bg-gradient-to-l  border hover:border-[#a855f7] hover:from-[#11043C] hover:to-[#291139]  border-[rgb(255,125,255,0.05)] bg-[rgb(255,255,255,0.05)] p-4 rounded-lg mb-3 overflow-hidden  hover:brightness-100 "
-                    >
+                {products?.length > 0 ? (
+                      products.map((product) => (
+                        
+                        <div
+                          key={product?.id}
+                          className="hover:bg-gradient-to-l border hover:border-[#a855f7] hover:from-[#11043C] hover:to-[#291139] 
+                          border-[rgb(255,125,255,0.05)] bg-[rgb(255,255,255,0.05)] p-4 rounded-lg mb-3 overflow-hidden hover:brightness-100"
+                        >
+                        
+                          <h2 className="relative text-white text-base md:text-lg">
+                            {product?.title}
+                          </h2>
+                        </div>
+                      ))
+                    ) : (
+                      <h2 className="text-white">Loading...</h2>
+                    )}
 
-
-
-                      {/* Product ID and Title */}
-                      <h2 className="relative text-white text-base md:text-lg">
-                        ID: {product.id} - {product.title}
-                      </h2>
-                    </div>
-                  ))
-                ) : (
-                  <h2 className="text-white">Loading...</h2>
-                )}
               </div>
             </div>
           </div>
