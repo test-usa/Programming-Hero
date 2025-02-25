@@ -11,6 +11,7 @@ import { Spinner } from "@heroui/react";
 
 const SignUp = () => {
   const { user, signup_user } = userStore();
+  console.log("user", user);
   const {
     register,
     handleSubmit,

@@ -1,8 +1,9 @@
 import triangle from "../../../assets/images/triangle.svg";
 import CommonContainer from "../../../common/CommonContainer";
 import SapceBottom from "../../../common/SapceBottom";
+import OurCourseCard from "./OurCourseCard";
 
-import OurCourseCard from "./ourCourseCard";
+
 import OurCourseCardOpsite from "./OurCourseCardOpsite";
 
 const OurCourse = () => {

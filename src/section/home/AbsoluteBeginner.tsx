@@ -27,15 +27,15 @@ const AbsoluteBeginner = () => {
         </div>
    </div>
    </SapceBottom>
-            <div className="w-[85%] mx-auto pt-5">
+            <div className=" mx-auto pt-5">
                 <div className=" md:flex gap-3">
-                    <div className="md:w-1/2 p-3 w-full flex md:justify-center">
+                    <div className="md:w-1/2 p-3 w-full flex justify-center">
                         <img src={mobile} alt="" className="md:h-[600px] h-[300px]" />
                     </div>
                     <div className=" md:w-1/2 w-full p-5">
                         <h2 className=" relative md:pb-10 pb-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-5xl text-3xl font-extrabold">Our Mobile App</h2>
-                            <div className=" bg-custom-gradient p-11 rounded-[30px] gap-2 ">
-                              <div className="md:flex ">
+                            <div className=" bg-custom-gradient min-w-[1080] p-11 rounded-[30px] gap-2 ">
+                              <div className="flex flex-col lg:flex-row">
                               <AbsoluteCard icon={FaPlus} value="150" label="Worldwide Learners!" />
                                    <AbsoluteCard icon={star} value="75%" label=" Positive Reviews" />
                                   <AbsoluteCard icon={FaPlus} value="500" label=" Skill based Courses" />

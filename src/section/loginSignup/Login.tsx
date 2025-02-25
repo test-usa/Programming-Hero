@@ -35,9 +35,9 @@ const Login = () => {
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
             )}
-            <div className="flex items-center  p-4 rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
+            <div className="flex items-center  rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
               <input
-                className="w-full outline-none  bg-[#131237]"
+                className="w-full outline-none p-4 rounded-lg bg-[#131237]"
                 {...register("password")}
                 type={showText ? "text" : "password"}
                 placeholder="Password"
