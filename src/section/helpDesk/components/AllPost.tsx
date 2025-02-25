@@ -17,7 +17,7 @@ const AllPost = () => {
     <CommonContainer>
       <div className="flex flex-col-reverse lg:flex-row gap-6 w-full py-4">
         {/* Left Side: Post Input */}
-        <div className="w-full lg:w-2/3 lg:h-full bg-white p-5 rounded-xl shadow-md items-start h-full">
+        <div className="w-full lg:w-2/3 lg:h-full bg-white p-5 rounded-xl items-start h-full border-1">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <FaUserCircle className="text-gray-500 text-6xl" />
