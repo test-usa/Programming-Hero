@@ -3,10 +3,9 @@ import MainLayout from "./layout/MainLayout";
 import { ToastContainer } from "react-toastify";
 import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
-
 const App = () => {
   const { updateUser, token } = userStore();
-
+  console.log("user", token);
   const Axios = useAxiosSecure();
   useEffect(() => {
     const userAuthentication = async () => {
