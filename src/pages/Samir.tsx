@@ -182,7 +182,7 @@ const instructorMenuItems = [
 
 const Samir = () => {
   // Determine the user's role (this can come from your authentication system or context)
-  const userRole = "instructor"; // Example: 'student', 'admin', 'superAdmin', or 'instructor'
+  const userRole = "student"; // Example: 'student', 'admin', 'superAdmin', or 'instructor'
 
   // Choose the appropriate menu items based on the user's role
   const menuItems =
