@@ -24,7 +24,7 @@ const HelpDeskCategory = () => {
 
   return (
     <CommonContainer>
-      <div className="flex border-b border-gray-300 w-full overflow-x-auto py-5 gap-4">
+      <div className="flex flex-col md:flex-row border-b border-gray-300 w-full overflow-x-auto py-5 gap-4">
         {tabs.map((tab) => {
           const isActive = location.pathname.includes(tab.name);
 
@@ -57,31 +57,3 @@ const HelpDeskCategory = () => {
 };
 
 export default HelpDeskCategory;
-
-// {activeTab === "all-post" && (
-//   <Link to={"all-post"}>
-//     <AllPost />
-//   </Link>
-// )}
-// {activeTab === "roadmap" && (
-//   <Link to={"/roadmap"}>
-//     <Roadmap roadmapItems={roadmapItems} />
-//   </Link>
-// )}
-// {activeTab === "/release-log" && (
-//   <Link to={"release-log"}>
-//     <ReleaseLog />
-//   </Link>
-// )}
-// {activeTab === "/feature-request" && (
-//   <Link to={"feature-request"}>
-//     <FeatureRequest />
-//   </Link>
-// )}
-
-// onClick={() => setActiveTab(tab.name)}
-// className={`flex items-center gap-2 px-4 py-3 cursor-pointer border-b-2 transition ${
-//   isActive
-//     ? "border-[#cb43c2] text-[#cb43c2] font-semibold"
-//     : "border-transparent text-gray-600"
-// } hover:text-[#cb43c2]`}
