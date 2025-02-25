@@ -5,10 +5,12 @@ import { Avatar } from "@heroui/react";
 import { NavLink } from "react-router-dom";
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
+import CustomModal from "../course-details/Modal";
 
 const CourseNav = () => {
   const [menu, setMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const menuItems = [
     { href: "/", path: "Conceptual Crackers" },
@@ -44,7 +46,6 @@ const CourseNav = () => {
             </p>
           </div>
 
-          {/* Mobile User Avatar & Greeting */}
           <section className="flex items-center gap-x-3 lg:hidden">
             <Avatar
               src="https://i.pravatar.cc/150?u=a04258114e29026702d"
@@ -54,7 +55,6 @@ const CourseNav = () => {
           </section>
 
           <div className="items-center gap-6 text-sm flex">
-            {/* Desktop Menu */}
             <span className="space-x-4 hidden lg:block">
               {menuItems.map((item) => (
                 <NavLink key={item.path} className="text-lg" to={item.href}>
@@ -65,12 +65,11 @@ const CourseNav = () => {
 
             <div className="flex items-center gap-x-5">
               <VscBell className="text-2xl" />
-              <section className="bg-green-200 rounded-3xl px-4 py-1.5 flex items-center gap-x-2">
+              <section className="bg-green-200 rounded-3xl md:px-4 px-4 py-2 md:py-2 flex items-center justify-center gap-x-2">
                 <img src={gemIcon} className="w-6 h-6" />
-                <p className="font-semibold text-black text-xl">115</p>
+                <p className="font-semibold text-black md:text-xl text-lg">115</p>
               </section>
 
-              {/* Mobile Menu Button */}
               <span
                 onClick={() => setMenu(true)}
                 className="text-3xl cursor-pointer lg:hidden"
@@ -78,7 +77,10 @@ const CourseNav = () => {
                 <RiMenu2Fill />
               </span>
 
-              <button className="px-3 py-2 text-lg rounded-md hidden lg:block font-semibold text-white bg-custom-gradient hover:brightness-125">
+              <button 
+                className="px-3 py-2 text-lg rounded-md hidden lg:block font-semibold text-white bg-custom-gradient hover:brightness-125"
+                onClick={() => setIsModalOpen(true)}
+              >
                 Enroll Now
               </button>
 
@@ -91,15 +93,13 @@ const CourseNav = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {menu && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-20" onClick={() => setMenu(false)}></div>
       )}
 
-      {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-[rgba(249,247,243,0.5)] text-white shadow-lg transform ${
-          menu ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-white text-[#010313] h-full shadow-lg transform ${
+          menu ? "translate-x-0 border " : "translate-x-full"
         } transition-transform duration-300 z-30`}
       >
         <button
@@ -121,6 +121,8 @@ const CourseNav = () => {
           ))}
         </nav>
       </div>
+
+      <CustomModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

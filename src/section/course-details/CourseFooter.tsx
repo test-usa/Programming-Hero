@@ -17,7 +17,7 @@ const CourseFooter = () => {
               {/* Office Address */}
               <div className="space-y-4 text-center md:text-left">
                 <p className="text-lg font-semibold">Office Address</p>
-                <section className="text-sm md:text-base">
+                <section className="text-base">
                   <p>Level-4, 34, Awal Centre, Banani, Dhaka</p>
                   <p>Helpline: 01322901105 , 01332-502004</p>
                   <p>Support: web@programming-hero.com</p>
@@ -28,7 +28,7 @@ const CourseFooter = () => {
               {/* Useful Links */}
               <div className="space-y-4 text-center md:text-left">
                 <p className="text-lg font-bold">Useful Links</p>
-                <section className="flex flex-col gap-2 md:gap-3 font-semibold text-sm md:text-base">
+                <section className="flex flex-col gap-2 md:gap-3 font-semibold text-base">
                   <Link to="/">Blog</Link>
                   <Link to="/">Success</Link>
                   <Link to="/about">About Us</Link>

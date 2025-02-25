@@ -2,8 +2,22 @@ import { FiEye } from "react-icons/fi";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { userStore } from "../../store/UserStore";
+import { loginSchema, TsigninSchema } from "../../types/Types";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 const Login = () => {
+  const { loginUser } = userStore();
   const [showText, setShowText] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<TsigninSchema>({ resolver: zodResolver(loginSchema) });
+
+  const submitFormToSever = async (data: TsigninSchema) => {
+    loginUser(data);
+  };
   return (
     <div className="w-full flex flex-col md:block items-center justify-center py-16">
       <h2 className="self-start py-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent text-7xl">
@@ -14,18 +28,23 @@ const Login = () => {
           <div className="flex flex-col w-full gap-4">
             <input
               className="w-full p-4 bg-[#131237]  outline-none  rounded-lg border border-transparent  focus-within:border-[#405aff]"
+              {...register("email")}
               type="email"
-              name=""
               placeholder="Email"
             />
-            <div className="flex items-center  p-4 rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
+            <div className="flex items-center  rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
               <input
-                className="w-full outline-none  bg-[#131237]"
+                className="w-full outline-none p-4 rounded-lg bg-[#131237]"
+                {...register("password")}
                 type={showText ? "text" : "password"}
-                name=""
-                id=""
                 placeholder="Password"
               />
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
               <span className="text-xl cursor-pointer">
                 {showText ? (
                   <FiEye
@@ -46,14 +65,17 @@ const Login = () => {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <input type="checkbox" />
-              <label htmlFor="">Remember Me</label>
+              <label className=" text-xs md:text-lg">Remember Me</label>
             </div>
-            <button className=" border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
+            <button className="text-xs md:text-lg border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
               Forgot Password
             </button>
           </div>
 
-          <button className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all ">
+          <button
+            onClick={handleSubmit(submitFormToSever)}
+            className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all "
+          >
             Login
           </button>
           <div className="flex items-center gap-2">

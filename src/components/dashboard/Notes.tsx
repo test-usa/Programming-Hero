@@ -5,7 +5,7 @@ import Slate from "./Slate";
 const Notes = () => {
   const [action, setAction] = useState<string | null>(null);
   return (
-    <div className="bg-[#0D0E1F] p-8 rounded-lg  ">
+    <div className="bg-[#0D0E1F] rounded-lg  ">
       <Form
         className="w-full flex flex-col gap-4"
         validationBehavior="native"
