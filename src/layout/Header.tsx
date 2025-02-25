@@ -9,6 +9,8 @@ const Header = () => {
   const [menu, setMenu] = useState(false);
   const { user, token, logOutUser } = userStore();
   const navigate = useNavigate();
+
+  console.log("token", token);
   return (
     <CommonContainer>
       <div className=" font-Grotesk">
@@ -28,7 +30,7 @@ const Header = () => {
             <NavLink to="/mehedi">mehedi</NavLink>
             <NavLink to="/eitty">eitty</NavLink>
             <NavLink to="/himel/all-post">himel</NavLink>
-            {token! ? (
+            {token ? (
               <button
                 onClick={() => {
                   logOutUser();
