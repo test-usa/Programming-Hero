@@ -1,56 +1,52 @@
 import React, { useState } from "react";
 import CommonContainer from "../../../common/CommonContainer";
 import { BsFillFileEarmarkPostFill } from "react-icons/bs";
-import { FaRoad } from "react-icons/fa6";
+import { FaRoad } from "react-icons/fa";
 import { GoRocket } from "react-icons/go";
 import { CiViewList } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Roadmap from "./Roadmap";
+import ReleaseLog from "./ReleaseLog";
+import FeatureRequest from "./FeatureRequest";
+import AllPost from "./AllPost";
+
+// Define your roadmapItems array here
+
+const tabs = [
+  { name: "all-post", label: "All Posts", icon: BsFillFileEarmarkPostFill },
+  { name: "roadmap", label: "Roadmap", icon: FaRoad },
+  { name: "release-log", label: "Release Log", icon: GoRocket },
+  { name: "feature-request", label: "Feature Request", icon: CiViewList },
+];
 
 const HelpDeskCategory = () => {
-  const [activeCategory, setActiveCategory] = useState("all-post");
+  const location = useLocation(); // Get the current route
 
   return (
     <CommonContainer>
-      <div className="md:flex gap-5 mt-5 cursor-pointer border border-gray-300 p-2 text-2xl rounded">
-        {[
-          {
-            name: "all-post",
-            label: "All Post",
-            icon: BsFillFileEarmarkPostFill,
-          },
-          { name: "roadmap", label: "Roadmap", icon: FaRoad },
-          { name: "release-log", label: "Release log", icon: GoRocket },
-          {
-            name: "feature-request",
-            label: "Feature Request",
-            icon: CiViewList,
-          },
-        ].map((item) => {
-          const isActive = activeCategory === item.name;
+      <div className="flex flex-col md:flex-row border-b border-gray-300 w-full overflow-x-auto py-5 gap-4">
+        {tabs.map((tab) => {
+          const isActive = location.pathname.includes(tab.name);
+
           return (
-            <div
-              key={item.name}
-              onClick={() => setActiveCategory(item.name)}
-              className={`flex items-center gap-2 p-2 rounded transition ${
-                isActive ? " text-white" : "text-gray-700"
-              }`}
-            >
-              <span
-                className={`text-2xl transition ${
-                  isActive ? "text-[#E352DE]" : "text-gray-700"
-                }`}
-              >
-                <item.icon />
-              </span>
-              <Link
-                to={item.name}
-                className={`transition ${
+            <div key={tab.name} className="flex items-center gap-2">
+              <tab.icon
+                className={`text-lg ${
                   isActive
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-[#cb43c2] to-[#0f16f1]"
-                    : "text-gray-700"
+                    ? "border-[#cb43c2] text-[#cb43c2] font-semibold"
+                    : "border-transparent text-gray-600"
                 }`}
-              >
-                {item.label}
+              />
+              <Link to={tab.name}>
+                <button
+                  className={`px-1 text-lg py-2 rounded transition-colors duration-300 ${
+                    isActive
+                      ? "border-[#cb43c2] text-[#cb43c2] font-semibold"
+                      : "border-transparent text-gray-600"
+                  }`}
+                >
+                  {tab.label}
+                </button>
               </Link>
             </div>
           );

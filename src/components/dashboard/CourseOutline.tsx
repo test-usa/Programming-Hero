@@ -30,7 +30,7 @@ const CourseOutline = ({
         <div className="w-[60%] flex items-center gap-x-3">
           <div
             className="w-[100%] h-2 rounded-lg bg-gradient-to-r from-green-500 to-green-300"
-            style={{ width: `${100}%` }} // You can dynamically change this width
+            style={{ width: `${100}%` }}
           ></div>
           <p className="text-[#EAAAFF]">11/11</p>
         </div>

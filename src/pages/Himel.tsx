@@ -1,14 +1,13 @@
 import HelpDeskCategory from "../section/helpDesk/components/HelpDeskCategory";
-import PostType from "../section/helpDesk/components/PostType";
-import HelpDesk from "../section/helpDesk/HelpDesk";
 import HelpDeskHeader from "../section/helpDesk/HelpDeskHeader";
+import { Outlet } from "react-router-dom";
 
 const Himel = () => {
   return (
     <div>
       <HelpDeskHeader></HelpDeskHeader>
       <HelpDeskCategory></HelpDeskCategory>
-      <PostType></PostType>
+      <Outlet />
     </div>
   );
 };
