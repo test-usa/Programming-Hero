@@ -1,4 +1,4 @@
-import triangle from "../../../assets/images/triangle.svg";
+
 import CommonContainer from "../../../common/CommonContainer";
 import SapceBottom from "../../../common/SapceBottom";
 import OurCourseCard from "./OurCourseCard";
@@ -12,16 +12,15 @@ const OurCourse = () => {
       <div className="bg-black p-5">
         <CommonContainer>
           
-     
-        <div className="flex items-center justify-between ">
+        <SapceBottom> 
+        <div className="flex items-center justify-center  ">
           <h2 className=" relative text-center bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-7xl text-4xl after:absolute after:bg-text-gradient after:inset-0 after:h-2  after:w-[10%] after:mx-auto after:top-20">
             Our Courses_
           </h2>
-          <div>
-            <img src={triangle} alt="" />
-          </div>
-        </div>
         
+        </div>
+        </SapceBottom>
+       
         <SapceBottom>
         <OurCourseCard/>
         </SapceBottom>
