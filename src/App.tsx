@@ -3,36 +3,34 @@ import MainLayout from "./layout/MainLayout";
 import { ToastContainer } from "react-toastify";
 import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
+
 const App = () => {
   const { setUser, user, token } = userStore();
 
   const Axios = useAxiosSecure();
-  useEffect(() => {
-    const userAuthentication = async () => {
-      console.log("main file render");
-      try {
-        const response = await Axios.get("/user/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (response.data) {
-          setUser(response.data);
-        }
-      } catch (error) {
-        console.error("Error user authentication:", error);
+  console.log("user-------", user);
+  const fetchUser = async () => {
+    console.log("main file render");
+    try {
+      const response = await Axios.get("/user/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data) {
+        setUser(response.data);
       }
-    };
-
-    if (token) {
-      userAuthentication();
+    } catch (error) {
+      console.error("Error user authentication:", error);
     }
-  }, [token, setUser]);
+  };
+
+  useEffect(() => {
+    if (token) {
+      fetchUser();
+    }
+  }, [token]);
   return (
     <>
-      <ToastContainer
-        // toastStyle={{ color: "#fff", backgroundColor: "#405aff" }}
-        theme="dark"
-        autoClose={3000}
-      />
+      <ToastContainer position="bottom-left" theme="dark" autoClose={3000} />
       <MainLayout />
     </>
   );
