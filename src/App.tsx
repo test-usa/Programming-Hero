@@ -3,8 +3,11 @@ import MainLayout from "./layout/MainLayout";
 import { ToastContainer } from "react-toastify";
 import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 const App = () => {
   const { updateUser, token } = userStore();
+  const stripePromise = loadStripe("pk_test_51QshxRDCuwY7X1ekWucBpXSXbuTKO1ZUnHemwAGukdk8z7ZafMYPh70OO55C0DUntcj0AlDqLbRc8VWNwpJ7a8xA0036PrwSWD")
   console.log("user", token);
   const Axios = useAxiosSecure();
   useEffect(() => {
@@ -27,8 +30,10 @@ const App = () => {
   }, [token, Axios]);
   return (
     <>
+    <Elements stripe={stripePromise}>
       <ToastContainer />
       <MainLayout />
+    </Elements>
     </>
   );
 };
