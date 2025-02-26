@@ -5,7 +5,7 @@ import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import { RiMenu2Fill } from "react-icons/ri";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
 
@@ -17,6 +17,7 @@ const DashNavbar = () => {
     href: string;
     path: string;
   };
+
 
   const menuItems: muneItems[] = [
     {
@@ -45,12 +46,12 @@ const DashNavbar = () => {
     <CommonContainer>
       <div className="pt-3 font-Grotesk">
         <div className="flex items-center justify-between w-full text-white">
-          <div className="hidden lg:flex items-center">
+          <Link to="/" className="hidden lg:flex items-center">
             <img className="" src={logo} alt="logo" />
             <p className="hidden -ml-4 text-lg font-bold text-white md:block">
               Programming Hero
             </p>
-          </div>
+          </Link>
           <section className="flex items-center gap-x-3 lg:hidden">
             <Avatar
               src="https://i.pravatar.cc/150?u=a04258114e29026702d"
