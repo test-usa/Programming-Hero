@@ -13,8 +13,6 @@ import CardComponent from "./CardComponent";
 import Categories from "./Categories";
 
 const AllPost = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("All Posts");
-
   return (
     <CommonContainer>
       <div className="flex flex-col-reverse lg:flex-row gap-6 w-full py-4">
@@ -48,7 +46,7 @@ const AllPost = () => {
         {/* Right Side: Categories */}
         <Categories />
       </div>
-      <div className="flex justify-between items-center lg:w-2/3">
+      <div className="flex flex-col md:flex-row justify-between items-center lg:w-2/3">
         <div className="flex gap-2 py-2 ">
           <div>
             <CustomButton1
@@ -80,7 +78,7 @@ const AllPost = () => {
               onClick={() => alert("Launching! 🚀")}
             />
           </div>
-          <div className="text-2xl">
+          <div className="text-2xl cursor-pointer">
             <IoReload />
           </div>
         </div>

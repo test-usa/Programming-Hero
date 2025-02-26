@@ -4,15 +4,18 @@ import { FaRegComment } from "react-icons/fa6";
 import { PiAndroidLogoLight } from "react-icons/pi";
 import { FaBookOpen } from "react-icons/fa";
 import CommonContainer from "../../../common/CommonContainer";
+import profile from "../photo/profile.jpg";
 
 const CardComponent = () => {
   return (
     <CommonContainer>
-      <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 w-full pt-5">
+      <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 w-full pt-5 hover:bg-slate-100">
         {/* User Info */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+            <div className="w-10 h-10 bg-gray-300 rounded-full">
+              <img className="w-10 h-10 rounded-full" src={profile} alt="" />
+            </div>
             <div>
               <h3 className="text-gray-900 font-semibold text-sm">
                 Mohammad Nazmul Ahassan
@@ -43,7 +46,7 @@ const CardComponent = () => {
         </div>
 
         {/* Footer Section */}
-        <div className="mt-3 flex justify-between text-gray-500 text-sm">
+        <div className="mt-3 flex flex-col md:flex-row justify-between text-gray-500 text-sm">
           <div className="flex items-center gap-2">
             <FaRegComment />
             <span>0 Comments</span>

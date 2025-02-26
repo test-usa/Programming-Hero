@@ -72,7 +72,7 @@ const SuccesStory = () => {
             
              <TestimonialCard
             name="Shaif Shajed Tonoy"
-            position=" MERN Stack Developer"
+            position="MERN Stack Developer"
             company="Antopolis"
             imageUrl={student2}
             message="Programming Hero is not just a course. It is a complete guideline for the career. If you are determined, you'll surely get a path In Sha Allah. You will learn from scratch and becomes an entry-level developer. Thanks to Almighty Allah for making me suitable for a journey with Programming Hero."

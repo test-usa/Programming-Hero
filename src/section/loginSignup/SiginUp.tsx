@@ -7,14 +7,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, TsignupSchema } from "../../types/Types";
 import { userStore } from "../../store/UserStore";
+import { Spinner } from "@heroui/react";
 
 const SignUp = () => {
   const { user, signup_user } = userStore();
+  console.log("user", user);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<TsignupSchema>({ resolver: zodResolver(signupSchema) });
+
+  console.log("isSubmitting", isSubmitting);
 
   const [showText, setShowText] = useState(false);
   const [conshowText, setConShowText] = useState(false);
@@ -120,14 +124,16 @@ const SignUp = () => {
             <input type="checkbox" />
             <label htmlFor=" ">I agree to theterms and conditions</label>
           </div>
-
-          <button
-            disabled={isSubmitting}
-            onClick={handleSubmit(submitFormToSever)}
-            className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all  disabled:cursor-wait"
-          >
-            Register
-          </button>
+          {isSubmitting ? (
+            <Spinner color="warning" size="lg" />
+          ) : (
+            <button
+              onClick={handleSubmit(submitFormToSever)}
+              className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all  disabled:cursor-wait"
+            >
+              Register
+            </button>
+          )}
 
           <div className="flex items-center gap-2">
             <p className="text-sm">Already have an account?</p>
