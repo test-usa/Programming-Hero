@@ -16,9 +16,14 @@ import {
   BookOpen,
   ShoppingBag,
   CheckCircle,
+  Users,
+  FileText,
+  PlusCircle,
+  Book,
 } from "lucide-react";
 
-const menuItems = [
+// Define menu items for different roles
+const studentMenuItems = [
   {
     path: "/dashboard/profile",
     label: "My Profile",
@@ -99,12 +104,101 @@ const menuItems = [
   },
 ];
 
+const adminMenuItems = [
+  {
+    path: "/dashboard/profile",
+    label: "My Profile",
+    icon: <User size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/admins",
+    label: "Admins",
+    icon: <Users size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/instructors",
+    label: "Instructors",
+    icon: <Users size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/students",
+    label: "Students",
+    icon: <Users size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/create-instructor",
+    label: "Create Instructor",
+    icon: <PlusCircle size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/courses",
+    label: "Courses",
+    icon: <FileText size={18} />,
+    completed: true,
+  },
+];
+
+const superAdminMenuItems = [
+  ...adminMenuItems.filter((item) => item.label !== "Create Instructor"), // Exclude "Create Instructor"
+  {
+    path: "/dashboard/create-user",
+    label: "Create User",
+    icon: <PlusCircle size={18} />,
+    completed: true,
+  },
+];
+
+const instructorMenuItems = [
+  {
+    path: "/dashboard/profile",
+    label: "My Profile",
+    icon: <User size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/courses",
+    label: "Courses",
+    icon: <Book size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/create-course",
+    label: "Create Course",
+    icon: <PlusCircle size={18} />,
+    completed: true,
+  },
+  {
+    path: "/dashboard/students",
+    label: "All Students",
+    icon: <Users size={18} />,
+    completed: true,
+  },
+];
+
 const Samir = () => {
+  // Determine the user's role (this can come from your authentication system or context)
+  const userRole = "student"; // Example: 'student', 'admin', 'superAdmin', or 'instructor'
+
+  // Choose the appropriate menu items based on the user's role
+  const menuItems =
+    userRole === "admin"
+      ? adminMenuItems
+      : userRole === "superAdmin"
+      ? superAdminMenuItems
+      : userRole === "instructor"
+      ? instructorMenuItems
+      : studentMenuItems;
+
   return (
     <main className="bg-[#010313] w-full">
       <DashNavbar />
       <CommonContainer>
-        <section className="mx-auto grid  lg:grid-cols-4 gap-7 mt-5">
+        <section className="mx-auto grid lg:grid-cols-4 gap-7 mt-5 mb-14">
           {/* Sidebar */}
           <div className="lg:col-span-1 bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
             {/* Profile Section */}

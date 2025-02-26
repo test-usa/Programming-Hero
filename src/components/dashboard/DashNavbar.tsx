@@ -1,24 +1,13 @@
-// import {
-//   Navbar,
-//   NavbarBrand,
-//   NavbarContent,
-//   NavbarItem,
-//   NavbarMenu,
-//   NavbarMenuItem,
-//   NavbarMenuToggle,
-// } from "@heroui/navbar";
 import CommonContainer from "../../common/CommonContainer";
 import { VscBell } from "react-icons/vsc";
-import { IoDiamondOutline } from "react-icons/io5";
+
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import { RiMenu2Fill } from "react-icons/ri";
-import MobileMenu from "../../section/home/MobileMenu";
+
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Avatar, Button } from "@heroui/react";
-// import { useState } from "react";
-// import { Button, Link } from "@heroui/react";
+import { Avatar } from "@heroui/react";
 
 const DashNavbar = () => {
   //   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,7 +87,6 @@ const DashNavbar = () => {
           </div>
         </div>
       </div>
-      
     </CommonContainer>
   );
 };

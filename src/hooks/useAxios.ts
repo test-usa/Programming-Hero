@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 // add baseUrl with axios;
 const axiosSecure = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URl,
-  withCredentials: true,
+  baseURL: import.meta.env.VITE_BACKEND_URL,
+  withCredentials: false,
 });
 // add axios hook
 const useAxiosSecure = () => {

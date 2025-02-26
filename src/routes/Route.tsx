@@ -19,12 +19,21 @@ import ImportantLinks from "../section/dashboard/ImportantLinks";
 import SkillSet from "../section/dashboard/SkillSet";
 import Level2Goal from "../section/dashboard/Level2Goal";
 import Certification from "../section/dashboard/Certification";
+import CreateUser from "../section/dashboard/superAdmin/CreateUser";
+import Courses from "../section/dashboard/superAdmin/Courses";
+import Admins from "../section/dashboard/superAdmin/Admins";
+import Students from "../section/dashboard/superAdmin/Students";
+import CreateInstructor from "../section/dashboard/admin/createInstructor";
 import OrderHistory from "../section/dashboard/OrderHistory";
 import CourseRequest from "../section/dashboard/CourseRequest";
 import JobExperience from "../section/dashboard/JobExperience";
 import JobProfile from "../section/dashboard/JobProfile";
 import GotHired from "../section/dashboard/GotHired";
 import Samir from "../pages/Samir";
+import AllPost from "../section/helpDesk/components/AllPost";
+import Roadmap from "../section/helpDesk/components/Roadmap";
+import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
+import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +76,24 @@ const routes = createBrowserRouter([
       {
         path: "/himel",
         element: <Himel />,
+        children: [
+          {
+            path: "all-post",
+            element: <AllPost />,
+          },
+          {
+            path: "roadmap",
+            element: <Roadmap />,
+          },
+          {
+            path: "release-log",
+            element: <ReleaseLog />,
+          },
+          {
+            path: "feature-request",
+            element: <FeatureRequest />,
+          },
+        ],
       },
       {
         path: "/login",
@@ -93,6 +120,12 @@ const routes = createBrowserRouter([
           { path: "course-request", element: <CourseRequest /> },
           { path: "order-history", element: <OrderHistory /> },
           { path: "certification", element: <Certification /> },
+          { path: "create-user", element: <CreateUser /> },
+          { path: "courses", element: <Courses /> },
+          { path: "admins", element: <Admins /> },
+          { path: "instructors", element: <Admins /> },
+          { path: "students", element: <Students /> },
+          { path: "create-instructor", element: <CreateInstructor /> },
         ],
       },
     ],
