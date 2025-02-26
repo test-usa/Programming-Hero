@@ -31,6 +31,7 @@ import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 import BlogDetails from "../pages/BlogDetails";
 
+
 const routes = createBrowserRouter([
   {
     path: "/",
