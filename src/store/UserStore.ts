@@ -4,35 +4,36 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { persist } from "zustand/middleware";
+
 const token = Cookies.get("user");
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
 });
 
-export const userStore = create<TuserStore>()(
-  persist(
+
+  export const userStore = create<TuserStore>()(
+    // persist(
     (set) => ({
       user: null,
+      token,
       signup_user: async (data: TsignupSchema) => {
         try {
           const response = await axiosSecure.post("/auth/register", data);
-          console.log("response", response);
+          console.log("response sign sdfkjsa", response);
           if (response.data.success) {
             toast.success(response.data.message);
           }
           if (response.data.error) {
             toast.error(response.data.message);
           }
-          return set((state) => (state.user = response.data));
         } catch (error) {
           console.log("Problem during Signup", error);
         }
       },
       loginUser: async (data: TsigninSchema) => {
         try {
-          const response = await axiosSecure.post("/auth/logins", data);
-          console.log("responsresponseresponsee", response);
+          const response = await axiosSecure.post("/auth/login", data);
           if (response.data.success) {
             toast.success(response.data.message);
           }
@@ -45,15 +46,13 @@ export const userStore = create<TuserStore>()(
           throw error;
         }
       },
-      updateUser: async (newUser: object) => {
+      setUser: async (newUser: object) => {
         set({ user: newUser });
       },
       logOutUser: () => {
         Cookies.remove("user");
         set({ user: null });
       },
-      token,
-    }),
-    { name: "user-details" }
-  )
-);
+    })
+    // { name: "user-details" }
+  );

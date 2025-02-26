@@ -1,30 +1,36 @@
 import { FiEye } from "react-icons/fi";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bd from "../../assets/images/BD.svg";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, TsignupSchema } from "../../types/Types";
 import { userStore } from "../../store/UserStore";
 import { Spinner } from "@heroui/react";
+import { useMutation } from "@tanstack/react-query";
 
 const SignUp = () => {
-  const { user, signup_user } = userStore();
-  console.log("user", user);
+  const { signup_user } = userStore();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<TsignupSchema>({ resolver: zodResolver(signupSchema) });
 
-  console.log("isSubmitting", isSubmitting);
+  const { mutate, isPending } = useMutation({
+    mutationFn: signup_user,
+    onSuccess: () => {
+      navigate("/login");
+    },
+  });
 
   const [showText, setShowText] = useState(false);
   const [conshowText, setConShowText] = useState(false);
 
   const submitFormToSever = async (data: TsignupSchema) => {
-    signup_user(data);
+    mutate(data);
   };
 
   return (
@@ -93,10 +99,10 @@ const SignUp = () => {
                 )}
               </span>
             </div>
-            <div className="flex items-center  p-4 rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
+            <div className="flex items-center  rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
               <input
                 {...register("confirmPassword")}
-                className="w-full outline-none bg-[#131237]"
+                className="w-full outline-none bg-[#131237] p-4 rounded-lg"
                 type={showText ? "text" : "password"}
                 placeholder="Confirm Password"
               />
@@ -124,16 +130,13 @@ const SignUp = () => {
             <input type="checkbox" />
             <label htmlFor=" ">I agree to theterms and conditions</label>
           </div>
-          {isSubmitting ? (
-            <Spinner color="warning" size="lg" />
-          ) : (
-            <button
-              onClick={handleSubmit(submitFormToSever)}
-              className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all  disabled:cursor-wait"
-            >
-              Register
-            </button>
-          )}
+
+          <button
+            onClick={handleSubmit(submitFormToSever)}
+            className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all  disabled:cursor-wait"
+          >
+            {isPending ? <Spinner color="warning" size="sm" /> : " Register"}
+          </button>
 
           <div className="flex items-center gap-2">
             <p className="text-sm">Already have an account?</p>

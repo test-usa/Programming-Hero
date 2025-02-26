@@ -19,7 +19,12 @@ const LoginHeader = () => {
           <NavLink to="/about">About us</NavLink>
           <NavLink to="/blog">blog</NavLink>
           <NavLink to="/success">Success</NavLink>
-          <NavLink to="/login">login</NavLink>
+          <NavLink
+            to="/login"
+            className="px-6 py-2 rounded-xl bg-custom-gradient"
+          >
+            Login
+          </NavLink>
         </div>
 
         <span
