@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "company": "EMYTHMAKERS.COM",
+      "name": "Md Abdullah Al Noman",
+      "role": "Software Engineer (Full-Time Intern)",
+      "quote": "আমি যখন প্রার্থী হিসেবে সম্পর্কে সম্পকে জানি তখনই প্রথম ব্যাচের সাথে কোর্স...",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Favatar-face&psig=AOvVaw3sBmQohkXHmlYZwjj-TQnR&ust=1740656283701000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCJ2pOg4YsDFQAAAAAdAAAAABAE",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 2,
+      "company": "TECHFORING LTD.",
+      "name": "Md. Alamin Ul Islam",
+      "role": "Front-End Developer (Full-Time)",
+      "quote": "Programming Hero team helps me to make my basic strong and keep me busy wit...",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-photos%2Fimage&psig=AOvVaw1Jwo52k6zjWJVQNzw4P50g&ust=1740656095559000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODr8bSf4YsDFQAAAAAdAAAAABAE",
+      "batch": "Batch 2"
+    }
+  ]
+  

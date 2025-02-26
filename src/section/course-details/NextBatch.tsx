@@ -108,7 +108,7 @@ const NextBatch = () => {
 
               <div className=" flex flex-col justify-center items-center mt-10">
               <div
-                className=" h-[450px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover left-[500px] md:mt-0 mt-3"
+                className="md:w-[80%] h-[500px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover  md:mt-0 mt-3"
                 style={{ backgroundImage: `url(${vedioImg})` }} >
                 <div>
                   {!showVideo && (
