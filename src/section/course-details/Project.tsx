@@ -17,7 +17,7 @@ const Project = () => {
   return (
     <div className="bg-gradient-to-b from-[#241031] to-[#040416] p-2 ">
       <CommonContainer>
-        <div className="md:mt-[250px] md:flex gap-4 md:px-[100px] p-7">
+        <div className="flex gap-4  p-7">
           {/* 950+ Videos Section */}
           <div
             className={`md:w-[32%] w-full bg-[#2D123C] p-5 pr-10 rounded-lg border-[1px] border-t-[#8B348E] border-x-[#8B348E] border-b-0 transition-all duration-300 mt-3 md:mt-0 ${isExpandedV ? "h-auto" : " md:h-[250px] h-[400px] overflow-hidden"
