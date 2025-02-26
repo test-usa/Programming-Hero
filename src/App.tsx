@@ -4,17 +4,18 @@ import { ToastContainer } from "react-toastify";
 import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
 const App = () => {
-  const { updateUser, token } = userStore();
-  console.log("user", token);
+  const { setUser, user, token } = userStore();
+
   const Axios = useAxiosSecure();
   useEffect(() => {
     const userAuthentication = async () => {
+      console.log("main file render");
       try {
         const response = await Axios.get("/user/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (response.data) {
-          updateUser(response.data);
+          setUser(response.data);
         }
       } catch (error) {
         console.error("Error user authentication:", error);
@@ -24,10 +25,14 @@ const App = () => {
     if (token) {
       userAuthentication();
     }
-  }, [token, Axios]);
+  }, [token, setUser]);
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        // toastStyle={{ color: "#fff", backgroundColor: "#405aff" }}
+        theme="dark"
+        autoClose={3000}
+      />
       <MainLayout />
     </>
   );
