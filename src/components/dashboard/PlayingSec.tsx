@@ -18,7 +18,6 @@ const PlayingSec = ({ url, name }: { url: string; name: string }) => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
 
-
   // SET CURRENT TAB --
   const handleChangeTabs = (numbers: number): void => {
     setTabs(numbers);
@@ -33,7 +32,12 @@ const PlayingSec = ({ url, name }: { url: string; name: string }) => {
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
       <section className="max-h-[500px]">
-        <ReactPlayer url={url} controls width="100%" height="500px" />
+        <ReactPlayer
+          url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
+          controls
+          width="100%"
+          height="500px"
+        />
       </section>
       {/* VIDEO PLAYING SECTION END */}
       {/* BUTTON START */}

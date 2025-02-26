@@ -4,15 +4,43 @@ import startCourse from "/photo/batch9.jpg";
 import secondImage from "/photo/recomended.png";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Conseptual from "./Conseptual";
-
+import Cookies from "js-cookie";
+import axios from "axios";
 const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
   const [value, setValue] = useState<number>(0);
   const [tabs, setTabs] = useState<boolean>(false);
-  console.log(tabs, "currentTabsss on");
+  const [courses, setCourses] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const token = Cookies.get("user");
+  const url = import.meta.env.VITE_BACKEND_URL;
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${url}/courses/getAll`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setLoading(true);
+        if (response.data.statusCode === 200 && response.data.success) {
+          setLoading(false);
+          setCourses(response?.data?.data);
+        }
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log("courses page", courses, loading);
+
   return (
     <CommonContainer>
       <div>
@@ -33,34 +61,40 @@ const LavelOne = () => {
                   className="w-full max-h-72 rounded-2xl object-cover"
                 />
               </div>
-              <div>
-                <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
-                  Complete Web Development Course With Jhankar Mahbub
-                </h1>
-                <p className="text-sm font-semibold text-white py-2">
-                  ঝংকার মাহবুব
-                </p>
-                <div className="w-full py-3">
-                  <Progress
-                    value={value}
-                    className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300"
-                  />
-                </div>
-                <section className="flex items-center gap-x-4 pt-4">
-                  <Link
-                    to={`/mehedi/:${85}`}
-                    className="rounded-3xl w-36 py-2 text-center text-white bg-[#6F0FEB] hover:bg-[#823cdf]"
-                  >
-                    Course Start
-                  </Link>
-                  <Button
-                    variant="secondary"
-                    className="rounded-3xl w-36 bg-gray-700 hover:bg-gray-700 text-gray-300"
-                  >
-                    Course Start
-                  </Button>
-                </section>
-              </div>
+              {courses.length > 0
+                ? courses?.map((course) => {
+                    return (
+                      <div key={course?.id}>
+                        <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
+                          {course?.title}
+                        </h1>
+                        <p className="text-sm font-semibold text-white py-2">
+                          ঝংকার মাহবুব
+                        </p>
+                        <div className="w-full py-3">
+                          <Progress
+                            value={value}
+                            className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300"
+                          />
+                        </div>
+                        <section className="flex items-center gap-x-4 pt-4">
+                          <Link
+                            to={`/mehedi/${course?.id}`}
+                            className="rounded-3xl w-36 py-2 text-center text-white bg-[#6F0FEB] hover:bg-[#823cdf]"
+                          >
+                            Course Start
+                          </Link>
+                          <Button
+                            variant="secondary"
+                            className="rounded-3xl w-36 bg-gray-700 hover:bg-gray-700 text-gray-300"
+                          >
+                            Course Start
+                          </Button>
+                        </section>
+                      </div>
+                    );
+                  })
+                : "loading"}
             </div>
             {/* SECOND CARD START */}
 
