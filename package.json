@@ -12,7 +12,7 @@
   "dependencies": {
     "@heroui/button": "^2.2.10",
     "@heroui/checkbox": "^2.3.9",
-    "@heroui/drawer": "^2.2.8",
+    "@heroui/drawer": "^2.2.11",
     "@heroui/navbar": "^2.2.9",
     "@heroui/progress": "^2.2.7",
     "@heroui/react": "^2.6.14",

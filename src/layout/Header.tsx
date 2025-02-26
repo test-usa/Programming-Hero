@@ -1,15 +1,10 @@
 import logo from "../assets/images/logo.svg";
 import CommonContainer from "../common/CommonContainer";
-import { NavLink, useNavigate } from "react-router-dom";
-import { RiMenu2Fill } from "react-icons/ri";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import MobileMenu from "../section/home/MobileMenu";
 import { userStore } from "../store/UserStore";
 const Header = () => {
-  const [menu, setMenu] = useState(false);
   const { user, logOutUser } = userStore();
-  const navigate = useNavigate();
-
   return (
     <CommonContainer>
       <div className=" font-Grotesk">
@@ -34,7 +29,7 @@ const Header = () => {
                 onClick={() => {
                   logOutUser();
                 }}
-                // className="px-10 py-2 text-xl ring-3  "
+                // className="px-10 py-2 text-xl ring-3 "
                 className="px-6 py-2 rounded-xl bg-custom-gradient "
               >
                 Logout
@@ -49,15 +44,11 @@ const Header = () => {
             )}
           </div>
 
-          <span
-            onClick={() => setMenu(true)}
-            className="text-3xl cursor-pointer lg:hidden "
-          >
-            <RiMenu2Fill />
-          </span>
+          <div className="lg:hidden">
+            <MobileMenu />
+          </div>
         </div>
       </div>
-      {menu && <MobileMenu />}
     </CommonContainer>
   );
 };
