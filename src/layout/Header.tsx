@@ -7,10 +7,9 @@ import MobileMenu from "../section/home/MobileMenu";
 import { userStore } from "../store/UserStore";
 const Header = () => {
   const [menu, setMenu] = useState(false);
-  const { user, token, logOutUser } = userStore();
+  const { user, logOutUser } = userStore();
   const navigate = useNavigate();
 
-  console.log("token", token);
   return (
     <CommonContainer>
       <div className=" font-Grotesk">
@@ -30,18 +29,23 @@ const Header = () => {
             <NavLink to="/mehedi">mehedi</NavLink>
             <NavLink to="/eitty">eitty</NavLink>
             <NavLink to="/himel/all-post">himel</NavLink>
-            {token ? (
+            {user ? (
               <button
                 onClick={() => {
                   logOutUser();
-                  navigate("/");
                 }}
-                className="bg-red-700 text-white rounded-md px-4 py-2"
+                // className="px-10 py-2 text-xl ring-3  "
+                className="px-6 py-2 rounded-xl bg-custom-gradient "
               >
                 Logout
               </button>
             ) : (
-              <NavLink to="/login">login</NavLink>
+              <NavLink
+                to="/login"
+                className="px-6 py-2 rounded-xl bg-custom-gradient"
+              >
+                Login
+              </NavLink>
             )}
           </div>
 
