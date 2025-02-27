@@ -10,7 +10,7 @@ const SuccessBanner = () => {
       <CommonContainer>
         <CommonSpace>
           <div className="">
-            <img
+            {/* <img
               src={htmlImg}
               alt="Html"
               className="lg:block md:hidden hidden w-16 absolute top-[160px] left-[160px] animate-rotated-bounce"
@@ -30,7 +30,7 @@ const SuccessBanner = () => {
               src={tailwindImg}
               alt="Tailwind"
               className="lg:block md:hidden hidden w-16 absolute top-[250px] right-[250px] animate-swing-rotate"
-            />
+            /> */}
 
             <div className=" md:w-[60%] w-full mx-auto text-center">
               <h2 className=" font-bold font-rubik text-2xl md:text-3xl lg:text-6xl uppercase text-colorBase text-transparent bg-clip-text bg-gradient-to-r from-[#cb43c2] to-[#0f16f1]">

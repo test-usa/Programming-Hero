@@ -12,7 +12,7 @@ import google from "../../assets/googlePlay.svg"
 
 const AbsoluteBeginner = () => {
   return (
-   <div className="bg-gradient-to-b from-[#0D0518] via-[#6304B6] to-[#6405B7]  w-full overflow-hidden">
+   <div className="bg-gradient-to-b from-[#000000] via-[#6304B6] to-[]  w-full overflow-hidden">
     <CommonSpace>
     <CommonContainer>
    <SapceBottom>

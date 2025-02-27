@@ -8,11 +8,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Spinner } from "@heroui/spinner";
+import { set } from "zod";
 const Login = () => {
   const navigate = useNavigate();
-  const { loginUser, setUser } = userStore();
+  const { loginUser, user, setUser } = userStore();
   const [showText, setShowText] = useState(false);
 
+  console.log("user", user);
   const {
     register,
     handleSubmit,

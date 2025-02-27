@@ -6,7 +6,7 @@ const SuccessBody = () => {
   return (
     <div className="bg-[#0A081F] py-8">
       <CommonContainer>
-        <div className="flex flex-col w-full items-center md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col w-full items-center justify-start md:flex-row md:items-center md:justify-between">
           <div className="w-1/2">
             <h2 className="text-white font-semibold font-rubik text-2xl">
               SuccessFull Students
