@@ -1,5 +1,5 @@
 import CommonContainer from "../../common/CommonContainer"
-import CommonSpace from "../../common/CommonSpace"
+
 import enrollmentImg from "../../assets/course details/enrollment-start.svg"
 import enrollmentImg1 from "../../assets/course details/enrollment-end.svg"
 import webinartImg from "../../assets/course details/webinar2.svg"
@@ -36,7 +36,7 @@ const NextBatch = () => {
 
   return (
     <div className="bg-[#010313]">
-      <CommonSpace>
+     
         <CommonContainer>
           <div className="md:px-11 md:p-5">
             <h2 className="text-center text-white md:text-4xl text-2xl pb-2 font-semibold">Next Batch Schedule</h2>
@@ -108,7 +108,7 @@ const NextBatch = () => {
 
               <div className=" flex flex-col justify-center items-center mt-10">
               <div
-                className=" h-[450px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover left-[500px] md:mt-0 mt-3"
+                className="md:w-[80%] h-[500px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover  md:mt-0 mt-3"
                 style={{ backgroundImage: `url(${vedioImg})` }} >
                 <div>
                   {!showVideo && (
@@ -149,7 +149,7 @@ const NextBatch = () => {
             </div>
           </div>
         </CommonContainer>
-      </CommonSpace>
+  
       <Modal isOpen={isModalOpen} onClose={handleModalClose} /> {/* Pass modal state */}
     </div>
   )

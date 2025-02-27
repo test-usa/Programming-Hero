@@ -5,30 +5,32 @@ import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
 
 const App = () => {
-  const { updateUser, token } = userStore();
+  const { setUser, user, token } = userStore();
 
   const Axios = useAxiosSecure();
-  useEffect(() => {
-    const userAuthentication = async () => {
-      try {
-        const response = await Axios.get("/user/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (response.data) {
-          updateUser(response.data);
-        }
-      } catch (error) {
-        console.error("Error user authentication:", error);
+  console.log("user-------", user);
+  const fetchUser = async () => {
+    console.log("main file render");
+    try {
+      const response = await Axios.get("/user/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data) {
+        setUser(response.data);
       }
-    };
-
-    if (token) {
-      userAuthentication();
+    } catch (error) {
+      console.error("Error user authentication:", error);
     }
-  }, [token, Axios]);
+  };
+
+  useEffect(() => {
+    if (token) {
+      fetchUser();
+    }
+  }, [token]);
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-left" theme="dark" autoClose={3000} />
       <MainLayout />
     </>
   );
