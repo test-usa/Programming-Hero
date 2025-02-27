@@ -17,7 +17,7 @@ const Module = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState<boolean>(false);
   const [contentToDelete, setContentToDelete] = useState<{ moduleId: number; contentId: number } | null>(null);
-
+  const [contentToUpdate, setContentToUpdate] = useState<any>(null);
 
   const urlFunc = (url: string, name: string, No: number): void => {
     if (url && name) {
@@ -57,9 +57,20 @@ const Module = () => {
     );
   };
 
-  const handleUpdateContent = (moduleId: number, contentId: number) => {
-    console.log("Update Content:", moduleId, contentId);
-    // Add logic to update the content
+  const handleUpdateContent = (moduleId: number, contentId: number, updatedContent: any) => {
+    setData((prevData) =>
+      prevData.map((module) =>
+        module.id === moduleId
+          ? {
+              ...module,
+              contents: module.contents.map((content) =>
+                content.id === contentId ? { ...content, ...updatedContent } : content
+              ),
+            }
+          : module
+      )
+    );
+    setIsUpdateModalOpen(false); // Close the modal
   };
 
   const handleDeleteContent = (moduleId: number, contentId: number) => {
@@ -77,16 +88,6 @@ const Module = () => {
     );
     setSelectedContent(null); // Clear the selected content after deletion
     setIsDeleteModalOpen(false); // Close the modal
-  };
-
-  const handleUpdateModule = (moduleId: number) => {
-    console.log("Update Module:", moduleId);
-    // Add logic to update the module
-  };
-
-  const handleDeleteModule = (moduleId: number) => {
-    setData((prevData) => prevData.filter((module) => module.id !== moduleId));
-    setIsDeleteModuleModalOpen(false); // Close the modal
   };
 
   const handleViewContent = (content: any) => {
@@ -110,14 +111,14 @@ const Module = () => {
     setContentToDelete(null);
   };
 
-
-
-  const openUpdateModuleModal = (moduleId: number) => {
+  const openUpdateModal = (content: any) => {
+    setContentToUpdate(content);
     setIsUpdateModalOpen(true);
   };
 
-  const closeUpdateModuleModal = () => {
-    setIsDeleteModalOpen(false);
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setContentToUpdate(null);
   };
 
   useEffect(() => {
@@ -158,7 +159,7 @@ const Module = () => {
           { type: "description", id: 9, name: "Description 3: Project Overview", description: "This module covers project setup and deployment." }
         ],
       },
-    ];
+    ]; 
 
     setData(dummyData);
   }, []);
@@ -258,7 +259,7 @@ const Module = () => {
                     size="lg"
                     variant="outline"
                     className="border border-yellow-600 bg-gray-900 hover:bg-gray-900 hover:text-yellow-600 text-yellow-600"
-                    onClick={() => handleUpdateContent(selectedContent?.moduleId, selectedContent?.id)}
+                    onClick={() => openUpdateModal(selectedContent)}
                   >
                     Update
                   </Button>
@@ -367,7 +368,7 @@ const Module = () => {
                                 <MdVisibility />
                               </button>
                               <button
-                                onClick={() => handleUpdateContent(module.id, content.id)}
+                                onClick={() => openUpdateModal(content)}
                                 className="bg-yellow-600 text-white px-3 py-1 rounded-lg hover:bg-yellow-700 transition-colors"
                               >
                                 <MdEdit />
@@ -398,33 +399,91 @@ const Module = () => {
           {/* COURSE MODULES SECTION END */}
         </div>
       </CommonContainer>
-{/* Update modal */}
-      {isUpdateModalOpen && (
+
+      {/* UPDATE MODAL */}
+      {isUpdateModalOpen && contentToUpdate && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-[#2a213a] p-6 rounded-lg w-[400px]">
-            <h2 className="text-[#EAAAFF] font-semibold text-lg mb-4">Update Content</h2>
-            <p className="text-white">Are you sure you want to delete this content?</p>
-            <div className="flex justify-end gap-4 mt-6">
-              <Button
-                onClick={closeDeleteModal}
-                className="bg-gray-600 text-white hover:bg-gray-700"
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={() => {
-                  if (contentToDelete) {
-                    handleDeleteContent(contentToDelete.moduleId, contentToDelete.contentId);
-                  }
-                }}
-                className="bg-red-600 text-white hover:bg-red-700"
-              >
-                Delete
-              </Button>
-            </div>
+          <h2 className="text-[#EAAAFF] font-semibold text-lg mb-4">Update Content</h2>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (contentToUpdate) {
+                  const updatedContent = {
+                    ...contentToUpdate,
+                    name: e.currentTarget.contentName.value,
+                    url: e.currentTarget.contentUrl.value,
+                    description: e.currentTarget.contentDescription.value,
+                  };
+                  handleUpdateContent(contentToUpdate.moduleId, contentToUpdate.id, updatedContent);
+                }
+              }}
+            >
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="contentName" className="block text-sm font-medium text-[#EAAAFF]">
+                    Content Name
+                  </label>
+                  <input
+                    type="text"
+                    id="contentName"
+                    name="contentName"
+                    defaultValue={contentToUpdate.name}
+                    className="w-full px-3 py-2 mt-1 bg-[#3a324a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#9886FA]"
+                    required
+                  />
+                </div>
+                {contentToUpdate.type === "video" && (
+                  <div>
+                    <label htmlFor="contentUrl" className="block text-sm font-medium text-[#EAAAFF]">
+                      Video URL
+                    </label>
+                    <input
+                      type="url"
+                      id="contentUrl"
+                      name="contentUrl"
+                      defaultValue={contentToUpdate.url}
+                      className="w-full px-3 py-2 mt-1 bg-[#3a324a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#9886FA]"
+                      required
+                    />
+                  </div>
+                )}
+                {contentToUpdate.type === "description" && (
+                  <div>
+                    <label htmlFor="contentDescription" className="block text-sm font-medium text-[#EAAAFF]">
+                      Description
+                    </label>
+                    <textarea
+                      id="contentDescription"
+                      name="contentDescription"
+                      defaultValue={contentToUpdate.description}
+                      className="w-full px-3 py-2 mt-1 bg-[#3a324a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#9886FA]"
+                      rows={4}
+                      required
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-end gap-4 mt-6">
+                <Button
+                  type="button"
+                  onClick={closeUpdateModal}
+                  className="bg-gray-600 text-white hover:bg-gray-700"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="bg-[#9886FA] text-white hover:bg-[#503dbb]"
+                >
+                  Save
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       )}
+
       {/* DELETE MODAL */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
