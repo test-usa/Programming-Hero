@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
       "আমি যখন প্রার্থীদের সাথে সম্পর্কে জানি তখনই প্রথম ব্যাচের সাথে কোর...",
     batch: "Batch 2",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_1280.png", // Replace with actual image
+      "https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?t=st=1740645933~exp=1740649533~hmac=6baefcdb4f45508cc46c4815ae68012137b9b3c359a84e4f5d94ce6f0e9bee36&w=740", // Replace with actual image
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
       "Programming Hero team helps me to make my basics strong and keep me busy wit...",
     batch: "Batch 2",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_1280.png", // Replace with actual image
+      "https://img.freepik.com/free-vector/gradient-avatar-illustration_52683-142426.jpg?t=st=1740646022~exp=1740649622~hmac=c48ed9d92641856bf0192c43e6684c2647e270d2eb35c547faa89d10acd13637&w=740", // Replace with actual image
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const testimonials: Testimonial[] = [
     description: "Building scalable backend systems and APIs...",
     batch: "Batch 3",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_1280.png",
+      "https://img.freepik.com/premium-vector/cool-afro-man_3042-371.jpg?w=740",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     description: "Passionate about creating user-friendly interfaces...",
     batch: "Batch 4",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_1280.png",
+      "https://img.freepik.com/premium-vector/free-vector-highly-detailed-cartoon-artwork-cartoon-style-vector-icon-illustration_1116403-355.jpg?w=740",
   },
 ];
 
