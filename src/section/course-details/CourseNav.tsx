@@ -98,12 +98,12 @@ const CourseNav = () => {
       )}
 
       <div
-        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-white text-[#010313] h-full shadow-lg transform ${
-          menu ? "translate-x-0 border " : "translate-x-full"
+        className={`fixed top-0 right-0 p-4 w-64 rounded-lg bg-black text-white h-full  transform ${
+          menu ? "translate-x-0  " : "translate-x-full"
         } transition-transform duration-300 z-30`}
       >
         <button
-          className="absolute top-4 right-4 text-3xl text-gray-800"
+          className="absolute top-4 right-4 text-3xl text-white"
           onClick={() => setMenu(false)}
         >
           <RiCloseFill />

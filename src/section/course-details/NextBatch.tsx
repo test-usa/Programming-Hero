@@ -41,8 +41,8 @@ const NextBatch = () => {
           <div className="md:px-11 md:p-5">
             <h2 className="text-center text-white md:text-4xl text-2xl pb-2 font-semibold">Next Batch Schedule</h2>
 
-            <div className="md:p-8 md:m-8 p-3 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">
-              <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="md:p-8 md:m-8 p-5 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">
+              <div className="flex flex-wrap gap-6 justify-around">
                 <div className="flex items-center gap-3 sm:justify-center">
                   <div>
                     <img src={enrollmentImg} alt="Enrollment Starts" className="" />
@@ -123,7 +123,7 @@ const NextBatch = () => {
 
                       <div
                         onClick={handleCloseClick}
-                        className="fixed top-[200px] right-[450px] text-white text-3xl cursor-pointer z-20"
+                        className="fixed top-[200px] right-[4px] md:right-[450px] text-white text-3xl cursor-pointer z-20"
                       >
                         <FaTimes />
                       </div>
