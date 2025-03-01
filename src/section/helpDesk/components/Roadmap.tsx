@@ -1,22 +1,30 @@
 import React from "react";
 import CommonContainer from "../../../common/CommonContainer";
 
-const statusColors = {
+const statusColors: Record<string, string> = {
   investigating: "bg-purple-100 border-purple-300",
   "in-progress": "bg-blue-100 border-blue-300",
   resolved: "bg-green-100 border-green-300",
 };
 
-const headerColors = {
+const headerColors: Record<string, string> = {
   investigating: "bg-purple-500 text-white",
   "in-progress": "bg-blue-600 text-white",
   resolved: "bg-green-600 text-white",
 };
 
-const statusLabels = {
+const statusLabels: Record<string, string> = {
   investigating: "Investigating",
   "in-progress": "Dev In-Progress",
   resolved: "Resolved",
+};
+type RoadmapItem = {
+  status: string;
+  name: string;
+  issueTitle: string;
+  issueDescription?: string;
+  tags: string[];
+  profileImage?: string;
 };
 
 const roadmapItems = [
@@ -100,11 +108,14 @@ const roadmapItems = [
 
 const Roadmap = () => {
   // Group items by status
-  const groupedItems = roadmapItems.reduce((acc, item) => {
-    if (!acc[item.status]) acc[item.status] = [];
-    acc[item.status].push(item);
-    return acc;
-  }, {});
+  const groupedItems = roadmapItems.reduce<Record<string, RoadmapItem[]>>(
+    (acc, item) => {
+      if (!acc[item.status]) acc[item.status] = [];
+      acc[item.status].push(item);
+      return acc;
+    },
+    {} // Initial value with correct type
+  );
 
   return (
     <CommonContainer>

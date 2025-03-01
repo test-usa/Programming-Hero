@@ -1,10 +1,7 @@
 import logo from "../../assets/images/logo.svg";
 import { NavLink } from "react-router-dom";
-import { RiMenu2Fill } from "react-icons/ri";
-import { useState } from "react";
-
+import MobileMenu from "../home/MobileMenu";
 const LoginHeader = () => {
-  const [menu, setMenu] = useState(false);
   return (
     <div className=" font-Grotesk px-10">
       <div className="flex items-center justify-between w-full text-white">
@@ -19,15 +16,14 @@ const LoginHeader = () => {
           <NavLink to="/about">About us</NavLink>
           <NavLink to="/blog">blog</NavLink>
           <NavLink to="/success">Success</NavLink>
-          <NavLink to="/login">login</NavLink>
+          <NavLink
+            to="/login"
+            className="px-6 py-2 rounded-xl bg-custom-gradient"
+          >
+            Login
+          </NavLink>
         </div>
-
-        <span
-          onClick={() => setMenu(true)}
-          className="text-3xl cursor-pointer lg:hidden "
-        >
-          <RiMenu2Fill />
-        </span>
+        <MobileMenu />
       </div>
     </div>
   );

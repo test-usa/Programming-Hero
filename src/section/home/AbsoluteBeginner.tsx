@@ -1,64 +1,98 @@
-import roket from "../../assets/rocket.webp"
-import CommonContainer from "../../common/CommonContainer"
-import CommonSpace from "../../common/CommonSpace"
-import mobile from "../../assets/mobile.webp"
-import SapceBottom from "../../common/SapceBottom"
-import AbsoluteCard from "./AbsoluteCard"
-import { FaPlus } from "react-icons/fa";
-import star from "../../assets/star.svg"
-import app from "../../assets/appStore.svg"
-import google from "../../assets/googlePlay.svg"
 
+import CommonContainer from "../../common/CommonContainer";
+import mobile from "../../assets/mobile.webp";
+import SapceBottom from "../../common/SapceBottom";
+import star from "../../assets/star.svg";
+import app from "../../assets/appStore.svg";
+import google from "../../assets/googlePlay.svg";
+import triangle from "../../assets/images/triangle.svg";
+import rocket from "../../assets/rocket.webp";
+import circle from "../../assets/images/circle.svg";
+import Border from "./Border";
 
 const AbsoluteBeginner = () => {
   return (
-   <div className="bg-gradient-to-b from-[#0D0518] via-[#6304B6] to-[#6405B7]  w-full overflow-hidden">
-    <CommonSpace>
-    <CommonContainer>
-   <SapceBottom>
-   <div className="w-[85%] mx-auto">
-   <div className="flex items-center justify-between ">
-          <h2 className=" relative text-center bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-7xl text-4xl after:absolute after:bg-text-gradient after:inset-0 after:h-2  after:w-[10%] after:mx-auto after:top-20">
-          Are you absolute_ Beginner?
-          </h2>
-          <div>
-            <img src={roket} alt="" />
-          </div>
-        </div>
-   </div>
-   </SapceBottom>
-            <div className=" mx-auto pt-5">
-                <div className=" md:flex gap-3">
-                    <div className="md:w-1/2 p-3 w-full flex justify-center">
-                        <img src={mobile} alt="" className="md:h-[600px] h-[300px]" />
-                    </div>
-                    <div className=" md:w-1/2 w-full p-5">
-                        <h2 className=" relative md:pb-10 pb-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-5xl text-3xl font-extrabold">Our Mobile App</h2>
-                            <div className=" bg-custom-gradient min-w-[1080] p-11 rounded-[30px] gap-2 ">
-                              <div className="flex flex-col lg:flex-row">
-                              <AbsoluteCard icon={FaPlus} value="150" label="Worldwide Learners!" />
-                                   <AbsoluteCard icon={star} value="75%" label=" Positive Reviews" />
-                                  <AbsoluteCard icon={FaPlus} value="500" label=" Skill based Courses" />
-                              </div>
-                             
-                            </div>
-                            <h2 className="text-white text-lg py-5">Learn programming the fun way with the Programming Hero app! Download now on the App Store or Google Play.</h2>
-                             <div className="md:flex gap-3">
-                                <img src={app} alt="" />
-                                <img src={google} alt=""  className="mt-3 md:mt-0"/>
-                             </div>
-
-                    </div>
-                </div>
-
+    <div className="w-full bg-black">
+      <SapceBottom>
+        <div className="relative w-full px-20 ">
+          <div className="flex items-center justify-between">
+            <div className="hidden lg:block">
+              <img src={circle} alt="triangle" />
+            </div>
+            <div className="flex flex-col items-center justify-center w-full gap-4">
+              <h2 className=" text-center bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-7xl text-4xl">
+                Are you absolute_ Beginner?
+              </h2>
+              <Border />
             </div>
 
-   
-    </CommonContainer>
-    </CommonSpace>
-   
-   </div>
-  )
-}
+            <div className="hidden lg:block">
+              <img src={rocket} alt="triangle" />
+            </div>
+          </div>
+          <div className="absolute hidden top-20 right-20 lg:block ">
+            <img src={triangle} alt="triangle" />
+          </div>
+        </div>
+      </SapceBottom>
+
+      <div className="bg-center bg-no-repeat bg-cover lg:h-screen bg-bg-globe">
+        <CommonContainer>
+          <div className="flex flex-col items-center justify-center gap-6 sm:gap-20 lg:flex-row ">
+            <div className=" max-w-72">
+              <img className="w-full" src={mobile} />
+            </div>
+            <div className="flex flex-col items-center justify-center w-full max-w-xl gap-6">
+              <h2 className="md:text-5xl text-3xl bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent  hidden lg:block self-start">
+                Our Mobile App
+              </h2>
+              <div className="w-full py-12 bg-custom-gradient rounded-3xl">
+                <div className="flex items-center justify-around w-full">
+                  <div className="w-full text-white border-r-2 border-white/20 md:last:border-r-0">
+                    <div className="flex items-center justify-center w-full text-xl font-bold sm:text-4xl">
+                      <h2>1.5M</h2> <span>+</span>
+                    </div>
+                    <p className="text-xs text-center sm:text-lg">
+                      Worldwide <br /> Learners!
+                    </p>
+                  </div>
+                  <div className="w-full text-white border-r-2 border-white/20 md:last:border-r-0">
+                    <div className="flex items-center justify-center w-full text-xl font-bold sm:text-4xl">
+                      <h2>4.7</h2>
+                      <span>
+                        <img className="w-6 sm:w-10" src={star} alt="star" />
+                      </span>
+                    </div>
+                    <p className="text-xs text-center sm:text-lg">
+                      Skill based <br /> Courses
+                    </p>
+                  </div>
+                  <div className="w-full text-xs text-center text-white sm:text-lg">
+                    <div className="flex items-center justify-center w-full text-xl font-bold sm:text-4xl">
+                      <h2>1.5M</h2> <span>+</span>
+                    </div>
+                    <p className="text-xs text-center sm:text-lg">
+                      Positive <br /> Reviews
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="text-lg text-center text-white lg:text-start">
+                Learn programming the fun way with the Programming Hero app!
+                Download now on the App Store or Google Play.
+              </h2>
+
+              <div className="flex items-center gap-6 pb-6 w-60 sm:w-full">
+                <img className="w-full" src={app} alt="" />
+                <img className="w-full" src={google} alt="" />
+              </div>
+            </div>
+          </div>
+        </CommonContainer>
+      </div>
+    </div>
+  );
+};
 
 export default AbsoluteBeginner
