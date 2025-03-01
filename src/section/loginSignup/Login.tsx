@@ -1,23 +1,36 @@
 import { FiEye } from "react-icons/fi";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userStore } from "../../store/UserStore";
 import { loginSchema, TsigninSchema } from "../../types/Types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { Spinner } from "@heroui/spinner";
 const Login = () => {
-  const { loginUser } = userStore();
+  const navigate = useNavigate();
+  const { loginUser, user, setUser } = userStore();
   const [showText, setShowText] = useState(false);
+
+  console.log("user", user);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<TsigninSchema>({ resolver: zodResolver(loginSchema) });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: loginUser,
+    onSuccess: () => {
+      navigate("/");
+      setUser(true);
+    },
+  });
   const submitFormToSever = async (data: TsigninSchema) => {
-    loginUser(data);
+    mutate(data);
   };
+
   return (
     <div className="w-full flex flex-col md:block items-center justify-center py-16">
       <h2 className="self-start py-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent text-7xl">
@@ -35,9 +48,9 @@ const Login = () => {
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
             )}
-            <div className="flex items-center  p-4 rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
+            <div className="flex items-center  rounded-lg bg-[#131237] border border-transparent  focus-within:border-[#405aff]">
               <input
-                className="w-full outline-none  bg-[#131237]"
+                className="w-full outline-none p-4 rounded-lg bg-[#131237]"
                 {...register("password")}
                 type={showText ? "text" : "password"}
                 placeholder="Password"
@@ -71,13 +84,13 @@ const Login = () => {
               Forgot Password
             </button>
           </div>
-
           <button
             onClick={handleSubmit(submitFormToSever)}
             className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all "
           >
-            Login
+            {isPending ? <Spinner color="warning" size="sm" /> : " Login"}
           </button>
+
           <div className="flex items-center gap-2">
             <p className="text-sm">New user?</p>
             <Link

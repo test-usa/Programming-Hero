@@ -1,11 +1,10 @@
 import logo from "../assets/images/logo.svg";
 import CommonContainer from "../common/CommonContainer";
 import { NavLink } from "react-router-dom";
-import { RiMenu2Fill } from "react-icons/ri";
-import { useState } from "react";
 import MobileMenu from "../section/home/MobileMenu";
+import { userStore } from "../store/UserStore";
 const Header = () => {
-  const [menu, setMenu] = useState(false);
+  const { user, logOutUser } = userStore();
   return (
     <CommonContainer>
       <div className=" font-Grotesk">
@@ -25,18 +24,28 @@ const Header = () => {
             <NavLink to="/mehedi">mehedi</NavLink>
             <NavLink to="/eitty">eitty</NavLink>
             <NavLink to="/himel/all-post">himel</NavLink>
-            <NavLink to="/login">login</NavLink>
+            {user ? (
+              <button
+                onClick={() => {
+                  logOutUser();
+                }}
+                className="px-6 py-2 rounded-xl bg-custom-gradient "
+              >
+                Logout
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                className="px-6 py-2 rounded-xl bg-custom-gradient"
+              >
+                Login
+              </NavLink>
+            )}
           </div>
 
-          <span
-            onClick={() => setMenu(true)}
-            className="text-3xl cursor-pointer lg:hidden "
-          >
-            <RiMenu2Fill />
-          </span>
+          <MobileMenu />
         </div>
       </div>
-      {menu && <MobileMenu />}
     </CommonContainer>
   );
 };

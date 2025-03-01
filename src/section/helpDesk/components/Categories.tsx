@@ -34,7 +34,7 @@ const categories = [
 ];
 const Categories = () => {
   return (
-    <div className="w-full lg:w-1/3 bg-white p-5 rounded-xl shadow-md">
+    <div className="w-full lg:w-1/3 bg-white p-5 rounded-xl border-1">
       {categories.map((category) => (
         <div className="flex items-center justify-between w-full gap-2 p-2 rounded md:flex-row hover:bg-slate-200 cursor-pointer">
           <div className="flex gap-2 items-center">

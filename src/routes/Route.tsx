@@ -19,6 +19,11 @@ import ImportantLinks from "../section/dashboard/ImportantLinks";
 import SkillSet from "../section/dashboard/SkillSet";
 import Level2Goal from "../section/dashboard/Level2Goal";
 import Certification from "../section/dashboard/Certification";
+import CreateUser from "../section/dashboard/superAdmin/CreateUser";
+import Courses from "../section/dashboard/superAdmin/Courses";
+import Admins from "../section/dashboard/superAdmin/Admins";
+import Students from "../section/dashboard/superAdmin/Students";
+import CreateInstructor from "../section/dashboard/admin/createInstructor";
 import OrderHistory from "../section/dashboard/OrderHistory";
 import CourseRequest from "../section/dashboard/CourseRequest";
 import JobExperience from "../section/dashboard/JobExperience";
@@ -115,6 +120,12 @@ const routes = createBrowserRouter([
           { path: "course-request", element: <CourseRequest /> },
           { path: "order-history", element: <OrderHistory /> },
           { path: "certification", element: <Certification /> },
+          { path: "create-user", element: <CreateUser /> },
+          { path: "courses", element: <Courses /> },
+          { path: "admins", element: <Admins /> },
+          { path: "instructors", element: <Admins /> },
+          { path: "students", element: <Students /> },
+          { path: "create-instructor", element: <CreateInstructor /> },
         ],
       },
     ],

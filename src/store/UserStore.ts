@@ -4,20 +4,24 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const token = Cookies.get("user");
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
-  withCredentials:false,
+  withCredentials: false,
 });
-
 export const userStore = create<TuserStore>()((set) => ({
   user: null,
+  token,
   signup_user: async (data: TsignupSchema) => {
     try {
       const response = await axiosSecure.post("/auth/register", data);
-      if (response.data) {
+      console.log("response sign sdfkjsa", response);
+      if (response.data.success) {
         toast.success(response.data.message);
       }
-      return set((state) => (state.user = response.data));
+      if (response.data.error) {
+        toast.error(response.data.message);
+      }
     } catch (error) {
       console.log("Problem during Signup", error);
     }
@@ -25,8 +29,11 @@ export const userStore = create<TuserStore>()((set) => ({
   loginUser: async (data: TsigninSchema) => {
     try {
       const response = await axiosSecure.post("/auth/login", data);
-      if (response.data) {
+      if (response.data.success) {
         toast.success(response.data.message);
+      }
+      if (response.data.error) {
+        toast.error(response?.data.message);
       }
       return Cookies.set("user", response.data.data.accessToken);
     } catch (error) {
@@ -34,8 +41,11 @@ export const userStore = create<TuserStore>()((set) => ({
       throw error;
     }
   },
+  setUser: async (newUser: object) => {
+    set({ user: newUser });
+  },
   logOutUser: () => {
     Cookies.remove("user");
-    return () => set({ user: null });
+    set({ user: null });
   },
 }));

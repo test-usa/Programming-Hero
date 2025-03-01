@@ -6,14 +6,17 @@ interface AbsoluteCardProps {
   label: string;
 }
 
+// px-2 py-3 md:border-r md:last:border-r-0 
 const AbsoluteCard: React.FC<AbsoluteCardProps> = ({ icon, value, label }) => {
   return (
-    <div className="flex flex-col items-center md:px-8 px-2  md:border-r md:last:border-r-0 border-white/20 ">
-      <div className="flex items-center gap-2">
-        <span className="md:text-4xl text-2xl font-bold text-white">{value}</span>
-        {/* Check if icon is a React component or image path */}
-        {typeof icon === 'string' ? (
-          <img src={icon} alt={label} className=" h-8 w-7" />
+    <div className="flex flex-col items-center justify-center px-4 border-r border-white/20 md:last:border-r-0 ">
+      <div className="flex items-center gap-1 max-w-10">
+        <span className="text-2xl font-bold text-white md:text-4xl">
+          {value}
+        </span>
+
+        {typeof icon === "string" ? (
+          <img src={icon} alt={label} className="h-8 w-7" />
         ) : (
           // Ensure we are correctly using the React component
           React.createElement(icon, { className: "text-white text-3xl" })

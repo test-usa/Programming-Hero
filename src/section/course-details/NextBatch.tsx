@@ -1,5 +1,5 @@
 import CommonContainer from "../../common/CommonContainer"
-import CommonSpace from "../../common/CommonSpace"
+
 import enrollmentImg from "../../assets/course details/enrollment-start.svg"
 import enrollmentImg1 from "../../assets/course details/enrollment-end.svg"
 import webinartImg from "../../assets/course details/webinar2.svg"
@@ -36,13 +36,13 @@ const NextBatch = () => {
 
   return (
     <div className="bg-[#010313]">
-      <CommonSpace>
+     
         <CommonContainer>
-          <div className="md:px-11 md:p-5">
+          <div className="md:px-11 md:p-5 mx-auto">
             <h2 className="text-center text-white md:text-4xl text-2xl pb-2 font-semibold">Next Batch Schedule</h2>
 
-            <div className="md:p-8 md:m-8 p-3 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">
-              <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="md:p-8 md:m-8 p-5 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">
+              <div className="flex flex-wrap gap-6 justify-around">
                 <div className="flex items-center gap-3 sm:justify-center">
                   <div>
                     <img src={enrollmentImg} alt="Enrollment Starts" className="" />
@@ -106,8 +106,9 @@ const NextBatch = () => {
                 </div>
               </div>
 
+              <div className=" flex flex-col justify-center items-center mt-10">
               <div
-                className=" h-[450px] bg-no-repeat rounded-2xl w-full md:w-1/2 flex items-center justify-center   bg-cover md:absolute top-[1010px] left-[500px] md:mt-0 mt-3"
+                className="md:w-[80%] h-[500px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover  md:mt-0 mt-3"
                 style={{ backgroundImage: `url(${vedioImg})` }} >
                 <div>
                   {!showVideo && (
@@ -122,7 +123,7 @@ const NextBatch = () => {
 
                       <div
                         onClick={handleCloseClick}
-                        className="fixed top-[200px] right-[450px] text-white text-3xl cursor-pointer z-20"
+                        className="fixed top-[200px] right-[4px] md:right-[450px] text-white text-3xl cursor-pointer z-20"
                       >
                         <FaTimes />
                       </div>
@@ -144,10 +145,11 @@ const NextBatch = () => {
                   )}
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </CommonContainer>
-      </CommonSpace>
+  
       <Modal isOpen={isModalOpen} onClose={handleModalClose} /> {/* Pass modal state */}
     </div>
   )
