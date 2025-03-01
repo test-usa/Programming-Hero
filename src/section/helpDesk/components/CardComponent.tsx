@@ -9,7 +9,7 @@ import profile from "../photo/profile.jpg";
 const CardComponent = () => {
   return (
     <CommonContainer>
-      <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 w-full pt-5 hover:bg-slate-100 my-5">
+      <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 w-full pt-5 hover:bg-slate-300 my-5">
         {/* User Info */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
