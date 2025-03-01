@@ -56,10 +56,10 @@ const DashFoote = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <p className="text-start hidden md:block">Download Apps</p>
-                <div className="flex  lg:flex-row flex-col items-center md:items-start w-full gap-4 ">
+                <div className="flex lg:flex-row flex-col items-center md:items-start w-full gap-4 ">
                   <div className="gap-4 flex md:flex-col items-center w-full">
-                    <img src={applestore} alt="" className="max-w-40 h-12" />
-                    <img src={googlestroe} alt="" className="max-w-40  h-12" />
+                    <img src={applestore} alt="" className="max-w-36  h-12" />
+                    <img src={googlestroe} alt="" className="max-w-36  h-12" />
                   </div>
                   <img src={microsoft} alt="" className="max-w-36 h-8" />
                 </div>

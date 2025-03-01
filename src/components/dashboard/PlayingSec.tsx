@@ -12,11 +12,12 @@ import { SlDislike, SlLike } from "react-icons/sl";
 import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
-
-const PlayingSec = ({ url, name }: { url: string; name: string }) => {
+type propsTypes = {
+  url: string;
+  name: string;
+};
+const PlayingSec = ({ url, name }: propsTypes) => {
   const [Tabs, setTabs] = useState<number>(1);
-  const [totalPage, setTotalPage] = useState<number>(0);
-  const [page, setPage] = useState<number>(0);
 
   // SET CURRENT TAB --
   const handleChangeTabs = (numbers: number): void => {
