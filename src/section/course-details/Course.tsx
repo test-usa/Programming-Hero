@@ -9,7 +9,7 @@ const Course = () => {
   const token = Cookies.get("user");
   // GET ALL COURSES DATA --
   useEffect(() => {
-    fetch("https://ph-lms.onrender.com/courses/getAll", {
+    fetch("https://ph-lms-ryap.onrender.com/courses/getAll", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -33,7 +33,7 @@ const Course = () => {
 
   // GET SFECIFIC MODULES OF A MILESTONE --
   useEffect(() => {
-    fetch(`https://ph-lms.onrender.com/modules/course/${id}`, {
+    fetch(`https://ph-lms-ryap.onrender.com/modules/course/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
