@@ -27,7 +27,7 @@ interface TeamCardProps {
 
 const TeamCard: React.FC<TeamCardProps> = ({ imgSrc, name, designation }) => {
   return (
-    <div className="bg-black flex flex-col gap-4 items-center rounded-lg overflow-hidden w-full sm:w-48 md:w-56 lg:w-64 m-4 transition-all duration-300 hover:scale-105 group shadow-lg hover:shadow-purple-500">
+    <div className="bg-black flex flex-col gap-4 items-center rounded-lg overflow-hidden w-full sm:w-48 md:w-56 lg:w-64 m-4 transition-all duration-300 hover:scale-105 group shadow-lg ">
   <div className="relative">
   <div className="">
       <FaGreaterThan className="text-[#2D1B64]  group-hover:text-purple-500 text-[250px] z-0"/>
