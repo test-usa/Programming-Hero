@@ -38,7 +38,7 @@ const NextBatch = () => {
     <div className="bg-[#010313]">
      
         <CommonContainer>
-          <div className="md:px-11 md:p-5">
+          <div className="md:px-11 md:p-5 mx-auto">
             <h2 className="text-center text-white md:text-4xl text-2xl pb-2 font-semibold">Next Batch Schedule</h2>
 
             <div className="md:p-8 md:m-8 p-5 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">

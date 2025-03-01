@@ -57,7 +57,7 @@ const CourseNav = () => {
           <div className="items-center gap-6 text-sm flex">
             <span className="space-x-4 hidden lg:block">
               {menuItems.map((item) => (
-                <NavLink key={item.path} className="text-lg" to={item.href}>
+                <NavLink key={item.path} className="text-base" to={item.href}>
                   {item.path}
                 </NavLink>
               ))}
@@ -77,12 +77,7 @@ const CourseNav = () => {
                 <RiMenu2Fill />
               </span>
 
-              <button 
-                className="px-3 py-2 text-lg rounded-md hidden lg:block font-semibold text-white bg-custom-gradient hover:brightness-125"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Enroll Now
-              </button>
+             
 
               <Avatar
                 src="https://i.pravatar.cc/150?u=a04258114e29026702d"
