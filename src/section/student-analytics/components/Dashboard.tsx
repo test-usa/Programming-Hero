@@ -35,7 +35,7 @@ const DashboardCards: React.FC = () => {
   return (
     <div className="bg-[#08061A] py-5">
       <CommonContainer>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Module Finish Track */}
           <Card className="p-4 bg-[#1c2046] text-white">
             <h2 className="text-xl font-bold">Module Finish Track</h2>
