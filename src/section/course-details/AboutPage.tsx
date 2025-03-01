@@ -53,10 +53,10 @@ const AboutPage: React.FC = () => {
       <CommonContainer>
         <CommonSpace>
           <div className="mx-auto p-8">
-            <h2 className="md:text-7xl font-bold text-center mb-8 text-purple-300 text-3xl ">
+            <h2 className="md:text-7xl font-bold text-center mb-8 text-purple-300 text-5xl ">
               Meet our team_
             </h2>
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center md:pt-[50px]">
               {teamMembers.map((member) => (
                 <TeamCard
                   key={member.id}
