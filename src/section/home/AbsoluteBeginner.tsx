@@ -44,23 +44,35 @@ const AbsoluteBeginner = () => {
               <h2 className="md:text-5xl text-3xl bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent ">
                 Our Mobile App
               </h2>
-              <div className="py-10 bg-custom-gradient rounded-3xl">
-                <div className="flex flex-col items-center justify-around lg:flex-row">
-                  <AbsoluteCard
-                    icon={FaPlus}
-                    value="150"
-                    label="Worldwide Learners!"
-                  />
-                  <AbsoluteCard
-                    icon={star}
-                    value="75%"
-                    label=" Positive Reviews"
-                  />
-                  <AbsoluteCard
-                    icon={FaPlus}
-                    value="500"
-                    label=" Skill based Courses"
-                  />
+              <div className="py-12 bg-custom-gradient rounded-3xl">
+                <div className="flex flex-col items-center justify-around w-full lg:flex-row">
+                  <div className="w-full text-white border-r-2 border-white/20 md:last:border-r-0">
+                    <div className="flex items-center justify-center w-full text-4xl font-bold">
+                      <h2>1.5M</h2> <span>+</span>
+                    </div>
+                    <p className="text-center">
+                      Worldwide <br /> Learners!
+                    </p>
+                  </div>
+                  <div className="w-full text-white border-r-2 border-white/20 md:last:border-r-0">
+                    <div className="flex items-center justify-center w-full text-4xl font-bold">
+                      <h2>12</h2>
+                      <span>
+                        <img src={star} alt="star" />
+                      </span>
+                    </div>
+                    <p className="text-center">
+                      Skill based <br /> Courses
+                    </p>
+                  </div>
+                  <div className="w-full text-white border-r-2 border-white/20 md:last:border-r-0">
+                    <div className="flex items-center justify-center w-full text-4xl font-bold">
+                      <h2>1.5M</h2> <span>+</span>
+                    </div>
+                    <p className="text-center">
+                      Positive <br /> Reviews
+                    </p>
+                  </div>
                 </div>
               </div>
               <h2 className="text-lg text-white ">
