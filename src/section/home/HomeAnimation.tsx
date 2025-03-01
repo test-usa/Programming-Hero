@@ -7,7 +7,7 @@ import CommonContainer from "../../common/CommonContainer";
 const HomeAnimation = () => {
   return (
     <CommonContainer>
-      <div className="flex-col hidden pt-20 lg:flex overflow-hidden">
+      <div className="flex-col hidden sm:flex">
         <div className="flex items-center justify-between ">
           <img
             className=" animate-rotated-bounce"

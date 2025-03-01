@@ -11,17 +11,17 @@ import OurMission from "../section/home/OurMission";
 const Home = () => {
   return (
     <>
-      <div className="relative min-h-screen sm:bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff]">
+      <div className="relative min-h-96 sm:min-h-screen bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff]">
         <Header />
         <HomeTitle />
         <HomeAnimation />
         <HomeImage />
       </div>
       <div>
-         <OurCourse /> 
-        <AbsoluteBeginner/>
-        <SuccesStory/>
-        <OurMission/> 
+        <OurCourse />
+        <AbsoluteBeginner />
+        <SuccesStory />
+        <OurMission />
       </div>
       <Footer />
     </>

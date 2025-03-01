@@ -8,10 +8,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Spinner } from "@heroui/spinner";
-import { set } from "zod";
 const Login = () => {
   const navigate = useNavigate();
-  const { loginUser, user, setUser } = userStore();
+  const { loginUser, user } = userStore();
   const [showText, setShowText] = useState(false);
 
   console.log("user", user);
@@ -25,7 +24,6 @@ const Login = () => {
     mutationFn: loginUser,
     onSuccess: () => {
       navigate("/");
-      setUser(true);
     },
   });
   const submitFormToSever = async (data: TsigninSchema) => {
@@ -33,12 +31,12 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full flex flex-col md:block items-center justify-center py-16">
+    <div className="flex flex-col items-center justify-center w-full py-16 md:block">
       <h2 className="self-start py-5 bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent text-7xl">
         Login
       </h2>
       <div className="bg-[rgba(10,10,43,.75)] backdrop-blur text-white max-w-xl w-full rounded-3xl px-6 py-10">
-        <div className="w-full max-auto flex flex-col gap-4 justify-center items-center">
+        <div className="flex flex-col items-center justify-center w-full gap-4 max-auto">
           <div className="flex flex-col w-full gap-4">
             <input
               className="w-full p-4 bg-[#131237]  outline-none  rounded-lg border border-transparent  focus-within:border-[#405aff]"
@@ -79,7 +77,7 @@ const Login = () => {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <input type="checkbox" />
-              <label className=" text-xs md:text-lg">Remember Me</label>
+              <label className="text-xs md:text-lg">Remember Me</label>
             </div>
             <button className="text-xs md:text-lg border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
               Forgot Password
