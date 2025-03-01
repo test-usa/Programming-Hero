@@ -40,7 +40,7 @@ const AbsoluteBeginner = () => {
             <div className="">
               <img src={mobile} />
             </div>
-            <div className="flex flex-col max-w-2xl gap-6 ">
+            <div className="flex flex-col max-w-xl gap-6 ">
               <h2 className="md:text-5xl text-3xl bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent ">
                 Our Mobile App
               </h2>
