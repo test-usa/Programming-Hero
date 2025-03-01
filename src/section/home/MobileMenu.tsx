@@ -12,7 +12,7 @@ const MobileMenu = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { user, logOutUser } = userStore();
   return (
-    <>
+    <div className=" lg:hidden">
       <span onClick={onOpen} className="text-3xl">
         <RiMenu2Fill />
       </span>
@@ -96,7 +96,7 @@ const MobileMenu = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 };
 

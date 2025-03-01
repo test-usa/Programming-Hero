@@ -29,7 +29,6 @@ const Header = () => {
                 onClick={() => {
                   logOutUser();
                 }}
-                // className="px-10 py-2 text-xl ring-3 "
                 className="px-6 py-2 rounded-xl bg-custom-gradient "
               >
                 Logout
@@ -44,9 +43,7 @@ const Header = () => {
             )}
           </div>
 
-          <div className="lg:hidden">
-            <MobileMenu />
-          </div>
+          <MobileMenu />
         </div>
       </div>
     </CommonContainer>

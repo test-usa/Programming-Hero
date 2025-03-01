@@ -17,8 +17,12 @@ module.exports = {
 		'text-gradient':'linear-gradient(90deg, rgba(242, 54, 255, 0.00) 0%, rgba(241, 32, 255, 0.08) 23.73%, rgba(239, 11, 255, 0.56) 49.67%, rgba(241, 34, 255, 0.04) 74.41%, rgba(242, 54, 255, 0.00) 100%)',
 		'header-image':'url("../assets/images/home.png")',
 		'custom-pattern': "url('./src/assets/images/layer.png')",
+		'bg-grid':  "url('./src/assets/images/grid.png')",
+		'bg-globe':  "url('./src/assets/images/globe.png')",
+
 		'custom-footer': "url('./src/assets/images/footer.jpg')",
 		'footer-gradient':'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)',
+		'globe-gradient':'linear-gradient(0deg, #6605BA 0%, rgba(24, 0, 79, 0.53) 50.52%, rgba(93, 38, 224, 0.00) 100%)',
 		'login-signin':"url('./src/assets/images/sign.svg')",
 		'text-gradient':'linear-gradient(90deg, #E855DE 0.01%, #5400EE 100%)'
 
