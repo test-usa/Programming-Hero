@@ -7,8 +7,10 @@ import { userStore } from "./store/UserStore";
 const App = () => {
   const { setUser, user, token } = userStore();
 
+
+  console.log("use", user);
   const Axios = useAxiosSecure();
-  console.log("user-------", user);
+
   const fetchUser = async () => {
     console.log("main file render");
     try {
@@ -18,6 +20,7 @@ const App = () => {
       if (response.data) {
         setUser(response.data);
       }
+      console.log("reddshfkjsdhkjdsfds", response);
     } catch (error) {
       console.error("Error user authentication:", error);
     }
