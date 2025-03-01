@@ -9,7 +9,7 @@ interface AbsoluteCardProps {
 // px-2 py-3 md:border-r md:last:border-r-0 
 const AbsoluteCard: React.FC<AbsoluteCardProps> = ({ icon, value, label }) => {
   return (
-    <div className="flex flex-col items-center justify-center px-4 border-r border-white/20 md:last:border-r-0 ">
+    <div className="flex flex-col items-center justify-center pr-4 border-r border-white/20 md:last:border-r-0 ">
       <div className="flex items-center gap-1 max-w-10">
         <span className="text-2xl font-bold text-white md:text-4xl">
           {value}
