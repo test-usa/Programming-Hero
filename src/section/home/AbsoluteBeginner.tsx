@@ -38,12 +38,12 @@ const AbsoluteBeginner = () => {
 
       <div className="bg-center bg-no-repeat bg-cover lg:h-screen bg-bg-globe">
         <CommonContainer>
-          <div className="flex flex-col items-center justify-center gap-6 sm:gap-20 lg:flex-row ">
+          <div className="flex flex-col items-center justify-center gap-6 lg:pt-20 sm:gap-20 lg:flex-row">
             <div className=" max-w-72">
               <img className="w-full" src={mobile} />
             </div>
             <div className="flex flex-col items-center justify-center w-full max-w-xl gap-6">
-              <h2 className="md:text-5xl text-3xl bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent  hidden lg:block self-start">
+              <h2 className="self-start hidden text-3xl font-bold text-white md:text-5xl lg:block">
                 Our Mobile App
               </h2>
               <div className="w-full py-12 bg-custom-gradient rounded-3xl">

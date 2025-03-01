@@ -135,3 +135,6 @@
 .animate-pulse {
   animation: pulse 2s  infinite;
 }
+.clip-custom-shape {
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+}
