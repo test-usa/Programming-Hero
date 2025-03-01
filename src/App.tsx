@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 const App = () => {
   const { updateUser, token } = userStore();
-  const stripePromise = loadStripe("pk_test_51QshxRDCuwY7X1ekWucBpXSXbuTKO1ZUnHemwAGukdk8z7ZafMYPh70OO55C0DUntcj0AlDqLbRc8VWNwpJ7a8xA0036PrwSWD")
+  const stripePromise = loadStripe("pk_test_51NiF1SKVFWA3nojbTVAqv3yij9CoqTw7Zes5HyJQll4LJv964bTbqtLj5pIUVzASgqeShrASY7A33hJWu9WYP7NP000gXVepGK")
   console.log("user", token);
   const Axios = useAxiosSecure();
   useEffect(() => {

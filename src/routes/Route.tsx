@@ -36,9 +36,9 @@ import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 import BlogDetails from "../pages/BlogDetails";
 import Enrollment from "../pages/Enrollment";
-import Checkout from "../pages/Checkout";
 import CancelPage from "../pages/CancelPage";
 import SuccessPage from "../pages/SuccessPage";
+import Checkout from "../pages/Checkout";
 
 
 const routes = createBrowserRouter([

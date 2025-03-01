@@ -1,76 +1,40 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 
-const CheckoutPage: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const coursePrice = 2000; // Example price in cents ($20.00)
+const CheckoutPage = () => {
+  const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {
+    setLoading(true);
     try {
-      const response = await fetch(
-        "http://localhost:3000/billing/createCheckoutSession",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            amount: coursePrice, // Sending price to backend
-            currency: "usd",
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/billing/createCheckoutSession", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
 
-      const { url } = await response.json();
-      const res = await response.json()
-      window.location.href = url; // Redirect to Stripe payment page
-      console.log(res)
+      const data = await response.json();
+      console.log(data)
+      if (data.url) {
+        window.location.href = data.url; // Redirect to Stripe Checkout
+      } else {
+        console.error("Checkout URL not found");
+      }
     } catch (error) {
       console.error("Error creating checkout session:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "400px",
-        margin: "40px auto",
-        padding: "20px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-      }}
-    >
-      <h2>Checkout</h2>
-      <label>Name:</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-      />
-
-      <label>Email:</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-      />
-
-      <h3>Total Price: ${(coursePrice / 100).toFixed(2)}</h3>
-
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
       <button
         onClick={handleCheckout}
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-          backgroundColor: "green",
-          color: "white",
-          borderRadius: "5px",
-          width: "100%",
-        }}
+        className="bg-blue-500 text-white px-6 py-3 rounded-lg"
+        disabled={loading}
       >
-        Proceed to Payment
+        {loading ? "Redirecting..." : "Proceed to Payment"}
       </button>
     </div>
   );
