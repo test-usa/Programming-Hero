@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
-import CommonContainer from "../../common/CommonContainer";
-import CommonSpace from "../../common/CommonSpace";
-import microsoft from "../../assets/images/microsoft.webp";
-import applestore from "../../assets/images/applestore.webp";
-import googlestroe from "../../assets/images/googleplay.webp";
 
-const DashFoote = () => {
+import microsoft from "../photo/microsoft.webp";
+import applestore from "../photo/applestore.webp";
+import googlestroe from "../photo/googleplay.webp";
+import CommonContainer from "../../../common/CommonContainer";
+import CommonSpace from "../../../common/CommonSpace";
+
+const SuccessFooter = () => {
   return (
     <div className="gap-4 text-white bg-cover bg-custom-footer font-Grotesk">
       <CommonContainer>
@@ -42,7 +43,7 @@ const DashFoote = () => {
                   <Link to="/" className="">
                     <FaFacebook />
                   </Link>
-                  
+
                   <Link to="/">
                     <FaInstagram />
                   </Link>
@@ -56,10 +57,10 @@ const DashFoote = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <p className="text-start hidden md:block">Download Apps</p>
-                <div className="flex lg:flex-row flex-col items-center md:items-start w-full gap-4 ">
+                <div className="flex  lg:flex-row flex-col items-center md:items-start w-full gap-4 ">
                   <div className="gap-4 flex md:flex-col items-center w-full">
-                    <img src={applestore} alt="" className="max-w-36  h-12" />
-                    <img src={googlestroe} alt="" className="max-w-36  h-12" />
+                    <img src={applestore} alt="" className="max-w-40 h-12" />
+                    <img src={googlestroe} alt="" className="max-w-40  h-12" />
                   </div>
                   <img src={microsoft} alt="" className="max-w-36 h-8" />
                 </div>
@@ -72,4 +73,4 @@ const DashFoote = () => {
   );
 };
 
-export default DashFoote;
+export default SuccessFooter;

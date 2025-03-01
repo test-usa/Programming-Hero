@@ -1,4 +1,3 @@
-import { ScrollArea } from "../ui/scroll-area";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Outline from "./Outline";
@@ -67,7 +66,7 @@ const CourseOutline = ({
       </fieldset>
       {/* SEARCHBAR END */}
       <section>
-        <ScrollArea
+        <div
           className={`h-80 overflow-y-auto w-full rounded-md py-4`}
           style={{
             scrollbarColor: "#ff37f2 #0a0329",
@@ -80,7 +79,7 @@ const CourseOutline = ({
             })}
           </div>
           {/* DROPDOWN MENU END */}
-        </ScrollArea>
+        </div>
         <Button
           className="w-full my-3 bg-[#C941F5] hover:bg-[#C941F5] text-[18px]"
           size="lg"

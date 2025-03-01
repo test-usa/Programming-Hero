@@ -16,7 +16,7 @@ const CourseWork = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
   return (
 
-    <div className="relative bg-[#010312] md:h-[2300px] h-[3000px]">
+    <div className="relative bg-[#010312] md:h-[3050px] lg:h-[2530px] h-[3000px]">
       {/* SVG Curve at the Top */}
       <svg className="absolute top-0 left-0 w-full md:block hidden" viewBox="0 0 1440 320">
         <path fill="#5400EE" fillOpacity="1" d="M0,96 C360,0 1080,0 1440,96 L1440,0 L0,0 Z"></path>
