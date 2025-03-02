@@ -13,7 +13,9 @@ const Login = () => {
   const { loginUser, user } = userStore();
   const [showText, setShowText] = useState(false);
 
-  console.log("user", user);
+
+  console.log("useruseruser", user);
+
   const {
     register,
     handleSubmit,

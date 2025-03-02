@@ -1,13 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import Products from "../pages/Products";
 import About from "../pages/About";
 import Success from "../pages/Success";
-import Eitty from "../pages/Eitty";
-import Mehedi from "../pages/Mehedi";
 import Himel from "../pages/Himel";
-import ClassDetails from "../pages/ClassDetails";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
@@ -34,10 +30,8 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
-import Course from "../section/dashboard/Course";
-import Module from "../section/dashboard/Module";
-
-
+import Course from "../pages/Course";
+import CourseDetails from "../pages/CourseDetails";
 
 const routes = createBrowserRouter([
   {
@@ -50,8 +44,12 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
-        element: <Products />,
+        path: "/course",
+        element: <Course />,
+      },
+      {
+        path: "/course/:id",
+        element: <CourseDetails />,
       },
       {
         path: "/about",
@@ -66,17 +64,10 @@ const routes = createBrowserRouter([
         element: <Success />,
       },
       {
-        path: "/eitty",
-        element: <Eitty />,
+        path: "/dashboard",
+        element: <Samir />,
       },
-      {
-        path: "/mehedi",
-        element: <Mehedi />,
-      },
-      {
-        path: "/mehedi/:id",
-        element: <ClassDetails />,
-      },
+
       {
         path: "/himel",
         element: <Himel />,
@@ -107,14 +98,14 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <SignUpPage />,
       },
-      { path: "/course-modules", element: <Module /> },
+
       {
         path: "/dashboard",
         element: <Samir />,
         children: [
           {
-            path: 'course',
-            element: <Course/>,
+            path: "course",
+            element: <Courses />,
           },
           { path: "profile", element: <Profile /> },
           { path: "additional-info", element: <AdditionalInfo /> },

@@ -54,19 +54,19 @@ const LavelOne = () => {
             {courses?.length > 0 ? (
               courses?.map((course) => {
                 return (
-                  <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
+                  <div className="w-full gap-8 px-8 py-10 space-y-4 md:flex md:space-y-4">
                     <div className="w-full xl:w-[30%]">
                       <img
                         src={startCourse}
                         alt="course-starting-image"
-                        className="w-full max-h-72 rounded-2xl object-cover"
+                        className="object-cover w-full max-h-72 rounded-2xl"
                       />
                     </div>
                     <div key={course?.id}>
                       <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
                         {course?.title}
                       </h1>
-                      <p className="text-sm font-semibold text-white py-2">
+                      <p className="py-2 text-sm font-semibold text-white">
                         ঝংকার মাহবুব
                       </p>
                       <div className="w-full py-3">
@@ -75,16 +75,16 @@ const LavelOne = () => {
                           className="w-[100%] h-2  bg-gradient-to-r from-green-500 to-green-300"
                         />
                       </div>
-                      <section className="flex items-center gap-x-4 pt-4">
+                      <section className="flex items-center pt-4 gap-x-4">
                         <Link
-                          to={`/mehedi/${course?.id}`}
+                          to={`/course/${course?.id}`}
                           className="rounded-3xl min-w-28 max-w-36 py-2 text-center text-white bg-[#6F0FEB] hover:bg-[#823cdf]"
                         >
                           Course Start
                         </Link>
                         <Button
                           variant="secondary"
-                          className="rounded-3xl min-w-28 max-w-36 py-2 text-center bg-gray-700 hover:bg-gray-700 text-gray-300"
+                          className="py-2 text-center text-gray-300 bg-gray-700 rounded-3xl min-w-28 max-w-36 hover:bg-gray-700"
                         >
                           Course Outline
                         </Button>
@@ -98,19 +98,19 @@ const LavelOne = () => {
             )}
 
             {/* SECOND CARD START  */}
-            <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
+            <div className="w-full gap-8 px-8 py-10 space-y-4 md:flex md:space-y-4">
               <div className="w-full xl:w-[30%]">
                 <img
                   src={secondImage}
                   alt="course-starting-image"
-                  className="w-full max-h-72 rounded-2xl object-cover "
+                  className="object-cover w-full max-h-72 rounded-2xl "
                 />
               </div>
               <div>
                 <h1 className="text-[#AE34E4] ext-xl md:text-2xl lg:text-3xl font-semibold">
                   Recommended for Complete Web Development Course
                 </h1>
-                <p className="text-sm font-semibold text-white py-2">
+                <p className="py-2 text-sm font-semibold text-white">
                   Programming Hero
                 </p>
                 <div className="w-full py-3">
@@ -129,10 +129,10 @@ const LavelOne = () => {
 
             {/* THIRD CARD START */}
             <div className=" py-10 w-full md:w-[70%] px-8">
-              <h1 className="text-sm md:text-2xl font-semibold text-white pb-8">
+              <h1 className="pb-8 text-sm font-semibold text-white md:text-2xl">
                 Available For You
               </h1>
-              <section className="md:flex w-full gap-8">
+              <section className="w-full gap-8 md:flex">
                 <div>
                   <img
                     src={startCourse}
@@ -141,7 +141,7 @@ const LavelOne = () => {
                   />
                 </div>
                 
-                  <section className="space-y-2 pt-4">
+                  <section className="pt-4 space-y-2">
                     <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
                       Next Level Developmet
                     </h1>
@@ -149,10 +149,10 @@ const LavelOne = () => {
                       Programming Hero
                     </p>
                     <div className="flex items-center justify-between">
-                      <p className="text-bold font-semibold text-white">
+                      <p className="font-semibold text-white text-bold">
                         $6500
                       </p>
-                      <p className=" text-white text-sm md:text-xl px-8">
+                      <p className="px-8 text-sm text-white  md:text-xl">
                         <span className="text-orange-500">Closed</span> 9th
                         Oct-24th Oct,2024
                       </p>
@@ -160,7 +160,7 @@ const LavelOne = () => {
                   </section>
                 
               </section>
-              <section className="lg:flex md:items-center w-full  space-y-2 md:space-y-0 md:space-x-7 space-x-0 py-4">
+              <section className="w-full py-4 space-x-0 space-y-2 lg:flex md:items-center md:space-y-0 md:space-x-7">
                 <p className="text-[#AE34E4]  ext-xl md:text-2xl lg:text-3xl font-semibold">
                   This course is only for existing students only
                 </p>
