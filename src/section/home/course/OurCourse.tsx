@@ -15,9 +15,7 @@ const OurCourse = () => {
 
   return (
     <>
-      {/* <div className=" w-full h-20 bg-black blur-[20px] "></div> */}
-
-      <div className="relative px-5 bg-black">
+      <div className="relative bg-black ">
         <CommonSpace>
           <CommonContainer>
             <div className="relative w-full ">
@@ -33,7 +31,7 @@ const OurCourse = () => {
               </div>
             </div>
           </CommonContainer>
-          <div className="bg-cover bg-bg-grid ">
+          <div className="px-4 bg-cover bg-bg-grid">
             <SapceBottom>
               <OurCourseCard setIsPlay={setIsPlay} />
             </SapceBottom>
