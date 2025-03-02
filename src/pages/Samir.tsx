@@ -22,7 +22,7 @@ import {
   Book,
 } from "lucide-react";
 
-// Define menu items for different roles
+
 const studentMenuItems = [
   {
     path: "/dashboard/profile",
@@ -181,16 +181,20 @@ const instructorMenuItems = [
 ];
 
 const Samir = () => {
-  // Determine the user's role (this can come from your authentication system or context)
-  const userRole = "admin"; // Example: 'student', 'admin', 'superAdmin', or 'instructor'
+  // Get the user's role from localStorage
+  const userData = JSON.parse(localStorage.getItem('user') as string);
+  const user = userData?.state?.user?.data;
+  
+
+  console.log(user)
 
   // Choose the appropriate menu items based on the user's role
   const menuItems =
-    userRole === "admin"
+    user.role === "ADMIN"
       ? adminMenuItems
-      : userRole === "superAdmin"
+      : user?.role === "SUPER_ADMIN"
       ? superAdminMenuItems
-      : userRole === "instructor"
+      : user?.role === "INSTRUCTOR"
       ? instructorMenuItems
       : studentMenuItems;
 
@@ -211,11 +215,11 @@ const Samir = () => {
                 />
               </div>
               <h1 className="text-[#e2aaff] font-bold mt-2 text-lg text-center">
-                Shahriar Samir
+                {user.name}
               </h1>
-              <p className="text-sm text-gray-400 text-center">WEB9-0906</p>
+              <p className="text-sm text-gray-400 text-center">{user.id}</p>
               <p className="text-sm text-gray-400 text-center">
-                shabusiness035@gmail.com
+                {user.email}
               </p>
               <p className="text-sm text-gray-400 text-center">
                 +8801311297872
