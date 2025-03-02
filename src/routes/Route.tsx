@@ -34,9 +34,6 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
-import Course from "../section/dashboard/Course";
-import Module from "../section/dashboard/Module";
-
 
 
 const routes = createBrowserRouter([
@@ -108,6 +105,10 @@ const routes = createBrowserRouter([
         element: <SignUpPage />,
       },
       { path: "/course-modules", element: <Module /> },
+      {
+        path: "/student-analytics",
+        element: <Analytics />,
+      },
       {
         path: "/dashboard",
         element: <Samir />,
