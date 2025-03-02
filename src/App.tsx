@@ -5,10 +5,10 @@ import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
 
 const App = () => {
-  const { setUser, user, token } = userStore();
+  const { setUser, token } = userStore();
 
 
-  console.log("use", user);
+
   const Axios = useAxiosSecure();
 
   const fetchUser = async () => {
