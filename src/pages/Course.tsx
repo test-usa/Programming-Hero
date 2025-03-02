@@ -2,7 +2,7 @@ import DashFoote from "../components/dashboard/DashFoote";
 import DashNavbar from "../components/dashboard/DashNavbar";
 import LavelOne from "../components/dashboard/LavelOne";
 
-const Mehedi = () => {
+const Course = () => {
   return (
     <div className=" bg-[#010314]">
       <DashNavbar />
@@ -14,4 +14,4 @@ const Mehedi = () => {
   );
 };
 
-export default Mehedi;
+export default Course;

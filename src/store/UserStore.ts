@@ -12,33 +12,32 @@ const axiosSecure = axios.create({
 export const userStore = create<TuserStore>()((set) => ({
   user: null,
   token,
-  signup_user: async (data: TsignupSchema) => {
+  signup_user: async (userData: TsignupSchema) => {
     try {
-      const response = await axiosSecure.post("/auth/register", data);
-      console.log("response sign sdfkjsa", response);
-      if (response.data.success) {
-        toast.success(response.data.message);
+      const { data } = await axiosSecure.post("/auth/register", userData);
+      console.log("response sign sdfkjsa", data);
+      if (data.success) {
+        toast.success(data.message);
       }
-      if (response.data.error) {
-        toast.error(response.data.message);
+      if (data.error) {
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Problem during Signup", error);
     }
   },
-  loginUser: async (data: TsigninSchema) => {
+  loginUser: async (userData: TsigninSchema) => {
     try {
-      const response = await axiosSecure.post("/auth/login", data);
-      if (response.data.success) {
-        toast.success(response.data.message);
+      const { data } = await axiosSecure.post("/auth/login", userData);
+      if (data.success) {
+        toast.success(data.message);
       }
-      if (response.data.error) {
-        toast.error(response?.data.message);
+      if (data.error) {
+        toast.error(data.message);
       }
-      return Cookies.set("user", response.data.data.accessToken);
+      return Cookies.set("user", data.data.accessToken);
     } catch (error) {
       console.log("Problem during login", error);
-      throw error;
     }
   },
   setUser: async (newUser: object) => {
