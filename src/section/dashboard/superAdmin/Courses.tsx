@@ -1,5 +1,6 @@
 import React from "react";
 import { Eye, Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
   // Dummy courses data
@@ -41,9 +42,10 @@ const Courses = () => {
               <td className="p-2 text-right">
                 {/* Flex container for buttons */}
                 <div className="flex justify-end items-center gap-2">
+                  <Link to='/dashboard/course'>
                   <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
                     <Eye size={16} /> {/* Show Details Icon */}
-                  </button>
+                  </button></Link>
                   {course.status === "approved" && (
                     <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
                       <Trash2 size={16} /> {/* Remove Icon */}

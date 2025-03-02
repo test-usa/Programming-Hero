@@ -15,6 +15,8 @@ const OurCourse = () => {
 
   return (
     <>
+      {/* <div className=" w-full h-20 bg-black blur-[20px] "></div> */}
+
       <div className="relative px-5 bg-black">
         <CommonSpace>
           <CommonContainer>

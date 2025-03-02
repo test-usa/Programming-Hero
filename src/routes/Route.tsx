@@ -34,7 +34,7 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
-import Analytics from "../pages/Analytics";
+
 
 const routes = createBrowserRouter([
   {
@@ -104,6 +104,7 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <SignUpPage />,
       },
+      { path: "/course-modules", element: <Module /> },
       {
         path: "/student-analytics",
         element: <Analytics />,
@@ -112,6 +113,10 @@ const routes = createBrowserRouter([
         path: "/dashboard",
         element: <Samir />,
         children: [
+          {
+            path: 'course',
+            element: <Course/>,
+          },
           { path: "profile", element: <Profile /> },
           { path: "additional-info", element: <AdditionalInfo /> },
           { path: "address", element: <Address /> },
