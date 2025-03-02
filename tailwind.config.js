@@ -22,6 +22,7 @@ module.exports = {
 
 		'custom-footer': "url('./src/assets/images/footer.jpg')",
 		'footer-gradient':'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)',
+
 		'globe-gradient':'linear-gradient(0deg, #6605BA 0%, rgba(24, 0, 79, 0.53) 50.52%, rgba(93, 38, 224, 0.00) 100%)',
 		'login-signin':"url('./src/assets/images/sign.svg')",
 		'text-gradient':'linear-gradient(90deg, #E855DE 0.01%, #5400EE 100%)'
