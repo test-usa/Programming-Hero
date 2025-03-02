@@ -8,6 +8,7 @@ import OurCourse from "../section/home/course/OurCourse";
 import AbsoluteBeginner from "../section/home/AbsoluteBeginner";
 import SuccesStory from "../section/home/SuccesStory";
 import OurMission from "../section/home/OurMission";
+import Svg from "../section/home/Svg";
 const Home = () => {
   return (
     <>
@@ -16,6 +17,12 @@ const Home = () => {
         <HomeTitle />
         <HomeAnimation />
         <HomeImage />
+        <div className="absolute -translate-y-1/2 top-1/2 -left-40 ">
+          <Svg />
+        </div>
+        <div className="absolute -translate-y-1/2 top-1/2 -right-40 ">
+          <Svg />
+        </div>
       </div>
       <div>
         <OurCourse />
@@ -23,6 +30,7 @@ const Home = () => {
         <SuccesStory />
         <OurMission />
       </div>
+
       <Footer />
     </>
   );
