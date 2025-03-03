@@ -1,9 +1,11 @@
-import Cookies from "js-cookie";
-import useAxiosSecure from "../useAxios";
+import { userStore } from "../../store/UserStore";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Axios from "../useAxios";
+
+// post hoook
 const usePost = (route: string) => {
-  const Axios = useAxiosSecure();
-  const token = Cookies.get("user");
+  const { token } = userStore();
   const queryClient = useQueryClient();
 
   const { data, mutate, isPending, isSuccess } = useMutation({

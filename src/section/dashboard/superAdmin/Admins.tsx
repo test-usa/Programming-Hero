@@ -8,6 +8,7 @@ const Admins = () => {
   // Use the custom hook with correct type
   const { data, isLoading, isSuccess } = useFetchQuery("/admin");
 
+  console.log(isLoading)
   // Display loading state
   if (isLoading) {
     return <div className="text-white p-6">Loading admins...</div>;
