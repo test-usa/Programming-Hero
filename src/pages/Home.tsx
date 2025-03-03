@@ -17,10 +17,10 @@ const Home = () => {
         <HomeTitle />
         <HomeAnimation />
         <HomeImage />
-        <div className="absolute -translate-y-1/2 top-1/2 -left-40 ">
+        <div className="absolute hidden -translate-y-1/2 top-1/3 -left-40 md:block">
           <Svg />
         </div>
-        <div className="absolute -translate-y-1/2 top-1/2 -right-40 ">
+        <div className="absolute hidden -translate-y-1/2 top-1/3 -right-40 md:block">
           <Svg />
         </div>
       </div>

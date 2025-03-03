@@ -1,13 +1,13 @@
-import SuccessNav from "../section/helpDesk/components/SuccessNav";
 import SuccessBanner from "../section/helpDesk/components/SuccessBanner";
 import SuccessBody from "../section/helpDesk/components/SuccessBody";
 import CardList from "../section/helpDesk/components/card/CardList";
 import SuccessFooter from "../section/helpDesk/components/SuccessFooter";
+import CourseNav from "../section/course-details/CourseNav";
 
 const Success = () => {
   return (
     <div>
-      <SuccessNav />
+      <CourseNav />
       <SuccessBanner />
       <SuccessBody />
       <CardList />
