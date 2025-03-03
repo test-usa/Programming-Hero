@@ -1,11 +1,8 @@
 import { create } from "zustand";
 import { TsigninSchema, TsignupSchema, TuserStore } from "../types/Types";
-import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { persist } from "zustand/middleware";
-
-const token = Cookies.get("user");
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
@@ -14,11 +11,10 @@ export const userStore = create<TuserStore>()(
   persist(
     (set) => ({
       user: null,
-      token,
+      token: null,
       signup_user: async (userData: TsignupSchema) => {
         try {
           const { data } = await axiosSecure.post("/auth/register", userData);
-          console.log("response sign sdfkjsa", data);
           if (data.success) {
             toast.success(data.message);
           }
@@ -32,10 +28,9 @@ export const userStore = create<TuserStore>()(
       loginUser: async (userData: TsigninSchema) => {
         try {
           const { data } = await axiosSecure.post("/auth/login", userData);
-          console.log("login response", data);
           if (data.success) {
             toast.success(data.message);
-            Cookies.set("user", data.data.accessToken);
+            set({ token: data.data.accessToken });
             set({ user: data });
           }
           if (data.error) {
@@ -48,8 +43,8 @@ export const userStore = create<TuserStore>()(
       },
 
       logOutUser: () => {
-        Cookies.remove("user");
         set({ user: null });
+        set({ token: null });
       },
     }),
     { name: "user" }
