@@ -29,13 +29,19 @@ export const loginSchema = z.object({
 
 export type TsigninSchema = z.infer<typeof loginSchema>;
 
+export const createInstructor = z.object({
+  name: z.string().min(2, "Please insert your name"),
+  email: z.string().email().min(2, "pleaase insert your email"),
+  password: z.string().min(4, "password must be 4 characters"),
+});
+export type TcreateInstructor = z.infer<typeof createInstructor>;
+
 export type TuserStore = {
   user: object | null;
+  token: string | null;
   signup_user: (TuserSignUp: any) => Promise<void>;
   loginUser: (TuserLogin: any) => Promise<any>;
-  // setUser: (TuserLogin: any) => Promise<any>;
   logOutUser: () => void;
-  token: string | undefined;
 };
 
 export interface RoadmapProps {

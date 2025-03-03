@@ -2,15 +2,17 @@ import { VscBell } from "react-icons/vsc";
 import { RiMenu2Fill, RiCloseFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { Avatar } from "@heroui/react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import CustomModal from "../course-details/Modal";
+import ProfileModal from "./ProfileModal";
 
 const CourseNav = () => {
   const [menu, setMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const menuItems = [
     {
@@ -41,17 +43,19 @@ const CourseNav = () => {
 
   return (
     <div
-      className={`sticky top-0 z-10 transition-all duration-300 ${
-        isScrolled ? "bg-[rgba(249,247,243,0.5)]" : "bg-[#010313]"
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[rgba(249,247,243,0.8)]" : "bg-[#010313]"
       }`}
     >
       <div className="pt-3 font-Grotesk px-9">
         <div className="flex items-center justify-between w-full text-white">
           <div className="items-center hidden lg:flex">
-            <img src={logo} alt="logo" />
-            <p className="hidden -ml-4 text-lg font-bold md:block">
-              Programming Hero
-            </p>
+          <Link to="/" className="flex items-center">
+          <img src={logo} alt="logo" />
+          <p className="hidden -ml-4 text-lg font-bold md:block">
+           Programming Hero
+         </p>
+         </Link>
           </div>
 
           <section className="flex items-center gap-x-3 lg:hidden">
@@ -59,7 +63,7 @@ const CourseNav = () => {
               src="https://i.pravatar.cc/150?u=a04258114e29026702d"
               className="border-2 border-purple-400 rounded-full animate-pulse"
             />
-            <p>Hi, Kazi</p>
+            <p>Hi,Eitty</p>
           </section>
 
           <div className="flex items-center gap-6 text-sm">
@@ -70,6 +74,7 @@ const CourseNav = () => {
                 </NavLink>
               ))}
             </span>
+
 
             <div className="flex items-center gap-x-5">
               <VscBell className="text-2xl" />
@@ -86,11 +91,16 @@ const CourseNav = () => {
               >
                 <RiMenu2Fill />
               </span>
-
-              <Avatar
+              <button className="px-3 py-2  rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125 lg:block hidden"
+               onClick={() => setIsModalOpen(true)}
+              >Enroll Now</button>
+              <Avatar onClick={() => setIsProfileModalOpen(true)}
+             
                 src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-                className="hidden lg:block"
+
+                className="hidden lg:block cursor-pointer"
               />
+            
             </div>
           </div>
         </div>
@@ -129,6 +139,7 @@ const CourseNav = () => {
       </div>
 
       <CustomModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <ProfileModal isOpen={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)} />
     </div>
   );
 };

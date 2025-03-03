@@ -20,12 +20,12 @@ const Header = () => {
     <div
       className={
         stricky
-          ? "fixed shadow-2xl z-50 w-full  backdrop-blur-md  bg-black/30"
+          ? "fixed shadow-2xl z-50 w-full  backdrop-blur-md  bg-black/30 "
           : ""
       }
     >
       <CommonContainer>
-        <div className="flex items-center justify-between w-full text-white">
+        <div className="flex items-center justify-between w-full text-white ">
           <div className="flex items-center">
             <img className="" src={logo} alt="logo" />
             <p className="hidden -ml-4 text-lg font-bold text-white md:block">
@@ -56,7 +56,7 @@ const Header = () => {
             <NavLink to="/success">Success</NavLink>
             <NavLink to="/blog">Blog</NavLink>
 
-            {user && <NavLink to="/dashboard">Dashboard</NavLink>}
+            {user && <NavLink to="/dashboard/profile">Dashboard</NavLink>}
 
             {user ? (
               <button
