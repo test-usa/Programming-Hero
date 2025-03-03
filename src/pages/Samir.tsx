@@ -21,6 +21,7 @@ import {
   PlusCircle,
   Book,
 } from "lucide-react";
+import CourseNav from "../section/course-details/CourseNav";
 
 // Define menu items for different roles
 const studentMenuItems = [
@@ -196,9 +197,9 @@ const Samir = () => {
 
   return (
     <main className="bg-[#010313] w-full">
-      <DashNavbar />
+      <CourseNav />
       <CommonContainer>
-        <section className="mx-auto grid lg:grid-cols-4 gap-7 mt-5 mb-14">
+        <section className="grid mx-auto mt-5 lg:grid-cols-4 gap-7 mb-14">
           {/* Sidebar */}
           <div className="lg:col-span-1 bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
             {/* Profile Section */}
@@ -207,28 +208,28 @@ const Samir = () => {
                 <img
                   src="/photo/copyright.png"
                   alt="User Profile"
-                  className="w-full h-full object-cover"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <h1 className="text-[#e2aaff] font-bold mt-2 text-lg text-center">
                 Shahriar Samir
               </h1>
-              <p className="text-sm text-gray-400 text-center">WEB9-0906</p>
-              <p className="text-sm text-gray-400 text-center">
+              <p className="text-sm text-center text-gray-400">WEB9-0906</p>
+              <p className="text-sm text-center text-gray-400">
                 shabusiness035@gmail.com
               </p>
-              <p className="text-sm text-gray-400 text-center">
+              <p className="text-sm text-center text-gray-400">
                 +8801311297872
               </p>
 
               {/* Profile Completion Bar */}
               <div className="w-full mt-2">
-                <div className="flex justify-between items-center text-sm text-gray-400">
+                <div className="flex items-center justify-between text-sm text-gray-400">
                   <span>Complete your profile</span>
                   <span className="text-white">100%</span>
                 </div>
-                <div className="w-full h-1 bg-gray-700 rounded-full mt-1">
-                  <div className="h-1 bg-purple-500 rounded-full w-full"></div>
+                <div className="w-full h-1 mt-1 bg-gray-700 rounded-full">
+                  <div className="w-full h-1 bg-purple-500 rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -249,7 +250,7 @@ const Samir = () => {
                 >
                   {item.icon} {item.label}
                   {item.completed && (
-                    <CheckCircle size={18} className="text-green-400 ml-auto" />
+                    <CheckCircle size={18} className="ml-auto text-green-400" />
                   )}
                 </NavLink>
               ))}

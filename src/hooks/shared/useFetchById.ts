@@ -1,10 +1,8 @@
-import Cookies from "js-cookie";
-import useAxiosSecure from "../useAxios";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { userStore } from "../../store/UserStore";
+import Axios from "../useAxios";
 const useFetchById = (route: string) => {
-  const Axios = useAxiosSecure();
-  const token = Cookies.get("user");
-
+  const { token } = userStore();
   const { data, isLoading, isSuccess, refetch } = useQuery({
     queryKey: ["get-by-id"],
     queryFn: () => {

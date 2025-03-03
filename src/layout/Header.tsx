@@ -56,7 +56,7 @@ const Header = () => {
             <NavLink to="/success">Success</NavLink>
             <NavLink to="/blog">Blog</NavLink>
 
-            {user && <NavLink to="/dashboard">Dashboard</NavLink>}
+            {user && <NavLink to="/dashboard/profile">Dashboard</NavLink>}
 
             {user ? (
               <button

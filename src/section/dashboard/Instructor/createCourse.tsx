@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CreateCourse = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +20,8 @@ const CreateCourse = () => {
     });
   };
 
+  console.log("first", formData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission (e.g., send data to an API)
@@ -28,11 +30,11 @@ const CreateCourse = () => {
 
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
-      <h2 className="text-xl font-bold mb-6">Create Course</h2>
+      <h2 className="mb-6 text-xl font-bold">Create Course</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
         {/* Course Title */}
         <div>
-          <label className="block text-sm font-medium mb-1">Course Title</label>
+          <label className="block mb-1 text-sm font-medium">Course Title</label>
           <input
             type="text"
             name="title"
@@ -45,7 +47,9 @@ const CreateCourse = () => {
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-medium mb-1">Course Description</label>
+          <label className="block mb-1 text-sm font-medium">
+            Course Description
+          </label>
           <textarea
             name="description"
             placeholder="Enter course description"
@@ -57,7 +61,7 @@ const CreateCourse = () => {
 
         {/* Price */}
         <div>
-          <label className="block text-sm font-medium mb-1">Course Price</label>
+          <label className="block mb-1 text-sm font-medium">Course Price</label>
           <input
             type="number"
             name="price"
@@ -70,7 +74,7 @@ const CreateCourse = () => {
 
         {/* Is Published */}
         <div>
-          <label className="block text-sm font-medium mb-1">Is Published</label>
+          <label className="block mb-1 text-sm font-medium">Is Published</label>
           <select
             name="isPublished"
             value={formData.isPublished}
@@ -84,7 +88,7 @@ const CreateCourse = () => {
 
         {/* Modules */}
         <div>
-          <label className="block text-sm font-medium mb-1">Modules</label>
+          <label className="block mb-1 text-sm font-medium">Modules</label>
           <input
             type="text"
             name="modules"
@@ -97,7 +101,9 @@ const CreateCourse = () => {
 
         {/* Payment */}
         <div>
-          <label className="block text-sm font-medium mb-1">Payment Methods</label>
+          <label className="block mb-1 text-sm font-medium">
+            Payment Methods
+          </label>
           <input
             type="text"
             name="payment"
@@ -110,7 +116,7 @@ const CreateCourse = () => {
 
         {/* Students */}
         <div>
-          <label className="block text-sm font-medium mb-1">Students</label>
+          <label className="block mb-1 text-sm font-medium">Students</label>
           <input
             type="text"
             name="students"
@@ -123,7 +129,7 @@ const CreateCourse = () => {
 
         {/* Classroom */}
         <div>
-          <label className="block text-sm font-medium mb-1">Classroom</label>
+          <label className="block mb-1 text-sm font-medium">Classroom</label>
           <input
             type="text"
             name="classroom"
@@ -138,7 +144,7 @@ const CreateCourse = () => {
         <div>
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"
+            className="w-full py-2 text-white transition-colors bg-purple-600 rounded-lg hover:bg-purple-700"
           >
             Create Course
           </button>

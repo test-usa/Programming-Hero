@@ -1,22 +1,22 @@
-import Cookies from "js-cookie";
-import useAxiosSecure from "../useAxios";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-const useFetchQuery = (route: string, params: object = {}) => {
-  const Axios = useAxiosSecure();
-  const token = Cookies.get("user");
+import Axios from "../useAxios";
+import { userStore } from "../../store/UserStore";
 
-  const { data, isLoading, isSuccess, refetch } = useQuery({
-    queryKey: ["user", route, ...Object.values(params)],
-    queryFn: () => {
-      Axios.get(route, {
+const useFetch = (route: string, params = {}) => {
+  const { token } = userStore();
+  const { data, isSuccess, isLoading, refetch } = useQuery({
+    queryKey: [" course", route, ...Object.values(params)],
+    queryFn: () =>
+      Axios(route, {
         params,
-        headers: { Authorization: `Bearer ${token}` },
-      });
-    },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
     placeholderData: keepPreviousData,
   });
 
-  return { data, isLoading, isSuccess, refetch };
+  return { data: data?.data, isSuccess, isLoading, refetch };
 };
 
-export default useFetchQuery;
+export default useFetch;
