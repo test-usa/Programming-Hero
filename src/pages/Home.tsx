@@ -12,7 +12,7 @@ import Svg from "../section/home/Svg";
 const Home = () => {
   return (
     <>
-      <div className="relative min-h-96 sm:min-h-screen bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff]">
+      <div className="relative min-h-96 sm:min-h-screen bg-black max-sm:bg-gradient-to-r from-[#ff37f2]  to-[#405aff] overflow-hidden">
         <Header />
         <HomeTitle />
         <HomeAnimation />
