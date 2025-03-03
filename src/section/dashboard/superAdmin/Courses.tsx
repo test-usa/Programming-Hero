@@ -1,42 +1,32 @@
 import { Eye, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios"; // Import axios
+import useFetchQuery from "../../../hooks/shared/useFetch";
+
+// Define Course type based on API response
+interface Course {
+  id: string;
+  title: string;
+  price: number;
+  isPublished: boolean;
+}
 
 const Courses = () => {
-  const [courses, setCourses] = useState([]); // State to store courses
-  const [loading, setLoading] = useState(true); // State to manage loading state
-  const [error, setError] = useState(null); // State to handle errors
+  // Fetch courses using custom hook
+  const { data, isLoading, isSuccess } = useFetchQuery("/course");
 
-  const url = import.meta.env.VITE_BACKEND_URL;
-
-  // Fetch courses from the API
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await axios.get(`${url}/courses/getAll`, {
-          withCredentials: true, // Include credentials (cookies, tokens, etc.)
-        });
-        setCourses(response.data); // Set the fetched courses
-      } catch (err) {
-        setError(err.message); // Set error message
-      } finally {
-        setLoading(false); // Set loading to false
-      }
-    };
-
-    fetchCourses();
-  }, [url]);
-
+  console.log(data)
   // Display loading state
-  if (loading) {
+  if (isLoading) {
     return <div className="text-white p-6">Loading courses...</div>;
   }
 
-  // Display error message
-  if (error) {
-    return <div className="text-red-500 p-6">Error: {error}</div>;
+  // Display error if data is not successfully fetched
+  if (!isSuccess || !data) {
+    return <div className="text-red-500 p-6">Error: Failed to fetch courses</div>;
   }
+
+  // Extract course data safely
+  const courses: Course[] = data?.data || [];
 
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
@@ -44,7 +34,8 @@ const Courses = () => {
       <table className="w-full">
         <thead>
           <tr className="border-b border-gray-600">
-            <th className="text-left p-2">Course Name</th>
+            <th className="text-left p-2">Title</th>
+            <th className="text-left p-2">Price</th>
             <th className="text-left p-2">Status</th>
             <th className="text-right p-2">Actions</th>
           </tr>
@@ -52,33 +43,27 @@ const Courses = () => {
         <tbody>
           {courses.map((course) => (
             <tr key={course.id} className="border-b border-gray-600">
-              <td className="p-2">{course.courseName}</td>
+              <td className="p-2">{course.title}</td>
+              <td className="p-2">${course.price.toFixed(2)}</td>
               <td className="p-2">
                 <span
                   className={`px-2 py-1 rounded-full text-sm ${
-                    course.status === "approved"
-                      ? "bg-green-500 text-white"
-                      : course.status === "pending"
-                      ? "bg-yellow-500 text-black"
-                      : "bg-red-500 text-white"
+                    course.isPublished ? "bg-green-500 text-white" : "bg-red-500 text-white"
                   }`}
                 >
-                  {course.status}
+                  {course.isPublished ? "Published" : "Unpublished"}
                 </span>
               </td>
               <td className="p-2 text-right">
-                {/* Flex container for buttons */}
                 <div className="flex justify-end items-center gap-2">
                   <Link to={`/dashboard/course/${course.id}`}>
                     <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
-                      <Eye size={16} /> {/* Show Details Icon */}
+                      <Eye size={16} />
                     </button>
                   </Link>
-                  {course.status === "approved" && (
-                    <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
-                      <Trash2 size={16} /> {/* Remove Icon */}
-                    </button>
-                  )}
+                  <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </td>
             </tr>
