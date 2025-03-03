@@ -34,6 +34,8 @@ import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 import MyClass from "../pages/MyClass";
 import MyClassDetails from "../pages/MyClassDetails";
 import CourseDetails from "../pages/CourseDetails";
+import Module from "../section/dashboard/Module";
+import Course1 from "../section/dashboard/Course";
 
 const routes = createBrowserRouter([
   {
@@ -104,14 +106,14 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <SignUpPage />,
       },
-
+      { path: "/course-modules", element: <Module /> },
       {
         path: "/dashboard",
         element: <Samir />,
         children: [
           {
-            path: "course",
-            element: <Courses />,
+            path: 'course',
+            element: <Course1/>,
           },
           { path: "profile", element: <Profile /> },
           { path: "additional-info", element: <AdditionalInfo /> },

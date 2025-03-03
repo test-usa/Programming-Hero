@@ -1,15 +1,42 @@
-import React from "react";
 import { Eye, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios"; // Import axios
 
 const Courses = () => {
-  // Dummy courses data
-  const courses = [
-    { id: 1, courseName: "Introduction to React", status: "approved" },
-    { id: 2, courseName: "Advanced JavaScript", status: "pending" },
-    { id: 3, courseName: "Node.js Fundamentals", status: "rejected" },
-    { id: 4, courseName: "Database Design", status: "approved" },
-  ];
+  const [courses, setCourses] = useState([]); // State to store courses
+  const [loading, setLoading] = useState(true); // State to manage loading state
+  const [error, setError] = useState(null); // State to handle errors
+
+  const url = import.meta.env.VITE_BACKEND_URL;
+
+  // Fetch courses from the API
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(`${url}/courses/getAll`, {
+          withCredentials: true, // Include credentials (cookies, tokens, etc.)
+        });
+        setCourses(response.data); // Set the fetched courses
+      } catch (err) {
+        setError(err.message); // Set error message
+      } finally {
+        setLoading(false); // Set loading to false
+      }
+    };
+
+    fetchCourses();
+  }, [url]);
+
+  // Display loading state
+  if (loading) {
+    return <div className="text-white p-6">Loading courses...</div>;
+  }
+
+  // Display error message
+  if (error) {
+    return <div className="text-red-500 p-6">Error: {error}</div>;
+  }
 
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
@@ -42,10 +69,11 @@ const Courses = () => {
               <td className="p-2 text-right">
                 {/* Flex container for buttons */}
                 <div className="flex justify-end items-center gap-2">
-                  <Link to='/dashboard/course'>
-                  <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
-                    <Eye size={16} /> {/* Show Details Icon */}
-                  </button></Link>
+                  <Link to={`/dashboard/course/${course.id}`}>
+                    <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
+                      <Eye size={16} /> {/* Show Details Icon */}
+                    </button>
+                  </Link>
                   {course.status === "approved" && (
                     <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
                       <Trash2 size={16} /> {/* Remove Icon */}
