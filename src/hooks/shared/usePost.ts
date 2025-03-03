@@ -1,5 +1,5 @@
 import { userStore } from "../../store/UserStore";
-
+import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Axios from "../useAxios";
 
@@ -14,8 +14,16 @@ const usePost = (route: string) => {
         headers: { Authorization: `Bearer ${token}` },
       });
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.data.success) {
+        toast.success(data.data.message);
+      }
+      console.log("ramjan", data);
       queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+    onError(error) {
+      console.log("error", error?.response?.data?.message);
+      toast.error(error?.response?.data?.message);
     },
   });
 
