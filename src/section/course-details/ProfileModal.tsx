@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
-
+import { FaArrowRightToBracket } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 type ProfileModalProps = {
   isOpen: boolean;
@@ -38,19 +39,20 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           />
           <h2 className="mt-3 text-lg font-semibold">Dilruba Yasmin Eitty</h2>
           <p className="text-gray-400 text-sm">Student ID:</p>
-          <button className="mt-3 px-4 py-2 bg-custom-gradient rounded-lg text-white font-medium">
+         <Link to="/"> <button className="mt-3 px-4 py-2 bg-custom-gradient rounded-lg text-white font-medium">
             View Profile
-          </button>
+          </button></Link>
         </div>
         <ul className="mt-5 text-base space-y-3 p-3">
-          <li className="cursor-pointer border-b-1 border-gray-600 ">My Classes</li>
-          <li className="cursor-pointer border-b-1 border-gray-600 ">Helpdesk </li>
+          <li className="cursor-pointer border-b-1 border-gray-600 "> <Link to="/class"> My Classes</Link></li>
+          <li className="cursor-pointer border-b-1 border-gray-600 "><Link to="/helpDesk">Helpdesk</Link> </li>
           <li className="cursor-pointer border-b-1 border-gray-600 ">Leaderboard</li>
           <li className="cursor-pointer border-b-1 border-gray-600 ">Announcement</li>
           <li className="cursor-pointer border-b-1 border-gray-600 ">Conceptual Sessions</li>
         </ul>
         <div className=" p-3  text-red-400 cursor-pointer flex items-center gap-2 hover:text-red-300">
           <h2>LogOut </h2>
+         
         </div>
       </div>
     </div>
