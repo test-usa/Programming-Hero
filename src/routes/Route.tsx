@@ -30,7 +30,9 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
-import Course from "../pages/Course";
+
+import MyClass from "../pages/MyClass";
+import MyClassDetails from "../pages/MyClassDetails";
 import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
 import Course1 from "../section/dashboard/Course";
@@ -46,11 +48,15 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/course",
-        element: <Course />,
+        path: "/class",
+        element: <MyClass />,
       },
       {
-        path: "/course/:id",
+        path: "/class/:id",
+        element: <MyClassDetails />,
+      },
+      {
+        path: "/course",
         element: <CourseDetails />,
       },
       {

@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -137,4 +138,34 @@
 }
 .clip-custom-shape {
   clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+}
+svg path {
+  fill: blueviolet
+}
+
+@keyframes fullspin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fullSpin {
+  animation: fullspin 20s linear infinite
+}
+
+@keyframes Rfullspin {
+
+
+  100% {
+    transform: rotate(-360deg);
+
+  }
+}
+
+.RfullSpin {
+  animation: Rfullspin 20s linear infinite
 }

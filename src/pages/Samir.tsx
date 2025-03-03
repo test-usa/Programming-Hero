@@ -183,10 +183,8 @@ const instructorMenuItems = [
 const Samir = () => {
   // Get the user's role from localStorage
   const userData = JSON.parse(localStorage.getItem('user') as string);
-  const user = userData?.state?.user?.data;
+  const user = userData?.state?.user?.data.user;
   
-
-  console.log(user)
 
   // Choose the appropriate menu items based on the user's role
   const menuItems =

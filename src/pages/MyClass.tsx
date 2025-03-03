@@ -1,11 +1,11 @@
 import DashFoote from "../components/dashboard/DashFoote";
-import DashNavbar from "../components/dashboard/DashNavbar";
 import LavelOne from "../components/dashboard/LavelOne";
+import CourseNav from "../section/course-details/CourseNav";
 
-const Course = () => {
+const MyClass = () => {
   return (
     <div className=" bg-[#010314]">
-      <DashNavbar />
+    <CourseNav/>
       <div className="my-12">
         <LavelOne />
       </div>
@@ -14,4 +14,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default MyClass;
