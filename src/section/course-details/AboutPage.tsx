@@ -2,7 +2,8 @@
 import CommonContainer from "../../common/CommonContainer";
 import CommonSpace from "../../common/CommonSpace";
 import Img from "../../assets/Jhankar-Mahbub.png"
-import { FaGreaterThan } from "react-icons/fa";
+import team from "../../assets/team-bg.png"
+import team2 from "../../assets/glow-bg.png"
 
 
 interface TeamMember {
@@ -27,23 +28,34 @@ interface TeamCardProps {
 
 const TeamCard: React.FC<TeamCardProps> = ({ imgSrc, name, designation }) => {
   return (
-    <div className="bg-black flex flex-col gap-4 items-center rounded-lg overflow-hidden w-full sm:w-48 md:w-56 lg:w-64 m-4 transition-all duration-300 hover:scale-105 group shadow-lg ">
-  <div className="relative">
-  <div className="">
-      <FaGreaterThan className="text-[#2D1B64]  group-hover:text-purple-500 text-[250px] z-0"/>
-    </div>
-    <div className="clip-custom-shape overflow-hidden absolute  top-[-15px] z-15">
-      <img src={imgSrc} alt={name} className="w-full transition-all duration-300 " />
-    </div>
+    <div className="bg-black flex flex-col gap-4 items-center rounded-lg overflow-hidden w-full sm:w-48 md:w-56 lg:w-64 m-4 transition-all duration-300 hover:scale-105 group shadow-lg relative">
+      
+      {/* Background Image Changes on Hover */}
+      <div className="relative w-[80%] h-[250px] overflow-hidden top-[54px]">
+        <img
+          src={team}
+          alt="Default Background"
+          className="absolute inset-0 w-full h-full transition-opacity duration-300 ease-in-out group-hover:opacity-0 "
+        />
+        
+        <img
+          src={team2}
+          alt="Hover Background"
+          className="absolute inset-0 w-full h-full opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 "
+        />
+      </div>
 
-  </div>
- 
-    <div className="p-4">
-      <h3 className="text-xl text-white font-semibold">{name}</h3>
-      <p className="text-gray-500">{designation}</p>
+      {/* User Profile Image (No Hover Effect) */}
+     
+      <div className="clip-custom-shape overflow-hidden absolute  z-15">
+      <img src={imgSrc} alt={name} className="w-full transition-all duration-300 h-[300px] " />
     </div>
-  </div>
-  
+      {/* Name & Designation */}
+      <div className="mt-16 p-4 text-center">
+        <h3 className="text-xl text-white font-semibold">{name}</h3>
+        <p className="text-gray-500">{designation}</p>
+      </div>
+    </div>
   );
 };
 
