@@ -3,11 +3,11 @@ const HomeTitle = () => {
     <div className="absolute flex flex-col items-center justify-center w-full text-white top-1/4 font-Grotesk ">
       <div className="rounded-full w-96 h-80 bg-black sm:bg-text-gradient blur-[90px] "></div>
       <div className="absolute z-20 flex flex-col items-center justify-center w-full gap-4 top-5">
-        <h2 className="px-4 text-5xl font-extrabold text-center md:text-7xl">
+        <h2 className="px-4 text-5xl font-extrabold text-center lg:text-7xl lg">
           Let's code_ Your Career
         </h2>
         {/*  */}
-        <p className="max-w-2xl px-4 text-lg text-center sm:text-xl">
+        <p className="max-w-lg px-4 text-lg text-center lg:max-w-xl sm:text-xl">
           We're on a mission to provide personalized learning and empower
           individuals to kick-start their careers.
         </p>

@@ -77,7 +77,7 @@ const LavelOne = () => {
                       </div>
                       <section className="flex items-center pt-4 gap-x-4">
                         <Link
-                          to={`/course/${course?.id}`}
+                          to={`/class/${course?.id}`}
                           className="rounded-3xl min-w-28 max-w-36 py-2 text-center text-white bg-[#6F0FEB] hover:bg-[#823cdf]"
                         >
                           Course Start
@@ -140,25 +140,22 @@ const LavelOne = () => {
                     className="w-full max-h-60 rounded-2xl"
                   />
                 </div>
-                
-                  <section className="pt-4 space-y-2">
-                    <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
-                      Next Level Developmet
-                    </h1>
-                    <p className="text-sm font-semibold text-white">
-                      Programming Hero
+
+                <section className="pt-4 space-y-2">
+                  <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
+                    Next Level Developmet
+                  </h1>
+                  <p className="text-sm font-semibold text-white">
+                    Programming Hero
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-white text-bold">$6500</p>
+                    <p className="px-8 text-sm text-white md:text-xl">
+                      <span className="text-orange-500">Closed</span> 9th
+                      Oct-24th Oct,2024
                     </p>
-                    <div className="flex items-center justify-between">
-                      <p className="font-semibold text-white text-bold">
-                        $6500
-                      </p>
-                      <p className="px-8 text-sm text-white  md:text-xl">
-                        <span className="text-orange-500">Closed</span> 9th
-                        Oct-24th Oct,2024
-                      </p>
-                    </div>
-                  </section>
-                
+                  </div>
+                </section>
               </section>
               <section className="w-full py-4 space-x-0 space-y-2 lg:flex md:items-center md:space-y-0 md:space-x-7">
                 <p className="text-[#AE34E4]  ext-xl md:text-2xl lg:text-3xl font-semibold">
