@@ -2,7 +2,7 @@ import HelpDeskCategory from "../section/helpDesk/components/HelpDeskCategory";
 import HelpDeskHeader from "../section/helpDesk/HelpDeskHeader";
 import { Outlet } from "react-router-dom";
 
-const Himel = () => {
+const HelpDesk = () => {
   return (
     <div>
       <HelpDeskHeader></HelpDeskHeader>
@@ -12,4 +12,4 @@ const Himel = () => {
   );
 };
 
-export default Himel;
+export default HelpDesk;
