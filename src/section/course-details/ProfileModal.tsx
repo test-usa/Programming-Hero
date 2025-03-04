@@ -22,11 +22,12 @@ type ProfileModalProps = {
 };
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
+  
     const { user,logOutUser  } = userStore() 
 
 
     const nestedUser: User = user?.data?.user
-    console.log("User Data:", nestedUser);
+ 
     const navigate = useNavigate();
    
   
@@ -42,8 +43,8 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
   const handleLogout = () => {
-    logOutUser(); // Call the logout function
-    navigate("/login"); // Redirect to login page
+    logOutUser(); 
+    navigate("/login"); 
   };
 
   if (!isOpen) return null;
@@ -78,7 +79,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         </ul>
         <div onClick={handleLogout} className=" p-3  cursor-pointer flex items-center gap-2 ">
           <h2 className="text-[#cb4bc5]">LogOut </h2>
-         <FaArrowRightToBracket className=" text-lg rotate-180"/>
+         <FaArrowRightToBracket className=" text-lg rotate-180 text-[#cb4bc5]"/>
         </div>
       </div>
     </div>

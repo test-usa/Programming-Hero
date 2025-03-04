@@ -8,8 +8,8 @@ interface SpecialityCard {
 
 const SpecialityCard = ({ imgSrc, title, description,className}: SpecialityCard) => {
   return (
-    <div>
-       <div className="min-h-[300px]  bg-gradient-to-b from-[#ffffff1a] to-[#99999900] mt-3 md:p-6 p-3 rounded-2xl text-white hover:bg-gradient-to-b hover:from-[#FFA08C] hover:to-[#FD3F85] hover:text-black transition-all duration-300 ease-in-out">
+  
+       <div className=" md:w-[32%] w-full  bg-gradient-to-b from-[#ffffff1a] to-[#99999900] mt-3 md:p-6 p-3 rounded-2xl text-white hover:bg-gradient-to-b hover:from-[#FFA08C] hover:to-[#FD3F85] hover:text-black transition-all duration-300 ease-in-out">
       <img
         src={imgSrc}
         alt="Course Image"
@@ -22,7 +22,7 @@ const SpecialityCard = ({ imgSrc, title, description,className}: SpecialityCard)
         {description}
       </p>
     </div>
-    </div>
+   
   )
 }
 

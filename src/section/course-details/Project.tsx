@@ -20,7 +20,7 @@ const Project = () => {
         <div className="md:flex gap-4  p-7">
           {/* 950+ Videos Section */}
           <div
-            className={`md:w-[32%] w-full bg-[#2D123C] p-5 pr-10 rounded-lg border-[1px] border-t-[#8B348E] border-x-[#8B348E] border-b-0 transition-all duration-300 mt-3 md:mt-0 ${isExpandedV ? "h-auto" : " md:h-[250px] h-[350px] overflow-hidden"
+            className={`md:w-[32%] w-full bg-[#2D123C] p-5 pr-10 rounded-lg border-[1px] border-t-[#8B348E] border-x-[#8B348E] border-b-0 transition-all duration-300 mt-3 md:mt-0 ${isExpandedV ? "h-auto" : " lg:h-[250px] h-[400px] overflow-hidden"
               }`}
           >
             <img src={videoImg} alt="Video " />
@@ -37,7 +37,7 @@ const Project = () => {
 
           {/* 45+ Projects Section */}
           <div
-            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#31172A] p-5 pr-10 rounded-lg border-[1px] border-t-[#FAA157] border-x-[#FAA157] border-b-0 transition-all duration-300 ${isExpandedB ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
+            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#31172A] p-5 pr-10 rounded-lg border-[1px] border-t-[#FAA157] border-x-[#FAA157] border-b-0 transition-all duration-300 ${isExpandedB ? "h-auto" : "lg:h-[250px] h-[400px] overflow-hidden"
               }`}
           >
             <img src={bulbImg} alt=" bulb" />
@@ -54,7 +54,7 @@ const Project = () => {
 
           {/* 10+ Assignments Section */}
           <div
-            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#211D30] p-5 pr-10 rounded-lg border-[1px] border-t-[#35AC6D] border-x-[#35AC6D] border-b-0 transition-all duration-300 ${isExpandedP ? "h-auto" : "md:h-[250px] h-[400px] overflow-hidden"
+            className={`md:w-[32%] mt-3 md:mt-0 w-full bg-[#211D30] p-5 pr-10 rounded-lg border-[1px] border-t-[#35AC6D] border-x-[#35AC6D] border-b-0 transition-all duration-300 ${isExpandedP ? "h-auto" : "lg:h-[250px] h-[400px] overflow-hidden"
               }`}
           >
             <img src={codeImg} alt="code" />

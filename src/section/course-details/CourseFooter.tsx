@@ -54,14 +54,14 @@ const CourseFooter = () => {
                     <FaYoutube />
                   </Link>
                 </div>
-                <p className="text-lg font-semibold">Download Apps</p>
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                  <img src={google} alt="Google Play" className="h-12 w-40" />
-                  <img src={apps} alt="App Store" className="h-12 w-40" />
+                <p className="text-lg font-semibold pt-5">Download Apps</p>
+                <div className="flex md:flex-col lg:flex-row flex-wrap items-center justify-center  gap-4 cursor-pointer">
+                  <img src={google} alt="Google Play" className="h-12 w-[120px]" />
+                  <img src={apps} alt="App Store" className="h-12 w-[120px]" />
                 </div>
-                <div className="border rounded-xl p-2 flex items-center justify-center w-40">
-                  <img src={mic} alt="Microsoft" className="h-10 w-36" />
-                </div>
+             
+                  <img src={mic} alt="Microsoft" className="h-12  border-1 p-2 rounded-lg cursor-pointer w-[120px] " />
+                
               </div>
             </div>
           </div>
