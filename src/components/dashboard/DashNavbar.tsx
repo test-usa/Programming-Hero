@@ -1,24 +1,17 @@
 import CommonContainer from "../../common/CommonContainer";
 import { VscBell } from "react-icons/vsc";
-
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import { RiMenu2Fill } from "react-icons/ri";
-
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
+import { muneItems } from "./Dashboard.type";
 
 const DashNavbar = () => {
-  //   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menu, setMenu] = useState(false);
 
-  type muneItems = {
-    href: string;
-    path: string;
-  };
-
-
+  
   const menuItems: muneItems[] = [
     {
       href: "/",
@@ -62,7 +55,11 @@ const DashNavbar = () => {
           <div className="items-center  gap-6 text-sm flex">
             <span className="space-x-4 hidden lg:block">
               {menuItems.map((item) => {
-                return <NavLink to={item.href}>{item.path}</NavLink>;
+                return (
+                  <NavLink key={item?.href} to={item.href}>
+                    {item.path}
+                  </NavLink>
+                );
               })}
             </span>
             <div className="flex items-center gap-x-5">

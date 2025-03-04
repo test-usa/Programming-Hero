@@ -15,6 +15,7 @@ const LavelOne = () => {
   const [tabs, setTabs] = useState<boolean>(false);
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [dummyData, setDummyData] = useState<[]>([]);
   const token = Cookies.get("user");
   const url = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
@@ -39,6 +40,25 @@ const LavelOne = () => {
     fetchData();
   }, []);
 
+  // ----- dummy json data -----//
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/content.json");
+        const data = await response.json();
+        if (data) {
+          setDummyData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(dummyData, "dummy mummmy dataatatata");
+
   return (
     <CommonContainer>
       <div>
@@ -47,12 +67,14 @@ const LavelOne = () => {
           your next lesson?
         </h1>
         <Tabs setTabs={setTabs} tabs={tabs} />
+
         {/* START COURSE SECTION  START */}
         {tabs === false ? (
           <div className="bg-[#181024] w-full rounded-lg mt-10">
             {/* FIRST CARD START */}
-            {courses?.length > 0 ? (
-              courses?.map((course) => {
+            {dummyData?.length > 0 ? (
+              dummyData?.map((course) => {
+                console.log("new course", course);
                 return (
                   <div className="md:flex w-full space-y-4 md:space-y-4  gap-8 py-10 px-8">
                     <div className="w-full xl:w-[30%]">
@@ -140,25 +162,22 @@ const LavelOne = () => {
                     className="w-full max-h-60 rounded-2xl"
                   />
                 </div>
-                
-                  <section className="space-y-2 pt-4">
-                    <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
-                      Next Level Developmet
-                    </h1>
-                    <p className="text-sm font-semibold text-white">
-                      Programming Hero
+
+                <section className="space-y-2 pt-4">
+                  <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
+                    Next Level Developmet
+                  </h1>
+                  <p className="text-sm font-semibold text-white">
+                    Programming Hero
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-bold font-semibold text-white">$6500</p>
+                    <p className=" text-white text-sm md:text-xl px-8">
+                      <span className="text-orange-500">Closed</span> 9th
+                      Oct-24th Oct,2024
                     </p>
-                    <div className="flex items-center justify-between">
-                      <p className="text-bold font-semibold text-white">
-                        $6500
-                      </p>
-                      <p className=" text-white text-sm md:text-xl px-8">
-                        <span className="text-orange-500">Closed</span> 9th
-                        Oct-24th Oct,2024
-                      </p>
-                    </div>
-                  </section>
-                
+                  </div>
+                </section>
               </section>
               <section className="lg:flex md:items-center w-full  space-y-2 md:space-y-0 md:space-x-7 space-x-0 py-4">
                 <p className="text-[#AE34E4]  ext-xl md:text-2xl lg:text-3xl font-semibold">
