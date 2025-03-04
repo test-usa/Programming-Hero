@@ -1,230 +1,565 @@
 [
   {
-    "id": "course-98765",
-    "title": "Advanced React Development",
-    "description": "Mastering the art of building scalable and efficient React applications requires a deep understanding of core concepts like hooks and the context API. React hooks, such as useState, useEffect, and useContext, empower developers to manage state, side effects, and context in functional components, simplifying code and improving performance. The context API, on the other hand, eliminates the need for prop drilling by providing a way to share data across the component tree without having to pass props manually at every level. By mastering these tools, developers can build applications that are both maintainable and efficient, offering smooth performance and better user experiences.",
-    "price": 149.99,
-    "isPublished": true,
+    "No": 1,
+    "name": "Introduction to Programming",
+    "time": {
+      "hour": 5,
+      "mins": 30
+    },
+    "TotalModules": 5,
     "modules": [
       {
-        "id": "module-1",
-        "title": "React Fundamentals",
-        "courseId": "course-98765",
-        "content": [
+        "No": 1,
+        "name": "Basics of Python",
+        "time": {
+          "hour": 1,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
           {
-            "id": "content-1",
-            "title": "Introduction to React",
-            "description": "Learning the basics of React involves understanding its core principles, which lay the foundation for building modern web applications. React is a JavaScript library for building user interfaces, focusing on creating reusable components. The core concepts include JSX (JavaScript XML), which allows you to write HTML-like syntax within JavaScript, and components, which can be either functional or class-based. React also introduces state and props to manage data and pass it between components. Understanding the virtual DOM, which optimizes rendering performance, is crucial. Mastering these concepts enables developers to create dynamic, responsive, and scalable user interfaces efficiently."
+            "No": 1,
+            "name": "Introduction to Python",
+            "duration": "10:00",
+            "file": "https://www.youtube.com/watch?v=9Os0o3wzS_I"
           },
           {
-            "id": "content-2",
-            "title": "React Components",
-            "video": "https://www.youtube.com/watch?v=w7ejDZ8SWv8"
+            "No": 2,
+            "name": "Variables and Data Types",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=khKv-8q7YmY"
           },
           {
-            "id": "content-3",
-            "title": "State Management with React",
-            "video": "https://www.youtube.com/watch?v=8rZ2aUjs07A"
+            "No": 3,
+            "name": "Control Flow - if/else",
+            "duration": "15:00",
+            "file": "https://www.youtube.com/watch?v=f4KOjWS_KZs"
           },
           {
-            "id": "content-4",
-            "title": "React Router",
-            "video": "https://www.youtube.com/watch?v=Law7wfdg_ls"
+            "No": 4,
+            "name": "Loops in Python",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
           },
           {
-            "id": "content-10",
-            "title": "Quiz on React Basics",
-            "quiz": [
-              {
-                "id": "quiz-1",
-                "question": "What does JSX stand for in React?",
-                "options": [
-                  "JavaScript Syntax Extension",
-                  "JavaScript XML",
-                  "Java Syntax Extension",
-                  "None of the above"
-                ],
-                "correctAnswer": 0
-              },
-              {
-                "id": "quiz-2",
-                "question": "What is the purpose of useState hook in React?",
-                "options": [
-                  "Managing states in a component",
-                  "Handling component lifecycle",
-                  "Handling events",
-                  "None of the above"
-                ],
-                "correctAnswer": 0
-              }
-            ]
+            "No": 5,
+            "name": "Functions in Python",
+            "duration": "16:30",
+            "file": "https://www.youtube.com/watch?v=9Os0o3wzS_I"
+          },
+          {
+            "No": 6,
+            "name": "Working with Libraries",
+            "duration": "18:00",
+            "file": "https://www.youtube.com/watch?v=UCCezIgC97Z"
+          },
+          {
+            "No": 7,
+            "name": "Exception Handling",
+            "duration": "13:45",
+            "file": "https://www.youtube.com/watch?v=NIWwJbo-9_8"
+          },
+          {
+            "No": 8,
+            "name": "Python Review and Practice",
+            "duration": "20:00",
+            "file": "https://www.youtube.com/watch?v=rfscVS0vtbw"
           }
         ]
-      }
-    ],
-    "student": [
+      },
       {
-        "id": "student-1",
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "enrolledCourses": ["course-98765"]
-      }
-    ],
-    "payment": [
+        "No": 2,
+        "name": "Advanced Python Concepts",
+        "time": {
+          "hour": 2,
+          "mins": 0
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Object-Oriented Programming",
+            "duration": "25:00",
+            "file": "https://www.youtube.com/watch?v=JeznW_7DlB0"
+          },
+          {
+            "No": 2,
+            "name": "Decorators in Python",
+            "duration": "22:30",
+            "file": "https://www.youtube.com/watch?v=FsAPt_9Bf3o"
+          },
+          {
+            "No": 3,
+            "name": "Generators and Iterators",
+            "duration": "18:00",
+            "file": "https://www.youtube.com/watch?v=bD05uGo_sVI"
+          },
+          {
+            "No": 4,
+            "name": "Lambda Functions",
+            "duration": "15:30",
+            "file": "https://www.youtube.com/watch?v=hYzwA7E1pI0"
+          },
+          {
+            "No": 5,
+            "name": "File Handling in Python",
+            "duration": "19:00",
+            "file": "https://www.youtube.com/watch?v=Uh2ebFW8OYM"
+          },
+          {
+            "No": 6,
+            "name": "Python Data Structures",
+            "duration": "23:00",
+            "file": "https://www.youtube.com/watch?v=R-HLu2xNjiY"
+          },
+          {
+            "No": 7,
+            "name": "Context Managers",
+            "duration": "21:30",
+            "file": "https://www.youtube.com/watch?v=2V1YoH_4hhk"
+          },
+          {
+            "No": 8,
+            "name": "Python Best Practices",
+            "duration": "20:15",
+            "file": "https://www.youtube.com/watch?v=bbpB_9zggS4"
+          }
+        ]
+      },
       {
-        "id": "payment-123",
-        "studentId": "student-1",
-        "amount": 149.99,
-        "date": "2025-02-25",
-        "status": "Completed"
+        "No": 3,
+        "name": "Python for Data Science",
+        "time": {
+          "hour": 1,
+          "mins": 45
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Introduction to Data Science",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=xxkffz2zkg8"
+          },
+          {
+            "No": 2,
+            "name": "Numpy and Pandas Basics",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=vmEHCJofslg"
+          },
+          {
+            "No": 3,
+            "name": "Data Cleaning with Pandas",
+            "duration": "16:00",
+            "file": "https://www.youtube.com/watch?v=1Z3Haxk7auI"
+          },
+          {
+            "No": 4,
+            "name": "Data Visualization with Matplotlib",
+            "duration": "20:00",
+            "file": "https://www.youtube.com/watch?v=3Xc3CA655Y4"
+          },
+          {
+            "No": 5,
+            "name": "Statistical Analysis with Python",
+            "duration": "18:45",
+            "file": "https://www.youtube.com/watch?v=J2V4VZa2gnk"
+          },
+          {
+            "No": 6,
+            "name": "Working with APIs in Python",
+            "duration": "22:00",
+            "file": "https://www.youtube.com/watch?v=Z1Yd7upQs-Q"
+          },
+          {
+            "No": 7,
+            "name": "Introduction to Machine Learning",
+            "duration": "23:30",
+            "file": "https://www.youtube.com/watch?v=7eh4d6sabA0"
+          },
+          {
+            "No": 8,
+            "name": "Data Science Best Practices",
+            "duration": "21:00",
+            "file": "https://www.youtube.com/watch?v=1avN2NV6Bpg"
+          }
+        ]
+      },
+      {
+        "No": 4,
+        "name": "Web Development with Flask",
+        "time": {
+          "hour": 2,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Setting up Flask Environment",
+            "duration": "10:00",
+            "file": "https://www.youtube.com/watch?v=Z1RJmh_OqeA"
+          },
+          {
+            "No": 2,
+            "name": "Creating Routes in Flask",
+            "duration": "12:45",
+            "file": "https://www.youtube.com/watch?v=5Mw64p7zp_8"
+          },
+          {
+            "No": 3,
+            "name": "Flask Templates and Views",
+            "duration": "18:30",
+            "file": "https://www.youtube.com/watch?v=7r4v7k7L7xg"
+          },
+          {
+            "No": 4,
+            "name": "Handling Forms in Flask",
+            "duration": "15:00",
+            "file": "https://www.youtube.com/watch?v=Dr5aZmCH0yM"
+          },
+          {
+            "No": 5,
+            "name": "Database Integration with Flask",
+            "duration": "20:00",
+            "file": "https://www.youtube.com/watch?v=9ArMjAFqZb4"
+          },
+          {
+            "No": 6,
+            "name": "Flask Authentication",
+            "duration": "23:00",
+            "file": "https://www.youtube.com/watch?v=PVtPz6aAgq8"
+          },
+          {
+            "No": 7,
+            "name": "Deploying Flask Apps",
+            "duration": "17:15",
+            "file": "https://www.youtube.com/watch?v=1hNEx0sTZV0"
+          },
+          {
+            "No": 8,
+            "name": "Flask Security Best Practices",
+            "duration": "19:00",
+            "file": "https://www.youtube.com/watch?v=59ShQzL2mKU"
+          }
+        ]
+      },
+      {
+        "No": 5,
+        "name": "Project Building in Python",
+        "time": {
+          "hour": 1,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Project Setup and Planning",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=H1knwsu05l4"
+          },
+          {
+            "No": 2,
+            "name": "Building the Core of the App",
+            "duration": "18:00",
+            "file": "https://www.youtube.com/watch?v=5o7gqkngzpo"
+          },
+          {
+            "No": 3,
+            "name": "Integrating APIs in Projects",
+            "duration": "22:00",
+            "file": "https://www.youtube.com/watch?v=Fjw3j61bbEw"
+          },
+          {
+            "No": 4,
+            "name": "Testing and Debugging",
+            "duration": "16:00",
+            "file": "https://www.youtube.com/watch?v=3tjs8g0rw0w"
+          },
+          {
+            "No": 5,
+            "name": "Deploying Projects",
+            "duration": "19:30",
+            "file": "https://www.youtube.com/watch?v=saPpFx0zwv8"
+          },
+          {
+            "No": 6,
+            "name": "Project Review",
+            "duration": "20:15",
+            "file": "https://www.youtube.com/watch?v=1a2Bpx6UE2I"
+          },
+          {
+            "No": 7,
+            "name": "Project Best Practices",
+            "duration": "18:45",
+            "file": "https://www.youtube.com/watch?v=pJqtnmfDmyA"
+          },
+          {
+            "No": 8,
+            "name": "Project Scaling",
+            "duration": "21:00",
+            "file": "https://www.youtube.com/watch?v=Q_p8d3wSv7M"
+          }
+        ]
       }
     ]
   },
   {
-    "id": "course-11223",
-    "title": "Node.js for Beginners",
-    "description": "Learning the fundamentals of Node.js is essential for backend development, as it enables you to build fast, scalable server-side applications using JavaScript. Node.js is built on Chrome's V8 JavaScript engine, allowing non-blocking, event-driven architectures. Express.js, a lightweight web application framework for Node.js, simplifies the routing and handling of HTTP requests. MongoDB, a NoSQL database, integrates well with Node.js for storing and managing unstructured data. By mastering these technologies, you can build robust APIs, manage databases efficiently, and create full-stack web applications. Understanding Node.js, Express, and MongoDB is key to becoming a proficient backend developer.",
-    "price": 79.99,
-    "isPublished": true,
+    "No": 2,
+    "name": "JavaScript Basics",
+    "time": {
+      "hour": 4,
+      "mins": 0
+    },
+    "TotalModules": 5,
     "modules": [
       {
-        "id": "module-1",
-        "title": "Node.js Basics",
-        "courseId": "course-11223",
-        "content": [
+        "No": 1,
+        "name": "Intro to JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 0
+        },
+        "TotalVideos": 8,
+        "videos": [
           {
-            "id": "content-1",
-            "title": "Introduction to Node.js",
-            "description": "Node.js is a powerful JavaScript runtime built on Chrome’s V8 engine, designed for building fast and scalable server-side applications. It uses a non-blocking, event-driven architecture, making it highly efficient for handling multiple concurrent requests. Node.js is particularly suitable for I/O-heavy tasks, such as data streaming and API services, as it allows applications to process requests without waiting for other tasks to finish. With its extensive ecosystem of libraries and frameworks, like Express.js, developers can quickly set up RESTful APIs, integrate with databases, and deploy robust applications that can scale horizontally to handle growing traffic demands."
-            
+            "No": 1,
+            "name": "JavaScript Introduction",
+            "duration": "9:00",
+            "file": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
           },
           {
-            "id": "content-2",
-            "title": "Setting up a Node.js Project",
-            "video": "https://www.youtube.com/watch?v=TlB_eWDSMt4"
+            "No": 2,
+            "name": "Variables in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=5vW7yeylJZ4"
           },
           {
-            "id": "content-3",
-            "title": "Understanding Express.js",
-            "video": "https://www.youtube.com/watch?v=gnsO8-xJ8rs"
+            "No": 3,
+            "name": "Operators in JavaScript",
+            "duration": "10:30",
+            "file": "https://www.youtube.com/watch?v=n5k48vxq0Zc"
           },
           {
-            "id": "content-10",
-            "title": "Node.js Quiz",
-            "quiz": [
-              {
-                "id": "quiz-1",
-                "question": "What is the purpose of Express in Node.js?",
-                "options": [
-                  "Framework for building web applications",
-                  "Database connection",
-                  "Server-side rendering",
-                  "None of the above"
-                ],
-                "correctAnswer": 0
-              },
-              {
-                "id": "quiz-2",
-                "question": "Which of the following is true about Node.js?",
-                "options": [
-                  "It runs on a single thread",
-                  "It runs on multiple threads",
-                  "It cannot handle file operations",
-                  "None of the above"
-                ],
-                "correctAnswer": 0
-              }
-            ]
+            "No": 4,
+            "name": "Data Types in JavaScript",
+            "duration": "13:30",
+            "file": "https://www.youtube.com/watch?v=Zh9-jewhw4M"
+          },
+          {
+            "No": 5,
+            "name": "Functions in JavaScript",
+            "duration": "16:15",
+            "file": "https://www.youtube.com/watch?v=ox9QFw8X9RU"
+          },
+          {
+            "No": 6,
+            "name": "Objects in JavaScript",
+            "duration": "11:45",
+            "file": "https://www.youtube.com/watch?v=6Fhgt0G70wY"
+          },
+          {
+            "No": 7,
+            "name": "Loops in JavaScript",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=dQsdVS_Ja_g"
+          },
+          {
+            "No": 8,
+            "name": "Arrays in JavaScript",
+            "duration": "14:30",
+            "file": "https://www.youtube.com/watch?v=1p63a5QYZek"
           }
         ]
-      }
-    ],
-    "student": [
+      },
       {
-        "id": "student-2",
-        "name": "Jane Smith",
-        "email": "jane.smith@example.com",
-        "enrolledCourses": ["course-11223"]
-      }
-    ],
-    "payment": [
-      {
-        "id": "payment-124",
-        "studentId": "student-2",
-        "amount": 79.99,
-        "date": "2025-02-26",
-        "status": "Completed"
+        "No": 2,
+        "name": "Advanced JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Understanding Closures",
+            "duration": "13:00",
+            "file": "https://www.youtube.com/watch?v=-wFygwUwHSo"
+          },
+          {
+            "No": 2,
+            "name": "Promises in JavaScript",
+            "duration": "15:00",
+            "file": "https://www.youtube.com/watch?v=1tlWLsWR2rI"
+          },
+          {
+            "No": 3,
+            "name": "Async/Await in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=G3tZ9y97j4w"
+          },
+          {
+            "No": 4,
+            "name": "ES6 Features",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=w6kTh3uH72M"
+          },
+          {
+            "No": 5,
+            "name": "JavaScript Design Patterns",
+            "duration": "18:15",
+            "file": "https://www.youtube.com/watch?v=40wbNlA1uyk"
+          },
+          {
+            "No": 6,
+            "name": "Event Loop and Call Stack",
+            "duration": "16:00",
+            "file": "https://www.youtube.com/watch?v=8aGhZqP9M1Y"
+          },
+          {
+            "No": 7,
+            "name": "Functional Programming in JavaScript",
+            "duration": "17:30",
+            "file": "https://www.youtube.com/watch?v=YyvnaofJ6eY"
+          },
+          {
+            "No": 8,
+            "name": "Error Handling in JavaScript",
+            "duration": "11:30",
+            "file": "https://www.youtube.com/watch?v=x3bKhNh8-0Q"
+          }
+        ]
       }
     ]
   },
   {
-    "id": "course-87654",
-    "title": "MongoDB Mastery",
-    "description": "MongoDB is a leading NoSQL database designed to handle large volumes of unstructured and semi-structured data. Unlike traditional relational databases, MongoDB stores data in flexible, JSON-like documents called BSON, making it ideal for complex, hierarchical data structures. It offers high scalability, reliability, and performance, allowing developers to store and retrieve vast amounts of data quickly. MongoDB supports advanced querying, indexing, and aggregation, enabling efficient data manipulation. By mastering MongoDB, developers can build robust applications that handle everything from user data to large datasets, making it a powerful tool for modern web and mobile applications.",
-    "price": 59.99,
-    "isPublished": true,
+    "No": 3,
+    "name": "CSS Advanced Topics",
+    "time": {
+      "hour": 4,
+      "mins": 0
+    },
+    "TotalModules": 5,
     "modules": [
       {
-        "id": "module-1",
-        "title": "MongoDB Basics",
-        "courseId": "course-87654",
-        "content": [
+        "No": 1,
+        "name": "Intro to JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 0
+        },
+        "TotalVideos": 8,
+        "videos": [
           {
-            "id": "content-1",
-            "title": "Introduction to MongoDB",
-            "description": "MongoDB is a NoSQL database that differs significantly from traditional SQL databases. Instead of using tables and rows, MongoDB stores data in flexible, JSON-like documents (BSON format), making it well-suited for handling unstructured or semi-structured data. This structure allows for dynamic schemas, enabling developers to store data without predefined formats. MongoDB also supports horizontal scaling, making it easier to manage large datasets by distributing them across multiple servers. Unlike SQL databases, MongoDB doesn’t rely on complex JOIN operations, offering faster read and write operations. Understanding these differences helps developers leverage MongoDB for modern, scalable applications."
+            "No": 1,
+            "name": "JavaScript Introduction",
+            "duration": "9:00",
+            "file": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
           },
           {
-            "id": "content-2",
-            "title": "Setting up MongoDB",
-            "video": "https://www.youtube.com/watch?v=-56x56UppqQ"
+            "No": 2,
+            "name": "Variables in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=5vW7yeylJZ4"
           },
           {
-            "id": "content-3",
-            "title": "CRUD Operations in MongoDB",
-            "video": "https://www.youtube.com/watch?v=FwMw0BLTSQI"
+            "No": 3,
+            "name": "Operators in JavaScript",
+            "duration": "10:30",
+            "file": "https://www.youtube.com/watch?v=n5k48vxq0Zc"
           },
           {
-            "id": "content-10",
-            "title": "MongoDB Quiz",
-            "quiz": [
-              {
-                "id": "quiz-1",
-                "question": "What does CRUD stand for in MongoDB?",
-                "options": [
-                  "Create, Read, Update, Delete",
-                  "Create, Replace, Undo, Delete",
-                  "Check, Read, Undo, Delete",
-                  "None of the above"
-                ],
-                "correctAnswer": 0
-              },
-              {
-                "id": "quiz-2",
-                "question": "Which is the primary data format used in MongoDB?",
-                "options": ["JSON", "XML", "CSV", "None of the above"],
-                "correctAnswer": 0
-              }
-            ]
+            "No": 4,
+            "name": "Data Types in JavaScript",
+            "duration": "13:30",
+            "file": "https://www.youtube.com/watch?v=Zh9-jewhw4M"
+          },
+          {
+            "No": 5,
+            "name": "Functions in JavaScript",
+            "duration": "16:15",
+            "file": "https://www.youtube.com/watch?v=ox9QFw8X9RU"
+          },
+          {
+            "No": 6,
+            "name": "Objects in JavaScript",
+            "duration": "11:45",
+            "file": "https://www.youtube.com/watch?v=6Fhgt0G70wY"
+          },
+          {
+            "No": 7,
+            "name": "Loops in JavaScript",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=dQsdVS_Ja_g"
+          },
+          {
+            "No": 8,
+            "name": "Arrays in JavaScript",
+            "duration": "14:30",
+            "file": "https://www.youtube.com/watch?v=1p63a5QYZek"
           }
         ]
-      }
-    ],
-    "student": [
+      },
       {
-        "id": "student-3",
-        "name": "Emily Johnson",
-        "email": "emily.johnson@example.com",
-        "enrolledCourses": ["course-87654"]
-      }
-    ],
-    "payment": [
-      {
-        "id": "payment-125",
-        "studentId": "student-3",
-        "amount": 59.99,
-        "date": "2025-02-27",
-        "status": "Completed"
+        "No": 2,
+        "name": "Advanced JavaScript",
+        "time": {
+          "hour": 1,
+          "mins": 30
+        },
+        "TotalVideos": 8,
+        "videos": [
+          {
+            "No": 1,
+            "name": "Understanding Closures",
+            "duration": "13:00",
+            "file": "https://www.youtube.com/watch?v=-wFygwUwHSo"
+          },
+          {
+            "No": 2,
+            "name": "Promises in JavaScript",
+            "duration": "15:00",
+            "file": "https://www.youtube.com/watch?v=1tlWLsWR2rI"
+          },
+          {
+            "No": 3,
+            "name": "Async/Await in JavaScript",
+            "duration": "14:00",
+            "file": "https://www.youtube.com/watch?v=G3tZ9y97j4w"
+          },
+          {
+            "No": 4,
+            "name": "ES6 Features",
+            "duration": "12:30",
+            "file": "https://www.youtube.com/watch?v=w6kTh3uH72M"
+          },
+          {
+            "No": 5,
+            "name": "JavaScript Design Patterns",
+            "duration": "18:15",
+            "file": "https://www.youtube.com/watch?v=40wbNlA1uyk"
+          },
+          {
+            "No": 6,
+            "name": "Event Loop and Call Stack",
+            "duration": "16:00",
+            "file": "https://www.youtube.com/watch?v=8aGhZqP9M1Y"
+          },
+          {
+            "No": 7,
+            "name": "Functional Programming in JavaScript",
+            "duration": "17:30",
+            "file": "https://www.youtube.com/watch?v=YyvnaofJ6eY"
+          },
+          {
+            "No": 8,
+            "name": "Error Handling in JavaScript",
+            "duration": "11:30",
+            "file": "https://www.youtube.com/watch?v=x3bKhNh8-0Q"
+          }
+        ]
       }
     ]
   }

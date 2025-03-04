@@ -13,22 +13,12 @@ import { useState } from "react";
 const ClassDetails = () => {
   const [url, setUrl] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [quiz, setQuiz] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
   const [no, setNo] = useState<number>(0);
-  const urlFunc = (
-    url: string,
-    name: string,
-    No: number,
-    description: string,
-    quiz: string
-  ): void => {
+  const urlFunc = (url: string, name: string, No: number): void => {
     if (url && name) {
       setUrl(url);
       setName(name);
       setNo(No);
-      setDescription(description);
-      setQuiz(quiz);
     } else {
       setUrl("");
       setName("");
@@ -74,12 +64,7 @@ const ClassDetails = () => {
 
           {/* VIDEO PLAYNING SECTION START */}
           <section className="lg:flex w-full gap-x-5">
-            <PlayingSec
-              url={url}
-              name={name}
-              description={description}
-              quiz={quiz}
-            />
+            <PlayingSec url={url} name={name} />
             <CourseOutline urlFunc={urlFunc} />
           </section>
           {/* VIDEO PLAYNING SECTION END */}
