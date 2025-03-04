@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Conseptual from "./Conseptual";
 import Cookies from "js-cookie";
 import axios from "axios";
+import useFetch from "../../hooks/shared/useFetch";
 const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
   const [value, setValue] = useState<number>(0);
@@ -39,6 +40,9 @@ const LavelOne = () => {
     fetchData();
   }, []);
 
+  const { data, isLoading, isSuccess } = useFetch("/course");
+  if (isLoading) return <p>Loading...</p>;
+  console.log(data);
   return (
     <CommonContainer>
       <div>

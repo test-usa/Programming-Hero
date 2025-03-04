@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createInstructor, TcreateInstructor } from "../../../types/Types";
 import { useForm } from "react-hook-form";
 import usePost from "../../../hooks/shared/usePost";
+import { Spinner } from "@heroui/spinner";
 
 const CreateInstructor = () => {
   const {
@@ -10,10 +11,10 @@ const CreateInstructor = () => {
     formState: { errors },
   } = useForm<TcreateInstructor>({ resolver: zodResolver(createInstructor) });
 
-  const { data, mutate } = usePost("/user/instructor/create");
-  console.log("data", data);
+  const { data, mutate, isPending } = usePost("/user/instructor/create");
   const submit = async (userData: TcreateInstructor) => {
     mutate(userData);
+    // if(data?.data?.succes)
   };
 
   return (
@@ -69,7 +70,11 @@ const CreateInstructor = () => {
           type="submit"
           className="w-full py-2 text-white transition-colors bg-purple-600 rounded-lg hover:bg-purple-700"
         >
-          Create Instructor
+          {isPending ? (
+            <Spinner color="warning" size="sm" />
+          ) : (
+            "Create Instructor"
+          )}
         </button>
       </form>
     </div>

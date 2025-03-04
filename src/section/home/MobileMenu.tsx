@@ -35,9 +35,9 @@ const MobileMenu = () => {
             </NavLink>
             <NavLink
               className="py-2 text-center transition-all hover:bg-custom-gradient"
-              to="/products"
+              to="/course"
             >
-              Products
+              course
             </NavLink>
             <NavLink
               className="py-2 text-center transition-all hover:bg-custom-gradient"
@@ -56,24 +56,6 @@ const MobileMenu = () => {
               to="/success"
             >
               Success
-            </NavLink>
-            <NavLink
-              className="py-2 text-center transition-all hover:bg-custom-gradient"
-              to="/mehedi"
-            >
-              mehedi
-            </NavLink>
-            <NavLink
-              className="py-2 text-center transition-all hover:bg-custom-gradient"
-              to="/eitty"
-            >
-              eitty
-            </NavLink>
-            <NavLink
-              className="py-2 text-center transition-all hover:bg-custom-gradient"
-              to="/himel/all-post"
-            >
-              himel
             </NavLink>
 
             {user ? (

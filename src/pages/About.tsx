@@ -1,14 +1,13 @@
+import Footer from "../layout/Footer"
+import Header from "../layout/Header"
 import AboutPage from "../section/course-details/AboutPage"
-import CourseFooter from "../section/course-details/CourseFooter"
-import CourseNav from "../section/course-details/CourseNav"
-
 
 const About = () => {
   return (
-    <div>
-      <CourseNav/>
+    <div className="bg-[#010313]">
+      <Header/>
       <AboutPage/>
-      <CourseFooter/>
+      <Footer/>
     </div>
   )
 }

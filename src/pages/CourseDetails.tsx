@@ -1,4 +1,4 @@
-import DashNavbar from "../components/dashboard/DashNavbar";
+
 import Course from "../section/course-details/Course";
 import CoursedetailsHero from "../section/course-details/CoursedetailsHero";
 import CourseFooter from "../section/course-details/CourseFooter";

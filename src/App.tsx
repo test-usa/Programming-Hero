@@ -31,7 +31,7 @@ const App = () => {
   // }, [token]);
   return (
     <>
-      <ToastContainer position="bottom-left" theme="dark" autoClose={3000} />
+      <ToastContainer position="bottom-left" autoClose={3000} />
       <MainLayout />
     </>
   );

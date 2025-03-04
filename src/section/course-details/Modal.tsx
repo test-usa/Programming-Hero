@@ -24,7 +24,7 @@ export default function CustomModal({ isOpen, onClose }: CustomModalProps) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-[#2D1B64] text-white p-6 rounded-lg w-[700px] relative">
         <button 
-          className="absolute top-4 right-4 text-gray-300 hover:text-white"
+          className="absolute top-4 right-3 text-gray-300 hover:text-white"
           onClick={onClose}
         >
           <AiOutlineClose size={24} />
