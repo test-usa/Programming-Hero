@@ -1,67 +1,56 @@
-import { useEffect, useState } from "react";
+
 import CommonContainer from "../../common/CommonContainer";
-import CommonSpace from "../../common/CommonSpace";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "../../components/ui/accordion";
+import useFetch from "../../hooks/shared/useFetch";
+import { useParams } from "react-router-dom";
 
-const Course = () => {
-  const [modules, setModules] = useState([
-    {
-      id: 1,
-      moduleNumber: "Module 11",
-      title: "Responsive Website Assignment",
-      status: "completed",
-    },
-    {
-      id: 2,
-      moduleNumber: "Module 12",
-      title: "Introduction To Talented",
-      status: "in-progress",
-    },
-    {
-      id: 3,
-      moduleNumber: "Module 13",
-      title: "Biker Zone With Daisy UI",
-      status: "not-started",
-    },
-    {
-      id: 4,
-      moduleNumber: "Module 14",
-      title: "Tea Landing Page With DaisyUI",
-      status: "completed",
-    },
-  ]);
+const SingleCourse = () => {
+  const { id } = useParams();
+  const { data, isLoading, isSuccess, refetch } = useFetch(`course/${id}`);
 
-  // Comment out the API fetching logic
-  /*
-  useEffect(() => {
-    fetch("https://ph-lms.onrender.com/modules")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched Data:", data);
-        setModules(data.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-  */
 
   return (
-    <div className="bg-[#010313] p-4">
-      <CommonSpace>
-        <CommonContainer>
-          <div className="md:w-[85%] w-full mx-auto">
-            {/* Header and Description */}
+    <div className="bg-[#010313] p-4 text-white">
+      <CommonContainer>
+        <div className="grid grid-cols-2 ">
+          <div>A</div>
+          <div className="text-white ">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It comes with default styles that matches the other
+                  components&apos; aesthetic.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It&apos;s animated by default, but you can disable it if
+                  you prefer.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </div>
+        {/* <div className="md:w-[85%] w-full mx-auto">
             <div className="md:w-[70%] w-full mx-auto">
               <h1 className="mb-6 text-2xl font-semibold text-center text-white md:text-4xl">
                 Course Curriculum
               </h1>
-              <p className="text-lg text-center text-white/50">
-                Programming Hero's dynamic course guides students from MERN
-                stack basics to complete mastery, ensuring a strong foundation.
-                This comprehensive approach makes the learning journey smooth
-                and engaging.
-              </p>
             </div>
 
-            {/* Course Modules Table */}
             <div className="mt-12">
               <div className="p-4 bg-gradient-to-r from-[#405aff] to-[#ff37f2] rounded-tl-lg rounded-tr-lg">
                 <h2 className="text-xl font-semibold text-white capitalize md:text-2xl">
@@ -74,12 +63,12 @@ const Course = () => {
                     <tr className="border-b border-gray-600">
                       <th className="p-2 text-left text-white">Module</th>
                       <th className="p-2 text-left text-white">Title</th>
-                      <th className="p-2 text-left text-white">Status</th>
+
                       <th className="p-2 text-left text-white">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {modules.length > 0 ? (
+                    {data.length > 0 ? (
                       modules.map((module) => (
                         <tr
                           key={module.id}
@@ -89,19 +78,7 @@ const Course = () => {
                             {module.moduleNumber}
                           </td>
                           <td className="p-2 text-white">{module.title}</td>
-                          <td className="p-2">
-                            <span
-                              className={`px-2 py-1 rounded-full text-sm ${
-                                module.status === "completed"
-                                  ? "bg-green-500 text-white"
-                                  : module.status === "in-progress"
-                                  ? "bg-yellow-500 text-black"
-                                  : "bg-red-500 text-white"
-                              }`}
-                            >
-                              {module.status}
-                            </span>
-                          </td>
+
                           <td className="p-2">
                             <button className="px-3 py-1 mr-2 text-white transition-colors bg-purple-600 rounded-lg hover:bg-purple-700">
                               Show Details
@@ -125,11 +102,10 @@ const Course = () => {
                 </table>
               </div>
             </div>
-          </div>
-        </CommonContainer>
-      </CommonSpace>
+          </div> */}
+      </CommonContainer>
     </div>
   );
 };
 
-export default Course;
+export default SingleCourse;

@@ -16,7 +16,6 @@ import SkillSet from "../section/dashboard/SkillSet";
 import Level2Goal from "../section/dashboard/Level2Goal";
 import Certification from "../section/dashboard/Certification";
 import CreateUser from "../section/dashboard/superAdmin/CreateUser";
-import Courses from "../section/dashboard/superAdmin/Courses";
 import Admins from "../section/dashboard/superAdmin/Admins";
 import Students from "../section/dashboard/superAdmin/Students";
 import CreateInstructor from "../section/dashboard/admin/createInstructor";
@@ -35,7 +34,7 @@ import MyClass from "../pages/MyClass";
 import MyClassDetails from "../pages/MyClassDetails";
 import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
-import Course1 from "../section/dashboard/Course";
+import Course1 from "../section/dashboard/SingleCourse";
 import Instructors from "../section/dashboard/superAdmin/Instructors";
 
 import AdminProfile from "../section/dashboard/AdminProfile";
@@ -44,7 +43,9 @@ import StudentProfile from "../section/dashboard/StudentProfile";
 
 import HelpDesk from "../pages/HelpDesk";
 import CreateCourse from "../section/dashboard/Instructor/createCourse";
-
+import Course from "../section/dashboard/SingleCourse";
+import AllCourse from "../section/dashboard/superAdmin/AllCourse";
+import SingleCourse from "../section/dashboard/SingleCourse";
 
 const routes = createBrowserRouter([
   {
@@ -119,15 +120,6 @@ const routes = createBrowserRouter([
           {
             path: "course",
             element: <Course1 />,
-
-
-            children: [
-              {
-                path: "create",
-                element: <CreateCourse />,
-              },
-            ],
-
           },
 
           { path: "profile", element: <Profile /> },
@@ -147,7 +139,8 @@ const routes = createBrowserRouter([
           { path: "order-history", element: <OrderHistory /> },
           { path: "certification", element: <Certification /> },
           { path: "create-user", element: <CreateUser /> },
-          { path: "courses", element: <Courses /> },
+          { path: "courses", element: <AllCourse /> },
+          { path: "courses/:id", element: <SingleCourse /> },
           { path: "admins", element: <Admins /> },
           { path: "instructors", element: <Admins /> },
           { path: "students", element: <Students /> },
