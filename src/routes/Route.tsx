@@ -37,6 +37,7 @@ import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
 import Course1 from "../section/dashboard/Course";
 import Instructors from "../section/dashboard/superAdmin/Instructors";
+import HelpDesk from "../pages/HelpDesk";
 
 const routes = createBrowserRouter([
   {
