@@ -36,6 +36,15 @@ export const createInstructor = z.object({
 });
 export type TcreateInstructor = z.infer<typeof createInstructor>;
 
+
+export const createCourse = z.object({
+  title: z.string().min(2, "Please insert course name"),
+  price: z.number().min(2, "pleaase insert course price"),
+});
+
+export type TcreateCourse = z.infer<typeof createCourse>;
+
+
 export type TuserStore = {
   user: object | null;
   token: string | null;
