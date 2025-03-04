@@ -1,6 +1,7 @@
 import React from "react";
 import { Eye, Trash2 } from "lucide-react";
 import useFetchQuery from "../../../hooks/shared/useFetch";
+import { Link } from "react-router-dom";
 
 // Define the Instructor interface
 interface Instructor {
@@ -80,9 +81,11 @@ const Instructors = () => {
               <td className="p-2">#{instructor.id}</td>
               <td className="p-2 text-right">
                 <div className="flex justify-end items-center gap-2">
+                <Link to={`/dashboard/instructor-profile/${instructor.id}`}>
                   <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
                     <Eye size={16} />
                   </button>
+                  </Link>
                   <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
                     <Trash2 size={16} />
                   </button>
