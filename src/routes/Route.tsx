@@ -36,6 +36,7 @@ import MyClassDetails from "../pages/MyClassDetails";
 import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
 import Course1 from "../section/dashboard/Course";
+import Instructors from "../section/dashboard/superAdmin/Instructors";
 
 const routes = createBrowserRouter([
   {
@@ -131,7 +132,7 @@ const routes = createBrowserRouter([
           { path: "create-user", element: <CreateUser /> },
           { path: "courses", element: <Courses /> },
           { path: "admins", element: <Admins /> },
-          { path: "instructors", element: <Admins /> },
+          { path: "instructors", element: <Instructors /> },
           { path: "students", element: <Students /> },
           { path: "create-instructor", element: <CreateInstructor /> },
         ],
