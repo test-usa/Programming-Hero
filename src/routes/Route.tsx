@@ -112,8 +112,8 @@ const routes = createBrowserRouter([
         element: <Samir />,
         children: [
           {
-            path: 'course',
-            element: <Course1/>,
+            path: "course",
+            element: <Course1 />,
           },
           { path: "profile", element: <Profile /> },
           { path: "additional-info", element: <AdditionalInfo /> },
