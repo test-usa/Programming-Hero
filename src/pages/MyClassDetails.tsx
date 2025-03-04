@@ -13,12 +13,22 @@ import CourseNav from "../section/course-details/CourseNav";
 const MyClassDetails = () => {
   const [url, setUrl] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const [quiz, setQuiz] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [no, setNo] = useState<number>(0);
-  const urlFunc = (url: string, name: string, No: number): void => {
+  const urlFunc = (
+    url: string,
+    name: string,
+    No: number,
+    description: string,
+    quiz: string
+  ): void => {
     if (url && name) {
       setUrl(url);
       setName(name);
       setNo(No);
+      setDescription(description);
+      setQuiz(quiz);
     } else {
       setUrl("");
       setName("");
@@ -62,8 +72,14 @@ const MyClassDetails = () => {
           <div className="w-full h-[1px] my-6 bg-gradient-to-b from-purple-400 to-blue-950 via-blue-300"></div>
 
           {/* VIDEO PLAYNING SECTION START */}
-          <section className="w-full lg:flex gap-x-5">
-            <PlayingSec url={url} name={name} />
+
+          <section className="lg:flex w-full gap-x-5">
+            <PlayingSec
+              url={url}
+              name={name}
+              description={description}
+              quiz={quiz}
+            />
             <CourseOutline urlFunc={urlFunc} />
           </section>
           {/* VIDEO PLAYNING SECTION END */}
