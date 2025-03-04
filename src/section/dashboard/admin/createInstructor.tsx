@@ -17,7 +17,6 @@ const CreateInstructor = () => {
     // if(data?.data?.succes)
   };
 
-  console.log("data", data?.data.message);
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
       <h2 className="mb-6 text-xl font-bold">Create Instructor</h2>
