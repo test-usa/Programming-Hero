@@ -4,44 +4,24 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-// DEFINE TYPES OF DATA START ---->>
-type Milestone = {
-  No: number;
-  name: string;
-  time: { hour: number; mins: number };
-  TotalModules: number;
-  modules: Module[];
-};
-
-interface Video {
-  No: number;
-  name: string;
-  duration: string;
-  file: string;
-}
-interface Module {
-  No: number;
-  TotalVideos: number;
-  time: { hour: number; mins: number };
-  name: string;
-  videos: Video[];
-}
-
-// DEFINE TYPES OF DATA END ---->>
 const Outline = ({
   urlFunc,
 }: {
-  urlFunc: (url: string, name: string, No: number) => void;
-  totalMilestone: Milestone;
+  urlFunc: (
+    url: string,
+    name: string,
+    No: number,
+    description: string,
+    quiz: string
+  ) => void;
 }) => {
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(null);
   const [outLineData, setOutLineData] = useState<any[]>([]);
   const [modules, setModules] = useState<any[]>([]);
+  const [dummyData, setDummyData] = useState<[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const location = useLocation();
-  console.log(location, "44444444");
   const { id } = useParams();
   const token = Cookies.get("user");
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -79,13 +59,33 @@ const Outline = ({
             Authorization: `Bearer ${token}`,
           },
         });
-        setLoading(true);
+        console.log(response?.data?.data, "55 no line check description");
+
         if (response.data.statusCode === 200 && response.data.success) {
-          setLoading(false);
           setModules(response?.data?.data);
         }
       } catch (error) {
         console.error("Error fetching courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  //---- dummy json file to get specific course data ---//
+  // ----- dummy json data -----//
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/content.json");
+        const data = await response.json();
+        if (data) {
+          setDummyData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -98,9 +98,15 @@ const Outline = ({
   };
 
   // HANDLE-PLAY VIDEO ---->
-  const handlePlayVideo = (url: string, name: string, No: number) => {
+  const handlePlayVideo = (
+    url: string,
+    name: string,
+    No: number,
+    description: string,
+    quiz: string
+  ) => {
     if (url && name) {
-      urlFunc(url, name, No);
+      urlFunc(url, name, No, description, quiz);
     }
   };
 
@@ -112,7 +118,7 @@ const Outline = ({
       }}
     >
       <>
-        {outLineData.length > 0 ? (
+        {outLineData?.length > 0 ? (
           <>
             {/* Show Modules when Milestone is Open */}
 
@@ -153,16 +159,29 @@ const Outline = ({
                                       handlePlayVideo(
                                         cont?.video,
                                         cont?.title,
-                                        videoIndex + 1
+                                        videoIndex + 1,
+                                        cont?.description,
+                                        cont?.QuizInstance
                                       )
                                     }
                                   >
-                                    <h1 className="text-sm">
-                                      {videoIndex + 1} {cont?.title}
-                                    </h1>
-                                    <div className="flex items-center gap-x-2">
-                                      <AiOutlineYoutube className="text-2xl" />
-                                      <p>13mins</p>
+                                    <div className="w-full">
+                                      {cont?.video === null &&
+                                      cont?.description === null &&
+                                      cont?.QuizInstance === null &&
+                                      cont?.title ? (
+                                        <h1>{cont?.title}</h1>
+                                      ) : (
+                                        <>
+                                          <h1 className="text-sm">
+                                            {videoIndex + 1} {cont?.title}
+                                          </h1>
+                                          <div className="flex items-center gap-x-2">
+                                            <AiOutlineYoutube className="text-2xl" />
+                                            <p>13mins</p>
+                                          </div>
+                                        </>
+                                      )}
                                     </div>
                                   </button>
                                 </section>

@@ -12,13 +12,12 @@ import { SlDislike, SlLike } from "react-icons/sl";
 import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
-type propsTypes = {
-  url: string;
-  name: string;
-};
-const PlayingSec = ({ url, name }: propsTypes) => {
-  const [Tabs, setTabs] = useState<number>(1);
+import { propsTypes } from "./Dashboard.type";
+import Quiz from "./Quiz";
 
+const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
+  const [Tabs, setTabs] = useState<number>(1);
+  console.log("payying component page", description, quiz);
   // SET CURRENT TAB --
   const handleChangeTabs = (numbers: number): void => {
     setTabs(numbers);
@@ -28,17 +27,20 @@ const PlayingSec = ({ url, name }: propsTypes) => {
   const handePrevour = (): void => {};
   // HANDLE NEXT BUTTON --
   const handleNext = (): void => {};
-
+ 
   return (
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
       <section className="max-h-[500px]">
-        <ReactPlayer
+        <Quiz />
+        {/* <Assignment /> */}
+        {/* <ReactPlayer
           url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
           controls
           width="100%"
           height="500px"
-        />
+          
+        /> */}
       </section>
       {/* VIDEO PLAYING SECTION END */}
       {/* BUTTON START */}

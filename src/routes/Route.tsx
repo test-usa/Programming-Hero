@@ -37,7 +37,14 @@ import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
 import Course1 from "../section/dashboard/Course";
 import Instructors from "../section/dashboard/superAdmin/Instructors";
+
+import AdminProfile from "../section/dashboard/AdminProfile";
+import InstructorProfile from "../section/dashboard/InstructorProfile";
+import StudentProfile from "../section/dashboard/StudentProfile";
+
 import HelpDesk from "../pages/HelpDesk";
+import CreateCourse from "../section/dashboard/Instructor/createCourse";
+
 
 const routes = createBrowserRouter([
   {
@@ -72,10 +79,6 @@ const routes = createBrowserRouter([
       {
         path: "/success",
         element: <Success />,
-      },
-      {
-        path: "/dashboard",
-        element: <Samir />,
       },
 
       {
@@ -116,8 +119,21 @@ const routes = createBrowserRouter([
           {
             path: "course",
             element: <Course1 />,
+
+
+            children: [
+              {
+                path: "create",
+                element: <CreateCourse />,
+              },
+            ],
+
           },
+
           { path: "profile", element: <Profile /> },
+          { path: "admin-profile/:id", element: <AdminProfile /> },
+          { path: "instructor-profile/:id", element: <InstructorProfile /> },
+          { path: "student-profile/:id", element: <StudentProfile /> },
           { path: "additional-info", element: <AdditionalInfo /> },
           { path: "address", element: <Address /> },
           { path: "education", element: <Education /> },
