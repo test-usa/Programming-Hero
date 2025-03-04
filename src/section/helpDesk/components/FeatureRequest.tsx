@@ -57,11 +57,11 @@ const features = [
 const RequestedFeatures = () => {
   return (
     <CommonContainer>
-      <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg dark:bg-black">
         <div className="flex justify-between items-center mb-6">
-          <div>
-            <h2 className="text-2xl font-semibold">Requested Features</h2>
-            <p className="text-gray-600 text-sm">
+          <div className="dark:text-gray-300">
+            <h2 className="text-2xl font-semibold ">Requested Features</h2>
+            <p className="text-gray-600 text-sm dark:text-gray-300">
               Here is a list of all the features that many of you asked for.
               <br /> It includes different things students like you wanted.
             </p>
@@ -72,11 +72,11 @@ const RequestedFeatures = () => {
         </div>
 
         {/* Feature List */}
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="p-4 bg-gray-100 rounded-lg shadow-md"
+              className=" p-4 bg-gray-100 rounded-lg shadow-md dark:bg-[#12091E]"
             >
               <div className="flex items-center gap-3">
                 <img
@@ -85,19 +85,23 @@ const RequestedFeatures = () => {
                   className="w-10 h-10 rounded-full"
                 />
                 <div>
-                  <h3 className="font-semibold text-gray-800">
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-400">
                     {feature.name}
                   </h3>
-                  <span className="text-sm text-gray-500">{feature.time}</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {feature.time}
+                  </span>
                 </div>
               </div>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
-              <div className="flex items-center gap-2 mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-gray-700 dark:text-gray-100">
+                {feature.description}
+              </p>
+              <div className="flex items-center gap-2 mt-2 text-sm text-gray-600 dark:text-gray-400">
                 <span>💬 {feature.comments} Comments</span>
                 <span>🌐 {feature.category}</span>
                 <span>🔄 {feature.status}</span>
               </div>
-              <button className="mt-3 px-3 py-1 border rounded-md bg-white shadow-sm text-gray-700 hover:bg-gray-200">
+              <button className="mt-3 px-3 py-1 border rounded-md bg-white shadow-sm text-gray-700 hover:bg-gray-200 dark:bg-[#12091E] dark:text-gray-400">
                 ⬆ {feature.votes} Votes
               </button>
             </div>
