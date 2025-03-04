@@ -24,9 +24,9 @@ const Footer = () => {
                 <Link to="/">Terms and Condition</Link>
                 <Link to="/">Privacy Policy</Link>
               </div>
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center gap-4 ">
                 <p>Follow Us</p>
-                <div className="flex items-center gap-6 text-2xl ">
+                <div className="flex items-center gap-6 text-2xl text-white">
                   <Link to="/" className="">
                     <FaFacebook />
                   </Link>

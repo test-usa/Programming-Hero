@@ -78,7 +78,7 @@ const CourseNav = () => {
 
             <div className="flex items-center gap-x-5">
               <VscBell className="text-2xl" />
-              <section className="flex items-center justify-center px-4 py-2 bg-green-200 rounded-3xl md:px-4 md:py-2 gap-x-2">
+              <section className="flex items-center justify-center px-3 py-2 bg-green-200 rounded-3xl md:px-4 md:py-2 gap-x-2">
                 <img src={gemIcon} className="w-6 h-6" />
                 <p className="text-lg font-semibold text-black md:text-xl">
                   115
@@ -94,12 +94,13 @@ const CourseNav = () => {
               <button className="px-3 py-2  rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125 lg:block hidden"
                onClick={() => setIsModalOpen(true)}
               >Enroll Now</button>
-              <Avatar onClick={() => setIsProfileModalOpen(true)}
-             
-                src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+               <img
+            src=" https://i.pravatar.cc/150?u=a04258114e29026702d"
+            alt="Profile"
+            className="w-[50px] h-[50px] rounded-full border-2 border-gray-400 cursor-pointer"
+            onClick={() => setIsProfileModalOpen(true)}
+          />
 
-                className="hidden lg:block cursor-pointer"
-              />
             
             </div>
           </div>

@@ -3,7 +3,7 @@ import CommonSpace from "../../common/CommonSpace";
 import useFetch from "../../hooks/shared/useFetch";
 
 const Course = () => {
-  const { data } = useFetch("/course");
+  const { data } = useFetch("/coursee");
   return (
     <div className="bg-[#010313] p-4">
       <CommonSpace>
