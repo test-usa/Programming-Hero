@@ -2,37 +2,53 @@
 import CommonContainer from "../../../common/CommonContainer";
 import SapceBottom from "../../../common/SapceBottom";
 import OurCourseCard from "./OurCourseCard";
-
-
 import OurCourseCardOpsite from "./OurCourseCardOpsite";
+import triangle from "../../../assets/images/triangle.svg";
+import square from "../../../assets/images/blue-square.svg";
+import CourseVideo from "./CourseVideo";
+import { useState } from "react";
+import Border from "../Border";
+import CommonSpace from "../../../common/CommonSpace";
 
 const OurCourse = () => {
-  return (
-    <div>
-      <div className="bg-black p-5">
-        <CommonContainer>
-          
-        <SapceBottom> 
-        <div className="flex items-center justify-center  ">
-          <h2 className=" relative text-center bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-7xl text-4xl after:absolute after:bg-text-gradient after:inset-0 after:h-2  after:w-[10%] after:mx-auto after:top-20">
-            Our Courses_
-          </h2>
-        
-        </div>
-        </SapceBottom>
-       
-        <SapceBottom>
-        <OurCourseCard/>
-        </SapceBottom>
-        <OurCourseCardOpsite/>
+  const [isPlay, setIsPlay] = useState(false);
 
-        </CommonContainer>
+  return (
+    <>
+      <div className="relative bg-black ">
+        <CommonSpace>
+          <CommonContainer>
+            <div className="relative w-full ">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <h2 className=" text-center bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent md:text-7xl text-4xl">
+                  Our Courses_
+                </h2>
+                <Border />
+              </div>
+
+              <div className="absolute right-0 hidden -top-10 lg:block ">
+                <img src={triangle} alt="triangle" />
+              </div>
+            </div>
+          </CommonContainer>
+          <div className="px-4 bg-cover bg-bg-grid">
+            <SapceBottom>
+              <OurCourseCard setIsPlay={setIsPlay} />
+            </SapceBottom>
+            <OurCourseCardOpsite setIsPlay={setIsPlay} />
+          </div>
+
+          <div className="hidden lg:block bottom-6">
+            <img src={square} alt="triangle" />
+          </div>
+        </CommonSpace>
       </div>
-      {/* <button className=" relative bg-clip-padding p-4  bg-[#080723] w-full before:absolute before:inset-0 before:bg-[linear-gradient(90deg,#384fde,#985cf0)] before:-m-[1px] before:rounded-lg before:-z-10 rounded-lg hover:bg-[linear-gradient(90deg,#384fde,#985cf0)] transition-all ">
-        Login
-      </button> */}
-    
-    </div>
+      {isPlay && (
+        <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full">
+          <CourseVideo setIsPlay={setIsPlay} />
+        </div>
+      )}
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ import remort from "../../assets/course details/remote-working.svg"
 
 const Specialty = () => {
   return (
-    <div className="bg-gradient-to-b from-[#04021C] via-[#210168] to-[#5400EE] p-4 md:pb-[100px] ">
+    <div className="bg-gradient-to-b from-[#04021C] via-[#210168] to-[#5400EE] p-4 pb-6 md:pb-[100px] ">
       <CommonContainer>
         <div className="md:w-[85%] w-full mx-auto">
           <h2 className=" md:text-4xl  text-2xl font-semibold text-white text-center capitalize">What Is The Specialty_ Of This Course?</h2>

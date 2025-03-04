@@ -7,10 +7,10 @@ import { BsBookmark } from "react-icons/bs";
 import PlayingSec from "../components/dashboard/PlayingSec";
 import CourseOutline from "../components/dashboard/CourseOutline";
 import DashFoote from "../components/dashboard/DashFoote";
-import DashNavbar from "../components/dashboard/DashNavbar";
 import { useState } from "react";
+import CourseNav from "../section/course-details/CourseNav";
 
-const ClassDetails = () => {
+const MyClassDetails = () => {
   const [url, setUrl] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [no, setNo] = useState<number>(0);
@@ -27,10 +27,10 @@ const ClassDetails = () => {
   return (
     <div className=" bg-[#010314]">
       <CommonContainer>
-        <DashNavbar />
+        <CourseNav />
         <div className="pt-10">
           {/* HEARDER SECTION START */}
-          <section className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-4">
+          <section className="flex flex-col-reverse justify-between gap-4 md:flex-row md:items-center">
             <div className="flex items-center gap-x-3">
               <button>
                 <img
@@ -43,12 +43,11 @@ const ClassDetails = () => {
                 {no} {name}
               </h1>
             </div>
-            <div className="flex items-center gap-x-3 ml-auto">
+            <div className="flex items-center ml-auto gap-x-3">
               <button>
                 <MdOutlineFavoriteBorder className="text-2xl text-white" />
               </button>
               <button>
-                {" "}
                 <TbNotes className="text-2xl text-white" />
               </button>
               <button>
@@ -63,7 +62,7 @@ const ClassDetails = () => {
           <div className="w-full h-[1px] my-6 bg-gradient-to-b from-purple-400 to-blue-950 via-blue-300"></div>
 
           {/* VIDEO PLAYNING SECTION START */}
-          <section className="lg:flex w-full gap-x-5">
+          <section className="w-full lg:flex gap-x-5">
             <PlayingSec url={url} name={name} />
             <CourseOutline urlFunc={urlFunc} />
           </section>
@@ -75,4 +74,4 @@ const ClassDetails = () => {
   );
 };
 
-export default ClassDetails;
+export default MyClassDetails;

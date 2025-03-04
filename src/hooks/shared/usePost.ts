@@ -1,9 +1,11 @@
-import Cookies from "js-cookie";
-import useAxiosSecure from "../useAxios";
+import { userStore } from "../../store/UserStore";
+import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Axios from "../useAxios";
+
+// post hoook
 const usePost = (route: string) => {
-  const Axios = useAxiosSecure();
-  const token = Cookies.get("user");
+  const { token } = userStore();
   const queryClient = useQueryClient();
 
   const { data, mutate, isPending, isSuccess } = useMutation({
@@ -12,8 +14,16 @@ const usePost = (route: string) => {
         headers: { Authorization: `Bearer ${token}` },
       });
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.data.success) {
+        toast.success(data.data.message);
+      }
+      console.log("ramjan", data);
       queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+    onError(error) {
+      console.log("error", error?.response?.data?.message);
+      toast.error(error?.response?.data?.message);
     },
   });
 

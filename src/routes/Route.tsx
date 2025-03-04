@@ -1,13 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import Products from "../pages/Products";
 import About from "../pages/About";
 import Success from "../pages/Success";
-import Eitty from "../pages/Eitty";
-import Mehedi from "../pages/Mehedi";
-import Himel from "../pages/Himel";
-import ClassDetails from "../pages/ClassDetails";
+import Himel from "../pages/HelpDesk";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
@@ -35,6 +31,21 @@ import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 
+import MyClass from "../pages/MyClass";
+import MyClassDetails from "../pages/MyClassDetails";
+import CourseDetails from "../pages/CourseDetails";
+import Module from "../section/dashboard/Module";
+import Course1 from "../section/dashboard/Course";
+import Instructors from "../section/dashboard/superAdmin/Instructors";
+
+import AdminProfile from "../section/dashboard/AdminProfile";
+import InstructorProfile from "../section/dashboard/InstructorProfile";
+import StudentProfile from "../section/dashboard/StudentProfile";
+
+import HelpDesk from "../pages/HelpDesk";
+import CreateCourse from "../section/dashboard/Instructor/createCourse";
+
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -46,8 +57,16 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
-        element: <Products />,
+        path: "/class",
+        element: <MyClass />,
+      },
+      {
+        path: "/class/:id",
+        element: <MyClassDetails />,
+      },
+      {
+        path: "/course",
+        element: <CourseDetails />,
       },
       {
         path: "/about",
@@ -61,21 +80,10 @@ const routes = createBrowserRouter([
         path: "/success",
         element: <Success />,
       },
+
       {
-        path: "/eitty",
-        element: <Eitty />,
-      },
-      {
-        path: "/mehedi",
-        element: <Mehedi />,
-      },
-      {
-        path: "/mehedi/:id",
-        element: <ClassDetails />,
-      },
-      {
-        path: "/himel",
-        element: <Himel />,
+        path: "/helpdesk",
+        element: <HelpDesk />,
         children: [
           {
             path: "all-post",
@@ -103,11 +111,26 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <SignUpPage />,
       },
+      { path: "/course-modules", element: <Module /> },
       {
         path: "/dashboard",
         element: <Samir />,
         children: [
+          {
+            path: "course",
+            element: <Course1 />,
+            children: [
+              {
+                path: "create",
+                element: <CreateCourse />,
+              },
+            ],
+          },
+
           { path: "profile", element: <Profile /> },
+          { path: "admin-profile/:id", element: <AdminProfile /> },
+          { path: "instructor-profile/:id", element: <InstructorProfile /> },
+          { path: "student-profile/:id", element: <StudentProfile /> },
           { path: "additional-info", element: <AdditionalInfo /> },
           { path: "address", element: <Address /> },
           { path: "education", element: <Education /> },
@@ -123,7 +146,7 @@ const routes = createBrowserRouter([
           { path: "create-user", element: <CreateUser /> },
           { path: "courses", element: <Courses /> },
           { path: "admins", element: <Admins /> },
-          { path: "instructors", element: <Admins /> },
+          { path: "instructors", element: <Instructors /> },
           { path: "students", element: <Students /> },
           { path: "create-instructor", element: <CreateInstructor /> },
         ],
