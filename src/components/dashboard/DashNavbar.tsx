@@ -6,15 +6,15 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
-const DashNavbar = () => {
-  //   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [menu, setMenu] = useState(false);
 
+import { muneItems } from "./Dashboard.type";
+
+const DashNavbar = () => {
+  const [menu, setMenu] = useState(false);
   type muneItems = {
     href: string;
     path: string;
   };
-
   const menuItems: muneItems[] = [
     {
       href: "/course",
@@ -51,7 +51,11 @@ const DashNavbar = () => {
           <div className="flex items-center gap-6 text-sm">
             <span className="hidden space-x-4 lg:block">
               {menuItems.map((item) => {
-                return <NavLink to={item.href}>{item.path}</NavLink>;
+                return (
+                  <NavLink key={item?.href} to={item.href}>
+                    {item.path}
+                  </NavLink>
+                );
               })}
             </span>
             <div className="flex items-center gap-x-5">
