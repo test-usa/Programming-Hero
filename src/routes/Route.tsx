@@ -3,7 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Success from "../pages/Success";
-import Himel from "../pages/Himel";
+import Himel from "../pages/HelpDesk";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
@@ -37,6 +37,7 @@ import CourseDetails from "../pages/CourseDetails";
 import Module from "../section/dashboard/Module";
 import Course1 from "../section/dashboard/Course";
 import Instructors from "../section/dashboard/superAdmin/Instructors";
+import HelpDesk from "../pages/HelpDesk";
 
 const routes = createBrowserRouter([
   {
@@ -78,8 +79,8 @@ const routes = createBrowserRouter([
       },
 
       {
-        path: "/himel",
-        element: <Himel />,
+        path: "/helpdesk",
+        element: <HelpDesk />,
         children: [
           {
             path: "all-post",
