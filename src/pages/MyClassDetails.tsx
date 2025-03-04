@@ -9,6 +9,7 @@ import CourseOutline from "../components/dashboard/CourseOutline";
 import DashFoote from "../components/dashboard/DashFoote";
 import { useState } from "react";
 import CourseNav from "../section/course-details/CourseNav";
+import { useNavigate } from "react-router-dom";
 
 const MyClassDetails = () => {
   const [url, setUrl] = useState<string>("");
@@ -16,6 +17,7 @@ const MyClassDetails = () => {
   const [quiz, setQuiz] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [no, setNo] = useState<number>(0);
+  const navigate = useNavigate();
   const urlFunc = (
     url: string,
     name: string,
@@ -42,7 +44,7 @@ const MyClassDetails = () => {
           {/* HEARDER SECTION START */}
           <section className="flex flex-col-reverse justify-between gap-4 md:flex-row md:items-center">
             <div className="flex items-center gap-x-3">
-              <button>
+              <button onClick={() => navigate(-1)}>
                 <img
                   src={backIcons}
                   alt="back-button"

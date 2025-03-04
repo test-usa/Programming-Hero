@@ -3,7 +3,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 const Quiz = () => {
   return (
     <div className="w-full h-[450px] ">
-      <div className="w-full h-[400px]  bg-[#160A2A]  rounded-md p-4">
+      <div className="w-full h-[350px]  bg-[#160A2A]  rounded-md p-6">
         <section className="flex items-center justify-between gap-x-4 w-full">
           <div className="flex items-center w-full gap-x-4">
             <p className="text-white">Quiz Progress</p>
@@ -51,15 +51,14 @@ const Quiz = () => {
             </div>
           </div>
           {/* PAGINATION BUTTON  */}
-          <div className="flex items-center gap-x-8 w-full">
-            <button className="text-white border border-gray-700 py-1.5 px-6 rounded-full">
-              <MdKeyboardArrowLeft className="text-2xl text-white" />
-
+          <div className="flex items-center justify-end gap-x-4 w-full pt-4">
+            <button className="text-purple-500 border border-purple-500 py-1.5 px-3 rounded-full flex gap-x-2 items-center">
+              <MdKeyboardArrowLeft className="text-purple-500" />
               <span>Prev</span>
             </button>
-            <button className="text-white border border-gray-700 py-1.5 px-6 rounded-full">
+            <button className="text-purple-500 border  border-purple-500 py-1.5 px-3 rounded-full flex gap-x-2 items-center">
               <span>Next</span>
-              <MdKeyboardArrowRight />
+              <MdKeyboardArrowRight  />
             </button>
           </div>
         </section>

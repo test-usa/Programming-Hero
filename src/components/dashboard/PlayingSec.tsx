@@ -16,6 +16,9 @@ import { propsTypes } from "./Dashboard.type";
 import Quiz from "./Quiz";
 
 import AssignmentMarks from "./AssignmentMarks";
+import QuizResult from "./QuizResult";
+import QuizResultFail from "./QuizResultFail";
+import Description from "./Description";
 
 const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
   const [Tabs, setTabs] = useState<number>(1);
@@ -29,13 +32,16 @@ const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
   const handePrevour = (): void => {};
   // HANDLE NEXT BUTTON --
   const handleNext = (): void => {};
- 
+
   return (
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
       <section className="max-h-[500px]">
-        <Quiz />
+        {/* <QuizResult /> */}
+        {/* <Quiz /> */}
         {/* <AssignmentMarks /> */}
+        {/* <QuizResultFail /> */}
+        <Description />
         {/* <ReactPlayer
           url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
           controls
