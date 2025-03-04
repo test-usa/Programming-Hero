@@ -1,4 +1,3 @@
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const AssignmentMarks = () => {
   return (
@@ -30,7 +29,6 @@ const AssignmentMarks = () => {
             </button>
             <button className="border w-40 h-12 rounded-full text-white font-semibold bg-gradient-to-bl from-green-700 to-green-500 shrink flex items-center justify-center">
               <p>My Submission</p>
-              <MdOutlineKeyboardArrowRight className="text-2xl" />
             </button>
           </div>
           <p className="text-sm text-green-400">View Examiner's Feedback</p>

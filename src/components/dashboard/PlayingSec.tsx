@@ -15,6 +15,8 @@ import CopyRight from "./CopyRight";
 import { propsTypes } from "./Dashboard.type";
 import Quiz from "./Quiz";
 
+import AssignmentMarks from "./AssignmentMarks";
+
 const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
   const [Tabs, setTabs] = useState<number>(1);
   console.log("payying component page", description, quiz);
@@ -33,7 +35,7 @@ const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
       {/* VIDEO PLAYING SECTION START */}
       <section className="max-h-[500px]">
         <Quiz />
-        {/* <Assignment /> */}
+        {/* <AssignmentMarks /> */}
         {/* <ReactPlayer
           url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
           controls
