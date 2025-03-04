@@ -31,7 +31,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ imgSrc, name, designation }) => {
     <div className="bg-black flex flex-col gap-4 items-center rounded-lg overflow-hidden w-full sm:w-48 md:w-56 lg:w-64 m-4 transition-all duration-300 hover:scale-105 group shadow-lg relative">
       
       {/* Background Image Changes on Hover */}
-      <div className="relative w-[80%] h-[250px] overflow-hidden top-[54px]">
+      <div className="relative md:w-[80%] w-[56%] h-[250px] overflow-hidden top-[53px]">
         <img
           src={team}
           alt="Default Background"
