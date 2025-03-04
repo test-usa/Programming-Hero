@@ -42,6 +42,7 @@ const LavelOne = () => {
   }, []);
 
 
+
   // ----- dummy json data -----//
   useEffect(() => {
     const fetchData = async () => {

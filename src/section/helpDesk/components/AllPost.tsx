@@ -17,19 +17,19 @@ const AllPost = () => {
     <CommonContainer>
       <div className="flex flex-col-reverse lg:flex-row gap-6 w-full py-4">
         {/* Left Side: Post Input */}
-        <div className="w-full lg:w-2/3 lg:h-full bg-white p-5 rounded-xl items-start h-full border-1">
+        <div className="w-full lg:w-2/3 lg:h-full bg-white p-5 rounded-xl items-start h-full border-1 dark:bg-black">
           <div className="flex items-center gap-3">
             {/* User Avatar */}
             <FaUserCircle className="text-gray-500 text-6xl" />
             {/* Input Field */}
-            <div className="w-full bg-gray-100 text-gray-500 px-4 py-2 rounded-full">
+            <div className="w-full bg-gray-100 text-gray-500 px-4 py-2 rounded-full dark:bg-[#2A2234] dark:text-gray-100">
               Share or Ask Something to Everyone?
             </div>
             {/* Create Post Button */}
           </div>
           {/* Photo/Video Option */}
           <div className="flex justify-between items-center mt-3">
-            <div className="flex items-center gap-2 text-gray-500 ">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-100">
               <MdOndemandVideo className="text-pink-500" />
               <span>Photo/Video</span>
             </div>

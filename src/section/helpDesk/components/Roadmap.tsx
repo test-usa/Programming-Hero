@@ -8,9 +8,10 @@ const statusColors: Record<string, string> = {
 };
 
 const headerColors: Record<string, string> = {
-  investigating: "bg-purple-500 text-white",
-  "in-progress": "bg-blue-600 text-white",
-  resolved: "bg-green-600 text-white",
+  investigating:
+    "bg-purple-600 dark:bg-purple-300 text-white dark:text-gray-600",
+  "in-progress": "bg-blue-600 dark:bg-blue-300 text-white dark:text-gray-600",
+  resolved: "bg-green-600 dark:bg-green-300 text-white dark:text-gray-600",
 };
 
 const statusLabels: Record<string, string> = {
@@ -151,13 +152,17 @@ const Roadmap = () => {
                         </span>
                       </div>
                     )}
-                    <span className="font-semibold">{item.name}</span>
+                    <span className="font-semibold dark:text-gray-500">
+                      {item.name}
+                    </span>
                   </div>
 
                   {/* Issue Title & Description */}
-                  <h3 className="mt-2 font-semibold">{item.issueTitle}</h3>
+                  <h3 className="mt-2 font-semibold dark:text-gray-500">
+                    {item.issueTitle}
+                  </h3>
                   {item.issueDescription && (
-                    <p className="text-sm text-gray-700 mt-1">
+                    <p className="text-sm text-gray-700 mt-1 dark:text-gray-600 ">
                       {item.issueDescription}
                     </p>
                   )}
@@ -167,7 +172,7 @@ const Roadmap = () => {
                     {item.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full"
+                        className="bg-transparent shadow-md text-gray-700 text-xs px-2 py-1 rounded-full"
                       >
                         {tag}
                       </span>
