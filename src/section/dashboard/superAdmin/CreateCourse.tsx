@@ -31,7 +31,7 @@ const CreateCourse = ({ refetch }) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl bg-[#170f21] text-white">
         <div className="p-6 text-white rounded-xl">
-          <h2 className="mb-6 text-xl font-bold">Create Instructor</h2>
+          <h2 className="mb-6 text-xl font-bold">Create Course</h2>
           <form onSubmit={handleSubmit(submit)} className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-1 text-sm font-medium">
