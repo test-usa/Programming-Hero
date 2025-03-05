@@ -15,7 +15,7 @@ const Tabs = ({
           className={cn(
             "text-white",
             !tabs &&
-              "relative px-4 py-2 text-purple-400 font-semibold border border-b-0 after:absolute after:border-1 after:border-purple-700 after:w-full after:bottom-0 after:block after:content-[''] left-0 border-purple-700 rounded-t-lg"
+              "relative px-4 py-2 text-purple-400 font-semibold border border-b-0  border-purple-700 rounded-t-lg"
           )}
         >
           Level 1 Course
@@ -25,7 +25,7 @@ const Tabs = ({
           className={cn(
             "text-white",
             tabs &&
-              "relative px-4 py-2 text-purple-400 font-semibold border border-b-0 after:absolute after:border-1 after:border-purple-700 after:w-full after:bottom-0 after:block after:content-[''] left-0 border-purple-700 rounded-t-lg"
+              "relative px-4 py-2 text-purple-400 font-semibold border border-b-0  border-purple-700 rounded-t-lg"
           )}
         >
           Conceptual Session
