@@ -63,7 +63,7 @@ const CourseNav = () => {
 
 
   const nestedUser: User = user?.data?.user
-  console.log("User Data:", nestedUser);
+
   
 
   return (

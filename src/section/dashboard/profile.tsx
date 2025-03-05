@@ -70,76 +70,95 @@ const Profile = () => {
 
       {/* Profile Information */}
       <div className="rounded-lg mb-8">
-        <div className="grid grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div>
-              <label className="text-gray-400 block mb-1">Full Name</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="fullName"
-                  className="bg-[#20172D] text-white p-2 rounded w-full"
-                  value={profileData.fullName}
-                  onChange={handleInputChange}
-                />
-              ) : (
-                <p className="text-[#bbafca] font-semibold">
-                  {profileData.fullName}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="text-gray-400 block mb-1">Student ID</label>
-              <p className="text-[#bbafca] font-semibold">
-                {profileData.studentId}
-              </p>
-            </div>
-            {isEditing && (
-              <div>
-                <label className="text-gray-400 block mb-1">
-                  Profile Image
-                </label>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={profileImage || "https://via.placeholder.com/100"}
-                    alt="Profile"
-                    className="w-20 h-20 rounded-full border border-gray-600"
-                  />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="space-y-4">
-            <div>
-              <label className="text-gray-400 block mb-1">Email</label>
-              <p className="text-[#bbafca] font-semibold">
-                {profileData.email}
-              </p>
-            </div>
-            <div>
-              <label className="text-gray-400 block mb-1">Mobile Number</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="mobile"
-                  className="bg-[#20172D] text-white p-2 rounded w-full"
-                  value={profileData.mobile}
-                  onChange={handleInputChange}
-                />
-              ) : (
-                <p className="text-[#bbafca] font-semibold">
-                  {profileData.mobile}
-                </p>
-              )}
-            </div>
+  <div className="grid grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <div>
+        <label className="text-gray-400 block mb-1">Full Name</label>
+        {isEditing ? (
+          <input
+            type="text"
+            name="fullName"
+            className="bg-[#20172D] text-white p-2 rounded w-full"
+            value={profileData.fullName}
+            onChange={handleInputChange}
+          />
+        ) : (
+          <p className="text-[#bbafca] font-semibold">{profileData.fullName}</p>
+        )}
+      </div>
+      <div>
+        <label className="text-gray-400 block mb-1">Student ID</label>
+        <p className="text-[#bbafca] font-semibold">{profileData.studentId}</p>
+      </div>
+      {isEditing && (
+        <div>
+          <label className="text-gray-400 block mb-1">Profile Image</label>
+          <div className="flex items-center gap-4">
+            <img
+              src={profileImage || "https://via.placeholder.com/100"}
+              alt="Profile"
+              className="w-20 h-20 rounded-full border border-gray-600"
+            />
+            <input type="file" accept="image/*" onChange={handleImageChange} />
           </div>
         </div>
+      )}
+      <div>
+        <label className="text-gray-400 block mb-1">Address</label>
+        {isEditing ? (
+          <input
+            type="text"
+            name="address"
+            className="bg-[#20172D] text-white p-2 rounded w-full"
+            value={profileData.address}
+            onChange={handleInputChange}
+          />
+        ) : (
+          <p className="text-[#bbafca] font-semibold">{profileData.address}</p>
+        )}
       </div>
+    </div>
+    <div className="space-y-4">
+      <div>
+        <label className="text-gray-400 block mb-1">Email</label>
+        <p className="text-[#bbafca] font-semibold">{profileData.email}</p>
+      </div>
+      <div>
+        <label className="text-gray-400 block mb-1">Mobile Number</label>
+        {isEditing ? (
+          <input
+            type="text"
+            name="mobile"
+            className="bg-[#20172D] text-white p-2 rounded w-full"
+            value={profileData.mobile}
+            onChange={handleInputChange}
+          />
+        ) : (
+          <p className="text-[#bbafca] font-semibold">{profileData.mobile}</p>
+        )}
+      </div>
+      <div>
+        <label className="text-gray-400 block mb-1">Gender</label>
+        {isEditing ? (
+          <select
+            name="gender"
+            className="bg-[#20172D] text-white p-2 rounded w-full"
+            value={profileData.gender}
+            onChange={handleInputChange}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        ) : (
+          <p className="text-[#bbafca] font-semibold">{profileData.gender}</p>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Password Section */}
       {isEditing && (
