@@ -34,7 +34,7 @@ const HelpDeskCategory = () => {
                 className={`text-lg ${
                   isActive
                     ? "border-[#cb43c2] text-[#cb43c2] font-semibold"
-                    : "border-transparent text-gray-600"
+                    : "border-transparent text-gray-600 "
                 }`}
               />
               <Link to={tab.name}>
@@ -42,7 +42,7 @@ const HelpDeskCategory = () => {
                   className={`px-1 text-lg py-2 rounded transition-colors duration-300 ${
                     isActive
                       ? "border-[#cb43c2] text-[#cb43c2] font-semibold"
-                      : "border-transparent text-gray-600"
+                      : "border-transparent text-gray-600 dark:text-gray-300"
                   }`}
                 >
                   {tab.label}
@@ -57,3 +57,5 @@ const HelpDeskCategory = () => {
 };
 
 export default HelpDeskCategory;
+
+//dark:text-[#857D91]

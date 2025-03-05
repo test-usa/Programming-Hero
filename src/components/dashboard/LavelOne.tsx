@@ -4,45 +4,16 @@ import startCourse from "/photo/batch9.jpg";
 import secondImage from "/photo/recomended.png";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Conseptual from "./Conseptual";
-import Cookies from "js-cookie";
-import axios from "axios";
 import useFetch from "../../hooks/shared/useFetch";
 const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
   const [value, setValue] = useState<number>(0);
   const [tabs, setTabs] = useState<boolean>(false);
-  const [courses, setCourses] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const token = Cookies.get("user");
-  const url = import.meta.env.VITE_BACKEND_URL;
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(`${url}/courses/getAll`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setLoading(true);
-        if (response.data.statusCode === 200 && response.data.success) {
-          setLoading(false);
-          setCourses(response?.data?.data);
-        }
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const { data, isLoading, isSuccess } = useFetch("/course");
-  if (isLoading) return <p>Loading...</p>;
-  console.log(data);
+  const { data, isSuccess, isLoading, refetch } = useFetch("/course");
+  console.log(data?.data);
   return (
     <CommonContainer>
       <div>
@@ -51,14 +22,19 @@ const LavelOne = () => {
           your next lesson?
         </h1>
         <Tabs setTabs={setTabs} tabs={tabs} />
+
         {/* START COURSE SECTION  START */}
         {tabs === false ? (
           <div className="bg-[#181024] w-full rounded-lg mt-10">
             {/* FIRST CARD START */}
-            {courses?.length > 0 ? (
-              courses?.map((course) => {
+
+            <>
+              {data?.data?.map((course) => {
                 return (
-                  <div className="w-full gap-8 px-8 py-10 space-y-4 md:flex md:space-y-4">
+                  <div
+                    key={course?.id}
+                    className="w-full gap-8 px-8 py-10 space-y-4 md:flex md:space-y-4"
+                  >
                     <div className="w-full xl:w-[30%]">
                       <img
                         src={startCourse}
@@ -66,7 +42,7 @@ const LavelOne = () => {
                         className="object-cover w-full max-h-72 rounded-2xl"
                       />
                     </div>
-                    <div key={course?.id}>
+                    <div>
                       <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
                         {course?.title}
                       </h1>
@@ -96,10 +72,8 @@ const LavelOne = () => {
                     </div>
                   </div>
                 );
-              })
-            ) : (
-              <p className="text-xl text-white">Loading...</p>
-            )}
+              })}
+            </>
 
             {/* SECOND CARD START  */}
             <div className="w-full gap-8 px-8 py-10 space-y-4 md:flex md:space-y-4">
@@ -132,37 +106,36 @@ const LavelOne = () => {
             {/* SECOND CARD END */}
 
             {/* THIRD CARD START */}
-            <div className=" py-10 w-full md:w-[70%] px-8">
-              <h1 className="pb-8 text-sm font-semibold text-white md:text-2xl">
-                Available For You
-              </h1>
-              <section className="w-full gap-8 md:flex">
-                <div>
+            <div className=" py-5 w-[45%] px-5 bg-[#181024]  rounded-lg mt-1">
+              <section className="md:flex w-full gap-5  space-y-4 md:space-y-0">
+                <div className="w-full">
                   <img
                     src={startCourse}
                     alt="course-starting-image"
-                    className="w-full max-h-60 rounded-2xl"
+                    className="max-w-64 w-full  max-h-36 h-full rounded-2xl"
                   />
                 </div>
 
-                <section className="pt-4 space-y-2">
-                  <h1 className="text-[#AE34E4] text-sm md:text-3xl font-semibold">
+                <section className="w-full">
+                  <h1 className="text-[#AE34E4] text-sm md:text-xl font-semibold">
                     Next Level Developmet
                   </h1>
-                  <p className="text-sm font-semibold text-white">
+                  <p className="text-xs font-semibold text-white py-2">
                     Programming Hero
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold text-white text-bold">$6500</p>
-                    <p className="px-8 text-sm text-white md:text-xl">
+                  <div className="flex  md:flex-row sm:items-center md:items-start justify-between">
+                    <p className="text-bold font-semibold text-xs  text-white">
+                      $6500
+                    </p>
+                    <p className=" text-white text-xs md:text-sm px-8 ">
                       <span className="text-orange-500">Closed</span> 9th
                       Oct-24th Oct,2024
                     </p>
                   </div>
                 </section>
               </section>
-              <section className="w-full py-4 space-x-0 space-y-2 lg:flex md:items-center md:space-y-0 md:space-x-7">
-                <p className="text-[#AE34E4]  ext-xl md:text-2xl lg:text-3xl font-semibold">
+              <section className="lg:flex md:items-center w-full  space-y-2 md:space-y-0 md:space-x-7 space-x-0 py-2">
+                <p className="text-[#AE34E4]  text-xs md:text-sm  font-semibold">
                   This course is only for existing students only
                 </p>
                 <Button

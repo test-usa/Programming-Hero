@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Outline from "./Outline";
 
 const CourseOutline = ({
   urlFunc,
 }: {
-  urlFunc: (url: string, name: string, No: number) => void;
+  urlFunc: (
+    url: string,
+    name: string,
+    No: number,
+    description: string,
+    quiz: string
+  ) => void;
 }) => {
-  const [data, setData] = useState<[]>([]);
-
-  useEffect(() => {
-    const resFunc = async () => {
-      try {
-        const res = await fetch("/content.json");
-        const jsonData = await res.json();
-        setData(jsonData);
-      } catch (error) {
-        console.log(error, "error course-outline");
-      }
-    };
-    resFunc();
-  }, []);
-
   return (
     <div className="text-white">
+      
       <div className="w-full flex items-center justify-between py-3">
         <h1 className="text-[#EAAAFF] ">Running Module : 58</h1>
         <div className="w-[60%] flex items-center gap-x-3">
@@ -74,9 +65,7 @@ const CourseOutline = ({
         >
           {/* DROPDOWN MENU START */}
           <div className="flex flex-col gap-5">
-            {data?.map((milestone) => {
-              return <Outline urlFunc={urlFunc} totalMilestone={milestone} />;
-            })}
+            <Outline urlFunc={urlFunc} />
           </div>
           {/* DROPDOWN MENU END */}
         </div>
