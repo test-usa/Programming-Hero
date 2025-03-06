@@ -11,6 +11,7 @@ import CommonContainer from "../../../common/CommonContainer";
 import Footer from "../../../layout/Footer";
 import useFetch from "../../../hooks/shared/useFetch";
 import { useParams } from "react-router-dom";
+import CreateContentModal from "./CreateContent";
 
 const Modules = () => {
   const { courseId } = useParams(); // Get the course ID from the URL
@@ -20,12 +21,12 @@ const Modules = () => {
   const [modules, setModules] = useState<Array<{
     id: string;
     title: string;
-    content: Array<{
+    contents: Array<{
       id: string;
-      title: string;
-      video: string | null;
+      type: string; // VIDEO, QUIZ, DESCRIPTION, ASSIGNMENT
+      name: string;
+      url: string | null;
       description: string | null;
-      type: string | null
     }>;
   }>>([]);
   const [selectedContent, setSelectedContent] = useState<any>(null);
@@ -33,6 +34,9 @@ const Modules = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState<boolean>(false);
   const [contentToDelete, setContentToDelete] = useState<{ moduleId: string; contentId: string } | null>(null);
   const [contentToUpdate, setContentToUpdate] = useState<any>(null);
+
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
+  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null);
 
   // Fetch data from the API
   const { data: apiResponse, loading, error } = useFetch(`/module/${courseId}`);
@@ -45,10 +49,11 @@ const Modules = () => {
         title: module.title,
         contents: module.content.map((content: any) => ({
           id: content.id,
-          type: content.type,
+          type: content.contentType, // Use contentType from the API
           name: content.title,
           url: content.video || "",
           description: content.description || "",
+          totalMark: content.totalMark || 0, // Add totalMark for assignment type
         })),
       }));
       setModules(formattedModules);
@@ -68,20 +73,14 @@ const Modules = () => {
 
   // Define handleAddContent
   const handleAddContent = (moduleId: string) => {
-    const newContent = {
-      id: Date.now().toString(), // Ensure ID is a string
-      type: "video",
-      name: "New Content",
-      url: "",
-    };
+    setSelectedModuleId(moduleId);
+    setIsCreateModalOpen(true);
+  };
 
-    setModules((prevModules) =>
-      prevModules.map((module) =>
-        module.id === moduleId
-          ? { ...module, contents: [...module.contents, newContent] }
-          : module
-      )
-    );
+  const handleContentCreated = () => {
+    // Refresh the module list or update the state as needed
+    setIsCreateModalOpen(false);
+    setSelectedModuleId(null);
   };
 
   // Define handleViewContent
@@ -92,9 +91,19 @@ const Modules = () => {
       setName(content.name);
       setNo(parseInt(content.id)); // Ensure ID is a number for display
     } else if (content.type === "QUIZ") {
-      console.log("Start Quiz:", content.name);
+      setName(content.name);
+      setNo(parseInt(content.id));
     } else if (content.type === "DESCRIPTION") {
-      console.log("View Description:", content.description);
+      setName(content.name);
+      setNo(parseInt(content.id));
+    } else if (content.type === "ASSIGNMENT") {
+      setName(content.name);
+      setNo(parseInt(content.id));
+      // Add totalMark to the selectedContent object
+      setSelectedContent((prevContent: any) => ({
+        ...prevContent,
+        totalMark: content.totalMark || 0, // Default to 0 if totalMark is not provided
+      }));
     }
   };
 
@@ -292,6 +301,14 @@ const Modules = () => {
           {/* COURSE MODULES SECTION END */}
         </div>
       </CommonContainer>
+
+      {/* CREATE CONTENT MODAL */}
+      <CreateContentModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        moduleId={selectedModuleId || ""}
+        onContentCreated={handleContentCreated}
+      />
 
       {/* UPDATE MODAL */}
       <UpdateModal

@@ -9,7 +9,7 @@ import mic from "../../assets/course details/microsoft.webp";
 
 const CourseFooter = () => {
   return (
-    <div className="text-white bg-cover bg-custom-footer font-Grotesk">
+    <div className="text-white bg-cover bg-[#010314]  bg-custom-footer font-Grotesk">
       <CommonContainer>
         <CommonSpace>
           <div className="flex flex-col w-full max-w-7xl mx-auto gap-6 p-4 lg:p-8">
