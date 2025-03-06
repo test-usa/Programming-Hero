@@ -30,7 +30,7 @@ const{mutate:deleteAdmin,isPending,isSuccess}=useDelete(`/admin/delete-admin/`)
     <tr key={admin.id} className="border-b border-gray-600">
       <td className="p-2">
         <img
-          src={admin.profilePhoto || "https://i.pravatar.cc/50?img=1"} // Fallback avatar
+          src={admin.profilePhoto || "https://i.pravatar.cc/50?img=1"} 
           alt={admin.name}
           className="w-10 h-10 rounded-full border border-gray-500"
         />
