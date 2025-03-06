@@ -31,7 +31,7 @@ const ModuleList = ({
 }: ModuleListProps) => {
   return (
     <ScrollArea
-      className={`h-[60vh] overflow-y-auto w-full rounded-md py-4`}
+      className="h-[60vh] overflow-y-auto w-full rounded-md py-4"
       style={{
         scrollbarColor: "#ff37f2 #0a0329",
       }}
@@ -51,7 +51,7 @@ const ModuleList = ({
                   <MdEdit />
                 </button>
                 <button
-                  onClick={() => openDeleteModal(module.id)}
+                  onClick={() => openDeleteModal(module.id, module.id)} // Pass module.id twice for consistency
                   className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors"
                 >
                   <MdDelete />

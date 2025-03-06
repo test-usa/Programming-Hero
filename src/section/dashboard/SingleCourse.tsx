@@ -1,18 +1,32 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaPen } from "react-icons/fa"; // Import edit (pen) icon
 import CommonContainer from "../../common/CommonContainer";
 import CommonSpace from "../../common/CommonSpace";
 import useFetch from "../../hooks/shared/useFetch";
+import usePost from "../../hooks/shared/usePost";
+import { toast } from "react-toastify"; // For showing success/error messages
+import useDelete from "../../hooks/shared/useDelete";
 
 const Course = () => {
   const { id } = useParams();
-  const { data, isLoading } = useFetch(`course/${id}`);
+  const navigate = useNavigate(); // For redirecting after deletion
+  const { data, isLoading } = useFetch(`/course/${id}`);
 
   const [openModule, setOpenModule] = useState<string | null>(null);
   const [newTitle, setNewTitle] = useState("");
   const [isTitleChangeModalOpen, setIsTitleChangeModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  // For creating a module
+  const [newModuleTitle, setNewModuleTitle] = useState("");
+  const [isCreateModuleModalOpen, setIsCreateModuleModalOpen] = useState(false);
+
+  // Use the delete hook correctly
+  const { mutate: deleteCourse, isPending } = useDelete(`/course/`);
+  
+  // Use the post hook for creating a module
+  const { mutate: createModule, isPending: isCreatingModule } = usePost(`/module`);
 
   const toggleModule = (moduleId: string) => {
     setOpenModule(openModule === moduleId ? null : moduleId);
@@ -21,22 +35,52 @@ const Course = () => {
   const handleTitleChange = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(`Updated title: ${newTitle}`);
-    // Call API to update title here
     setIsTitleChangeModalOpen(false);
   };
 
+  // Function to delete the course
   const handleDeleteCourse = () => {
-    console.log(`Course deleted with ID: ${id}`);
-    // Call API to delete course here
-    setIsDeleteModalOpen(false);
+    deleteCourse(id, {
+      onSuccess: () => {
+        toast.success("Course deleted successfully!");
+        setIsDeleteModalOpen(false);
+        navigate("/dashboard/courses");  // Redirect to /dashboard/courses after deletion
+      },
+      onError: (error) => {
+        console.error("Error deleting course:", error);
+        toast.error("Failed to delete course. Please try again.");
+      },
+    });
   };
+
+  // Handle creating a new module
+  const handleCreateModule = () => {
+    const moduleData = {
+      title: newModuleTitle,
+      courseId: id,
+    };
+    createModule(moduleData, {
+      onSuccess: () => {
+        toast.success("Module created successfully!");
+        setIsCreateModuleModalOpen(false);
+      },
+      onError: (error) => {
+        console.error("Error creating module:", error);
+        toast.error("Failed to create module. Please try again.");
+      },
+    });
+  };
+
+  // Retrieve the user data from localStorage
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const isInstructor = user?.state?.user?.data?.user?.role === 'INSTRUCTOR';
 
   return (
     <div className="p-4">
       <CommonSpace>
         <CommonContainer>
           <div className="md:w-[85%] w-full mx-auto">
-            
             {/* Header and Course Title */}
             <div className="md:w-[70%] w-full mx-auto">
               <h1 className="text-white font-semibold md:text-4xl text-2xl text-center mb-6">
@@ -53,10 +97,10 @@ const Course = () => {
                 </button>
               </h1>
             </div>
-            
+
             {/* Show Details, Delete Button */}
             <div className="flex justify-center mb-4 gap-4">
-              <Link to="/course-modules">
+              <Link to={`/course-modules/${id}`}>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
                   Course Editor
                 </button>
@@ -64,17 +108,28 @@ const Course = () => {
               <button
                 onClick={() => setIsDeleteModalOpen(true)}
                 className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                disabled={isPending} // Disable while deleting
               >
-                Delete
+                {isPending ? "Deleting..." : "Delete"}
               </button>
             </div>
 
             {/* Course Modules */}
             <div className="mt-12">
-              <div className="p-4 bg-gradient-to-r from-[#405aff] to-[#ff37f2] rounded-tl-lg rounded-tr-lg">
+              <div className="p-4 bg-gradient-to-r from-[#405aff] to-[#ff37f2] rounded-tl-lg rounded-tr-lg flex justify-between">
                 <h2 className="text-white capitalize md:text-2xl text-xl font-semibold">
                   Course Modules
                 </h2>
+                {/* Conditionally render Create Module button */}
+                {isInstructor && (
+                  <button
+                    onClick={() => setIsCreateModuleModalOpen(true)}
+                    className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gradient-to-l transition-all"
+                  >
+                    <FaPen /> {/* Add the pen icon to the button */}
+                    Create Module
+                  </button>
+                )}
               </div>
               <div className="p-5 rounded-bl-lg rounded-br-lg">
                 {isLoading ? (
@@ -146,55 +201,89 @@ const Course = () => {
         </CommonContainer>
       </CommonSpace>
 
-      {/* Custom Modal for Updating Course Title */}
-      {isTitleChangeModalOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#1E1E2F]">
-          <div className="w-[400px] p-6 bg-[#2E2E4F] rounded-lg shadow-md">
-            <form onSubmit={handleTitleChange}>
-              <h2 className="text-xl font-semibold mb-4 text-white">Change Course Title</h2>
+      {/* Create Module Modal */}
+      {isCreateModuleModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Create New Module</h2>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleCreateModule();
+            }}>
               <input
                 type="text"
-                value={newTitle}
-                onChange={(e) => setNewTitle(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md mb-4"
-                placeholder="Enter new course title"
+                className="w-full p-2 rounded-lg mb-4 bg-[#2E2E4F] text-white"
+                placeholder="Module Title"
+                value={newModuleTitle}
+                onChange={(e) => setNewModuleTitle(e.target.value)}
               />
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setIsTitleChangeModalOpen(false)}
-                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2"
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-                  Update
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+                disabled={isCreatingModule}
+              >
+                {isCreatingModule ? "Creating..." : "Create Module"}
+              </button>
             </form>
+            <button
+              onClick={() => setIsCreateModuleModalOpen(false)}
+              className="mt-4 w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}
 
-      {/* Custom Modal for Deleting Course */}
-      {isDeleteModalOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#1E1E2F]">
-          <div className="w-[400px] p-6 bg-[#2E2E4F] rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4 text-white">Are you sure you want to delete this course?</h2>
-            <div className="flex justify-end gap-3">
+      {/* Title Change Modal */}
+      {isTitleChangeModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Change Course Title</h2>
+            <form onSubmit={handleTitleChange}>
+              <input
+                type="text"
+                className="w-full p-2 rounded-lg mb-4 bg-[#2E2E4F] text-white"
+                placeholder="New Course Title"
+                value={newTitle}
+                onChange={(e) => setNewTitle(e.target.value)}
+              />
               <button
-                type="button"
+                type="submit"
+                className="w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                Change Title
+              </button>
+            </form>
+            <button
+              onClick={() => setIsTitleChangeModalOpen(false)}
+              className="mt-4 w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Course Modal */}
+      {isDeleteModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Delete Course</h2>
+            <p className="text-white">Are you sure you want to delete this course?</p>
+            <div className="mt-4 flex justify-between gap-4">
+              <button
                 onClick={() => setIsDeleteModalOpen(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg"
+                className="w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
               >
                 Cancel
               </button>
               <button
-                type="button"
                 onClick={handleDeleteCourse}
-                className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                className="w-full py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                disabled={isPending}
               >
-                Delete
+                {isPending ? "Deleting..." : "Delete"}
               </button>
             </div>
           </div>

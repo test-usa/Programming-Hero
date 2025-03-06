@@ -7,7 +7,7 @@ import Himel from "../pages/HelpDesk";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
-import Profile from "../section/dashboard/profile";
+import Profile from "../section/profile/profile";
 import AdditionalInfo from "../section/dashboard/AddtionalInfo";
 import Address from "../section/dashboard/Address";
 import Education from "../section/dashboard/Education";
