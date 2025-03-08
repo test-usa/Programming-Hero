@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate} from "react-router-dom";
 import { userStore } from "../../store/UserStore";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import useFetch from "../../hooks/shared/useFetch";
 
 
 interface User {
@@ -24,9 +25,9 @@ type ProfileModalProps = {
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   
     const { user,logOutUser  } = userStore() 
+    const { data, isLoading, isSuccess, refetch } = useFetch("/user/me");
 
-
-    const nestedUser: User = user?.data?.user
+ 
  
     const navigate = useNavigate();
    
@@ -64,8 +65,14 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             alt="Profile"
             className="w-20 h-20 rounded-full border-2 border-gray-400"
           />
-          <h2 className="mt-3 text-lg font-semibold">{nestedUser?.name}</h2>
-          <p className="text-gray-400 text-sm">{nestedUser?.email} </p>
+         {data && data.data ? (
+    <>
+      <h2 className="mt-3 text-lg font-semibold">{data.data.name}</h2>
+      <p className="text-gray-400 text-sm">{data.data.email}</p>
+    </>
+  ) : (
+    <p>Loading...</p> // or a fallback message if data is still being fetched
+  )}
          <Link to="/"> <button className="mt-3 px-4 py-2 bg-custom-gradient rounded-lg text-white font-medium">
             View Profile
           </button></Link>

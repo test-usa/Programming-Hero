@@ -12,8 +12,7 @@ const ProfileInfo = ({
   profileData,
   isEditing,
   handleInputChange,
-  profileImage,
-  handleImageChange,
+
 }: ProfileInfoProps) => {
   return (
     <div className="rounded-lg mb-8">
@@ -37,8 +36,8 @@ const ProfileInfo = ({
 
           {/* Student ID */}
           <div>
-            <label className="text-gray-400 block mb-1">Student ID</label>
-            <p className="text-[#bbafca] font-semibold">{profileData.studentId}</p>
+            <label className="text-gray-400 block mb-1">ID</label>
+            <p className="text-[#bbafca] font-semibold">{profileData.Id}</p>
           </div>
 
           {/* Profile Image */}
@@ -46,22 +45,24 @@ const ProfileInfo = ({
             <div>
               <label className="text-gray-400 block mb-1">Profile Image</label>
               <div className="flex items-center gap-4">
-                <img
+                {/* <img
                   src={profileImage || "https://via.placeholder.com/100"}
                   alt="Profile"
                   className="w-20 h-20 rounded-full border border-gray-600"
-                />
+                /> */}
                 <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
+                type="text"
+                name="text"
+                className="bg-[#20172D] text-white p-2 rounded w-full"
+          
+                onChange={handleInputChange}
+              />
               </div>
             </div>
           )}
 
           {/* Phone */}
-          {isEditing && (
+          {/* {isEditing && (
             <div>
               <label className="text-gray-400 block mb-1">Phone Number</label>
               <input
@@ -72,7 +73,7 @@ const ProfileInfo = ({
                 onChange={handleInputChange}
               />
             </div>
-          )}
+          )} */}
 
           {/* Address */}
           {isEditing && (
@@ -91,8 +92,9 @@ const ProfileInfo = ({
 
         <div className="space-y-4">
           {/* Email */}
-          <div>
+          {/* <div>
             <label className="text-gray-400 block mb-1">Email</label>
+
             {isEditing ? (
               <input
                 type="email"
@@ -104,10 +106,14 @@ const ProfileInfo = ({
             ) : (
               <p className="text-[#bbafca] font-semibold">{profileData.email}</p>
             )}
+          </div> */}
+           <div>
+            <label className="text-gray-400 block mb-1">Email</label>
+            <p className="text-[#bbafca] font-semibold">{profileData.email}</p>
           </div>
 
           {/* Mobile */}
-          <div>
+          {/* <div>
             <label className="text-gray-400 block mb-1">Mobile Number</label>
             {isEditing ? (
               <input
@@ -120,7 +126,7 @@ const ProfileInfo = ({
             ) : (
               <p className="text-[#bbafca] font-semibold">{profileData.mobile}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Contact */}
           {isEditing && (

@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo.svg";
 import CustomModal from "../course-details/Modal";
 import ProfileModal from "./ProfileModal";
 import { userStore } from "../../store/UserStore";
+import useFetch from "../../hooks/shared/useFetch";
 
 
 
@@ -59,10 +60,7 @@ const CourseNav = () => {
     };
   }, []);
 
-  const { user} = userStore() 
-
-
-  const nestedUser: User = user?.data?.user
+  const {data, isLoading, isSuccess, refetch } = useFetch("/user/me");
 
   
 
@@ -84,12 +82,19 @@ const CourseNav = () => {
           </div>
 
           <section className="flex items-center gap-x-3 lg:hidden">
-            <img
-              src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-              className="border-2 border-purple-400 rounded-full animate-pulse h-[50px] w-[50px]"
-            />
-           <p>Hi,{nestedUser?.name?.split(" ")[0]}</p>
-          </section>
+  {data && data.data ? (
+    <>
+      <img
+        src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+        className="border-2 border-purple-400 rounded-full animate-pulse h-[50px] w-[50px]"
+      />
+      <p>Hi, {data.data.name.split(" ")[0]}</p>
+    </>
+  ) : (
+    <p>Loading...</p> 
+  )}
+</section>
+
 
           <div className="flex items-center gap-6 text-sm">
             <span className="hidden space-x-4 lg:block">
