@@ -7,35 +7,14 @@ import { BsBookmark } from "react-icons/bs";
 import PlayingSec from "../components/dashboard/PlayingSec";
 import CourseOutline from "../components/dashboard/CourseOutline";
 import DashFoote from "../components/dashboard/DashFoote";
-import { useState } from "react";
 import CourseNav from "../section/course-details/CourseNav";
 import { useNavigate } from "react-router-dom";
+import { useOutlineStore } from "../store/useOutlineStore";
 
 const MyClassDetails = () => {
-  const [url, setUrl] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [quiz, setQuiz] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [no, setNo] = useState<number>(0);
   const navigate = useNavigate();
-  const urlFunc = (
-    url: string,
-    name: string,
-    No: number,
-    description: string,
-    quiz: string
-  ): void => {
-    if (url && name) {
-      setUrl(url);
-      setName(name);
-      setNo(No);
-      setDescription(description);
-      setQuiz(quiz);
-    } else {
-      setUrl("");
-      setName("");
-    }
-  };
+  const { video } = useOutlineStore();
+
   return (
     <div className=" bg-[#010314]">
       <CourseNav />
@@ -52,7 +31,7 @@ const MyClassDetails = () => {
                 />
               </button>
               <h1 className="font-semibold text-2xl text-[#EAAAFF]">
-                {no} {name}
+                {video?.title} {video?.no}
               </h1>
             </div>
             <div className="flex items-center ml-auto gap-x-3">
@@ -75,13 +54,8 @@ const MyClassDetails = () => {
 
           {/* VIDEO PLAYNING SECTION START */}
           <section className="lg:flex w-full gap-x-5">
-            <PlayingSec
-              url={url}
-              name={name}
-              description={description}
-              quiz={quiz}
-            />
-            <CourseOutline urlFunc={urlFunc} />
+            <PlayingSec />
+            <CourseOutline />
           </section>
           {/* VIDEO PLAYNING SECTION END */}
         </div>

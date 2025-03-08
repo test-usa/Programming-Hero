@@ -1,17 +1,8 @@
 import { Button } from "../ui/button";
 import Outline from "./Outline";
 
-const CourseOutline = ({
-  urlFunc,
-}: {
-  urlFunc: (
-    url: string,
-    name: string,
-    No: number,
-    description: string,
-    quiz: string
-  ) => void;
-}) => {
+const CourseOutline = () => {
+  
   return (
     <div className="text-white">
       
@@ -65,7 +56,7 @@ const CourseOutline = ({
         >
           {/* DROPDOWN MENU START */}
           <div className="flex flex-col gap-5">
-            <Outline urlFunc={urlFunc} />
+            <Outline />
           </div>
           {/* DROPDOWN MENU END */}
         </div>

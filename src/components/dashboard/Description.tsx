@@ -8,24 +8,25 @@ import {
 } from "@heroui/react";
 import mic from "/photo/description.png";
 import { useState } from "react";
-const Description = () => {
+
+interface Descriptionprops {
+  description: {
+    description: string;
+    title: string;
+  };
+}
+const Description = ({ description }: Descriptionprops) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div className="bg-[#160A2A] p-4 rounded-lg w-full">
       <div className="w-full my-6 space-y-4">
-        <h1 className="text-gray-400 text-sm sm:text-xl">Module {10}</h1>
+        <h1 className="text-gray-400 text-sm sm:text-xl">
+          {description?.title}
+        </h1>
         <p className="text-gray-400">
-          Description :- Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Molestiae illum, ullam ea, dolorum deserunt accusantium nam
-          dolor doloremque ut, autem eveniet sint debitis pariatur ipsum vitae
-          fugit explicabo sit inventore?
+          {description?.description?.slice(0, 380)}..
         </p>
-        <p className="text-gray-400">
-          Description :- Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Molestiae illum, ullam ea, dolorum deserunt accusantium nam
-          dolor doloremque ut, autem eveniet sint debitis pariatur ipsum vitae
-          fugit explicabo sit inventore?
-        </p>
+
         <div className=" mt-5 flex items-center justify-end">
           <button
             onClick={() => setIsOpen(true)}
@@ -42,7 +43,7 @@ const Description = () => {
         backdrop="blur"
         className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
       >
-        <ModalContent className="mx-auto max-w-4xl max-h-[550px] my-auto">
+        <ModalContent className="mx-auto max-w-4xl max-h-fit my-auto">
           <ModalHeader className="flex flex-col gap-1 text-white">
             <img
               src={mic}
@@ -51,20 +52,8 @@ const Description = () => {
             />
           </ModalHeader>
           <ModalBody>
-            <p className="text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-              amet hendrerit risus, sed porttitor quam.
-            </p>
-            <p className="text-white">
-              Magna exercitation reprehenderit magna aute tempor cupidatat
-              consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-              incididunt cillum quis.
-            </p>
-            <p className="text-white">
-              Magna exercitation reprehenderit magna aute tempor cupidatat
-              consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-              incididunt cillum quis.
+            <p className="text-white first-letter:text-purple-500 first-letter:text-2xl first-letter:font-semibold">
+              {description?.description}
             </p>
           </ModalBody>
           <ModalFooter>

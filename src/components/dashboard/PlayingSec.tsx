@@ -12,15 +12,21 @@ import { SlDislike, SlLike } from "react-icons/sl";
 import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
-import { propsTypes } from "./Dashboard.type";
+import Description from "./Description";
+import { useOutlineStore } from "../../store/useOutlineStore";
+import AssignmentMarks from "./AssignmentMarks";
+import StartQuiz from "./StartQuiz";
 
-const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
+const PlayingSec = () => {
   const [Tabs, setTabs] = useState<number>(1);
-  console.log("payying component page", description, quiz);
+  const { video, description, quiz, assignment } = useOutlineStore();
+  console.log(video, "description pageeeeeeeee 122");
   // SET CURRENT TAB --
   const handleChangeTabs = (numbers: number): void => {
     setTabs(numbers);
   };
+
+  console.log(quiz, "32 line description");
 
   // HANDLE PREVIOUS BUTTON --
   const handePrevour = (): void => {};
@@ -29,24 +35,24 @@ const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
 
   return (
     <div className="w-full">
-      {/* VIDEO PLAYING SECTION START */}
+      {/* CONTENT SECTION START */}
       <section className="max-h-[500px]">
-        {/* <QuizResult /> */}
-        {/* <Quiz /> */}
-        {/* <AssignmentMarks /> */}
-        {/* <QuizResultFail /> */}
-        {/* <Description /> */}
-        <ReactPlayer
-          url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
-          controls
-          width="100%"
-          height="500px"
-          
-        />
+        {video && typeof video?.url === "string" ? (
+          <ReactPlayer url={video?.url} controls width="100%" height="500px" />
+        ) : description && typeof description === "object" ? (
+          <Description description={description} />
+        ) : quiz && typeof quiz === "object" ? (
+          <StartQuiz quiz={quiz} />
+        ) : assignment ? (
+          <AssignmentMarks assingment={assignment} />
+        ) : (
+          ""
+        )}
+
       </section>
-      {/* VIDEO PLAYING SECTION END */}
+      {/* CONTENT SECTION END */}
       {/* BUTTON START */}
-      <div className="flex items-center justify-end py-2 gap-x-4">
+      <div className="flex items-center justify-end py-2 gap-x-4 pt-20 md:pt-4">
         <Button
           onChange={handePrevour}
           size="lg"

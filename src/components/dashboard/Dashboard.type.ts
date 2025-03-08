@@ -24,8 +24,9 @@ export interface Module {
 export type propsTypes = {
   url: string;
   name: string;
-  description: string;
-  quiz: string;
+  description: [];
+  quiz: [];
+  assingment: [];
 };
 
 // ------ NAVBAR TYPES ------ //

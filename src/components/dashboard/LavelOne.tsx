@@ -13,7 +13,10 @@ const LavelOne = () => {
   const [value, setValue] = useState<number>(0);
   const [tabs, setTabs] = useState<boolean>(false);
   const { data, isLoading } = useFetch("/course");
-  console.log(data?.data);
+
+  if (isLoading) {
+    return <p className="text-2xl text-purple-700">Loading...</p>;
+  }
   return (
     <CommonContainer>
       <div>
@@ -37,7 +40,7 @@ const LavelOne = () => {
                   >
                     <div className="w-full xl:w-[30%]">
                       <img
-                        src={startCourse}
+                        src={course?.thumbnail}
                         alt="course-starting-image"
                         className="object-cover w-full max-h-72 rounded-2xl"
                       />
@@ -47,7 +50,7 @@ const LavelOne = () => {
                         {course?.title}
                       </h1>
                       <p className="py-2 text-sm font-semibold text-white">
-                        ঝংকার মাহবুব
+                        Kazi Mehedi Hasan
                       </p>
                       <div className="w-full py-3">
                         <Progress
