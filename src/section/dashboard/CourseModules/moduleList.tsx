@@ -1,15 +1,14 @@
-// components/ModuleList.tsx
 import { MdEdit, MdDelete, MdVisibility } from "react-icons/md";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Button } from '@heroui/button';
 
 interface ModuleListProps {
   data: Array<{
-    id: number;
+    id: string; // Changed from number to string for consistency
     title: string;
     contents: Array<{
       type: string;
-      id: number;
+      id: string; // Changed from number to string for consistency
       name: string;
       url?: string;
       questions?: Array<{ question: string; options: string[]; answer: string }>;
@@ -17,9 +16,9 @@ interface ModuleListProps {
     }>;
   }>;
   handleViewContent: (content: any) => void;
-  handleAddContent: (moduleId: number) => void;
+  handleAddContent: (moduleId: string) => void; // Changed from number to string
   openUpdateModal: (content: any) => void;
-  openDeleteModal: (moduleId: number, contentId: number) => void;
+  openDeleteModal: (moduleId: string, contentId?: string) => void; // Added optional contentId for module deletion
 }
 
 const ModuleList = ({
@@ -51,7 +50,7 @@ const ModuleList = ({
                   <MdEdit />
                 </button>
                 <button
-                  onClick={() => openDeleteModal(module.id, module.id)} // Pass module.id twice for consistency
+                  onClick={() => openDeleteModal(module.id)} // Only pass module.id for module deletion
                   className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors"
                 >
                   <MdDelete />
@@ -79,7 +78,7 @@ const ModuleList = ({
                       <MdEdit />
                     </button>
                     <button
-                      onClick={() => openDeleteModal(module.id, content.id)}
+                      onClick={() => openDeleteModal(module.id, content.id)} // Pass both module.id and content.id for content deletion
                       className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors"
                     >
                       <MdDelete />

@@ -1,32 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { FaPen } from "react-icons/fa"; // Import edit (pen) icon
+import { FaPen } from "react-icons/fa";
 import CommonContainer from "../../common/CommonContainer";
 import CommonSpace from "../../common/CommonSpace";
 import useFetch from "../../hooks/shared/useFetch";
 import usePost from "../../hooks/shared/usePost";
-import { toast } from "react-toastify"; // For showing success/error messages
+import { toast } from "react-toastify";
 import useDelete from "../../hooks/shared/useDelete";
+import useUpdate from "../../hooks/shared/useUpdate";
+import { IoTrash } from "react-icons/io5";
 
 const Course = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // For redirecting after deletion
+  const navigate = useNavigate();
   const { data, isLoading } = useFetch(`/course/${id}`);
+  const { data: instructorsData, isLoading: isInstructorsLoading } = useFetch('/instructor?sortBy=email&sortOrder=desc');
 
   const [openModule, setOpenModule] = useState<string | null>(null);
   const [newTitle, setNewTitle] = useState("");
   const [isTitleChangeModalOpen, setIsTitleChangeModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
-  // For creating a module
   const [newModuleTitle, setNewModuleTitle] = useState("");
   const [isCreateModuleModalOpen, setIsCreateModuleModalOpen] = useState(false);
+  const [instructors, setInstructors] = useState<any[]>([]);
+  const [selectedInstructor, setSelectedInstructor] = useState<string | null>(null);
+  const [isInstructorDropdownOpen, setIsInstructorDropdownOpen] = useState(false);
+  const [isRemoveInstructorModalOpen, setIsRemoveInstructorModalOpen] = useState(false);
+  const [moduleToDelete, setModuleToDelete] = useState<string | null>(null);
+  const [isDeleteModuleModalOpen, setIsDeleteModuleModalOpen] = useState(false);
+  const [contentToDelete, setContentToDelete] = useState<string | null>(null);
+  const [isDeleteContentModalOpen, setIsDeleteContentModalOpen] = useState(false);
 
-  // Use the delete hook correctly
   const { mutate: deleteCourse, isPending } = useDelete(`/course/`);
-  
-  // Use the post hook for creating a module
   const { mutate: createModule, isPending: isCreatingModule } = usePost(`/module`);
+  const { mutate: assignInstructor, isPending: isAssigningInstructor } = useUpdate(`/course/add-instructor/${id}`);
+  const { mutate: removeInstructor, isPending: isRemovingInstructor } = useUpdate(`/course/remove-instructor/${id}`);
+  const { mutate: deleteModule, isPending: isDeletingModule } = useDelete(`/module/`);
+  const { mutate: deleteContent, isPending: isDeletingContent } = useDelete(`/content/delete-content/`);
+
+  useEffect(() => {
+    if (instructorsData?.data) {
+      setInstructors(instructorsData.data);
+    }
+  }, [instructorsData]);
 
   const toggleModule = (moduleId: string) => {
     setOpenModule(openModule === moduleId ? null : moduleId);
@@ -38,13 +54,12 @@ const Course = () => {
     setIsTitleChangeModalOpen(false);
   };
 
-  // Function to delete the course
   const handleDeleteCourse = () => {
     deleteCourse(id, {
       onSuccess: () => {
         toast.success("Course deleted successfully!");
         setIsDeleteModalOpen(false);
-        navigate("/dashboard/courses");  // Redirect to /dashboard/courses after deletion
+        navigate("/dashboard/courses");
       },
       onError: (error) => {
         console.error("Error deleting course:", error);
@@ -53,7 +68,6 @@ const Course = () => {
     });
   };
 
-  // Handle creating a new module
   const handleCreateModule = () => {
     const moduleData = {
       title: newModuleTitle,
@@ -71,9 +85,68 @@ const Course = () => {
     });
   };
 
-  // Retrieve the user data from localStorage
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const handleAssignInstructor = (instructorId: string) => {
+    const instructorData = {
+      instructorId: instructorId,
+    };
+    assignInstructor(instructorData, {
+      onSuccess: () => {
+        toast.success("Instructor assigned successfully!");
+        setSelectedInstructor(instructorId);
+      },
+      onError: (error) => {
+        console.error("Error assigning instructor:", error);
+        toast.error("Failed to assign instructor. Please try again.");
+      },
+    });
+  };
 
+  const handleRemoveInstructor = () => {
+    removeInstructor({}, {
+      onSuccess: () => {
+        toast.success("Instructor removed successfully!");
+        setIsRemoveInstructorModalOpen(false);
+      },
+      onError: (error) => {
+        console.error("Error removing instructor:", error);
+        toast.error("Failed to remove instructor. Please try again.");
+      },
+    });
+  };
+
+  const handleDeleteModule = () => {
+    if (moduleToDelete) {
+      deleteModule(moduleToDelete, {
+        onSuccess: () => {
+          toast.success("Module deleted successfully!");
+          setIsDeleteModuleModalOpen(false);
+          setModuleToDelete(null);
+        },
+        onError: (error) => {
+          console.error("Error deleting module:", error);
+          toast.error("Failed to delete module. Please try again.");
+        },
+      });
+    }
+  };
+
+  const handleDeleteContent = () => {
+    if (contentToDelete) {
+      deleteContent(contentToDelete, {
+        onSuccess: () => {
+          toast.success("Content deleted successfully!");
+          setIsDeleteContentModalOpen(false);
+          setContentToDelete(null);
+        },
+        onError: (error) => {
+          console.error("Error deleting content:", error);
+          toast.error("Failed to delete content. Please try again.");
+        },
+      });
+    }
+  };
+
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
   const isInstructor = user?.state?.user?.data?.user?.role === 'INSTRUCTOR';
 
   return (
@@ -82,24 +155,45 @@ const Course = () => {
         <CommonContainer>
           <div className="md:w-[85%] w-full mx-auto">
             {/* Header and Course Title */}
-            <div className="md:w-[70%] w-full mx-auto">
-              <h1 className="text-white font-semibold md:text-4xl text-2xl text-center mb-6">
-                {isLoading ? "Loading..." : data?.data?.title || "Course Curriculum"}
-                {/* Edit Icon for title */}
-                <button
-                  className="ml-4 text-xl text-gray-400 hover:text-gray-500"
-                  onClick={() => {
-                    setNewTitle(data?.data?.title || "");
-                    setIsTitleChangeModalOpen(true);
-                  }}
-                >
-                  <FaPen />
-                </button>
-              </h1>
-            </div>
+            <div className=" ">
+              <div className="flex items-center">
+                <h1 className="text-white font-semibold md:text-4xl text-2xl text-center ">
+                  {isLoading ? "Loading..." : data?.data?.title || "Course Curriculum"}
+                  <button
+                    className="ml-4 text-xl text-gray-400 hover:text-gray-500"
+                    onClick={() => {
+                      setNewTitle(data?.data?.title || "");
+                      setIsTitleChangeModalOpen(true);
+                    }}
+                  >
+                    <FaPen />
+                  </button>
+                </h1>
+              </div>
 
-            {/* Show Details, Delete Button */}
-            <div className="flex justify-center mb-4 gap-4">
+              {/* Show Details, Delete Button, Assign Instructor Button */}
+              <div className="mt-2">
+                {data?.data?.instructor ? (
+                  <div className="text-white text-center flex gap-1 items-center">
+                    Current Instructor: {data.data.instructor.email}
+                    <button
+                      onClick={() => setIsRemoveInstructorModalOpen(true)}
+                      className="ml-4 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-colors"
+                    >
+                      <IoTrash />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setIsInstructorDropdownOpen(!isInstructorDropdownOpen)}
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                  >
+                    Assign Instructor
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="flex mb-4 gap-4 mt-5">
               <Link to={`/course-modules/${id}`}>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
                   Course Editor
@@ -108,7 +202,7 @@ const Course = () => {
               <button
                 onClick={() => setIsDeleteModalOpen(true)}
                 className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
-                disabled={isPending} // Disable while deleting
+                disabled={isPending}
               >
                 {isPending ? "Deleting..." : "Delete"}
               </button>
@@ -120,13 +214,12 @@ const Course = () => {
                 <h2 className="text-white capitalize md:text-2xl text-xl font-semibold">
                   Course Modules
                 </h2>
-                {/* Conditionally render Create Module button */}
                 {isInstructor && (
                   <button
                     onClick={() => setIsCreateModuleModalOpen(true)}
                     className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gradient-to-l transition-all"
                   >
-                    <FaPen /> {/* Add the pen icon to the button */}
+                    <FaPen />
                     Create Module
                   </button>
                 )}
@@ -137,16 +230,26 @@ const Course = () => {
                 ) : data?.data?.module?.length > 0 ? (
                   data.data.module.map((module: any) => (
                     <div key={module.id} className="mb-4">
-                      {/* Module Title */}
                       <button
                         onClick={() => toggleModule(module.id)}
                         className="w-full text-left p-4 bg-[#1E1E2F] text-white font-semibold rounded-lg flex justify-between items-center"
                       >
                         {module.title}
-                        <span>{openModule === module.id ? "▲" : "▼"}</span>
+                        <div className="flex items-center gap-2">
+                          <span>{openModule === module.id ? "▲" : "▼"}</span>
+                          {isInstructor && (
+                            <button
+                              onClick={() => {
+                                setModuleToDelete(module.id);
+                                setIsDeleteModuleModalOpen(true);
+                              }}
+                              className="text-red-500 hover:text-red-600"
+                            >
+                              <IoTrash />
+                            </button>
+                          )}
+                        </div>
                       </button>
-
-                      {/* Module Content (Quiz, Assignment, Video, etc.) */}
                       {openModule === module.id && (
                         <div className="bg-[#22223A] p-4 mt-2 rounded-lg">
                           {module.content.length > 0 ? (
@@ -154,11 +257,8 @@ const Course = () => {
                               <div key={content.id} className="mb-3 p-3 bg-[#1E1E2F] rounded-lg">
                                 <p className="text-white font-semibold">{content.title}</p>
                                 <p className="text-sm text-white/70">Type: {content.contentType}</p>
-
-                                {/* Exclude QUIZ content */}
                                 {content.contentType !== "QUIZ" && (
                                   <>
-                                    {/* Assignment Details */}
                                     {content.contentType === "ASSIGNMENT" && content.assignment && (
                                       <div className="mt-2 p-2 bg-purple-800 rounded-lg">
                                         <p className="text-white text-sm">
@@ -171,17 +271,23 @@ const Course = () => {
                                     )}
                                   </>
                                 )}
-
-                                {/* Buttons */}
                                 <div className="mt-3 flex gap-2">
                                   <Link to={`/course-modules/${content.id}`}>
                                     <button className="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition-colors">
                                       Show Details
                                     </button>
                                   </Link>
-                                  <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors">
-                                    Remove
-                                  </button>
+                                  {isInstructor && (
+                                    <button
+                                      onClick={() => {
+                                        setContentToDelete(content.id);
+                                        setIsDeleteContentModalOpen(true);
+                                      }}
+                                      className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors"
+                                    >
+                                      Remove
+                                    </button>
+                                  )}
                                 </div>
                               </div>
                             ))
@@ -284,6 +390,118 @@ const Course = () => {
                 disabled={isPending}
               >
                 {isPending ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Assign Instructor Modal */}
+      {isInstructorDropdownOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Select Instructor</h2>
+            <select
+              className="w-full p-2 rounded-lg mb-4 bg-[#2E2E4F] text-white"
+              onChange={(e) => setSelectedInstructor(e.target.value)}
+            >
+              <option value="">Select an instructor</option>
+              {instructors.map((instructor) => (
+                <option key={instructor.id} value={instructor.id}>
+                  {instructor.email}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={() => {
+                if (selectedInstructor) {
+                  handleAssignInstructor(selectedInstructor);
+                }
+                setIsInstructorDropdownOpen(false);
+              }}
+              className="w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              Assign
+            </button>
+            <button
+              onClick={() => setIsInstructorDropdownOpen(false)}
+              className="mt-4 w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Remove Instructor Modal */}
+      {isRemoveInstructorModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Remove Instructor</h2>
+            <p className="text-white">Are you sure you want to remove the current instructor?</p>
+            <div className="mt-4 flex justify-between gap-4">
+              <button
+                onClick={() => setIsRemoveInstructorModalOpen(false)}
+                className="w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleRemoveInstructor}
+                className="w-full py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                disabled={isRemovingInstructor}
+              >
+                {isRemovingInstructor ? "Removing..." : "Remove"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Module Modal */}
+      {isDeleteModuleModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Delete Module</h2>
+            <p className="text-white">Are you sure you want to delete this module?</p>
+            <div className="mt-4 flex justify-between gap-4">
+              <button
+                onClick={() => setIsDeleteModuleModalOpen(false)}
+                className="w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteModule}
+                className="w-full py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                disabled={isDeletingModule}
+              >
+                {isDeletingModule ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Content Modal */}
+      {isDeleteContentModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-[#2E2E4F]">
+          <div className="w-[400px] p-6 bg-[#1A1A2E] rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4 text-white">Delete Content</h2>
+            <p className="text-white">Are you sure you want to delete this content?</p>
+            <div className="mt-4 flex justify-between gap-4">
+              <button
+                onClick={() => setIsDeleteContentModalOpen(false)}
+                className="w-full py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteContent}
+                className="w-full py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                disabled={isDeletingContent}
+              >
+                {isDeletingContent ? "Deleting..." : "Delete"}
               </button>
             </div>
           </div>
