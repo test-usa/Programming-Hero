@@ -12,7 +12,7 @@ import Border from "./Border";
 
 const AbsoluteBeginner = () => {
   return (
-    <div className="w-full bg-black">
+    <div className="w-full bg-black overflow-hidden">
       <SapceBottom>
         <div className="relative w-full px-20 ">
           <div className="flex items-center justify-between">
@@ -84,8 +84,8 @@ const AbsoluteBeginner = () => {
               </h2>
 
               <div className="flex items-center gap-6 pb-6 w-60 sm:w-full">
-                <img className="w-full" src={app} alt="" />
-                <img className="w-full" src={google} alt="" />
+                <img className="md:w-full w-1/2" src={app} alt="" />
+                <img className="md:w-full w-1/2" src={google} alt="" />
               </div>
             </div>
           </div>

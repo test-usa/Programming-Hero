@@ -25,7 +25,7 @@ const Profile = () => {
   });
 
   const { data, isLoading, isSuccess, refetch } = useFetch("/user/me");
-
+console.log(data,"eitty")
   // Define separate mutation hooks
   const updateAdmin = useUpdatePut(`/admin/update-admin/${profileData.Id}`);
   const updateInstructor = useUpdatePut(`/instructor/update-instructor/${profileData.Id}`);

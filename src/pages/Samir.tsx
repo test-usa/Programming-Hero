@@ -201,9 +201,9 @@ const Samir = () => {
     <main className="bg-[#010313] w-full">
       <CourseNav />
       <CommonContainer>
-        <section className="grid mx-auto mt-5 lg:grid-cols-4 gap-7 mb-14">
+        <section className="grid mx-auto mt-5 lg:grid-cols-4 grid-cols-1 gap-7 mb-14">
           {/* Sidebar */}
-          <div className="lg:col-span-1 bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
+          <div className="lg:col-span-1 col-span-1  bg-[#170f21] rounded-xl p-4 flex flex-col items-center">
             {/* Profile Section */}
             <div className="flex flex-col items-center w-full mb-4">
               <div className="relative w-[80px] h-[80px] rounded-full border-2 border-purple-500 overflow-hidden">
@@ -220,9 +220,9 @@ const Samir = () => {
               <p className="text-sm text-gray-400 text-center">
                 {user.email}
               </p>
-              <p className="text-sm text-center text-gray-400">
+              {/* <p className="text-sm text-center text-gray-400">
                 +8801311297872
-              </p>
+              </p> */}
 
               {/* Profile Completion Bar */}
               <div className="w-full mt-2">
@@ -260,7 +260,7 @@ const Samir = () => {
           </div>
 
           {/* Content Section */}
-          <div className="lg:col-span-3 bg-[#170f21] rounded-xl p-4 h-fit">
+          <div className="lg:col-span-3 col-span-1  bg-[#170f21] rounded-xl p-4 h-fit">
             <Outlet />
           </div>
         </section>

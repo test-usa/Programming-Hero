@@ -46,7 +46,7 @@ const Students = () => {
 
   // Display loading state
   if (isLoading) {
-    return <div className="text-white p-6">Loading students...</div>;
+    return <div className=" p-6 text-purple-400">Loading students...</div>;
   }
 
   // Display error message if fetching fails
@@ -59,9 +59,9 @@ const Students = () => {
   
 
   return (
-    <div className="bg-[#170f21] rounded-xl p-6 text-white">
+    <div className="bg-[#170f21] rounded-xl p-6 text-white overflow-x-scroll ">
       <h2 className="text-xl font-bold mb-6">Students</h2>
-      <table className="w-full">
+      <table className=" w-full">
         <thead>
           <tr className="border-b border-gray-600">
             <th className="text-left p-2">Profile</th>

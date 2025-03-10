@@ -22,7 +22,7 @@ const AdminProfile = () => {
 
 
   if (isLoading) {
-    return <div className="text-white p-6 text-center">Loading admin profile...</div>;
+    return <div className="text-purple-400 p-6 text-center">Loading  profile...</div>;
   }
 
 
