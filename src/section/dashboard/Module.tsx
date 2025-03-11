@@ -239,7 +239,7 @@ const Module = () => {
               {renderContent()}
               {/* BUTTON START */}
               <div className="flex items-center justify-between py-2 gap-x-4">
-                <div className="flex items-center gap-x-4">
+                <div className="flex items-center gap-x-4 mt-10">
                   <Button
                     size="lg"
                     variant="outline"

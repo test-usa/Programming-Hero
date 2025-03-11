@@ -197,7 +197,7 @@ const Course = () => {
             <div className="flex mb-4 gap-4 mt-5">
               <Link to={`/course-modules/${id}`}>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                  Course Editor
+                  Course Viewer
                 </button>
               </Link>
               <button

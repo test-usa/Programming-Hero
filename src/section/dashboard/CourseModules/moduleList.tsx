@@ -29,12 +29,11 @@ const ModuleList = ({
   openUpdateModal,
   openDeleteModal,
 }: ModuleListProps) => {
-  const [userRole, setUserRole] = useState<string | null>(null);
-  const isInstructor = userRole === "INSTRUCTOR";
+  const [isInstructor,setIsInstructor] = useState<boolean | null>(null)
 
   useEffect(() => {
-    const storedState = JSON.parse(localStorage.getItem("state"));
-    setUserRole(storedState?.user?.data?.role || null);
+    const storedState = JSON.parse(localStorage.getItem("user"));
+    storedState?.state?.user?.data?.user?.role === "INSTRUCTOR"? setIsInstructor(true) : setIsInstructor(false)
   }, []);
 
   return (

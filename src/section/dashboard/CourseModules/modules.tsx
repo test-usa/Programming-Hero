@@ -70,12 +70,13 @@ const Modules = () => {
 
   // Get the user role from local storage
   const [userRole, setUserRole] = useState<string | null>(null);
-  const isInstructor = userRole === "INSTRUCTOR";
+  const [isInstructor,setIsInstructor] = useState<boolean | null>(null)
 
   useEffect(() => {
-    const storedState = JSON.parse(localStorage.getItem("state"));
-    setUserRole(storedState?.user?.data?.role || null);
+    const storedState = JSON.parse(localStorage.getItem("user"));
+    storedState?.state?.user?.data?.user?.role === "INSTRUCTOR"? setIsInstructor(true) : setIsInstructor(false)
   }, []);
+
 
 
   // Fetch data from the API
@@ -372,7 +373,7 @@ const Modules = () => {
         )}
 
         {/* BUTTON SECTION */}
-        <div className="flex items-center justify-between py-2 gap-x-4">
+        <div className="flex items-center flex-row-reverse justify-between py-2 gap-x-4 mt-5">
           <div className="flex items-center gap-x-4">
             <Button
               size="lg"
