@@ -1,3 +1,4 @@
+
 import { MdEdit, MdDelete, MdVisibility } from "react-icons/md";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Button } from '@heroui/button';
@@ -20,6 +21,7 @@ interface ModuleListProps {
   handleAddContent: (moduleId: string) => void;
   openUpdateModal: (content: any) => void;
   openDeleteModal: (moduleId: string, contentId?: string) => void;
+  selectedContentId: string | null; // Add selectedContentId to props
 }
 
 const ModuleList = ({
@@ -28,12 +30,15 @@ const ModuleList = ({
   handleAddContent,
   openUpdateModal,
   openDeleteModal,
+  selectedContentId, // Destructure selectedContentId
 }: ModuleListProps) => {
-  const [isInstructor,setIsInstructor] = useState<boolean | null>(null)
+  const [isInstructor, setIsInstructor] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const storedState = JSON.parse(localStorage.getItem("user"));
-    storedState?.state?.user?.data?.user?.role === "INSTRUCTOR"? setIsInstructor(true) : setIsInstructor(false)
+    const storedState = JSON.parse(localStorage.getItem("user") || "{}");
+    storedState?.state?.user?.data?.user?.role === "INSTRUCTOR"
+      ? setIsInstructor(true)
+      : setIsInstructor(false);
   }, []);
 
   return (
@@ -67,7 +72,14 @@ const ModuleList = ({
             </div>
             <div className="flex flex-col gap-3">
               {module.contents.map((content) => (
-                <div key={content.id} className="flex items-center justify-between p-2 bg-[#3a324a] rounded-lg">
+                <div
+                  key={content.id}
+                  className={`flex items-center justify-between p-2 rounded-lg ${
+                    selectedContentId === content.id
+                      ? "bg-[#c941f5]" // Highlight color for active content
+                      : "bg-[#3a324a]" // Default color
+                  }`}
+                >
                   <span className="text-white">{content.name}</span>
                   <div className="flex items-center gap-2">
                     <button
