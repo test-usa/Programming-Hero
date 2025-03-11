@@ -31,6 +31,7 @@ const Course = () => {
   const [isDeleteModuleModalOpen, setIsDeleteModuleModalOpen] = useState(false);
   const [contentToDelete, setContentToDelete] = useState<string | null>(null);
   const [isDeleteContentModalOpen, setIsDeleteContentModalOpen] = useState(false);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   const { mutate: deleteCourse, isPending } = useDelete(`/course/`);
   const { mutate: createModule, isPending: isCreatingModule } = usePost(`/module`);
@@ -44,6 +45,14 @@ const Course = () => {
       setInstructors(instructorsData.data);
     }
   }, [instructorsData]);
+
+  // Check if the user is SUPER_ADMIN
+  useEffect(() => {
+    const storedState = JSON.parse(localStorage.getItem("user") || "{}");
+    if (storedState?.state?.user?.data?.user?.role === "SUPER_ADMIN") {
+      setIsSuperAdmin(true);
+    }
+  }, []);
 
   const toggleModule = (moduleId: string) => {
     setOpenModule(openModule === moduleId ? null : moduleId);
@@ -147,9 +156,6 @@ const Course = () => {
     }
   };
 
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const isInstructor = user?.state?.user?.data?.user?.role === 'INSTRUCTOR';
-
   return (
     <div className="p-4">
       <CommonSpace>
@@ -160,15 +166,17 @@ const Course = () => {
               <div className="flex items-center">
                 <h1 className="text-white font-semibold md:text-4xl text-2xl text-center ">
                   {isLoading ? "Loading..." : data?.data?.title || "Course Curriculum"}
-                  <button
-                    className="ml-4 text-xl text-gray-400 hover:text-gray-500"
-                    onClick={() => {
-                      setNewTitle(data?.data?.title || "");
-                      setIsTitleChangeModalOpen(true);
-                    }}
-                  >
-                    <FaPen />
-                  </button>
+                  {isSuperAdmin && (
+                    <button
+                      className="ml-4 text-xl text-gray-400 hover:text-gray-500"
+                      onClick={() => {
+                        setNewTitle(data?.data?.title || "");
+                        setIsTitleChangeModalOpen(true);
+                      }}
+                    >
+                      <FaPen />
+                    </button>
+                  )}
                 </h1>
               </div>
 
@@ -177,20 +185,24 @@ const Course = () => {
                 {data?.data?.instructor ? (
                   <div className="text-white text-center flex gap-1 items-center">
                     Current Instructor: {data.data.instructor.email}
-                    <button
-                      onClick={() => setIsRemoveInstructorModalOpen(true)}
-                      className="ml-4 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-colors"
-                    >
-                      <IoTrash />
-                    </button>
+                    {isSuperAdmin && (
+                      <button
+                        onClick={() => setIsRemoveInstructorModalOpen(true)}
+                        className="ml-4 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-colors"
+                      >
+                        <IoTrash />
+                      </button>
+                    )}
                   </div>
                 ) : (
-                  <button
-                    onClick={() => setIsInstructorDropdownOpen(!isInstructorDropdownOpen)}
-                    className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
-                  >
-                    Assign Instructor
-                  </button>
+                  isSuperAdmin && (
+                    <button
+                      onClick={() => setIsInstructorDropdownOpen(!isInstructorDropdownOpen)}
+                      className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                    >
+                      Assign Instructor
+                    </button>
+                  )
                 )}
               </div>
             </div>
@@ -200,13 +212,15 @@ const Course = () => {
                   Course Viewer
                 </button>
               </Link>
-              <button
-                onClick={() => setIsDeleteModalOpen(true)}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
-                disabled={isPending}
-              >
-                {isPending ? "Deleting..." : "Delete"}
-              </button>
+              {isSuperAdmin && (
+                <button
+                  onClick={() => setIsDeleteModalOpen(true)}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                  disabled={isPending}
+                >
+                  {isPending ? "Deleting..." : "Delete"}
+                </button>
+              )}
             </div>
 
             {/* Course Modules */}
@@ -215,7 +229,7 @@ const Course = () => {
                 <h2 className="text-white capitalize md:text-2xl text-xl font-semibold">
                   Course Modules
                 </h2>
-                {isInstructor && (
+                {isSuperAdmin && (
                   <button
                     onClick={() => setIsCreateModuleModalOpen(true)}
                     className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gradient-to-l transition-all"
@@ -238,7 +252,7 @@ const Course = () => {
                         {module.title}
                         <div className="flex items-center gap-2">
                           <span>{openModule === module.id ? "▲" : "▼"}</span>
-                          {isInstructor && (
+                          {isSuperAdmin && (
                             <button
                               onClick={() => {
                                 setModuleToDelete(module.id);
@@ -273,12 +287,7 @@ const Course = () => {
                                   </>
                                 )}
                                 <div className="mt-3 flex gap-2">
-                                  <Link to={`/course-modules/${content.id}`}>
-                                    <button className="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition-colors">
-                                      Show Details
-                                    </button>
-                                  </Link>
-                                  {isInstructor && (
+                                  {isSuperAdmin && (
                                     <button
                                       onClick={() => {
                                         setContentToDelete(content.id);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CreateCourse from "./CreateCourse";
 import useFetch from "../../../hooks/shared/useFetch";
 import useDelete from "../../../hooks/shared/useDelete";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,15 @@ const AllCourse = () => {
   const { mutate: deleteCourse, isPending } = useDelete("/course/");
 
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
+
+  // Check if the user is SUPER_ADMIN
+  useEffect(() => {
+    const storedState = JSON.parse(localStorage.getItem("user") || "{}");
+    if (storedState?.state?.user?.data?.user?.role === "SUPER_ADMIN") {
+      setIsSuperAdmin(true);
+    }
+  }, []);
 
   if (isLoading) {
     return <div className="p-6 text-white">Loading courses...</div>;
@@ -47,7 +56,9 @@ const AllCourse = () => {
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
       <div className="flex items-center justify-between w-full">
         <h2 className="mb-6 text-xl font-bold">Courses</h2>
-        <CreateCourse refetch={refetch} />
+        {
+          isSuperAdmin && <CreateCourse refetch={refetch} />
+        }
       </div>
       <table className="w-full">
         <thead>
@@ -69,12 +80,14 @@ const AllCourse = () => {
                       <Eye size={16} />
                     </button>
                   </Link>
-                  <button
-                    onClick={() => setSelectedCourse(course)}
-                    className="flex items-center gap-2 px-3 py-1 text-white transition-colors bg-red-600 rounded-lg hover:bg-red-700"
-                  >
-                    <Trash2 size={16} />
-                  </button>
+                  {isSuperAdmin && (
+                    <button
+                      onClick={() => setSelectedCourse(course)}
+                      className="flex items-center gap-2 px-3 py-1 text-white transition-colors bg-red-600 rounded-lg hover:bg-red-700"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  )}
                 </div>
               </td>
             </tr>
@@ -112,5 +125,3 @@ const AllCourse = () => {
 };
 
 export default AllCourse;
-
-
