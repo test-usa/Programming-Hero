@@ -216,7 +216,7 @@ const Samir = () => {
               <h1 className="text-[#e2aaff] font-bold mt-2 text-lg text-center">
                 {user.name}
               </h1>
-              <p className="text-sm text-gray-400 text-center">{user.id}</p>
+         
               <p className="text-sm text-gray-400 text-center">
                 {user.email}
               </p>

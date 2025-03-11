@@ -25,7 +25,7 @@ const Admins = () => {
   const admins = data?.data;
 
   return (
-    <div className="bg-[#170f21] rounded-xl p-6 text-white">
+    <div className="bg-[#170f21] rounded-xl p-6 text-white overflow-x-scroll">
       <h2 className="text-xl font-bold mb-6">Admins</h2>
       <table className="w-full">
         <thead>
