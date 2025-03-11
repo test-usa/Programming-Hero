@@ -365,7 +365,7 @@ const Modules = () => {
                 <ContentRenderer content={selectedContent} />
               )}
               {/* BUTTON START */}
-              <div className="flex items-center justify-between py-2 gap-x-4">
+              <div className="flex items-center justify-between py-2 gap-x-4 mt-5">
                 <div className="flex items-center gap-x-4">
                   <Button
                     size="lg"
