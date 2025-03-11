@@ -149,7 +149,7 @@ const routes = createBrowserRouter([
           { path: "courses", element: <AllCourse /> },
           { path: "courses/:id", element: <SingleCourse /> },
           { path: "admins", element: <Admins /> },
-          { path: "instructors", element: <Admins /> },
+          { path: "instructors", element: <Instructors /> },
           { path: "students", element: <Students /> },
           { path: "create-instructor", element: <CreateInstructor /> },
         ],

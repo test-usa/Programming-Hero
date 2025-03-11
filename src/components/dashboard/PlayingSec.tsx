@@ -13,9 +13,6 @@ import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
 import { propsTypes } from "./Dashboard.type";
-import Quiz from "./Quiz";
-
-import AssignmentMarks from "./AssignmentMarks";
 
 const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
   const [Tabs, setTabs] = useState<number>(1);
@@ -29,20 +26,23 @@ const PlayingSec = ({ url, name, description, quiz }: propsTypes) => {
   const handePrevour = (): void => {};
   // HANDLE NEXT BUTTON --
   const handleNext = (): void => {};
- 
+
   return (
     <div className="w-full">
       {/* VIDEO PLAYING SECTION START */}
       <section className="max-h-[500px]">
-        <Quiz />
+        {/* <QuizResult /> */}
+        {/* <Quiz /> */}
         {/* <AssignmentMarks /> */}
-        {/* <ReactPlayer
+        {/* <QuizResultFail /> */}
+        {/* <Description /> */}
+        <ReactPlayer
           url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
           controls
           width="100%"
           height="500px"
           
-        /> */}
+        />
       </section>
       {/* VIDEO PLAYING SECTION END */}
       {/* BUTTON START */}

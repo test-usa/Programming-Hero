@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaPen } from "react-icons/fa";
 import CommonContainer from "../../common/CommonContainer";
-import CommonSpace from "../../common/CommonSpace";
+import { Accordion, AccordionItem } from "@heroui/react";
 import useFetch from "../../hooks/shared/useFetch";
 import usePost from "../../hooks/shared/usePost";
 import { toast } from "react-toastify";
 import useDelete from "../../hooks/shared/useDelete";
 import useUpdate from "../../hooks/shared/useUpdate";
 import { IoTrash } from "react-icons/io5";
+import CommonSpace from "../../common/CommonSpace";
 
 const Course = () => {
   const { id } = useParams();

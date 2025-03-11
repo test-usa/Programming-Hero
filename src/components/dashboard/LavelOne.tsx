@@ -12,7 +12,7 @@ const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
   const [value, setValue] = useState<number>(0);
   const [tabs, setTabs] = useState<boolean>(false);
-  const { data, isSuccess, isLoading, refetch } = useFetch("/course");
+  const { data, isLoading } = useFetch("/course");
   console.log(data?.data);
   return (
     <CommonContainer>
@@ -29,7 +29,7 @@ const LavelOne = () => {
             {/* FIRST CARD START */}
 
             <>
-              {data?.data?.map((course) => {
+              {data?.data?.map((course: any) => {
                 return (
                   <div
                     key={course?.id}

@@ -18,6 +18,16 @@ import UpdateModal from "./updateModal";
 import DeleteContentModal from "./deleteContentModal";
 import DeleteModuleModal from "./deleteModuleModal";
 
+// Utility function to get user role from local storage
+const getUserRole = () => {
+  const userData = localStorage.getItem("state");
+  if (userData) {
+    const parsedData = JSON.parse(userData);
+    return parsedData.state.user.data.user.role;
+  }
+  return null;
+};
+
 interface Content {
   id: string;
   type: string; // VIDEO, QUIZ, DESCRIPTION, ASSIGNMENT
@@ -57,6 +67,16 @@ const Modules = () => {
   // State for Create Module Modal
   const [isCreateModuleModalOpen, setIsCreateModuleModalOpen] = useState<boolean>(false);
   const [newModuleTitle, setNewModuleTitle] = useState<string>("");
+
+  // Get the user role from local storage
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const isInstructor = userRole === "INSTRUCTOR";
+
+  useEffect(() => {
+    const storedState = JSON.parse(localStorage.getItem("state"));
+    setUserRole(storedState?.user?.data?.role || null);
+  }, []);
+
 
   // Fetch data from the API
   const { data: apiResponse, loading, error } = useFetch(`/module/${courseId}`);
@@ -201,6 +221,8 @@ const Modules = () => {
     setContentToDelete(null);
   };
 
+  
+
   // Define handleDeleteContent
   const { mutate: deleteContent, isPending: isDeletingContent } = useDelete(`/content/delete-content/`);
 
@@ -286,6 +308,8 @@ const Modules = () => {
         .find((module) => module.id === selectedModuleId)
         ?.contents.findIndex((content) => content.id === selectedContent.id) === 0);
 
+
+        
   const isNextDisabled =
     !selectedContent ||
     !selectedModuleId ||
@@ -306,80 +330,94 @@ const Modules = () => {
         <div className="pt-10 flex w-full gap-10">
           {/* HEADER SECTION START */}
           <section className="w-2/3 h-full">
-            <section className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-4">
-              <div className="flex items-center gap-x-3">
-                <button>
-                  <img src={backIcons} alt="back-button" className="max-w-[36px] min-w-[28px]" />
-                </button>
-                <h1 className="font-semibold text-2xl text-[#EAAAFF]">
-                  {no} {name}
-                </h1>
-              </div>
-              <Button
-                onClick={() => setIsCreateModuleModalOpen(true)}
-                className="bg-[#C941F5] text-white hover:bg-[#C941F5]/90 transition-colors"
-                disabled={isCreatingModule}
-              >
-                {isCreatingModule ? "Creating..." : "Add Module"}
-              </Button>
-            </section>
-            <div className="w-full h-[1px] my-6 bg-gradient-to-b from-purple-400 to-blue-950 via-blue-300"></div>
+      <section className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-x-3">
+          <button>
+            <img
+              src={backIcons}
+              alt="back-button"
+              className="max-w-[36px] min-w-[28px]"
+            />
+          </button>
+          <h1 className="font-semibold text-2xl text-[#EAAAFF]">
+            {no} {name}
+          </h1>
+        </div>
 
-            {/* VIDEO PLAYING SECTION START */}
-            <section className="flex flex-col w-full gap-x-5">
-              {selectedContent?.type === "ASSIGNMENT" ? (
-                <AssignmentViewer assignment={selectedContent.assignment} />
-              ) : selectedContent?.type === "QUIZ" ? (
-                <QuizViewer name={selectedContent.name} questions={selectedContent.quiz.quiz} contentId={selectedContent.id} />
-              ) : (
-                <ContentRenderer content={selectedContent} />
-              )}
-              {/* BUTTON START */}
-              <div className="flex items-center justify-between py-2 gap-x-4">
-                <div className="flex items-center gap-x-4">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border border-[#9886FA] bg-gray-900 hover:bg-gray-900 hover:text-gray-400 text-gray-400"
-                    onClick={handlePreviousContent}
-                    disabled={isPreviousDisabled}
-                  >
-                    Previous
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="text-gray-950 bg-[#9886FA] hover:bg-[#503dbb]"
-                    onClick={handleNextContent}
-                    disabled={isNextDisabled}
-                  >
-                    Next
-                  </Button>
-                </div>
-                <div className="flex items-center gap-x-4">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border border-yellow-600 bg-gray-900 hover:bg-gray-900 hover:text-yellow-600 text-yellow-600"
-                    onClick={() => openUpdateModal(selectedContent!)}
-                    disabled={!selectedContent}
-                  >
-                    Update
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border border-red-600 bg-gray-900 hover:bg-gray-900 hover:text-red-600 text-red-600"
-                    onClick={() => openDeleteModal(selectedContent?.moduleId!, selectedContent?.id)}
-                    disabled={!selectedContent}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </div>
-              {/* BUTTON END */}
-            </section>
-            {/* VIDEO PLAYING SECTION END */}
-          </section>
+        {isInstructor && (
+          <Button
+            onClick={() => setIsCreateModuleModalOpen(true)}
+            className="bg-[#C941F5] text-white hover:bg-[#C941F5]/90 transition-colors"
+            disabled={isCreatingModule}
+          >
+            {isCreatingModule ? "Creating..." : "Add Module"}
+          </Button>
+        )}
+      </section>
+
+      <div className="w-full h-[1px] my-6 bg-gradient-to-b from-purple-400 to-blue-950 via-blue-300"></div>
+
+      {/* VIDEO PLAYING SECTION */}
+      <section className="flex flex-col w-full gap-x-5">
+        {selectedContent?.type === "ASSIGNMENT" ? (
+          <AssignmentViewer assignment={selectedContent.assignment} />
+        ) : selectedContent?.type === "QUIZ" ? (
+          <QuizViewer
+            name={selectedContent.name}
+            questions={selectedContent.quiz.quiz}
+            contentId={selectedContent.id}
+          />
+        ) : (
+          <ContentRenderer content={selectedContent} />
+        )}
+
+        {/* BUTTON SECTION */}
+        <div className="flex items-center justify-between py-2 gap-x-4">
+          <div className="flex items-center gap-x-4">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border border-[#9886FA] bg-gray-900 hover:bg-gray-900 hover:text-gray-400 text-gray-400"
+              onClick={handlePreviousContent}
+              disabled={isPreviousDisabled}
+            >
+              Previous
+            </Button>
+            <Button
+              size="lg"
+              className="text-gray-950 bg-[#9886FA] hover:bg-[#503dbb]"
+              onClick={handleNextContent}
+              disabled={isNextDisabled}
+            >
+              Next
+            </Button>
+          </div>
+
+          {isInstructor && (
+            <div className="flex items-center gap-x-4">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border border-yellow-600 bg-gray-900 hover:bg-gray-900 hover:text-yellow-600 text-yellow-600"
+                onClick={() => openUpdateModal(selectedContent!)}
+                disabled={!selectedContent}
+              >
+                Update
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border border-red-600 bg-gray-900 hover:bg-gray-900 hover:text-red-600 text-red-600"
+                onClick={() => openDeleteModal(selectedModuleId!, selectedContent?.id)}
+                disabled={!selectedContent}
+              >
+                Delete
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+    </section>
 
           {/* COURSE MODULES SECTION START */}
           <div className="text-white w-1/3 h-full">
@@ -423,6 +461,7 @@ const Modules = () => {
                 handleAddContent={handleAddContent}
                 openUpdateModal={openUpdateModal}
                 openDeleteModal={openDeleteModal}
+                showDeleteButtons={userRole === "SUPER_ADMIN"} // Pass the user role to ModuleList
               />
             </section>
           </div>

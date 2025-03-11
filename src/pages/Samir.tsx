@@ -168,12 +168,6 @@ const instructorMenuItems = [
     completed: true,
   },
   {
-    path: "/dashboard/create-course",
-    label: "Create Course",
-    icon: <PlusCircle size={18} />,
-    completed: true,
-  },
-  {
     path: "/dashboard/students",
     label: "All Students",
     icon: <Users size={18} />,
