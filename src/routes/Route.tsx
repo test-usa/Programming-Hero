@@ -7,7 +7,7 @@ import Himel from "../pages/HelpDesk";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import Blog from "../pages/Blog";
-import Profile from "../section/dashboard/profile";
+import Profile from "../section/profile/profile";
 import AdditionalInfo from "../section/dashboard/AddtionalInfo";
 import Address from "../section/dashboard/Address";
 import Education from "../section/dashboard/Education";
@@ -29,6 +29,13 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
+import BlogDetails from "../pages/BlogDetails";
+
+import CancelPage from "../pages/CancelPage";
+import SuccessPage from "../pages/SuccessPage";
+import Checkout from "../pages/Checkout";
+
+
 
 import MyClass from "../pages/MyClass";
 import MyClassDetails from "../pages/MyClassDetails";
@@ -46,6 +53,8 @@ import CreateCourse from "../section/dashboard/Instructor/createCourse";
 import Course from "../section/dashboard/SingleCourse";
 import AllCourse from "../section/dashboard/superAdmin/AllCourse";
 import SingleCourse from "../section/dashboard/SingleCourse";
+import Modules from "../section/dashboard/CourseModules/modules";
+import ForgotPassword from "../pages/ForgotPassword";
 
 const routes = createBrowserRouter([
   {
@@ -78,6 +87,10 @@ const routes = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/blog-details",
+        element: <BlogDetails />,
+      },
+      {
         path: "/success",
         element: <Success />,
       },
@@ -106,13 +119,34 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginPage />,
+        element: <LoginPage />, 
       },
       {
+        
         path: "/signup",
         element: <SignUpPage />,
+      },   
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
-      { path: "/course-modules", element: <Module /> },
+      // { path: "/course-modules", element: <Module /> },
+      { path: "/course-modules/:courseId", element: <Modules /> },
+      {
+        
+        path: "/make-payment",
+        element: <Checkout/>,
+      },
+      {
+        
+        path: "/success",
+        element: <SuccessPage/>,
+      },
+      {
+        
+        path: "/cancel",
+        element: <CancelPage/>,
+      },
       {
         path: "/dashboard",
         element: <Samir />,

@@ -6,8 +6,8 @@ const useDelete = (route: string) => {
   const queryClient = useQueryClient();
 
   const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: (id) => {
-      return Axios.delete(route + id, {
+    mutationFn: (id:string) => {
+      return Axios.delete(route +id, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },

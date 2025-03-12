@@ -3,7 +3,7 @@ import CommonContainer from "../../common/CommonContainer"
 import enrollmentImg from "../../assets/course details/enrollment-start.svg"
 import enrollmentImg1 from "../../assets/course details/enrollment-end.svg"
 import webinartImg from "../../assets/course details/webinar2.svg"
-import vedioImg from "../../assets/course details/vedio.png"
+import vedioImg from "../../assets/course details/vedio.jpg"
 import { FaPlay, FaTimes } from "react-icons/fa";
 import { useState } from "react"
 import Modal from "./Modal"
@@ -35,13 +35,13 @@ const NextBatch = () => {
   };
 
   return (
-    <div className="bg-[#010313]">
+    <div className="bg-[#010313] pt-5">
      
         <CommonContainer>
-          <div className="md:px-11 md:p-5 mx-auto">
-            <h2 className="text-center text-white md:text-4xl text-2xl pb-2 font-semibold">Next Batch Schedule</h2>
+          <div className="md:px-11  md:p-5 mx-auto">
+            <h2 className="text-center text-white md:text-4xl text-2xl pb-5 font-semibold">Next Batch Schedule</h2>
 
-            <div className="md:p-8 md:m-8 p-5 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl md:pb-[200px] md:w-[85%] w-full mx-auto">
+            <div className="md:p-8 md:m-8 p-5 bg-gradient-to-b from-[#181829] to-[#020414] rounded-3xl  md:w-[85%] w-full mx-auto">
               <div className="flex flex-wrap gap-6 justify-around">
                 <div className="flex items-center gap-3 sm:justify-center">
                   <div>
@@ -106,10 +106,13 @@ const NextBatch = () => {
                 </div>
               </div>
 
-              <div className=" flex flex-col justify-center items-center mt-10">
+              <div className=" flex flex-col justify-center items-center mt-10 w-[80%] mx-auto">
               <div
-                className="md:w-[80%] h-[500px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover  md:mt-0 mt-3"
-                style={{ backgroundImage: `url(${vedioImg})` }} >
+                className="h-[500px] bg-no-repeat rounded-2xl w-full flex items-center justify-center bg-cover   md:mt-0 mt-3"
+                style={{ backgroundImage: `url(${vedioImg})`,
+                backgroundSize: 'cover',
+              
+                 }} >
                 <div>
                   {!showVideo && (
                     <div
