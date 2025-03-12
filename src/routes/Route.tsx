@@ -35,10 +35,11 @@ import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
 import BlogDetails from "../pages/BlogDetails";
-import Enrollment from "../pages/Enrollment";
+
 import CancelPage from "../pages/CancelPage";
 import SuccessPage from "../pages/SuccessPage";
 import Checkout from "../pages/Checkout";
+
 
 
 const routes = createBrowserRouter([
@@ -116,12 +117,7 @@ const routes = createBrowserRouter([
       },
       {
         
-        path: "/enrollment-payment",
-        element: <Enrollment />,
-      },
-      {
-        
-        path: "/checkout",
+        path: "/make-payment",
         element: <Checkout/>,
       },
       {

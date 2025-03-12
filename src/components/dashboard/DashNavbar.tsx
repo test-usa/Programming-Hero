@@ -11,7 +11,7 @@ import { Avatar } from "@heroui/react";
 
 const DashNavbar = () => {
   //   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const [, setMenu] = useState(false);
 
   type muneItems = {
     href: string;
