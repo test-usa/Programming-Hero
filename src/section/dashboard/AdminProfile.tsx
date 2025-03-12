@@ -21,7 +21,7 @@ const AdminProfile = () => {
 
   // Display loading state
   if (isLoading) {
-    return <div className="text-white p-6 text-center">Loading admin profile...</div>;
+    return <div className="p-6 text-center text-purple-400">Loading admin profile...</div>;
   }
 
   // Display error state if data fetching fails

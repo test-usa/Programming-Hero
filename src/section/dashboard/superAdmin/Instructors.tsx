@@ -56,7 +56,7 @@ const Instructors = () => {
 
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
-      <h2 className="mb-6 text-xl font-bold">Instructors</h2>
+      <h2 className="mb-6 text-xl font-bold text-red-500">Instructors</h2>
       <table className="w-full">
         <thead>
           <tr className="border-b border-gray-600">

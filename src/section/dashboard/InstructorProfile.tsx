@@ -22,7 +22,7 @@ const InstructorProfile = () => {
 
   // Display loading state
   if (isLoading) {
-    return <div className="text-white p-6 text-center">Loading admin profile...</div>;
+    return <div className="text-purple-400 p-6 text-center">Loading admin profile...</div>;
   }
 
   // Display error state if data fetching fails

@@ -78,9 +78,12 @@ const Login = () => {
               <input type="checkbox" />
               <label className="text-xs md:text-lg">Remember Me</label>
             </div>
+            <Link to="/forgot-password">
             <button className="text-xs md:text-lg border-b bg-clip-text text-transparent border-[#405aff] bg-[linear-gradient(90deg,#384fde,#985cf0)]">
               Forgot Password
             </button>
+            </Link>
+           
           </div>
           <button
             onClick={handleSubmit(submitFormToSever)}

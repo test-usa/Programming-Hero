@@ -47,6 +47,7 @@ import Course from "../section/dashboard/SingleCourse";
 import AllCourse from "../section/dashboard/superAdmin/AllCourse";
 import SingleCourse from "../section/dashboard/SingleCourse";
 import Modules from "../section/dashboard/CourseModules/modules";
+import ForgotPassword from "../pages/ForgotPassword";
 
 const routes = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUpPage />,
+      },   
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
       // { path: "/course-modules", element: <Module /> },
       { path: "/course-modules/:courseId", element: <Modules /> },

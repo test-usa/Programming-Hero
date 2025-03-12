@@ -3,7 +3,7 @@ import CommonSpace from "../../common/CommonSpace";
 import useFetch from "../../hooks/shared/useFetch";
 
 const Course = () => {
-  const { data } = useFetch("/coursee");
+  const { data } = useFetch("/course");
   return (
     <div className="bg-[#010313] p-4">
       <CommonSpace>
@@ -24,7 +24,7 @@ const Course = () => {
             <div className="mt-12">
               <div className="p-4 bg-gradient-to-r from-[#405aff] to-[#ff37f2] rounded-tl-lg rounded-tr-lg">
                 <h2 className="text-xl font-semibold text-white capitalize md:text-2xl">
-                  Course Module
+                  Courses
                 </h2>
               </div>
               <div

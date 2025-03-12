@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { userStore } from "../../store/UserStore";
 import Axios from "../useAxios";
-const useDelete = (route: string) => {
+const useUpdatePut = (route: string) => {
   const { token } = userStore();
   const queryClient = useQueryClient();
 
-  const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: (id:string) => {
-      return Axios.delete(route +id, {
+  const { data, mutate, isPending, isSuccess } = useMutation({
+    mutationFn: (obj) => {
+      return Axios.put(route, obj, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },
@@ -16,7 +16,7 @@ const useDelete = (route: string) => {
     },
   });
 
-  return { mutate, isPending, isSuccess };
+  return { data, mutate, isPending, isSuccess };
 };
 
-export default useDelete;
+export default useUpdatePut;
