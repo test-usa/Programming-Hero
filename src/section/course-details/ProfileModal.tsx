@@ -26,7 +26,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
 
     const nestedUser: User = user?.data?.user
-    console.log("User Data:", nestedUser);
     const navigate = useNavigate();
    
   

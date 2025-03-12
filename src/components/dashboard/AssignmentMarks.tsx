@@ -1,5 +1,5 @@
-
-const AssignmentMarks = () => {
+const AssignmentMarks = (assingment: string | object) => {
+  console.log(assingment, "assignment pageeeeee");
   return (
     <div className="w-full h-[450px] flex items-center justify-center bg-[#160A2A]">
       <section className="py-5">
@@ -13,14 +13,13 @@ const AssignmentMarks = () => {
         </div>
 
         {/* circle of count assigment marks */}
-
         <div className="flex flex-col gap-4 items-center justify-center py-4">
           <h1 className="text-green-500 font-semibold text-sm sm:text-2xl">
             Greate Job!
           </h1>
           <p className="text-white font-semibold text-center sm:text-start text-sm md:text-xl">
             You have completed the{" "}
-            <span className="text-green-500">Assignment 8</span> and achieve 41
+            <span className="text-green-500">Assignment 8</span> and achive 41
             Marks!
           </p>
           <div className="flex items-center gap-4">
