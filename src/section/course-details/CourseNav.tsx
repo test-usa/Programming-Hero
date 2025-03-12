@@ -1,23 +1,52 @@
 import { VscBell } from "react-icons/vsc";
 import { RiMenu2Fill, RiCloseFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { Avatar } from "@heroui/react";
-import { NavLink } from "react-router-dom";
+
+import { Link, NavLink} from "react-router-dom";
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import CustomModal from "../course-details/Modal";
+import ProfileModal from "./ProfileModal";
+import { userStore } from "../../store/UserStore";
+import useFetch from "../../hooks/shared/useFetch";
+
+
+
+interface User {
+  email: string;
+  role: string;
+  id: string;
+  name: string;
+}
+
+
+
+type CourseNavProps = {
+isOpen: boolean;
+onClose: () => void;
+
+};
 
 const CourseNav = () => {
   const [menu, setMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const menuItems = [
-    { href: "/", path: "Conceptual Crackers" },
-    { href: "/", path: "Course Details" },
-    { href: "/", path: "Support" },
-    { href: "/", path: "Blog" },
-    { href: "/", path: "My Classes" },
+    {
+      href: "/course",
+      path: "Course Details",
+    },
+
+    {
+      href: "/class",
+      path: "My Classes",
+    },
+    {
+      href: "/blog",
+      path: "Blog",
+    },
   ];
 
   useEffect(() => {
@@ -31,31 +60,44 @@ const CourseNav = () => {
     };
   }, []);
 
+  const {data, isLoading, isSuccess, refetch } = useFetch("/user/me");
+
+  
+
   return (
     <div
-      className={`sticky top-0 z-10 transition-all duration-300 ${
-        isScrolled ? "bg-[rgba(249,247,243,0.5)]" : "bg-[#010313]"
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[rgba(249,247,243,0.8)]" : "bg-[#010313]"
       }`}
     >
       <div className="pt-3 font-Grotesk px-9">
         <div className="flex items-center justify-between w-full text-white">
-          <div className="hidden lg:flex items-center">
-            <img src={logo} alt="logo" />
-            <p className="hidden -ml-4 text-lg font-bold md:block">
-              Programming Hero
-            </p>
+          <div className="items-center hidden lg:flex">
+          <Link to="/" className="flex items-center">
+          <img src={logo} alt="logo" />
+          <p className="hidden -ml-4 text-lg font-bold md:block">
+           Programming Hero
+         </p>
+         </Link>
           </div>
 
           <section className="flex items-center gap-x-3 lg:hidden">
-            <Avatar
-              src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-              className="border-2 rounded-full animate-pulse border-purple-400"
-            />
-            <p>Hi, Kazi</p>
-          </section>
+  {data && data.data ? (
+    <>
+      <img
+        src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+        className="border-2 border-purple-400 rounded-full animate-pulse h-[50px] w-[50px]"
+      />
+      <p>Hi, {data.data.name.split(" ")[0]}</p>
+    </>
+  ) : (
+    <p>Loading...</p> 
+  )}
+</section>
 
-          <div className="items-center gap-6 text-sm flex">
-            <span className="space-x-4 hidden lg:block">
+
+          <div className="flex items-center gap-6 text-sm">
+            <span className="hidden space-x-4 lg:block">
               {menuItems.map((item) => (
                 <NavLink key={item.path} className="text-base" to={item.href}>
                   {item.path}
@@ -63,11 +105,14 @@ const CourseNav = () => {
               ))}
             </span>
 
+
             <div className="flex items-center gap-x-5">
-              <VscBell className="text-2xl" />
-              <section className="bg-green-200 rounded-3xl md:px-4 px-4 py-2 md:py-2 flex items-center justify-center gap-x-2">
+              <VscBell className="text-2xl lg:block hidden " />
+              <section className="flex items-center justify-center px-3 py-2 bg-green-200 rounded-3xl md:px-4 md:py-2 gap-x-2">
                 <img src={gemIcon} className="w-6 h-6" />
-                <p className="font-semibold text-black md:text-xl text-lg">115</p>
+                <p className="text-lg font-semibold text-black md:text-xl">
+                  115
+                </p>
               </section>
 
               <span
@@ -76,20 +121,27 @@ const CourseNav = () => {
               >
                 <RiMenu2Fill />
               </span>
+              <button className="px-3 py-2  rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125 lg:block hidden"
+               onClick={() => setIsModalOpen(true)}
+              >Enroll Now</button>
+              <img
+            src=" https://i.pravatar.cc/150?u=a04258114e29026702d"
+            alt="Profile"
+            className="w-[50px] h-[50px] rounded-full border-2 border-gray-400 cursor-pointer  lg:block hidden"
+            onClick={() => setIsProfileModalOpen(true)}
+          />
 
-             
-
-              <Avatar
-                src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-                className="hidden lg:block"
-              />
+            
             </div>
           </div>
         </div>
       </div>
 
       {menu && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-20" onClick={() => setMenu(false)}></div>
+        <div
+          className="fixed inset-0 z-20 bg-black bg-opacity-50"
+          onClick={() => setMenu(false)}
+        ></div>
       )}
 
       <div
@@ -98,12 +150,12 @@ const CourseNav = () => {
         } transition-transform duration-300 z-30`}
       >
         <button
-          className="absolute top-4 right-4 text-3xl text-white"
+          className="absolute text-3xl text-white top-4 right-4"
           onClick={() => setMenu(false)}
         >
           <RiCloseFill />
         </button>
-        <nav className="mt-16 flex flex-col items-center space-y-6">
+        <nav className="flex flex-col items-center mt-16 space-y-6">
           {menuItems.map((item) => (
             <NavLink
               key={item.path}
@@ -118,6 +170,7 @@ const CourseNav = () => {
       </div>
 
       <CustomModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <ProfileModal isOpen={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)} />
     </div>
   );
 };

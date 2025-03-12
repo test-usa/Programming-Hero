@@ -1,153 +1,98 @@
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { createInstructor, TcreateInstructor } from "../../../types/Types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import usePost from "../../../hooks/shared/usePost";
+import { Spinner } from "@heroui/spinner";
+import { useState } from "react";
 
 const CreateUser = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    role: "instructor", // Default role
-    profilePhoto: "",
-    contact: "",
-    address: "",
-    gender: "",
-  });
+  const [user, setUser] = useState("instructor");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TcreateInstructor>({ resolver: zodResolver(createInstructor) });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const { mutate, isPending } = usePost(
+    user === "instructor" ? "/user/instructor/create" : "/user/admin/create"
+  );
+  const submit = async (userData: TcreateInstructor) => {
+    mutate(userData);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (e.g., send data to an API)
-    console.log("Form Data:", formData);
+  const handleSelect = (e) => {
+    const { value } = e.target;
+    setUser(value);
   };
-
   return (
     <div className="bg-[#170f21] rounded-xl p-6 text-white">
-      <h2 className="text-xl font-bold mb-6">Create User</h2>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        {/* Full Name */}
+      <h2 className="mb-6 text-xl font-bold">Create Instructor</h2>
+      <form onSubmit={handleSubmit(submit)} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Full Name</label>
+          <label htmlFor="name" className="block mb-1 text-sm font-medium">
+            Full Name
+          </label>
           <input
+            {...register("name")}
             type="text"
-            name="name"
             placeholder="Enter full name"
-            value={formData.name}
-            onChange={handleChange}
+            id="name"
             className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
-        </div>
 
-        {/* Email */}
+          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
+          <label htmlFor="email" className="block mb-1 text-sm font-medium">
+            Email
+          </label>
           <input
+            {...register("email")}
             type="email"
-            name="email"
             placeholder="Enter email"
-            value={formData.email}
-            onChange={handleChange}
+            id="email"
             className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
+          {errors.email && (
+            <p className="text-red-500">{errors.email.message}</p>
+          )}
         </div>
-
-        {/* Password */}
         <div>
-          <label className="block text-sm font-medium mb-1">Password</label>
+          <label htmlFor="password" className="block mb-1 text-sm font-medium">
+            Password
+          </label>
           <input
+            {...register("password")}
             type="password"
-            name="password"
             placeholder="Enter password"
-            value={formData.password}
-            onChange={handleChange}
+            id="password"
             className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
+          {errors.password && (
+            <p className="text-red-500">{errors.password.message}</p>
+          )}
         </div>
-
-        {/* User Role */}
         <div>
-          <label className="block text-sm font-medium mb-1">User Role</label>
+          <label htmlFor="person" className="block mb-1 text-sm font-medium">
+            User Role
+          </label>
           <select
+            onChange={handleSelect}
+            value={user}
             name="role"
-            value={formData.role}
-            onChange={handleChange}
+            id="person"
             className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
           >
             <option value="instructor">Instructor</option>
             <option value="admin">Admin</option>
           </select>
         </div>
-
-        {/* Profile Photo */}
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            Profile Photo URL
-          </label>
-          <input
-            type="text"
-            name="profilePhoto"
-            placeholder="Enter profile photo URL"
-            value={formData.profilePhoto}
-            onChange={handleChange}
-            className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
-
-        {/* Contact */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Contact</label>
-          <input
-            type="text"
-            name="contact"
-            placeholder="Enter contact number"
-            value={formData.contact}
-            onChange={handleChange}
-            className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
-
-        {/* Address */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Address</label>
-          <input
-            type="text"
-            name="address"
-            placeholder="Enter address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
-
-        {/* Gender */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="w-full p-2 bg-[#2a213a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-
-        {/* Submit Button */}
-        <div>
-          <button
-            type="submit"
-            className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"
-          >
-            Create User
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="w-full py-2 text-white transition-colors bg-purple-600 rounded-lg hover:bg-purple-700"
+        >
+          {isPending ? <Spinner color="warning" size="sm" /> : "Create User"}
+        </button>
       </form>
     </div>
   );

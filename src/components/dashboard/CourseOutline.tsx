@@ -1,37 +1,54 @@
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Outline from "./Outline";
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/shared/useFetch";
+import { toast } from "react-toastify";
+import usePost from "../../hooks/shared/usePost";
+import { useOutlineStore } from "../../store/useOutlineStore";
 
-const CourseOutline = ({
-  urlFunc,
-}: {
-  urlFunc: (url: string, name: string, No: number) => void;
-}) => {
-  const [data, setData] = useState<[]>([]);
+const CourseOutline = () => {
+  const { id } = useParams();
+  const [contentId, setContentId] = useState<string>();
+  const [search, setSearch] = useState<string>("");
+  const { allContent } = useOutlineStore();
+  const { data } = useFetch(
+    `/content/search?courseId=${id}&contentName=${search}`
+  );
+  // PROGRESSBAR -->
+  const handleProgressBar = (contentIds: string) => {
+    setContentId(contentIds);
+  };
+
+  // POST PROGRESSBAR -->
+  const {
+    data: progress,
+    mutate,
+    isSuccess,
+  } = usePost(`/student/progress/${id}/${contentId}`);
 
   useEffect(() => {
-    const resFunc = async () => {
-      try {
-        const res = await fetch("/content.json");
-        const jsonData = await res.json();
-        setData(jsonData);
-      } catch (error) {
-        console.log(error, "error course-outline");
-      }
-    };
-    resFunc();
-  }, []);
+    if (id && contentId) {
+      mutate({});
+    }
+    if (progress && isSuccess) {
+      toast.success("Successfully posted progress!");
+    }
+  }, [id, contentId]);
+
+  // GET PROGRESSBAR --->
+  const { data: getProgress } = useFetch(`/student/progress/${id}`);
 
   return (
     <div className="text-white">
       <div className="w-full flex items-center justify-between py-3">
-        <h1 className="text-[#EAAAFF] ">Running Module : 58</h1>
-        <div className="w-[60%] flex items-center gap-x-3">
+        <h1 className="text-[#EAAAFF] text-sm">Running Module : 1</h1>
+        <div className="w-[100%] flex items-center gap-x-3">
           <div
-            className="w-[100%] h-2 rounded-lg bg-gradient-to-r from-green-500 to-green-300"
-            style={{ width: `${100}%` }}
-          ></div>
-          <p className="text-[#EAAAFF]">11/11</p>
+            className="w-[100%] h-2 rounded-lg bg-gradient-to-r from-green-500 to-green-300 transition-all duration-150"
+            style={{ width: `${getProgress?.data?.percentage} * 2 %` }}
+          />
+          <p className="text-[#EAAAFF]">{getProgress?.data?.watchedContents?.length}/{allContent?.content?.length}</p>
         </div>
       </div>
 
@@ -59,6 +76,7 @@ const CourseOutline = ({
           <input
             type="search"
             name="Search"
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
             className="w-full py-3 pl-10 text-sm rounded-md focus:outline-none bg-gray-600 text-white "
           />
@@ -74,9 +92,7 @@ const CourseOutline = ({
         >
           {/* DROPDOWN MENU START */}
           <div className="flex flex-col gap-5">
-            {data?.map((milestone) => {
-              return <Outline urlFunc={urlFunc} totalMilestone={milestone} />;
-            })}
+            <Outline content={data} handleProgressBar={handleProgressBar} />
           </div>
           {/* DROPDOWN MENU END */}
         </div>

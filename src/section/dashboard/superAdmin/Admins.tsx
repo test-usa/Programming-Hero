@@ -1,41 +1,31 @@
-import React from "react";
-import { Eye, Trash2 } from "lucide-react";
+
+
+import useFetchQuery from "../../../hooks/shared/useFetch";
+
+import AdminRow from "./AdminRow";
+
+
 
 const Admins = () => {
-  // Dummy admin data
-  const admins = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      profile: "Admin",
-      avatar: "https://i.pravatar.cc/50?img=1",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      profile: "Super Admin",
-      avatar: "https://i.pravatar.cc/50?img=2",
-    },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice.johnson@example.com",
-      profile: "Moderator",
-      avatar: "https://i.pravatar.cc/50?img=3",
-    },
-    {
-      id: 4,
-      name: "Bob Brown",
-      email: "bob.brown@example.com",
-      profile: "Admin",
-      avatar: "https://i.pravatar.cc/50?img=4",
-    },
-  ];
+  // Use the custom hook with correct type
+  const { data, isLoading, isSuccess } = useFetchQuery("/admin");
+
+  console.log(isLoading)
+  // Display loading state
+  if (isLoading) {
+    return <div className="text-white p-6">Loading admins...</div>;
+  }
+
+  // Check that the response is successful and data is defined
+  if (!isSuccess || !data) {
+    return <div className="text-red-500 p-6">Error: Failed to fetch admins</div>;
+  }
+
+  // Extract admin data safely after the checks
+  const admins = data?.data;
 
   return (
-    <div className="bg-[#170f21] rounded-xl p-6 text-white">
+    <div className="bg-[#170f21] rounded-xl p-6 text-white overflow-x-scroll">
       <h2 className="text-xl font-bold mb-6">Admins</h2>
       <table className="w-full">
         <thead>
@@ -49,29 +39,31 @@ const Admins = () => {
         </thead>
         <tbody>
           {admins.map((admin) => (
-            <tr key={admin.id} className="border-b border-gray-600">
-              <td className="p-2">
-                <img
-                  src={admin.avatar}
-                  alt={admin.name}
-                  className="w-10 h-10 rounded-full border border-gray-500"
-                />
-              </td>
-              <td className="p-2">{admin.name}</td>
-              <td className="p-2">{admin.email}</td>
-              <td className="p-2">#{admin.id}</td>
-              <td className="p-2 text-right">
-                {/* Flex container for buttons */}
-                <div className="flex justify-end items-center gap-2">
-                  <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
-                    <Eye size={16} /> {/* View Details Icon */}
-                  </button>
-                  <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
-                    <Trash2 size={16} /> {/* Remove Admin Icon */}
-                  </button>
-                </div>
-              </td>
-            </tr>
+            // <tr key={admin.id} className="border-b border-gray-600">
+            //   <td className="p-2">
+            //     <img
+            //       src={admin.profilePhoto || "https://i.pravatar.cc/50?img=1"} // Fallback avatar
+            //       alt={admin.name}
+            //       className="w-10 h-10 rounded-full border border-gray-500"
+            //     />
+            //   </td>
+            //   <td className="p-2">{admin.name}</td>
+            //   <td className="p-2">{admin.email}</td>
+            //   <td className="p-2">#{admin.id}</td>
+            //   <td className="p-2 text-right">
+            //     <div className="flex justify-end items-center gap-2">
+            //       <Link to={`/dashboard/admin-profile/${admin.id}`}>
+            //       <button className="bg-gradient-to-r from-[#CB3EEC] to-[#6653fd] text-white px-3 py-1 rounded-lg hover:opacity-90 transition-colors flex items-center gap-2">
+            //         <Eye size={16} />
+            //       </button>
+            //       </Link>
+            //       <button className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
+            //         <Trash2 size={16} />
+            //       </button>
+            //     </div>
+            //   </td>
+            // </tr>
+            <AdminRow key={admin.id} admin={admin} />
           ))}
         </tbody>
       </table>

@@ -1,14 +1,13 @@
-import Cookies from "js-cookie";
-import useAxiosSecure from "../useAxios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { userStore } from "../../store/UserStore";
+import Axios from "../useAxios";
 const useDelete = (route: string) => {
-  const Axios = useAxiosSecure();
-  const token = Cookies.get("user");
+  const { token } = userStore();
   const queryClient = useQueryClient();
 
   const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: (id) => {
-      return Axios.delete(route + id, {
+    mutationFn: (id:string) => {
+      return Axios.delete(route +id, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },

@@ -17,7 +17,7 @@ const Specialty = () => {
         <div className="md:w-[85%] w-full mx-auto">
           <h2 className=" md:text-4xl  text-2xl font-semibold text-white text-center capitalize">What Is The Specialty_ Of This Course?</h2>
 
-          <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center  gap-5">
+          <div className="mt-10 md:flex gap-5 justify-center flex-wrap">
 
             <SpecialityCard
               imgSrc={codeImg}

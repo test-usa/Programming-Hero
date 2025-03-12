@@ -11,36 +11,35 @@ module.exports = {
   ],
   theme: {
   	extend: {
-
-      backgroundImage: {
-    'custom-gradient': 'linear-gradient(136.85deg,#ff37f2 -15.82%,#405aff 99.57%)',
-		'text-gradient':'linear-gradient(90deg, rgba(242, 54, 255, 0.00) 0%, rgba(241, 32, 255, 0.08) 23.73%, rgba(239, 11, 255, 0.56) 49.67%, rgba(241, 34, 255, 0.04) 74.41%, rgba(242, 54, 255, 0.00) 100%)',
-		'header-image':'url("../assets/images/home.png")',
-		'custom-pattern': "url('./src/assets/images/layer.png')",
-		'bg-grid':  "url('./src/assets/images/grid.png')",
-		'bg-globe':  "url('./src/assets/images/globe.png')",
-
-		'custom-footer': "url('./src/assets/images/footer.jpg')",
-		'footer-gradient':'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)',
-		'globe-gradient':'linear-gradient(0deg, #6605BA 0%, rgba(24, 0, 79, 0.53) 50.52%, rgba(93, 38, 224, 0.00) 100%)',
-		'login-signin':"url('./src/assets/images/sign.svg')",
-		'text-gradient':'linear-gradient(90deg, #E855DE 0.01%, #5400EE 100%)'
-
-
-      },
-      fontFamily:{
-        "Grotesk":["Space Grotesk","serif"],
-        "Hind":["Hind Siliguri","serif"]
-
-      },
-  
+  		backgroundImage: {
+  			'custom-gradient': 'linear-gradient(136.85deg,#ff37f2 -15.82%,#405aff 99.57%)',
+  			'text-gradient': 'linear-gradient(90deg, #E855DE 0.01%, #5400EE 100%)',
+  			'header-image': 'url("../assets/images/home.png")',
+  			'custom-pattern': 'url("./src/assets/images/layer.png")',
+  			'bg-grid': 'url("./src/assets/images/grid.png")',
+  			'bg-globe': 'url("./src/assets/images/globe.png")',
+  			'custom-footer': 'url("./src/assets/images/footer.jpg")',
+  			'footer-gradient': 'linear-gradient(228.02deg, #3693FF 16.1%, rgba(82, 253, 195, 0.67) 80.73%)',
+  			'globe-gradient': 'linear-gradient(0deg, #6605BA 0%, rgba(24, 0, 79, 0.53) 50.52%, rgba(93, 38, 224, 0.00) 100%)',
+  			'login-signin': 'url("./src/assets/images/sign.svg")',
+  		},
+  		fontFamily: {
+  			Grotesk: [
+  				'Space Grotesk',
+  				'serif'
+  			],
+  			Hind: [
+  				'Hind Siliguri',
+  				'serif'
+  			]
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-        primaryColor:"#6644f7",
+  			primaryColor: '#6644f7',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -81,6 +80,28 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },

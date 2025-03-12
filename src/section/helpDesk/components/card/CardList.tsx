@@ -1,4 +1,5 @@
 import React from "react";
+import CommonContainer from "../../../../common/CommonContainer";
 
 interface Testimonial {
   id: number;
@@ -59,7 +60,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({
   testimonial,
 }) => {
   return (
-    <div className="bg-[#0A081F] text-white rounded-lg p-5 flex items-center gap-6 shadow-lg">
+    <div className="bg-[#120f3c] text-white rounded-lg p-5 flex items-center gap-6 shadow-lg">
       {/* Left Section - Profile Image */}
       <div className="relative w-24 h-24">
         <img
@@ -94,11 +95,13 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({
 const CardList: React.FC = () => {
   return (
     <div className="bg-[#08061A] p-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {testimonials.map((testimonial) => (
-          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-        ))}
-      </div>
+      <CommonContainer>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          ))}
+        </div>
+      </CommonContainer>
     </div>
   );
 };

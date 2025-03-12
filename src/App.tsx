@@ -6,36 +6,35 @@ import { userStore } from "./store/UserStore";
 import { Elements } from "@stripe/react-stripe-js";
 
 const App = () => {
-  const { setUser, user, token } = userStore();
+  // const { , token } = userStore();
 
+  // const Axios = useAxiosSecure();
 
-  console.log("use", user);
-  const Axios = useAxiosSecure();
+  // const fetchUser = async () => {
+  //   console.log("main file render");
+  //   try {
+  //     const response = await Axios.get("/user/me", {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     if (response.data) {
+  //       setUser(response.data);
+  //     }
+  //     console.log("reddshfkjsdhkjdsfds", response);
+  //   } catch (error) {
+  //     console.error("Error user authentication:", error);
+  //   }
+  // };
 
-  const fetchUser = async () => {
-    console.log("main file render");
-    try {
-      const response = await Axios.get("/user/me", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (response.data) {
-        setUser(response.data);
-      }
-      console.log("reddshfkjsdhkjdsfds", response);
-    } catch (error) {
-      console.error("Error user authentication:", error);
-    }
-  };
-
-  useEffect(() => {
-    if (token) {
-      fetchUser();
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     fetchUser();
+  //   }
+  // }, [token]);
   return (
     <>
     <Elements stripe={null}>
       <ToastContainer position="bottom-left" theme="dark" autoClose={3000} />
+      <ToastContainer position="bottom-left" autoClose={3000} />
       <MainLayout />
     </Elements>
     </>

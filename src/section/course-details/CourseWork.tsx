@@ -16,26 +16,28 @@ const CourseWork = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
   return (
 
-    <div className="relative bg-[#010312] md:h-[3050px] lg:h-[2530px] h-[3000px]">
+    <div className="relative bg-[#010312] min-h-screen   ">
       {/* SVG Curve at the Top */}
       <svg className="absolute top-0 left-0 w-full md:block hidden" viewBox="0 0 1440 320">
         <path fill="#5400EE" fillOpacity="1" d="M0,96 C360,0 1080,0 1440,96 L1440,0 L0,0 Z"></path>
       </svg>
 
       {/* Div inside the SVG area */}
-      <div className="absolute md:top-[150px] w-full">
+      <div className="relative md:top-[200px] top-[100px] w-full md:pb-[250px] pb-[100px] ">
         <CommonContainer>
-          <div className="md:w-[85%] w-full mx-auto grid md:grid-cols-2 grid-cols-1 gap-6">
-            <div className="p-11 ">
-              <h1 className="text-white md:text-xl text-2xl font-semibold">How Will This Course Work_?</h1>
-              <p className="text-white text-lg text-white/50 md:pt-5 pt-3 ">
+          <div className="md:w-[85%] w-full mx-auto md:flex  gap-6">
+            <div className="p-11 md:sticky top-[200px] z-10  py-5 px-11 h-[300px] md:w-1/2 w-full flex flex-col gap-4">
+              <h1 className="text-[#EEE0FF] md:text-4xl text-2xl font-semibold">How Will This Course Work_?</h1>
+              <p className="text-white text-lg text-white/50  ">
                 This course guides you from basics to mastering the MERN stack with step-by-step lessons, hands-on projects, and assessments.
               </p>
-              <button className="px-3 py-2 mt-5 text-lg rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125"
+            <div className="">
+            <button className="px-3 py-2 mt-5 text-lg rounded-md font-semibold text-white bg-custom-gradient hover:brightness-125"
                onClick={() => setIsModalOpen(true)}
               >Enroll Now</button>
             </div>
-            <div className=" ">
+            </div>
+            <div className="md:w-1/2 w-full mt-[100px] lg:mt-0">
               <CourseWorkCard
                 imgSrc={time}
                 title="Module Release Time"

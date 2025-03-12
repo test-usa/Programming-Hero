@@ -1,52 +1,48 @@
 import CommonContainer from "../../common/CommonContainer";
 import { VscBell } from "react-icons/vsc";
-
 import gemIcon from "../../assets/images/gem.svg";
 import logo from "../../assets/images/logo.svg";
 import { RiMenu2Fill } from "react-icons/ri";
-
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
 
+<<<<<<< HEAD
 const DashNavbar = () => {
   //   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [, setMenu] = useState(false);
+=======
+import { muneItems } from "./Dashboard.type";
+>>>>>>> 381f80ec314b5688bfe4eccf8f7edcda80edda09
 
+
+const DashNavbar = () => {
+  const [menu, setMenu] = useState(false);
   type muneItems = {
     href: string;
     path: string;
   };
-
-
   const menuItems: muneItems[] = [
     {
-      href: "/",
-      path: "Conceptual Crackers",
-    },
-    {
-      href: "/",
+      href: "/course",
       path: "Course Details",
     },
+
     {
-      href: "/",
-      path: "Support",
-    },
-    {
-      href: "/",
-      path: "Blog",
-    },
-    {
-      href: "/",
+      href: "/class",
       path: "My Classes",
+    },
+    {
+      href: "/blog",
+      path: "Blog",
     },
   ];
 
   return (
     <CommonContainer>
-      <div className="pt-3 font-Grotesk">
+      <div className="pt-3 bg-gray-300 font-Grotesk">
         <div className="flex items-center justify-between w-full text-white">
-          <Link to="/" className="hidden lg:flex items-center">
+          <Link to="/" className="items-center hidden lg:flex">
             <img className="" src={logo} alt="logo" />
             <p className="hidden -ml-4 text-lg font-bold text-white md:block">
               Programming Hero
@@ -55,21 +51,25 @@ const DashNavbar = () => {
           <section className="flex items-center gap-x-3 lg:hidden">
             <Avatar
               src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-              className="border-2 rounded-full  animate-pulse border-purple-400"
+              className="border-2 border-purple-400 rounded-full animate-pulse"
             />
             <p>Hi, Kazi</p>
           </section>
-          <div className="items-center  gap-6 text-sm flex">
-            <span className="space-x-4 hidden lg:block">
+          <div className="flex items-center gap-6 text-sm">
+            <span className="hidden space-x-4 lg:block">
               {menuItems.map((item) => {
-                return <NavLink to={item.href}>{item.path}</NavLink>;
+                return (
+                  <NavLink key={item?.href} to={item.href}>
+                    {item.path}
+                  </NavLink>
+                );
               })}
             </span>
             <div className="flex items-center gap-x-5">
               <VscBell className="text-2xl" />
               <section className="bg-green-200 rounded-3xl px-4 py-1.5 flex items-center gap-x-2">
                 <img src={gemIcon} className="w-6 h-6" />
-                <p className="font-semibold text-black text-xl">115</p>
+                <p className="text-xl font-semibold text-black">115</p>
               </section>
               <span
                 onClick={() => setMenu(true)}

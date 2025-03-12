@@ -12,7 +12,7 @@ import Border from "./Border";
 
 const AbsoluteBeginner = () => {
   return (
-    <div className="w-full bg-black">
+    <div className="w-full bg-black overflow-hidden">
       <SapceBottom>
         <div className="relative w-full px-20 ">
           <div className="flex items-center justify-between">
@@ -38,12 +38,12 @@ const AbsoluteBeginner = () => {
 
       <div className="bg-center bg-no-repeat bg-cover lg:h-screen bg-bg-globe">
         <CommonContainer>
-          <div className="flex flex-col items-center justify-center gap-6 sm:gap-20 lg:flex-row ">
+          <div className="flex flex-col items-center justify-center gap-6 lg:pt-20 sm:gap-20 lg:flex-row">
             <div className=" max-w-72">
               <img className="w-full" src={mobile} />
             </div>
             <div className="flex flex-col items-center justify-center w-full max-w-xl gap-6">
-              <h2 className="md:text-5xl text-3xl bg-[linear-gradient(97.64deg,#eaaaff,#b5acff)] bg-clip-text text-transparent  hidden lg:block self-start">
+              <h2 className="self-start hidden text-3xl font-bold text-white md:text-5xl lg:block">
                 Our Mobile App
               </h2>
               <div className="w-full py-12 bg-custom-gradient rounded-3xl">
@@ -84,8 +84,8 @@ const AbsoluteBeginner = () => {
               </h2>
 
               <div className="flex items-center gap-6 pb-6 w-60 sm:w-full">
-                <img className="w-full" src={app} alt="" />
-                <img className="w-full" src={google} alt="" />
+                <img className="md:w-full w-1/2" src={app} alt="" />
+                <img className="md:w-full w-1/2" src={google} alt="" />
               </div>
             </div>
           </div>

@@ -12,39 +12,83 @@ import { SlDislike, SlLike } from "react-icons/sl";
 import Reward from "./Rewad";
 import Notes from "./Notes";
 import CopyRight from "./CopyRight";
-type propsTypes = {
-  url: string;
-  name: string;
-};
-const PlayingSec = ({ url, name }: propsTypes) => {
-  const [Tabs, setTabs] = useState<number>(1);
+import Description from "./Description";
+import { useOutlineStore } from "../../store/useOutlineStore";
+import AssignmentMarks from "./AssignmentMarks";
+import StartQuiz from "./StartQuiz";
 
+const PlayingSec = () => {
+  const [Tabs, setTabs] = useState<number>(1);
+  const [clickByshow, setClickByShow] = useState();
+  const [prevContent, nextContent] = useState();
+  const [totalContent, setTotalContent] = useState<number>(0);
+  const {
+    video,
+    description,
+    quiz,
+    assignment,
+    allContent,
+    handleNext,
+    handlePrevious,
+  } = useOutlineStore();
   // SET CURRENT TAB --
   const handleChangeTabs = (numbers: number): void => {
     setTabs(numbers);
   };
 
   // HANDLE PREVIOUS BUTTON --
-  const handePrevour = (): void => {};
+  // const handePrevour = (): void => {
+  //   if (allContent) {
+  //   }
+  //   console.log(allContent, "previous video showing...");
+  //   setClickByShow("previous show data");
+  // };
+
   // HANDLE NEXT BUTTON --
-  const handleNext = (): void => {};
+  // const handleNext = (): void => {
+  //   if (allContent) {
+  //     // const totalContents = Math.ceil(allContent?.content?.length);
+  //     const currentCont =
+  //       allContent?.currentContent?.video ||
+  //       allContent?.currentContent?.description ||
+  //       allContent?.currentContent?.quiz ||
+  //       allContent?.currentContent?.assignment;
+
+  // allContent?.content?.forEach(
+  //   (item) => currentCont?.quiz?.id || currentCont?.id === item?.id
+  // );
+
+  //   console.log(allContent, "all-content", currentCont, "currentContent");
+  // }
+
+  // const matchContent = allContent?.content?.map(item=>)
+  // console.log(allContent, "next video showing...");
+  // setClickByShow("next show data");
+  // };
+
+
+ 
+
 
   return (
-    <div className="w-full">
-      {/* VIDEO PLAYING SECTION START */}
-      <section className="max-h-[500px]">
-        <ReactPlayer
-          url={url ? url : "https://youtu.be/ZOK-DU7vT0A?si=Gc2Oj95qVd1iRK0_"}
-          controls
-          width="100%"
-          height="500px"
-        />
+    <div className="lg:w-[80%]">
+      {/* CONTENT SECTION START */}
+      <section className="max-h-[500px] w-full">
+        {video && typeof video?.url === "string" ? (
+          <ReactPlayer url={video?.url} controls width="100%" height="500px"/>
+        ) : description && typeof description === "object" ? (
+          <Description description={description} />
+        ) : quiz && typeof quiz === "object" ? (
+          <StartQuiz quiz={quiz} />
+        ) : (
+          assignment && <AssignmentMarks assingment={assignment} />
+        )}
       </section>
-      {/* VIDEO PLAYING SECTION END */}
+      {/* CONTENT SECTION END */}
       {/* BUTTON START */}
-      <div className="flex items-center justify-end py-2 gap-x-4">
+      <div className="flex items-center justify-end py-2 gap-x-4 pt-20 md:pt-4">
         <Button
-          onChange={handePrevour}
+          onClick={handlePrevious}
           size="lg"
           variant="outline"
           className="border border-[#9886FA] bg-gray-900 hover:bg-gray-900 hover:text-gray-400 text-gray-400"
@@ -52,7 +96,7 @@ const PlayingSec = ({ url, name }: propsTypes) => {
           Previos
         </Button>
         <Button
-          onChange={handleNext}
+          onClick={handleNext}
           size="lg"
           className="text-gray-950 bg-[#9886FA] hover:bg-[#503dbb]"
         >

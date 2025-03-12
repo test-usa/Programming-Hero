@@ -33,7 +33,7 @@ const Filter = () => {
   const items = generateItems(10);
 
   return (
-    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+    <div className="flex flex-wrap md:flex-nowrap gap-4">
       <Autocomplete
         // isVirtualized
         className="max-w-xs"

@@ -6,10 +6,11 @@ import payment from "../assets/payment.png";
 import CommonSpace from "../common/CommonSpace";
 const Footer = () => {
   return (
-    <div className="gap-4 text-white bg-cover bg-custom-footer font-Grotesk">
+    <div className="relative gap-4 overflow-hidden text-white bg-cover bg-custom-footer font-Grotesk">
+      <div className="w-[70vw] -z10 mx-auto  blur-[250px] h-full bg-footer-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "></div>
       <CommonContainer>
         <CommonSpace>
-          <div className="flex flex-col w-full gap-4">
+          <div className="flex flex-col w-full gap-4 ">
             <div className="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
               <div>
                 <p>Level-4, 34, Awal Centre, Banani, Dhaka</p>
@@ -23,9 +24,9 @@ const Footer = () => {
                 <Link to="/">Terms and Condition</Link>
                 <Link to="/">Privacy Policy</Link>
               </div>
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center gap-4 ">
                 <p>Follow Us</p>
-                <div className="flex items-center gap-6 text-2xl ">
+                <div className="flex items-center gap-6 text-2xl text-white">
                   <Link to="/" className="">
                     <FaFacebook />
                   </Link>
