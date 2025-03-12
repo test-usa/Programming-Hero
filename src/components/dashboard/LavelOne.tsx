@@ -12,8 +12,12 @@ const LavelOne = () => {
   const name: string = "Kazi Mehedi Hasan";
   const [value, setValue] = useState<number>(0);
   const [tabs, setTabs] = useState<boolean>(false);
-  const { data, isSuccess, isLoading, refetch } = useFetch("/course");
-  console.log(data?.data);
+  const { data, isLoading } = useFetch("/course");
+
+  if (isLoading) {
+    return <p className="text-2xl text-purple-700">Loading...</p>;
+  }
+
   return (
     <CommonContainer>
       <div>
@@ -29,7 +33,8 @@ const LavelOne = () => {
             {/* FIRST CARD START */}
 
             <>
-              {data?.data?.map((course) => {
+              {data?.data?.map((course: any) => {
+               
                 return (
                   <div
                     key={course?.id}
@@ -37,17 +42,17 @@ const LavelOne = () => {
                   >
                     <div className="w-full xl:w-[30%]">
                       <img
-                        src={startCourse}
+                        src={course?.thumbnail}
                         alt="course-starting-image"
                         className="object-cover w-full max-h-72 rounded-2xl"
                       />
                     </div>
-                    <div>
-                      <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
+                    <div className="w-[60%]">
+                      <h1 className="text-[#AE34E4] w-full text-xl md:text-2xl lg:text-3xl font-semibold">
                         {course?.title}
                       </h1>
                       <p className="py-2 text-sm font-semibold text-white">
-                        ঝংকার মাহবুব
+                        Kazi Mehedi Hasan
                       </p>
                       <div className="w-full py-3">
                         <Progress

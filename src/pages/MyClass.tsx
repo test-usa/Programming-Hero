@@ -5,7 +5,7 @@ import CourseNav from "../section/course-details/CourseNav";
 const MyClass = () => {
   return (
     <div className=" bg-[#010314]">
-    <CourseNav/>
+      <CourseNav />
       <div className="my-12">
         <LavelOne />
       </div>

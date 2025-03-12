@@ -26,12 +26,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   
     const { user,logOutUser  } = userStore() 
     const { data, isLoading, isSuccess, refetch } = useFetch("/user/me");
-
- 
- 
     const navigate = useNavigate();
    
-  
+
     
   useEffect(() => {
     if (isOpen) {

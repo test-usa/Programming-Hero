@@ -18,6 +18,7 @@ interface QuizData {
 
 interface AssignmentData {
   totalMark: number;
+  deadline: string; // Deadline as a string (to be converted to DateTime)
 }
 
 const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: CreateContentModalProps) => {
@@ -30,9 +31,10 @@ const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: Cre
   ]);
   const [assignment, setAssignment] = useState<AssignmentData>({
     totalMark: 0,
+    deadline: "", // Initialize deadline as an empty string
   });
 
-  const { mutate: createContent, isPending } = usePost("/content/create-content");
+  const { mutate: createContent, isPending: isContentPending } = usePost("/content/create-content");
   const { mutate: createQuiz, isPending: isQuizPending } = usePost("/quiz");
   const { mutate: createAssignment, isPending: isAssignmentPending } = usePost("/assignment");
 
@@ -51,12 +53,22 @@ const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: Cre
     setQuizzes(updatedQuizzes);
   };
 
-  const handleAssignmentChange = (field: keyof AssignmentData, value: number) => {
+  const handleAssignmentChange = (field: keyof AssignmentData, value: string | number) => {
     setAssignment({ ...assignment, [field]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate quiz questions
+    if (contentType === "QUIZ") {
+      for (const quiz of quizzes) {
+        if (quiz.question.trim().length < 4) {
+          toast.error("Each quiz question must be at least 4 characters long.");
+          return; // Stop submission if validation fails
+        }
+      }
+    }
 
     const contentData = {
       title,
@@ -90,8 +102,10 @@ const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: Cre
           });
         } else if (contentType === "ASSIGNMENT") {
           const assignmentData = {
-            contentId,
+            title,
             totalMark: assignment.totalMark,
+            deadline: new Date(assignment.deadline).toISOString(), // Convert to ISO string for DateTime
+            contentId,
           };
 
           createAssignment(assignmentData, {
@@ -245,6 +259,14 @@ const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: Cre
                 className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#C941F5]"
                 required
               />
+              <label className="block text-sm font-medium text-gray-400 mt-2">Deadline</label>
+              <input
+                type="datetime-local" // Use datetime-local for DateTime input
+                value={assignment.deadline}
+                onChange={(e) => handleAssignmentChange("deadline", e.target.value)}
+                className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#C941F5]"
+                required
+              />
             </div>
           )}
           <div className="flex justify-end gap-2">
@@ -258,9 +280,9 @@ const CreateContentModal = ({ isOpen, onClose, moduleId, onContentCreated }: Cre
             <Button
               type="submit"
               className="bg-[#C941F5] text-white hover:bg-[#C941F5]/90"
-              disabled={isPending || isQuizPending || isAssignmentPending}
+              disabled={isContentPending || isQuizPending || isAssignmentPending}
             >
-              {isPending || isQuizPending || isAssignmentPending ? "Creating..." : "Create"}
+              {isContentPending || isQuizPending || isAssignmentPending ? "Creating..." : "Create"}
             </Button>
           </div>
         </form>
