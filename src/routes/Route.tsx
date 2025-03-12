@@ -29,6 +29,13 @@ import AllPost from "../section/helpDesk/components/AllPost";
 import Roadmap from "../section/helpDesk/components/Roadmap";
 import ReleaseLog from "../section/helpDesk/components/ReleaseLog";
 import FeatureRequest from "../section/helpDesk/components/FeatureRequest";
+import BlogDetails from "../pages/BlogDetails";
+
+import CancelPage from "../pages/CancelPage";
+import SuccessPage from "../pages/SuccessPage";
+import Checkout from "../pages/Checkout";
+
+
 
 import MyClass from "../pages/MyClass";
 import MyClassDetails from "../pages/MyClassDetails";
@@ -80,6 +87,10 @@ const routes = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/blog-details",
+        element: <BlogDetails />,
+      },
+      {
         path: "/success",
         element: <Success />,
       },
@@ -108,9 +119,10 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginPage />,
+        element: <LoginPage />, 
       },
       {
+        
         path: "/signup",
         element: <SignUpPage />,
       },   
@@ -120,6 +132,21 @@ const routes = createBrowserRouter([
       },
       // { path: "/course-modules", element: <Module /> },
       { path: "/course-modules/:courseId", element: <Modules /> },
+      {
+        
+        path: "/make-payment",
+        element: <Checkout/>,
+      },
+      {
+        
+        path: "/success",
+        element: <SuccessPage/>,
+      },
+      {
+        
+        path: "/cancel",
+        element: <CancelPage/>,
+      },
       {
         path: "/dashboard",
         element: <Samir />,

@@ -7,7 +7,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "@heroui/react";
 
+<<<<<<< HEAD
+const DashNavbar = () => {
+  //   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [, setMenu] = useState(false);
+=======
 import { muneItems } from "./Dashboard.type";
+>>>>>>> 381f80ec314b5688bfe4eccf8f7edcda80edda09
 
 
 const DashNavbar = () => {

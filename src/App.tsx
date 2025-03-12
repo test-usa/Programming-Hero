@@ -3,6 +3,7 @@ import MainLayout from "./layout/MainLayout";
 import { ToastContainer } from "react-toastify";
 import useAxiosSecure from "./hooks/useAxios";
 import { userStore } from "./store/UserStore";
+import { Elements } from "@stripe/react-stripe-js";
 
 const App = () => {
   // const { , token } = userStore();
@@ -31,8 +32,11 @@ const App = () => {
   // }, [token]);
   return (
     <>
+    <Elements stripe={null}>
+      <ToastContainer position="bottom-left" theme="dark" autoClose={3000} />
       <ToastContainer position="bottom-left" autoClose={3000} />
       <MainLayout />
+    </Elements>
     </>
   );
 };
