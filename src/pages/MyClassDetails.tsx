@@ -30,7 +30,7 @@ const MyClassDetails = () => {
                   className="max-w-[36px] min-w-[28px]"
                 />
               </button>
-              <h1 className="font-semibold text-2xl text-[#EAAAFF]">
+              <h1 className="font-semibold sm:text-xl md:text-2xl text-[#EAAAFF]">
                 {video?.title} {video?.no}
               </h1>
             </div>

@@ -17,6 +17,7 @@ const LavelOne = () => {
   if (isLoading) {
     return <p className="text-2xl text-purple-700">Loading...</p>;
   }
+
   return (
     <CommonContainer>
       <div>
@@ -33,6 +34,7 @@ const LavelOne = () => {
 
             <>
               {data?.data?.map((course: any) => {
+               
                 return (
                   <div
                     key={course?.id}
@@ -45,8 +47,8 @@ const LavelOne = () => {
                         className="object-cover w-full max-h-72 rounded-2xl"
                       />
                     </div>
-                    <div>
-                      <h1 className="text-[#AE34E4] text-xl md:text-2xl lg:text-3xl font-semibold">
+                    <div className="w-[60%]">
+                      <h1 className="text-[#AE34E4] w-full text-xl md:text-2xl lg:text-3xl font-semibold">
                         {course?.title}
                       </h1>
                       <p className="py-2 text-sm font-semibold text-white">

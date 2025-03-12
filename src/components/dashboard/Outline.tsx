@@ -3,44 +3,112 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/shared/useFetch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PiNoteDuotone } from "react-icons/pi";
 import NotFoundPage from "./NotFoundPage";
 import { useOutlineStore } from "../../store/useOutlineStore";
-import { toast } from "react-toastify";
-
-const Outline = () => {
+const Outline = ({
+  content,
+  handleProgressBar,
+}: {
+  content: any;
+  handleProgressBar: (contentId: string) => void;
+}) => {
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(null);
   const { id } = useParams();
+  // GET PROGRESSBAR --->
+  const { data: getProgress } = useFetch(`/student/progress/${id}`);
   const { data } = useFetch(`/course/${id}`);
-  const { setVideo, setDescription, setQuiz, setAssignment } =
-    useOutlineStore();
+  const {
+    setVideo,
+    setDescription,
+    setQuiz,
+    setAssignment,
+    setAllContent,
+    video,
+    description,
+    quiz,
+    assignment,
+    allContent,
+  } = useOutlineStore();
+  const currentContent = {
+    video,
+    description,
+    quiz,
+    assignment,
+  };
+
+  const handSetAllContent = () => {
+    const contents = data?.data?.module[0]?.content;
+    setAllContent(contents, currentContent);
+    // console.log(contents, currentContent, "37 no lineeeeee");
+  };
 
   // Handle module toggle to show videos of clicked module only
   const handleModuleToggle = (index: number) => {
     setOpenModuleIndex(openModuleIndex === index ? null : index);
   };
 
+
+  //searching data --->
+  useEffect(() => {
+    if (!content?.data?.length) return;
+    const firstContent = content?.data?.[0] || {};
+    const { contentType, title, id, video, description, assignment, quiz } =
+      firstContent;
+
+    if (content?.data?.length) {
+      switch (contentType) {
+        case "VIDEO":
+          if (useOutlineStore.getState().video?.id !== id) {
+            setVideo(video, title, id);
+            handleProgressBar(id);
+          }
+          break;
+        case "DESCRIPTION":
+          if (useOutlineStore.getState().description?.id !== id) {
+            setDescription(description, title, id);
+            handleProgressBar(id);
+          }
+          break;
+        case "QUIZ":
+          if (useOutlineStore.getState().quiz?.id !== id) {
+            setQuiz(quiz, title, id);
+            handleProgressBar(id);
+          }
+          break;
+        case "ASSIGNMENT":
+          if (useOutlineStore.getState().assignment?.id !== id) {
+            setAssignment(assignment, title, id);
+            handleProgressBar(id);
+          }
+          break;
+      }
+    }
+  }, [content?.data]);
+
   // HANDLE-PLAY VIDEO ---->
   const handleShowContent = (
     content: string | object,
     title: string,
     type: string,
-    no?: number
+    no?: number,
+    id?: string
   ) => {
     if (type === "VIDEO") {
-      setVideo(content, title, no);
-      toast.success("successfully store video!");
+      setVideo(content, title, no, id);
+      handleProgressBar(id);
     } else if (type === "DESCRIPTION") {
-      setDescription(content, title);
-      toast.success("successfully store description!");
+      setDescription(content, title, id);
+      handleProgressBar(id);
     } else if (type === "QUIZ") {
-      setQuiz(content, title);
-      toast.success("successfully store quiz!");
+      setQuiz(content, title, content?.id);
+      handleProgressBar(id);
     } else if (type === "ASSIGNMENT") {
-      setAssignment(content, title);
-      toast.success("successfully store assignment!");
+      setAssignment(content, title, id);
+      handleProgressBar(id);
     }
+    handSetAllContent();
   };
 
   return (
@@ -70,12 +138,20 @@ const Outline = () => {
                     }`}
                   />
                 </button>
-                {/* Show videos only for the opened module */}
+                {/* Show content only for the opened module */}
                 {openModuleIndex === idx && (
                   <div className="mt-2">
                     {item?.content?.map((cont: any, videoIndex: number) => {
+                      const incresProgress =
+                        getProgress?.data?.watchedContents?.some(
+                          (item: string) => item === cont?.id
+                        );
+
                       return (
-                        <section className="sm:flex w-full sm:space-y-0  gap-x-4 space-y-2  py-4 mx-4">
+                        <section
+                          key={videoIndex}
+                          className="sm:flex w-full sm:space-y-0  gap-x-4 space-y-2  py-4 mx-4"
+                        >
                           {cont?.contentType === "DESCRIPTION" ? (
                             <button
                               className="flex items-center gap-x-3"
@@ -85,11 +161,18 @@ const Outline = () => {
                                   cont?.contentType === "DESCRIPTION"
                                     ? cont?.title
                                     : null,
-                                  cont?.contentType
+                                  cont?.contentType,
+                                  cont?.id
                                 )
                               }
                             >
-                              <PiNoteDuotone className="text-2xl sm:text-3xl" />
+                              <PiNoteDuotone
+                                className={`text-2xl sm:text-3xl ${
+                                  incresProgress
+                                    ? "text-green-600"
+                                    : "text-white"
+                                }`}
+                              />
                               <div className="w-full">
                                 <h1 className="text-sm text-start">
                                   {cont?.title}
@@ -106,11 +189,18 @@ const Outline = () => {
                                     ? cont?.title
                                     : null,
                                   cont?.contentType,
-                                  videoIndex + 1
+                                  videoIndex + 1,
+                                  cont?.id
                                 )
                               }
                             >
-                              <IoIosCheckmarkCircleOutline className="text-2xl sm:text-3xl" />
+                              <IoIosCheckmarkCircleOutline
+                                className={`text-2xl sm:text-3xl ${
+                                  incresProgress
+                                    ? "text-green-600"
+                                    : "text-white"
+                                }`}
+                              />
 
                               <div className="w-full">
                                 <h1 className="text-sm text-start">
@@ -135,11 +225,18 @@ const Outline = () => {
                                   cont?.contentType === "QUIZ"
                                     ? cont?.title
                                     : null,
-                                  cont?.contentType
+                                  cont?.contentType,
+                                  cont?.id
                                 )
                               }
                             >
-                              <IoIosCheckmarkCircleOutline className="text-2xl sm:text-3xl" />
+                              <IoIosCheckmarkCircleOutline
+                                className={`text-2xl sm:text-3xl ${
+                                  incresProgress
+                                    ? "text-green-600"
+                                    : "text-white"
+                                }`}
+                              />
                               <div className="w-full">
                                 <h1 className="text-sm text-start">
                                   <span className="mr-2">
@@ -159,11 +256,18 @@ const Outline = () => {
                                   cont?.contentType === "ASSIGNMENT"
                                     ? cont?.title
                                     : null,
-                                  cont?.contentType
+                                  cont?.contentType,
+                                  cont?.id
                                 )
                               }
                             >
-                              <IoIosCheckmarkCircleOutline className="text-2xl sm:text-3xl" />
+                              <IoIosCheckmarkCircleOutline
+                                className={`text-2xl sm:text-3xl ${
+                                  incresProgress
+                                    ? "text-green-600"
+                                    : "text-white"
+                                }`}
+                              />
                               <div className="w-full">
                                 <h1 className="text-sm text-start">
                                   Assignment
